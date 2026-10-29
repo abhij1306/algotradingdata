@@ -1,0 +1,38 @@
+===== 2016-21
+stop_pct {'count': 228.0, 'mean': 6.43, 'std': 1.79, 'min': 2.79, '10%': 4.0, '25%': 4.95, '50%': 6.45, '75%': 7.61, '90%': 9.01, 'max': 9.9}
+stop in ADR multiples {'count': 228.0, 'mean': 2.1, 'std': 0.57, 'min': 0.89, '10%': 1.42, '25%': 1.72, '50%': 2.03, '75%': 2.42, '90%': 2.83, 'max': 4.96}
+                 n   exp  stopped
+stop_adr_q                       
+(0.894, 1.724]  57  0.50     0.33
+(1.724, 2.028]  57  1.85     0.12
+(2.028, 2.419]  57  0.41     0.07
+(2.419, 4.959]  57 -0.00     0.16
+losers 152 by reason {'sma50_close': 113, 'initial_stop': 39} avg loser R -0.67
+  initial_stop losers: n=39 later high (within 60 sess of entry) >=+2R 38% >=+5R 21%; later CLOSE >=+2R 31%; avg hold 5.6
+  sma50_close losers: n=113 later high (within 60 sess of entry) >=+2R 28% >=+5R 7%; later CLOSE >=+2R 25%; avg hold 12.5
+  all losers: n=152 later high (within 60 sess of entry) >=+2R 31% >=+5R 11%; later CLOSE >=+2R 26%; avg hold 10.8
+  re-entry rule: 98 re-entries of 152 losers, exp 0.25R, sum 24.3R, win 32%, sum ex top-3 6.3R
+early SMA50 exits (<=5 sess): n=33 avg R -0.62, sum -20.4R; later high >=+2R 27%
+winners n=76: avg MFE 6.56R, avg realised 3.40R, capture 52%, avg give-back 3.16R, median give-back 2.45R
+trades with MFE>=3R: n=57, realised avg 4.37R (MFE avg 8.11), ended as losers 1, ended <1R 10
+trades with MFE>=2R that ended <=0R: 6 of 71
+MFE distribution all trades {'count': 228.0, 'mean': 2.65, 'std': 5.53, 'min': 0.0, '25%': 0.35, '50%': 1.05, '75%': 2.8, '90%': 6.99, 'max': 69.28}
+===== 2022-24
+stop_pct {'count': 154.0, 'mean': 6.45, 'std': 1.63, 'min': 2.8, '10%': 4.41, '25%': 5.1, '50%': 6.41, '75%': 7.62, '90%': 8.85, 'max': 9.84}
+stop in ADR multiples {'count': 154.0, 'mean': 2.01, 'std': 0.55, 'min': 1.08, '10%': 1.39, '25%': 1.62, '50%': 1.92, '75%': 2.27, '90%': 2.63, 'max': 4.52}
+                 n   exp  stopped
+stop_adr_q                       
+(1.084, 1.625]  39  0.01     0.49
+(1.625, 1.92]   38  0.04     0.42
+(1.92, 2.274]   38  0.10     0.21
+(2.274, 4.517]  39  0.82     0.18
+losers 114 by reason {'sma50_close': 62, 'initial_stop': 50, 'trailing_swing_low': 2} avg loser R -0.76
+  initial_stop losers: n=50 later high (within 60 sess of entry) >=+2R 44% >=+5R 20%; later CLOSE >=+2R 40%; avg hold 7.0
+  sma50_close losers: n=62 later high (within 60 sess of entry) >=+2R 39% >=+5R 10%; later CLOSE >=+2R 37%; avg hold 10.0
+  all losers: n=114 later high (within 60 sess of entry) >=+2R 41% >=+5R 15%; later CLOSE >=+2R 39%; avg hold 8.9
+  re-entry rule: 66 re-entries of 114 losers, exp 0.35R, sum 23.3R, win 35%, sum ex top-3 5.3R
+early SMA50 exits (<=5 sess): n=26 avg R -0.56, sum -14.6R; later high >=+2R 50%
+winners n=40: avg MFE 6.03R, avg realised 3.10R, capture 51%, avg give-back 2.93R, median give-back 2.54R
+trades with MFE>=3R: n=32, realised avg 3.61R (MFE avg 7.06), ended as losers 2, ended <1R 7
+trades with MFE>=2R that ended <=0R: 7 of 46
+MFE distribution all trades {'count': 154.0, 'mean': 2.11, 'std': 3.32, 'min': 0.0, '25%': 0.24, '50%': 0.98, '75%': 2.34, '90%': 5.53, 'max': 23.17}

@@ -1,0 +1,19 @@
+## D1 q4_derived rows: 51 negative revenue: 51
+  OneD/FourD span days: {(181, 364): 48, (181, 273): 3}
+  on a secondary page: 42 OneD revenue within 5% of the secondary quarter: 37
+## D2 period_mismatch rows:
+   ('AARTIDRUGS', datetime.date(2024, 6, 30), 'consolidated', datetime.date(2025, 6, 30), 2, Decimal('5905100000.0000'), datetime.datetime(2025, 7, 18, 13, 6, 57, tzinfo=datetime.timezone.utc))
+   ('MMTC', datetime.date(2024, 6, 30), 'consolidated', datetime.date(2025, 6, 30), 2, Decimal('13600000.0000'), datetime.datetime(2025, 8, 7, 10, 4, 8, tzinfo=datetime.timezone.utc))
+## D3 consolidated net profit (owners' tag)
+   {'rows': 15239, 'owners tag absent': 2327, 'owners tag = total comprehensive income, NCI 0': 188} examples: [('AARTIIND', '2024-06-30'), ('APARINDS', '2022-03-31'), ('BALKRISIND', '2024-12-31'), ('BALKRISIND', '2025-06-30'), ('BALKRISIND', '2026-03-31'), ('BALKRISIND', '2026-06-30')]
+## D4 cross-check breakdown
+  revenue: {'secondary 1-15% lower': 297, 'secondary 1-15% higher': 47, 'other >15%': 196, 'q4_derived': 15} scale ratios: {'~100x': 3, '~10x': 1}
+  eps: {('consolidated', 'net profit also differs'): 715, ('consolidated', 'net profit agrees, within 15%'): 493, ('consolidated', 'net profit agrees, other'): 124, ('consolidated', 'q4_derived'): 14, ('consolidated', 'net profit agrees, integer ratio (split/bonus)'): 377, ('standalone', 'net profit agrees, within 15%'): 14, ('standalone', 'net profit agrees, other'): 8, ('standalone', 'net profit agrees, integer ratio (split/bonus)'): 7, ('standalone', 'q4_derived'): 1}
+  consolidated net-profit mismatches: 2681 sampled (seed 1): 296 secondary agrees with total profit incl. NCI: 280
+## D5 q4_nine_month_missing exclusions
+  (OneD days, FourD days, period): {(182, None, '2025-09'): 48, (180, None, '2025-06'): 2, (180, None, '2026-06'): 2, (182, None, '2026-09'): 4, (455, 181, '2025-03'): 1, (182, None, '2024-09'): 1, (181, 364, '2025-03'): 1, (454, 181, '2026-03'): 1}
+  OneD revenue vs secondary quarter: {'~half year': 39, '~quarter': 5, 'no secondary quarter': 7, 'other': 9}
+## D6 secondary pages
+  statuses: {200: 1327, 404: 38} quarters per page: [(0, 126), (2, 1), (3, 4), (5, 3), (6, 1), (7, 6), (8, 9), (9, 10), (10, 5), (11, 9), (12, 4), (13, 1149)]
+  earliest quarter shown, most common: [('2023-06-30', 776), ('2023-09-30', 327), ('2024-09-30', 10), ('2024-06-30', 9)]
+## D7 growth rows touching q4_derived (with sales_yoy) / period_mismatch: (69, 44, 3)

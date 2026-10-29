@@ -1,0 +1,14 @@
+Backtest research override: a whole risk policy from a file, branch hat/policy-file. Owner (2026-10-26): the risk policy's numbers are too low for a swing strategy; improve them. Live policy increases stay under the invariant (7-day wait + evidence gate, docs/invariants.md "Policy changes"): this PR does NOT change that path or hat_live. It lets research runs measure a candidate policy so the orchestrator can choose numbers and propose a version.
+
+Today a run can override only `risk_pct`, `max_open_positions`, `max_positions_per_industry` and the flat ladder (backend/app/hat/backtest/overrides.py). Not overridable: `global_open_risk_pct`, the kill drawdowns, the health bands, `max_entries_per_day`, `max_stopouts_per_day`, `adv_cap_pct`, `cluster_cap`, `p_max`, `base_weight`.
+
+Do:
+1. `--policy FILE` (YAML or JSON) and `policy: <path>` in a `--variants` item: a full policy document, parsed with `parse_policy` (refused if invalid), used for the run instead of the version in force; the other policy overrides apply on top of it. The run records the document's digest (and the document itself, or its path plus digest, whichever fits the run's conventions record) and is refused for `--for-promotion`.
+2. Also `--set-policy path=value` (repeatable, `policy_set` list in variants) for single fields (dotted paths like `health_bands.half_dd=0.12`, `kill.bot_drawdown_pct=0.15`), same recording and promotion refusal, validated by `parse_policy`. Skip this if it's not small; the file is the must-have.
+3. Dump helper: `python -m app.hat.admin show-policy` (or extend `show`) printing the policy in force as YAML, so a candidate can be written from it. Read-only.
+4. Unit tests on the pure parts only (the policy rewrite and its refusal). Runbook research-variants paragraph, one or two lines.
+
+Scope: backtest overrides, CLI, variants parser, read-only admin dump. Don't touch the live policy path, policy_service, gates or hat_live data. Don't change strategy configs. Don't delete or disable any strategy.
+Verification: no backtest. Show the parsed policy for one real file. Never read or print .env or credentials.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

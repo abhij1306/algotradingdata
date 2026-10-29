@@ -1,0 +1,18 @@
+S2 EP plan, Part B (B1-B6 code, B7 script) plus everything Part C needs to run, branch hat/s2-ep-partb. Plan: docs/plans/s2-ep-refinement.md, Parts B and C (read Ground rules). Owner 2026-10-28: build all of it now while the results download runs, so that only running the backtests is left. Results store and API are merged (#299/#300: backend/app/hat/data/results/, results_as_of, growth in derive.py/growth.py). The hat_financial_result data in hat_live is still being fetched (NIFTY 500 PIT members, consolidated, standalone only where no consolidated); do not wait for it and do not write to it.
+Scope:
+1. B1 `earnings_catalyst` criterion (HAT-CRIT id, config-driven, mode hard), reading point-in-time results through results_as_of so nothing after the trigger time is visible. Timing window and growth rule exactly as B1. Log sales_yoy and eps_yoy on every evaluation. spec.py: add analyst_beat_not_evaluated; catalyst_not_evaluated stops applying when earnings_catalyst is in use.
+2. B2 catalyst_type on every EP signal (earnings | other_announcement | none) in signals/trades output.
+3. B3 early_volume mode time_anchored (default at_trigger, stored configs unchanged).
+4. B4 neglect direction up_only|both (default both); log the 126-session range on every EP signal.
+5. B5 per-playbook universe override; log pre-gap ADR20 (repo formula) on every EP signal.
+6. B6 per-playbook exits block falling back to bot-level; SMA trail with "active only once SMA(N) > current stop". Breakout playbook's exits and results must not change: prove it with a unit test at the exit seam and by showing the resolved config of the stored S2 seed is byte-identical (resolved_hash) before/after.
+7. Part C readiness, no runs:
+   - C3 breakdowns in the run writer (run.json breakdowns): by catalyst_type, sales_yoy bucket, gap bucket, trigger-time bucket, ADR bucket, 126-session range bucket, plus exit-reason avg hold, and the EP funnel order of C3. Only when the run has the EP playbook.
+   - Sweep file /data/workspace/backtests/sweeps/s2-ep-01.yaml with C1 baseline (current S2 EP config, unchanged) and V1-V6 exactly as C2, in-sample 2022-01-01..2024-12-31, entry bars 5m. V7 is added after V5/V6 are known. Validate it with the CLI's dry-run/validation path if one exists (no backtest). Confirm from stored data the first date with 5-minute bars and state it.
+   - The exact commands for C1/C2 and for the C4 audit in the PR description.
+   - B7 and C4 as repo scripts in scripts/research/ (B7 report from results + 5m bars; C4 sampling with a fixed printed seed and the two charts), unit tests on their pure helpers; do not run them on the full data.
+8. Docs: decisions.md entries (results store, earnings_catalyst, time-anchored volume, neglect direction, per-playbook universe and exits); the seed YAML stays unchanged (owner approves after the decision rule).
+Rules: no backtest, no hold-out (2025+) reads, hat_live read-only (PGOPTIONS default_transaction_read_only=on). Tests on pure functions with small hand-built inputs; never a backtest or pipeline on fake data. One substantial PR. Address CodeAnt findings once.
+Deliver: the PR, then READY TO MERGE <full sha>.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

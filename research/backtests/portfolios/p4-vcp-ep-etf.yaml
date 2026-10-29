@@ -1,0 +1,12 @@
+# 4. As p3 plus the ETF idle-cash sleeve (plan values: NIFTY 50 SMA200 regime, NIFTYBEES/LIQUIDBEES, tax on).
+portfolio: p4-vcp-ep-etf
+universe: nifty500
+window: {from: 2022-01-01, to: 2024-12-31}
+risk_pct: 0.0075
+flat_ladder: true
+policy_set: ["global_open_risk_pct=1", "p_max.stage2-contraction-breakout=1"]
+conventions: {entry_bars: bars_5m, slot_order: rs}
+strategies:
+  - {version: aac4fda7-86b2-421d-b7f8-1247edef7f1d, weight: 0.5, set: ["playbooks[default].setup.criteria[vcp].params.contractions=[2,6]", "exits[time_stop].enabled=false", "exits[close_below_sma].sma=50", "exits[trailing_swing_low].lookback_days=20", "exits[partial_at_r].enabled=false", "playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0", "exits[step_trail].enabled=false", "playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9"]}
+  - {version: 64274b85-696f-4aea-944e-717a62546682, weight: 0.5, playbooks: [episodic_pivot]}
+overlay: {sleeve: regime}

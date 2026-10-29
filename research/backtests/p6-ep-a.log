@@ -1,0 +1,14 @@
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.prefix, expected /data/workspace/algotrading/venv, got /data/workspace/algotrading/backend/../venv
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /data/workspace/algotrading/venv, got /data/workspace/algotrading/backend/../venv
+{
+  "label": null,
+  "run_id": "01a1870c-63e6-7719-9110-46d18b0db63a",
+  "status": "complete",
+  "code": null,
+  "trades": 14,
+  "expectancy_r": -0.5283,
+  "dsr": 0.035268,
+  "dsr_n_trials": 7,
+  "dsr_n_trials_effective": 7,
+  "pbo": 0.457143
+}

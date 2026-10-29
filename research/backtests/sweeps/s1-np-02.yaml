@@ -1,0 +1,122 @@
+sweep_id: s1-np-02
+sweep_name: S1 one-change sweep on np (in-sample 2016-2021, policy v3)
+variants:
+  - {label: base}
+  - label: np
+    base: base
+    change: earlier best exit set, re-run on the 2026-10-26 fixed data (same config as s1-baseline-01 np)
+    bundle: true
+    reason: the exit set chosen from the deleted sweeps 1-10, carried as one candidate; not evidence for any one of its five changes
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+  - label: depth8
+    base: np
+    change: VCP final contraction depth max 10% -> 8% (tighter bases, less fat-tail dependence)
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "playbooks[default].setup.criteria[vcp].params.final_depth_max_pct=8.0"
+  - label: ratio60
+    base: np
+    change: VCP depth ratio max 0.75 -> 0.6 (each contraction clearly shallower)
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.6"
+  - label: thr70
+    base: np
+    change: setup score threshold 0.6 -> 0.7
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "playbooks[default].setup.threshold=0.7"
+  - label: near15
+    base: np
+    change: within 15% of the 52-week high (was 25%)
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "playbooks[default].setup.criteria[pct_from_52w_high].params.max_pct_below=15.0"
+  - label: br50
+    base: np
+    change: "regime - breadth above 50% instead of NIFTY 500 close above rising SMA50"
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "regime={\"index\": \"NIFTY 500\", \"rule\": \"breadth_above\", \"params\": {\"min_pct\": 50}}"
+  - label: br55
+    base: np
+    change: "regime - breadth above 55%"
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "regime={\"index\": \"NIFTY 500\", \"rule\": \"breadth_above\", \"params\": {\"min_pct\": 55}}"
+  - label: br60
+    base: np
+    change: "regime - breadth above 60%"
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "regime={\"index\": \"NIFTY 500\", \"rule\": \"breadth_above\", \"params\": {\"min_pct\": 60}}"
+  - label: flat
+    base: np
+    change: "ladder off - one size from day one"
+    flat_ladder: true
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+  - label: trail15
+    base: np
+    change: swing-low trail 20 -> 15 days
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[partial_at_r].enabled=false"
+      - "exits[trailing_swing_low].lookback_days=15"
+  - label: trail25
+    base: np
+    change: swing-low trail 20 -> 25 days
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[close_below_sma].sma=50"
+      - "exits[partial_at_r].enabled=false"
+      - "exits[trailing_swing_low].lookback_days=25"
+  - label: sma40
+    base: np
+    change: close-below-SMA exit 50 -> 40
+    set:
+      - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+      - "exits[time_stop].enabled=false"
+      - "exits[trailing_swing_low].lookback_days=20"
+      - "exits[partial_at_r].enabled=false"
+      - "exits[close_below_sma].sma=40"

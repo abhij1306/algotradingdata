@@ -1,0 +1,11 @@
+Breadth regime rule, branch hat/breadth-regime. Owner research (2026-10-26): S1's longest drawdown lasts ~740 sessions through the 2018–2020 midcap bear, while NIFTY 500 (the only regime index with history: NIFTY 50, NIFTY 500, its TRI) kept rising, so the index regime never switched S1 off. `breadth_daily` (HAT_DATA_ROOT/breadth_daily, columns universe_size, with_sma50, above_sma50, breadth_pct; written by app/hat/data/features.py) has market breadth back to 2011. Verify its universe and point-in-time correctness (no lookahead: the value for day D uses only closes up to D; survivorship: does it include stocks that later delisted?) and state both in the PR.
+
+Do:
+1. A regime rule `breadth_above` in app/hat/engine/strategy/config.py (the RegimeRule union) and its function in regime_gate.RULES: on when breadth_pct (smoothed over `smooth_days`, default 1 = none) is at least `min_pct` (default 50), with optional hysteresis `off_below_pct` (default = min_pct: off when it falls below, on again only at min_pct). Same data in live (nightly) and backtest (DailyInputs or whatever the regime gate reads), no lookahead: the gate for an entry on day D uses breadth up to D-1's close, the same convention as the index rules (check and match it).
+2. The breadth must be available to the backtest loop; fail closed (regime off, recorded) on a missing day, matching the index rules' missing-data behaviour.
+3. Unit tests on the pure gate function (threshold, hysteresis, smoothing, missing day).
+4. Docs: decisions.md, runbook research-variants line (`regime={"rule":"breadth_above",...}` via --set), compact.
+
+Scope: regime rule only; don't change any strategy version or seed config. Don't delete or disable any strategy. Never read or print .env or credentials. Don't write hat_live. No backtest.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

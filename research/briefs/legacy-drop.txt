@@ -1,0 +1,6 @@
+Remove the legacy-table allowance, branch hat/legacy-drop.
+Goal: the owner dropped all of schema.legacy_live_tables from hat_live on 2026-10-26 (after a backup; schema drift check passes on live and state). Code and docs stop allowing or mentioning legacy tables in hat_live: a recreated legacy table in hat_live is now drift.
+Scope: app/hat/schema.py (legacy_live_tables and its use in check_schema_drift, `_names_table` if only legacy FKs need it), any caller, docs/invariants.md (~line 152), any other doc line that says the legacy tables remain (decisions.md and runbook.md were updated in #287; check). Keep the state_split tool working for a fresh install if it needs the table list, or say why it can go.
+Verification: check_schema_drift on hat_live and hat_state passes (DB_NAME=hat_live HAT_ENABLED=false HAT_DATA_ROOT=/data/workspace/hat-data-isin); pure test that a legacy table in live is reported. No backtests.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

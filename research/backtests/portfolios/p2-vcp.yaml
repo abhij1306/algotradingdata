@@ -1,0 +1,10 @@
+# 2. VCP alone: S1 rs_r075_ratio09 settings (run 01a17e77), same window as the mix for comparison.
+portfolio: p2-vcp
+universe: nifty500
+window: {from: 2022-01-01, to: 2024-12-31}
+risk_pct: 0.0075
+flat_ladder: true
+policy_set: ["global_open_risk_pct=1", "p_max.stage2-contraction-breakout=1"]
+conventions: {entry_bars: daily, ambiguous: pessimistic, slot_order: rs}
+strategies:
+  - {version: aac4fda7-86b2-421d-b7f8-1247edef7f1d, set: ["playbooks[default].setup.criteria[vcp].params.contractions=[2,6]", "exits[time_stop].enabled=false", "exits[close_below_sma].sma=50", "exits[trailing_swing_low].lookback_days=20", "exits[partial_at_r].enabled=false", "playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0", "exits[step_trail].enabled=false", "playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9"]}

@@ -1,0 +1,22 @@
+Golden sample check: a reusable checkpoint for data audits. Branch hat/golden-sample.
+
+Owner (2026-10-26): the database can't be checked completely, so freeze a verified sample of values (weighted to risky spots) as a checkpoint and recheck it automatically from now on. An independent data-review agent is writing the first sample to HAT_DATA_ROOT/audits/golden/2026-10-26.json (data, never committed). Format:
+
+{"format":"golden-sample/1","created":"YYYY-MM-DD","created_by":"...","seed":int,"data_audit_digest":"...",
+ "items":[{"id":"stable string","kind":"bar_raw|bar_adjusted|corporate_action|membership|isin_lineage|index_close|feature|breadth|bar_5m_daily_agg",
+           "key":{...isin/symbol/date/field, store or table named},"value":number|string|bool,"tolerance":{"abs":x}|{"rel":x}|null,
+           "risk":"ex_date|rename|delisting|rebalance|random|5m_reject_neighbor|...","verified_from":"source and how"}],
+ "mismatches":[...same plus "store_value"]}
+
+Do:
+1. Put this format in the repo (docs/backtests/golden-sample.md + a JSON schema), short.
+2. `python -m app.hat.data.golden check [--file F]` (default: newest file in HAT_DATA_ROOT/audits/golden/): look up each item in the current stores (hat_live read-only, the parquet stores) by its key, compare within tolerance, print and write a JSON result (pass/fail per item, drift list, counts per kind/risk). Exit non-zero on any drift or unresolvable key.
+3. Wire it into the data audit (app/hat/data/audit.py) as a check `golden`: fail on drift or a missing golden file is a warn (not fail) until the first file exists; the result names the golden file and its digest. Cached with the audit as today.
+4. `python -m app.hat.data.golden rebase --reason "<text>" --items <ids|all-drifted>`: writes a NEW dated golden file with the current store values for the named drifted items and the reason recorded per item (for deliberate data fixes, e.g. a corrected demerger factor). Never edits an existing file. Refuses without a reason.
+5. If the agent's file has kinds or key shapes the lookup can't resolve, map them; if a key is genuinely ambiguous, report it (BLOCKED only if the format can't work).
+6. Tests: small pure functions only (tolerance compare, key resolution on hand-built rows, rebase file building, schema validation). No backtests, no pipeline runs, no full DB on fake data. Verify once on the real golden file when it exists (read-only) and paste the summary in the PR.
+7. Docs: process.md data-check step mentions the golden check and the rebase rule; compact.
+
+Scope: data audit tooling only. Read-only on hat_live and the stores (the only writes: result files and new golden files under HAT_DATA_ROOT/audits/golden/). No data downloads. Don't change strategy configs or the risk policy. Don't delete or disable any strategy. Never read or print .env or credentials.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

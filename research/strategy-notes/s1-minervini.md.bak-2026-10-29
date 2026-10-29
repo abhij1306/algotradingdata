@@ -1,0 +1,137 @@
+# S1 Minervini: living parameters and results log
+
+The owner's working document for S1 (stage2-contraction-breakout). Every backtest result on S1 is
+recorded here against the parameter set it used. Tuning follows the table, and nothing changes
+without a recorded run. Results go here; the repo keeps only code and canonical docs.
+
+## Ground rules
+
+- No backtest until the code and data audit is clean (owner, 2026-10-25): "if theres data or code
+  bug nothing matters".
+- Window: trades from 2016-01-01 only, on point-in-time NIFTY 500 membership. Pre-2016 bars only
+  warm up the indicators.
+- Every parameter lives in config (the strategy version YAML, or `--set` overrides). A backtest
+  never needs a code change. The output metrics are the same for every strategy.
+- Choose on 2016–2021, read 2022–2026 once. One parameter at a time; pick a plateau, not a peak.
+
+## Starting parameters (2026-10-25)
+
+A reference starting point, not a fixed spec. Where the reference was open, the orchestrator
+chose a default; everything here is tuned later from the results.
+
+| # | Parameter | Seed v1 today | Starting value | Notes |
+|---|---|---|---|---|
+| 1 | Initial stop | 0.5% below final contraction low, skip if > 8% | Same structural stop, skip if > 10% | The cap rises 8 → 10%. Variant: a fixed 10% below entry |
+| 2 | First partial | 33% at 3R | 33% at 3R | Same as the seed |
+| 3 | Breakeven / trail stepping | Breakeven at 2R | No breakeven; step trail: stop +1R for every +1.5R (−1R → 0R at +1.5R → +1R at +3R …) | Step-trail rule added in the S1 config PR |
+| 4 | Trailing exit | Close below SMA50 | Close below SMA21 or under the 10-session swing low, whichever comes first | Variants: EMA21, the swing low alone |
+| 5 | Entry and chase | Pivot level break, chase 5% | Intraday pivot break, chase 2% | Variant: daily close above the pivot |
+| 6 | Breakout volume | Not modelled (volume_pace ignored) | Off with the intraday entry; ≥ 1.5× 50-day average with the daily-close variant | Calibrate later |
+| 7 | VCP | 2–6 contractions, final ≤ 10% | ≥ 3 contractions, final ≤ 10% | Calibrate later |
+| 8 | RS cutoff | Hard ≥ 70th percentile + score weight | Off (gate and weight) | Variant: RS ≥ 70 back on |
+| 9 | Market filter | NIFTY 500 > rising SMA50 | NIFTY 500 > SMA50, no slope test, no new buys below | |
+| 10 | Time stop | 15 sessions, disabled | 10 sessions: exit if the close is below +0.5R | Tune `min_r` later |
+| 11 | Timeframe | Daily only | Also weekly, same rules converted to weeks | Needs timeframe support, after the S1 config PR |
+
+Config coverage of each row (audit 2026-10-25, section F of
+`/data/workspace/audits/2026-10-25-protocol-vs-code.md`):
+
+- Config today: 1 (fixed `stop={"rule":"pct_below_entry","pct":10}` or cap `stop.max_pct=10`),
+  2, breakeven off, 4 (SMA21; a swing low is the lowest low of N sessions), 5 chase, 7, 8, 10
+  (`time_stop` days/min_r, or `early_failure`).
+- Code being added (S1 config PR): select a criterion by name instead of by index, a step trail
+  (3), a close-below-EMA exit (4), `entry_timing` intraday vs daily close plus breakout volume
+  (5, 6), regime with no slope test (9), and the VCP constants moved into config.
+- Later: weekly timeframe (11), about 1–2 weeks of work.
+
+## Versions
+
+- S1 v2 draft `aac4fda7-86b2-421d-b7f8-1247edef7f1d` (2026-10-25): the starting parameters above,
+  intraday entry (`entry_timing: intraday_break`), `volume_pace` off, RS off, VCP contractions
+  [3, 6], `min_depth_pct` off, step trail 1.5/1.0, partial 33% at 3R, SMA21 close and 10-session
+  swing-low trails, time stop 10 sessions / +0.5R, stop cap 10%, chase 2%, regime SMA50 no slope.
+  Config file: `/data/workspace/hat-data-isin/admin/s1-v2-draft.yaml`. v1 stays as the seed.
+
+## Results log
+
+Cleared 2026-10-26 (owner): every run before this date was deleted as unreliable. New runs follow the
+Backtest Result Standard v1.0 (run folders: run.json, trades/equity/refusals/signals/stocks CSVs);
+results live in those folders, not here. Sweep definitions are kept in `/data/workspace/backtests/sweeps/`.
+
+## Promotion criteria (fixed 2026-10-26, before any rerun)
+
+A variant becomes the S1 candidate only if, in-sample 2016-01-01..2021-12-31:
+- MAR ≥ 0.6, longest drawdown < 500 sessions, ≥ 100 trades;
+- CAGR above NIFTY 500 TRI over the same window;
+- CAGR with the 5 best trades removed ≥ half the CAGR (not carried by outliers);
+- no entry above 5% of 20-day average traded value;
+- `binding.no_op` false against its base, and each key parameter one step either side keeps MAR ≥ 0.5
+  (plateau, not a tuned peak).
+Hold-out 2022-01-01..2026-10-23, run once for the candidate: expectancy ≥ half the in-sample
+expectancy and MAR ≥ 0.4. After that, paper trading is the only out-of-sample test.
+No run cap (owner 2026-10-27): every variant still counts in `dsr_n_trials`, so more runs make the DSR bar stricter.
+
+The same criteria, machine-readable (2026-10-26): `python -m app.hat.backtest.review <run_id>
+--criteria <this file> [--sweep <plateau sweep>]` computes each row from the run folders and pins
+this block's sha256 in the run's `criteria.md`. The plateau's key parameters and steps were not
+written above; the block names the paths the `np` set changes (time stop, SMA exit, swing-low
+lookback, partial, VCP minimum contractions) with the steps shown (owner to confirm before the
+plateau sweep). The budget counts this round's runs; the 56 variants of the deleted sweeps 1–10
+are seeded as prior trials, so they count in `dsr_n_trials` but not against the 30.
+
+```hat-criteria
+strategy: S1
+universe: NIFTY500_PIT
+in_sample: {from: 2016-01-01, to: 2021-12-31}
+hold_out: {from: 2022-01-01, to: 2026-10-23}
+trial_budget: 10000
+checks:
+  mar_min: 0.6
+  longest_dd_sessions_below: 500
+  trades_min: 100
+  cagr_above_benchmark: true
+  cagr_ex_top5_min_share: 0.5
+  max_pct_adv: 5
+  binding_required: true
+plateau:
+  mar_min: 0.5
+  parameters:
+    - {path: strategy.exits.2.enabled}
+    - {path: strategy.exits.3.sma, step: 10}
+    - {path: strategy.exits.4.lookback_days, step: 5}
+    - {path: strategy.exits.5.enabled}
+    - {path: strategy.playbooks.0.setup.criteria.11.params.contractions.0, step: 1}
+hold_out_checks:
+  expectancy_min_share: 0.5
+  mar_min: 0.4
+```
+
+## Decisions
+
+- 2026-10-26: results before today deleted (owner: not reliable). Leads to re-check under the new
+  standard, not conclusions: wide exits (no time stop, SMA50 close exit, swing-low 20, no partial)
+  looked like the only real lever; risk % scaled return and drawdown together; hold-out expectancy
+  fell about 60%; the 6/8/10 ladder keeps S1 at 6–8 positions at a 28% win rate; NIFTY 500 regime
+  rules never switched off in the 2018–20 midcap bear. Promotion criteria are fixed before any rerun
+  (see "Promotion criteria").
+
+- 2026-10-26: risk policy v2 in hat_live (owner: seed numbers too low for swing): risk 1%, 10 positions, open risk 10%, 3 per industry, ladder 6/8/10 at full size, health bands 12/18%, kill 20% (`/data/workspace/hat-data-isin/admin/policy-swing-100.json`). Candidate S1 research set `np`: v2 + vcp [2,6] + time stop off + SMA50 close exit + swing low 20 + no partial. Hold-out 2022–2026 run next.
+
+- 2026-10-25: point-in-time NIFTY 500 from 2016; no backtest trades before 2016-01-01.
+- 2026-10-25: S1 first. Other strategies stay but come after.
+- 2026-10-25: independent S1 re-audit (`/data/workspace/audits/2026-10-25-s1-reaudit-fable.md`):
+  no blockers. Features, RS, adjustments, membership, fills, exits, sizing and metrics checked
+  by hand against raw bars. M1: the seed's `volume_pace` and the 5m `confirm: close` are not
+  modelled by the daily-bar backtest. Decision: the research draft disables `volume_pace`
+  (intraday variant) or uses `entry_timing: daily_close` + `volume_vs_avg: 1.5`; every intraday
+  run notes that close-confirmation is not modelled (backtest fills on a tick through the pivot,
+  so it is slightly optimistic vs live). Minors m1 (demerger placeholder memberships, no S1
+  impact), m2 (no DP charge on sells), m3 (`avg50_volume` unset in the loop) go to open-items.
+- 2026-10-25: funnel diagnosis (`/data/workspace/audits/2026-10-25-s1-funnel.md`) reproduced the
+  baseline exactly (102 rows, 51 breaks, 20 add_to_loser): strictness, not a bug. VCP drops 99.7%
+  of trend-template passers; the binding rule is "all of the last 6 legs tighten" (older deeper
+  legs block BSE, CDSL, DEEPAKNTR, LAURUSLABS, TATAELXSI). Code fix in progress (builder
+  hat/s1-pivot-reuse): no rows for held names, a pivot is used once. Next run after it merges:
+  v2 + `criteria[vcp].params.contractions=[3,3]` (one change). Queued after: `close_vs_pivot`
+  allowance for the pivot-confirmation lag, `max_high_spread_pct` (pivot mid-base, median 7.6%
+  below the base high), and the exit set (MFE ~1R).

@@ -1,0 +1,7 @@
+# Momentum rotation seed (#312) alone, repo default costs, ₹10L, idle cash in LIQUIDBEES, tax on. In-sample.
+portfolio: p5-rotation
+universe: nifty500
+window: {from: 2016-01-01, to: 2024-12-31}
+strategies:
+  - {version: c7d55ebe-2baa-42da-86e2-de8fd11bd2c9, weight: 1}
+overlay: {sleeve: liquid}

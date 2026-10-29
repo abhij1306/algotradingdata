@@ -1,0 +1,9 @@
+documents parsed: 17502
+## main -> branch: {'unchanged': 17157, 'figures changed (owners_profit_tag_swapped)': 162, 'error ok -> quarter_context_not_a_quarter': 56, 'figures changed (quarter_start_mislabelled)': 46, 'unchanged error period_missing': 6}
+## flags: {'owners_profit_tag_swapped': 176, 'quarter_start_mislabelled': 46}
+## D1 (q4_derived rows on main): {'rows': 49, 'now read as the quarter (flagged)': 46, '  on a secondary page': 40, '  revenue within 2% of the secondary quarter': 35, 'now excluded quarter_context_not_a_quarter': 3}
+## D5 (q4_nine_month_missing on main) now: {'quarter_context_not_a_quarter': 51, 'ok': 2}
+## D3 owners' tag swapped: {'flagged': 174, '  on a secondary page': 102, '  old net profit within 2% of the secondary': 53, '  new net profit within 2% of the secondary': 100}
+## D2 documents a year before their listing: 2
+   ('AARTIDRUGS', '2025-06-30', '2024-06-30', 'stored', 'INTEGRATED_FILING_INDAS_1487066_18072025063655_WEB.xml')
+   ('MMTC', '2025-06-30', '2024-06-30', 'stored', 'INTEGRATED_FILING_INDAS_1505025_07082025033407_WEB.xml')

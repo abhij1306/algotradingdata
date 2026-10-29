@@ -1,0 +1,25 @@
+Automatic data and backtest checks, plus the standard backtest process. Branch hat/run-audits.
+
+Owner (2026-10-26): a standardized process before backtesting starts again, with a data check before runs and a backtest check after. Read docs/backtests/result-standard.md (from PR hat/result-standard-backend, merged before this starts) first.
+
+Do:
+1. Data check before every run: `python -m app.hat.data.audit [--from --to --universe]`, also called automatically at the start of every backtest run. Deterministic checks on the run's window and universe:
+   - missing sessions per symbol vs the trading calendar while listed (gap list, counts);
+   - survivorship: the point-in-time universe on sample dates includes members that later delisted or left, and each has bars for its member days;
+   - corporate actions: adjusted vs raw bars around each split/bonus/demerger ex-date are consistent (no unexplained jump > a threshold you justify);
+   - no lookahead: features and breadth for day D use only closes ≤ D (spot-check by recomputing a sample from raw bars), and the regime/entry gates read D−1 where the engine says so;
+   - timestamps in IST, unique keys (instrument, date) with no duplicates;
+   - 5-minute bars (when the run uses them) align to the daily bars within tolerance.
+   Output: a data audit JSON with a digest, status pass|warn|fail and findings. A run refuses to start on fail; run.json records the audit digest and status under `data`. Cache by data snapshot so it doesn't recompute for every sweep variant.
+2. Backtest check after every run: `audit.json` in the run folder, deterministic: binding/no-op vs base; fills inside the day's high/low; exits after entries; R and P&L recomputed from trades.csv match run.json; costs present on every trade and cost share sane; position size vs ADV (spec fields); concentration (top-5 share, CAGR ex top 5); single-session equity jumps above a threshold explained by a trade; refusal counts match refusals.csv; trial count present for DSR. Status pass|warn|fail, shown on the results page (add the badge to the UI if the UI PR has merged; otherwise expose it in the API only).
+3. Review report for candidates: `python -m app.hat.backtest.review <run_id>` writes `review_request.md` in the run folder: a self-contained prompt plus the paths an independent reviewer agent needs (run folder, spec, data audit), so the orchestrator can hand it to a review agent which writes `audit_report.md` there. No LLM calls from the code.
+4. Process doc docs/backtests/process.md, short: data check → baseline run → sweeps (each variant has a base and a one-line change, counted against a trial budget) → automatic run checks → candidate must meet the strategy's promotion criteria fixed in advance → plateau check (each key parameter one step either side) → independent review report → hold-out once → paper trading. Where promotion criteria live (strategy notes) and that they are fixed before runs.
+5. Tests: pure functions only (each check on small hand-built inputs). No backtests, no pipeline runs, no full DB on fake data.
+
+Scope: checks, review request, process doc. Read-only on hat_live. Don't change strategy configs or the risk policy. Don't delete or disable any strategy. Never read or print .env or credentials.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.
+
+ADDENDUM (owner's intent, 2026-10-26): backtesting must be a simple repeatable process any agent can run, with code changes only when a strategy changes or a new strategy is added.
+6. docs/backtests/process.md is the single entry point for any agent: the exact command for each step (data check, single run, sweep from a variants file, rerun, compare, review request), where results land, how to read them, and the rules (base + change per variant, trial budget, promotion criteria fixed first, hold-out once). Short and copy-pasteable.
+7. Audit every knob a sweep might vary (setup criteria, triggers, entry filters, stops, exits, regime rules and their params, sizing, risk policy fields, ladder, slot order, universe, window, costs) and list in process.md how each is set from config/variants. Anything that today needs a code change to vary becomes config in this PR; if one can't, say so in the PR.

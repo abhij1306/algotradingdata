@@ -1,0 +1,33 @@
+# S1 sweep 6 (2026-10-26): base np = w without partial (sweep 4 best, +0.71R). Risk policy candidates. 2016..2021.
+- label: np-current
+  flat_ladder: true
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[time_stop].enabled=false"
+    - "exits[close_below_sma].sma=50"
+    - "exits[trailing_swing_low].lookback_days=20"
+    - "exits[partial_at_r].enabled=false"
+- label: np-swing050
+  policy: /data/workspace/backtests/policies/swing-050.json
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[time_stop].enabled=false"
+    - "exits[close_below_sma].sma=50"
+    - "exits[trailing_swing_low].lookback_days=20"
+    - "exits[partial_at_r].enabled=false"
+- label: np-swing075
+  policy: /data/workspace/backtests/policies/swing-075.json
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[time_stop].enabled=false"
+    - "exits[close_below_sma].sma=50"
+    - "exits[trailing_swing_low].lookback_days=20"
+    - "exits[partial_at_r].enabled=false"
+- label: np-swing100
+  policy: /data/workspace/backtests/policies/swing-100.json
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[time_stop].enabled=false"
+    - "exits[close_below_sma].sma=50"
+    - "exits[trailing_swing_low].lookback_days=20"
+    - "exits[partial_at_r].enabled=false"

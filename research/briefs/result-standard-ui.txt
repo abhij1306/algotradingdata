@@ -1,0 +1,19 @@
+Backtest Result Standard, results UI. Branch hat/result-standard-ui.
+
+Owner (2026-10-26) wrote a standard for backtest results so runs are easy to track and compare. The results page must read only the standard's run folders. Read /data/workspace/briefs/result-standard/SPEC.md, run.schema.json and example_run.json first. A parallel builder (hat/result-standard-backend) is writing the folders and these routes; code against this contract and rebase onto it once it merges (regenerate the API types from its openapi.json then):
+   - GET /api/hat/backtests/runs?strategy=&sweep_id=&split= → list of {identity, data, metrics, refusals, binding}, newest first.
+   - GET /api/hat/backtests/runs/{run_id} → the full run.json (format_version "1.1"; fields per the schema).
+   - GET /api/hat/backtests/runs/{run_id}/files/{name}, name in trades|equity|refusals|signals|stocks → CSV.
+Until it merges, type the run.json from run.schema.json by hand and use example_run.json as a fixture.
+
+Do (replace the existing Backtests pages under frontend/, don't keep both):
+1. Runs view: grouped by strategy then sweep (sweep_id, sweep_name), one row per variant with its change, trades, win %, expectancy R, CAGR, max DD, MAR, longest DD (sessions, recovered?), invested %, DSR prob with n trials, cagr_ex_top5, and the delta of each vs its base run. A no-op variant (`binding.no_op`) is flagged plainly. Hold-out runs sit next to the in-sample run they validate. Filters: strategy, split, sweep. Sortable columns. The main metrics sit in sticky columns so the wide table scrolls.
+2. Run detail: header (identity, data, change, base link, status); headline metrics; equity curve vs NIFTY 500 TRI with drawdown below and regime/breadth shading from equity.csv; by_year table (run vs benchmark); breakdowns (regime, exit reason, industry, cap bucket, liquidity bucket); refusals by reason with the mean fwd_r_20d/60d of refused entries (what each gate cost); trades table with the feature columns (filter, sort); stocks table (who carries the P&L, repeat stop-outs); concentration (top 5 trades, top 10 symbols).
+3. Compare view: up to 4 runs side by side, metrics and overlaid equity curves, deltas against the first.
+4. Empty and loading states (there are no runs right now): the empty runs view says how to start a sweep (the runbook command).
+5. Tests: vitest on the pure shaping functions only (deltas, grouping, CSV parsing, bucket summaries). No end-to-end backtests.
+6. Keep the app's existing design system and components; light and dark.
+
+Scope: frontend only, plus regenerated API types. Don't touch backend code beyond what the backend builder ships. Never read or print .env or credentials.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

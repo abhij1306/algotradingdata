@@ -1,0 +1,22 @@
+# 6. EP-A (research/ep-study/REPORT.md): earnings-only EP, gap >= 6%, no neglect, ORH 5m-close
+# entry with early volume 0.5x, LOD stop, no partial, close < SMA20 from day 3, 60-session cap,
+# no regime gate (breadth_above min 0 = always on). In-sample.
+# Not expressible: 15-minute opening range (engine OR is the 09:15 5m bar).
+portfolio: p6-ep-a
+universe: nifty500
+window: {from: 2022-01-01, to: 2024-12-31}
+conventions: {entry_bars: bars_5m}
+strategies:
+  - version: 64274b85-696f-4aea-944e-717a62546682
+    playbooks: [episodic_pivot]
+    set:
+      - 'playbooks[episodic_pivot].trigger[gap_up].params.min_pct=6'
+      - 'playbooks[episodic_pivot].setup.criteria[neglect].params.max_return_63d_pct=100000'
+      - 'playbooks[episodic_pivot].trigger[catalyst_attached].enabled=false'
+      - 'playbooks[episodic_pivot].trigger[+]={"type": "earnings_catalyst", "stage": "trigger", "mode": "hard", "weight": 1.0, "params": {"sales_yoy_pct": -100, "eps_yoy_pct": -100, "sales_alone_pct": -100}, "enabled": true, "order": 4}'
+      - 'exits[partial_after_days].enabled=false'
+      - 'exits[move_stop_to_breakeven].enabled=false'
+      - 'exits[close_below_sma].sma=20'
+      - 'exits[close_below_sma].grace_sessions=2'
+      - 'exits[+]={"rule": "max_hold", "days": 60}'
+      - 'regime={"index": "NIFTY 500", "rule": "breadth_above", "params": {"min_pct": 0}}'

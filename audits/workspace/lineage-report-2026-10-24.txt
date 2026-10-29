@@ -1,0 +1,108 @@
+hindsight: every factor and link as stored today, not as of any date (CA6)
+lineage: 536 linked, 56 for review
+review reasons: long_gap 3, prev_close_mismatch 1, price_jump 52
+  REVIEW price_jump: AZADIND INE566M01017 (last 2026-10-22, close 81.5800) -> AZADIND INE566M01025 (first 2026-10-23, prev 81.5800, open 16.4700), gap 0, factor 1
+  REVIEW prev_close_mismatch: CCAVENUE INE483S01020 (last 2026-10-12, close 13.8300) -> CCAVENUE INE483S01038 (first 2026-10-19, prev 138.3000, open 135.6500), gap 4, factor 1
+  REVIEW price_jump: GOLDADD INF740KA1SW3 (last 2026-08-27, close 152.9800) -> GOLDADD INF740KA1ZP2 (first 2026-08-28, prev 152.9800, open 15.4800), gap 0, factor 1
+  REVIEW price_jump: SILVERADD INF740KA1RE3 (last 2026-08-27, close 228.4100) -> SILVERADD INF740KA1ZQ0 (first 2026-08-28, prev 228.4100, open 23.9700), gap 0, factor 1
+  REVIEW price_jump: IVZINNIFTY INF205K01DA9 (last 2026-07-30, close 2786.5100) -> IVZINNIFTY INF205KA1CC7 (first 2026-07-31, prev 2786.5100, open 276.5000), gap 0, factor 1
+  REVIEW price_jump: NARMADA INE117Z01011 (last 2026-07-30, close 36.1900) -> NARMADA INE117Z01029 (first 2026-07-31, prev 36.1900, open 19.9900), gap 0, factor 0.5
+  REVIEW price_jump: PSUBANK INF373I01023 (last 2026-07-09, close 822.7500) -> PSUBANK INF174KA1A86 (first 2026-07-10, prev 822.7500, open 83.9700), gap 0, factor 1
+  REVIEW price_jump: MIDQ50ADD INF740KA1QL0 (last 2026-07-02, close 247.9900) -> MIDQ50ADD INF740KA1ZF3 (first 2026-07-03, prev 247.9900, open 24.9300), gap 0, factor 1
+  REVIEW price_jump: HEALTHADD INF740KA1UF4 (last 2026-07-02, close 162.9400) -> HEALTHADD INF740KA1ZG1 (first 2026-07-03, prev 162.9400, open 16.5500), gap 0, factor 1
+  REVIEW price_jump: IVZINGOLD INF205K01361 (last 2026-04-29, close 12782.9500) -> IVZINGOLD INF205KA1BP1 (first 2026-04-30, prev 12782.9500, open 129.6500), gap 0, factor 1
+  REVIEW price_jump: LICMFGOLD INF397L01554 (last 2026-03-05, close 14401.8000) -> LICMFGOLD INF767K01SM1 (first 2026-03-06, prev 14401.8000, open 147.7000), gap 0, factor 1
+  REVIEW price_jump: MIDCAP INF174KA1IB3 (last 2026-02-26, close 173.6300) -> MIDCAP INF174KA1ZC5 (first 2026-02-27, prev 173.6300, open 17.8900), gap 0, factor 1
+  REVIEW price_jump: NV20 INF174K01Z71 (last 2026-02-26, close 152.8500) -> NV20 INF174KA1ZE1 (first 2026-02-27, prev 152.8500, open 16.1900), gap 0, factor 1
+  REVIEW price_jump: BANKNIFTY1 INF174K01F59 (last 2026-02-26, close 631.9700) -> BANKNIFTY1 INF174KA1ZB7 (first 2026-02-27, prev 631.9700, open 63.5500), gap 0, factor 1
+  REVIEW price_jump: SILVER1 INF174KA1KU9 (last 2026-02-26, close 249.5500) -> SILVER1 INF174KA1ZD3 (first 2026-02-27, prev 249.5500, open 26.8900), gap 0, factor 1
+  REVIEW price_jump: CONS INF174KA1JE5 (last 2026-02-26, close 120.2600) -> CONS INF174KA1ZF8 (first 2026-02-27, prev 120.2600, open 12.1500), gap 0, factor 1
+  REVIEW price_jump: QNIFTY INF082J01028 (last 2026-02-12, close 2824.2100) -> QNIFTY INF082J01499 (first 2026-02-13, prev 2824.2100, open 285.0000), gap 0, factor 1
+  REVIEW price_jump: GROWWSLVR INF666M01LA1 (last 2026-02-05, close 242.5900) -> GROWWSLVR INF666M01OF4 (first 2026-02-06, prev 242.5900, open 24.0000), gap 0, factor 1
+  REVIEW price_jump: GROWWGOLD INF666M01IW1 (last 2026-02-05, close 149.7200) -> GROWWGOLD INF666M01OE7 (first 2026-02-06, prev 149.7200, open 14.5000), gap 0, factor 1
+  REVIEW long_gap: VERTOZ INE188Y01023 (last 2025-06-24, close 9.1700) -> VERTOZ INE188Y01031 (first 2025-07-11, prev 9.8100, open 96.2800), gap 12, factor 1
+  REVIEW price_jump: GLOBAL INE291W01029 (last 2024-12-09, close 204.5200) -> GLOBAL INE291W01037 (first 2024-12-10, prev 204.5200, open 90.0000), gap 0, factor 0.4
+  REVIEW long_gap: SHEKHAWATI INE268L01020 (last 2024-08-27, close 8.8200) -> SHEKHAWATI INE268L01046 (first 2024-09-10, prev 2.1000, open 86.4300), gap 9, factor 1
+  REVIEW price_jump: MIDSELIETF INF109KB1XT3 (last 2024-05-09, close 153.7800) -> MIDSELIETF INF109KC10W0 (first 2024-05-10, prev 153.7800, open 18.7000), gap 0, factor 1
+  REVIEW price_jump: NIF100IETF INF109KA1962 (last 2024-05-09, close 250.6700) -> NIF100IETF INF109KC16V9 (first 2024-05-10, prev 250.6700, open 29.9900), gap 0, factor 1
+  REVIEW price_jump: QUAL30IETF INF109KC15T5 (last 2024-05-09, close 188.0100) -> QUAL30IETF INF109KC18V5 (first 2024-05-10, prev 188.0100, open 19.3300), gap 0, factor 1
+  REVIEW price_jump: MIDCAPIETF INF109KC1G82 (last 2024-05-09, close 186.9200) -> MIDCAPIETF INF109KC11W8 (first 2024-05-10, prev 186.9200, open 19.4700), gap 0, factor 1
+  REVIEW price_jump: ALPL30IETF INF109KC1N59 (last 2024-05-09, close 267.0900) -> ALPL30IETF INF109KC17V7 (first 2024-05-10, prev 267.0900, open 32.0000), gap 0, factor 1
+  REVIEW price_jump: FMCGIETF INF109KC1R48 (last 2024-05-09, close 568.1300) -> FMCGIETF INF109KC19V3 (first 2024-05-10, prev 568.1300, open 56.8000), gap 0, factor 1
+  REVIEW price_jump: LOWVOLIETF INF109KB10T8 (last 2024-02-29, close 195.4300) -> LOWVOLIETF INF109KC19U5 (first 2024-03-01, prev 195.4300, open 23.2500), gap 0, factor 1
+  REVIEW price_jump: NV20IETF INF109KB1WY5 (last 2024-02-29, close 135.9700) -> NV20IETF INF109KC11V0 (first 2024-03-01, prev 135.9700, open 16.3000), gap 0, factor 1
+  REVIEW price_jump: PVTBANIETF INF109KC1E35 (last 2024-02-29, close 231.4100) -> PVTBANIETF INF109KC18U7 (first 2024-03-01, prev 231.4100, open 23.7800), gap 0, factor 1
+  REVIEW price_jump: AUTOIETF INF109KC1Y49 (last 2024-02-29, close 207.4400) -> AUTOIETF INF109KC10V2 (first 2024-03-01, prev 207.4400, open 21.0900), gap 0, factor 1
+  REVIEW long_gap: KAUSHALYA INE234I01010 (last 2024-01-11, close 9.8500) -> KAUSHALYA INE234I01028 (first 2024-02-06, prev 985.0000, open 965.5000), gap 16, factor 1
+  REVIEW price_jump: HDFCSENSEX INF179KC1973 (last 2024-02-01, close 790.0100) -> HDFCSENSEX INF179KC1HX2 (first 2024-02-02, prev 790.0100, open 81.9900), gap 0, factor 1
+  REVIEW price_jump: HDFCNIFBAN INF179KC1AN8 (last 2024-02-01, close 468.3300) -> HDFCNIFBAN INF179KC1HY0 (first 2024-02-02, prev 468.3300, open 47.7800), gap 0, factor 1
+  REVIEW price_jump: HDFCPVTBAN INF179KC1DW3 (last 2024-02-01, close 237.3000) -> HDFCPVTBAN INF179KC1HZ7 (first 2024-02-02, prev 237.3000, open 28.4000), gap 0, factor 1
+  REVIEW price_jump: HDFCNIFIT INF179KC1DX1 (last 2024-02-01, close 372.7500) -> HDFCNIFIT INF179KC1IA8 (first 2024-02-02, prev 372.7500, open 44.4200), gap 0, factor 1
+  REVIEW price_jump: HDFCMID150 INF179KC1FA4 (last 2023-10-19, close 151.5900) -> HDFCMID150 INF179KC1HT0 (first 2023-10-20, prev 151.5900, open 15.1600), gap 0, factor 1
+  REVIEW price_jump: HDFCNEXT50 INF179KC1DA9 (last 2023-10-19, close 452.7000) -> HDFCNEXT50 INF179KC1HS2 (first 2023-10-20, prev 452.7000, open 44.1500), gap 0, factor 1
+  REVIEW price_jump: HDFCNIF100 INF179KC1DB7 (last 2023-10-19, close 198.1400) -> HDFCNIF100 INF179KC1HR4 (first 2023-10-20, prev 198.1400, open 19.7100), gap 0, factor 1
+  REVIEW price_jump: HDFCMOMENT INF179KC1DM4 (last 2023-10-19, close 233.2300) -> HDFCMOMENT INF179KC1HV6 (first 2023-10-20, prev 233.2300, open 25.5600), gap 0, factor 1
+  REVIEW price_jump: HDFCLOWVOL INF179KC1DN2 (last 2023-10-19, close 152.8000) -> HDFCLOWVOL INF179KC1HU8 (first 2023-10-20, prev 152.8000, open 17.5500), gap 0, factor 1
+  REVIEW price_jump: UTINIFTETF INF789FB1X41 (last 2023-09-22, close 2113.6700) -> UTINIFTETF INF789F1AZC0 (first 2023-09-25, prev 2113.6700, open 214.9900), gap 0, factor 1
+  REVIEW price_jump: 360ONE INE466L01020 (last 2023-03-01, close 1773.3000) -> 360ONE INE466L01038 (first 2023-03-02, prev 1773.3000, open 489.9500), gap 0, factor 0.25
+  REVIEW price_jump: VCL INE098201028 (last 2023-02-14, close 5.9500) -> VCL INE098201036 (first 2023-02-15, prev 5.9500, open 3.4500), gap 0, factor 0.5
+  REVIEW price_jump: EXCEL INE688J01015 (last 2022-09-27, close 8.8000) -> EXCEL INE688J01023 (first 2022-09-28, prev 8.8000, open 0.6500), gap 0, factor 0.06667
+  REVIEW price_jump: PTL INE034D01031 (last 2021-12-23, close 33.0000) -> PTL INE034D01049 (first 2021-12-24, prev 33.0000, open 36.7500), gap 0, factor 1
+  REVIEW price_jump: ABSLNN50ET INF209KB1B87 (last 2021-11-25, close 44.4800) -> ABSLNN50ET INF209KB16D7 (first 2021-11-26, prev 44.4800, open 52.0000), gap 0, factor 1
+  REVIEW price_jump: BSLNIFTY INF209K01IR4 (last 2021-11-25, close 19.5800) -> BSLNIFTY INF209KB19D1 (first 2021-11-26, prev 19.5800, open 21.6000), gap 0, factor 1
+  REVIEW price_jump: AXISNIFTY INF846K01ZL0 (last 2020-07-23, close 136.8000) -> AXISNIFTY INF846K01W98 (first 2020-07-27, prev 136.8000, open 120.0000), gap 1, factor 1
+action copies that disagree within a chain: 0 (the current ISIN's kept)
+dividends without an amount (price-neutral in the total-return series): 0
+unexplained jumps since 1990-01-01 (total-return open vs previous close beyond 25%, no factor or dividend; demerger ex-dates show here): 2769
+  by year: 2011 6, 2012 15, 2013 188, 2014 164, 2015 350, 2016 390, 2017 269, 2018 251, 2019 598, 2020 316, 2021 42, 2022 26, 2023 38, 2024 42, 2025 33, 2026 41
+  by kind: other 15, tick 2509, rights_entitlement 219, etf 26 (tick: a raw move of at most Rs 0.10, past 25% only below Rs 0.40)
+  JUMP CENTEXT-RE INE281A20018 2026-09-29 close 2.79 -> 2026-09-30 open 3.88 (x1.391) rights_entitlement
+  JUMP VHLTD-RE1 INE048C20025 2026-09-04 close 0.49 -> 2026-09-07 open 0.68 (x1.388) rights_entitlement
+  JUMP VHLTD-RE1 INE048C20025 2026-09-03 close 0.35 -> 2026-09-04 open 0.49 (x1.400) rights_entitlement
+  JUMP DUCON-RE1 INE741L20034 2026-09-03 close 0.65 -> 2026-09-04 open 0.39 (x0.600) rights_entitlement
+  JUMP RATNA-RE INE05CZ20011 2026-09-02 close 16.45 -> 2026-09-03 open 9.90 (x0.602) rights_entitlement
+  JUMP KSHITIJ-RE INE013820027 2026-08-28 close 0.03 -> 2026-08-31 open 0.04 (x1.333) rights_entitlement
+  JUMP KSHITIJ-RE INE013820027 2026-08-27 close 0.02 -> 2026-08-28 open 0.03 (x1.500) rights_entitlement
+  JUMP SHANTI-RE INE06ZD20017 2026-08-17 close 32.92 -> 2026-08-18 open 44.00 (x1.337) rights_entitlement
+  JUMP GANGAFO-RE INE691Z20015 2026-07-13 close 0.18 -> 2026-07-14 open 0.11 (x0.611) rights_entitlement
+  JUMP GANGAFO-RE INE691Z20015 2026-07-10 close 0.30 -> 2026-07-13 open 0.18 (x0.600) rights_entitlement
+  JUMP RELTD-RE INE206N20018 2026-06-18 close 25.98 -> 2026-06-19 open 36.37 (x1.400) rights_entitlement
+  JUMP SHAH-RE1 INE482J20021 2026-06-12 close 0.03 -> 2026-06-15 open 0.04 (x1.333) rights_entitlement
+  JUMP SHAH-RE1 INE482J20021 2026-06-11 close 0.02 -> 2026-06-12 open 0.03 (x1.500) rights_entitlement
+  JUMP AVG-RE INE680Z20018 2026-06-01 close 6.24 -> 2026-06-02 open 3.75 (x0.601) rights_entitlement
+  JUMP ESSEN-RE3 INE418N20043 2026-05-29 close 0.09 -> 2026-06-01 open 0.06 (x0.667) rights_entitlement
+  JUMP MAHAPE-RE INE843B20013 2026-04-02 close 31.57 -> 2026-04-06 open 22.00 (x0.697) rights_entitlement
+  JUMP 5PAISA-RE INE618L20018 2026-03-30 close 0.15 -> 2026-04-01 open 0.21 (x1.400) rights_entitlement
+  JUMP 5PAISA-RE INE618L20018 2026-03-27 close 0.10 -> 2026-03-30 open 0.15 (x1.500) rights_entitlement
+  JUMP PRABHA-RE INE0I0M20015 2026-03-23 close 3.26 -> 2026-03-24 open 2.01 (x0.617) rights_entitlement
+  JUMP PRABHA-RE INE0I0M20015 2026-03-20 close 5.42 -> 2026-03-23 open 3.27 (x0.603) rights_entitlement
+  JUMP BHANDA-RE2 INE474E20037 2026-03-13 close 0.02 -> 2026-03-16 open 0.03 (x1.500) rights_entitlement
+  JUMP BHANDA-RE2 INE474E20037 2026-03-12 close 0.02 -> 2026-03-13 open 0.03 (x1.500) rights_entitlement
+  JUMP BHANDA-RE2 INE474E20037 2026-03-10 close 0.05 -> 2026-03-11 open 0.03 (x0.600) rights_entitlement
+  JUMP BHANDA-RE2 INE474E20037 2026-03-09 close 0.07 -> 2026-03-10 open 0.05 (x0.714) rights_entitlement
+  JUMP HILTON-RE2 INE788H20033 2026-03-06 close 0.22 -> 2026-03-09 open 0.15 (x0.682) rights_entitlement
+  JUMP BHANDA-RE2 INE474E20037 2026-03-06 close 0.11 -> 2026-03-09 open 0.07 (x0.636) rights_entitlement
+  JUMP SICAL-RE INE075B20012 2026-03-04 close 0.42 -> 2026-03-05 open 0.27 (x0.643) rights_entitlement
+  JUMP SADHNA-RE INE888C20024 2026-03-02 close 0.39 -> 2026-03-04 open 0.24 (x0.615) rights_entitlement
+  JUMP SADHNA-RE INE888C20024 2026-02-27 close 0.64 -> 2026-03-02 open 0.39 (x0.609) rights_entitlement
+  JUMP ONECAP-RE INE912L20015 2026-02-24 close 0.47 -> 2026-02-25 open 0.29 (x0.617) rights_entitlement
+  JUMP ONECAP-RE INE912L20015 2026-02-23 close 0.78 -> 2026-02-24 open 0.47 (x0.603) rights_entitlement
+  JUMP STALL-RE INE0RYC20010 2026-02-20 close 26.24 -> 2026-02-23 open 15.75 (x0.600) rights_entitlement
+  JUMP SILGO-RE1 INE01II20021 2026-02-05 close 8.80 -> 2026-02-06 open 11.60 (x1.318) rights_entitlement
+  JUMP SILGO-RE1 INE01II20021 2026-01-30 close 6.04 -> 2026-02-01 open 4.03 (x0.667) rights_entitlement
+  JUMP SILGO-RE1 INE01II20021 2026-01-27 close 10.30 -> 2026-01-28 open 14.28 (x1.386) rights_entitlement
+  JUMP SILGO-RE1 INE01II20021 2026-01-23 close 8.28 -> 2026-01-27 open 11.59 (x1.400) rights_entitlement
+  JUMP SILGO-RE1 INE01II20021 2026-01-22 close 5.92 -> 2026-01-23 open 7.90 (x1.334) rights_entitlement
+  JUMP SILGO-RE1 INE01II20021 2026-01-14 close 6.69 -> 2026-01-16 open 4.11 (x0.614) rights_entitlement
+  JUMP HILTON-RE1 INE788H20025 2026-01-05 close 4.49 -> 2026-01-06 open 2.70 (x0.601) rights_entitlement
+  JUMP VINEET-RE INE505Y20010 2026-01-02 close 2.45 -> 2026-01-05 open 1.47 (x0.600) rights_entitlement
+  JUMP VINEET-RE INE505Y20010 2026-01-01 close 4.07 -> 2026-01-02 open 2.45 (x0.602) rights_entitlement
+  JUMP KRISHFL-RE INE0GGO20015 2025-12-29 close 22.70 -> 2025-12-30 open 29.20 (x1.286) rights_entitlement
+  JUMP INDO-RE2 INE227G20034 2025-12-02 close 0.92 -> 2025-12-03 open 0.55 (x0.598) rights_entitlement
+  JUMP INDO-RE2 INE227G20034 2025-12-01 close 1.54 -> 2025-12-02 open 0.92 (x0.597) rights_entitlement
+  JUMP BAIDFIN-RE INE020D20014 2025-11-25 close 0.24 -> 2025-11-26 open 0.15 (x0.625) rights_entitlement
+  JUMP DELPH-RE INE726L20019 2025-10-28 close 18.45 -> 2025-10-29 open 11.07 (x0.600) rights_entitlement
+  JUMP DELPH-RE INE726L20019 2025-10-27 close 30.75 -> 2025-10-28 open 18.45 (x0.600) rights_entitlement
+  JUMP SARVES-RE INE324X20018 2025-09-02 close 1.05 -> 2025-09-03 open 0.65 (x0.619) rights_entitlement
+  JUMP CYBER-RE INE278G20011 2025-08-18 close 0.65 -> 2025-08-19 open 0.91 (x1.400) rights_entitlement
+  JUMP DAVAN-RE1 INE179G20029 2025-08-18 close 0.07 -> 2025-08-19 open 0.09 (x1.286) rights_entitlement

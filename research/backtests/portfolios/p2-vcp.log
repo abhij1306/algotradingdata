@@ -1,0 +1,12 @@
+{
+  "label": null,
+  "run_id": "01a1864d-1b49-7316-aba6-d2c2d19fee21",
+  "status": "complete",
+  "code": null,
+  "trades": 154,
+  "expectancy_r": 0.2423,
+  "dsr": 0.430122,
+  "dsr_n_trials": 1,
+  "dsr_n_trials_effective": 5,
+  "pbo": null
+}

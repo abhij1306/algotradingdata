@@ -1,0 +1,45 @@
+# Combinations of s1-ride-deploy winners (slot_rs, r075, ratio09), owner 2026-10-27.
+sweep_id: s1-ride-deploy-2
+sweep_name: S1 ride combos from s1-ride-deploy (in-sample 2016-2021, policy v3)
+variants:
+- label: rs_r075
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: slot order rs and risk 1% -> 0.75%
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: &id001
+  - global_open_risk_pct=1
+  - p_max.stage2-contraction-breakout=1
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  slot_order: rs
+  risk_pct: 0.0075
+  bundle: true
+  reason: 'the two s1-ride-deploy winners together: rs picks the strongest signals, smaller size takes more of them at lower drawdown'
+- label: rs_r075_ratio09
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: slot order rs, risk 0.75% and VCP depth ratio 0.75 -> 0.9
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9
+  slot_order: rs
+  risk_pct: 0.0075
+  bundle: true
+  reason: adds the one signal-supply change that raised trades and invested capital (ratio09) to rs_r075

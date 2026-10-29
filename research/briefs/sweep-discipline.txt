@@ -1,0 +1,11 @@
+Sweep discipline and hold-out from config, branch hat/sweep-discipline.
+Goal: a sweep cannot silently break the one-change rule, drift policy, or re-run a hold-out, and a hold-out replays the candidate's exact config.
+Read first: /data/workspace/audits/2026-10-26-backtest-review-fable.md (H2, M1, M2, M7) and docs/backtests/process.md.
+Outcomes:
+1. One change per variant: sweep/variants parsing warns (or refuses, your call, documented) when a variant differs from its base in more than one knob unless it declares `bundle: true` with a reason; the run audit records a `one_change` finding. The existing np variant is a declared bundle (update its sweep file in /data/workspace/backtests/sweeps/ if needed).
+2. Hold-out from config: `--validates <run_id>` (or `--rerun <id>` with a new window/split) replays that run's config.json on the hold-out window; refuse a second hold-out of the same candidate config.
+3. Policy drift: compare shows the risk policy version per run and flags variants whose policy differs from their base's; the binding audit warns too.
+4. process.md for a fresh agent: where the strategy version id comes from, which HAT_DATA_ROOT, where sweep files, logs and strategy notes live, how --variants paths resolve, and the hold-out command.
+Scope: app/hat/backtest (__main__, overrides/sweep parsing, compare, run_audit, runs), docs/backtests/process.md. Another builder is changing review/trials/dsr/folder hold fields in hat/backtest-criteria: stay out of those. Read-only on hat_live; no strategy or policy changes. Verification: parse the existing sweep files and show the one-change output; run compare on sweep s1-baseline-01; dry-run (or --help-level proof) of the hold-out path; no new backtests.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

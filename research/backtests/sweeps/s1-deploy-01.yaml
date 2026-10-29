@@ -1,0 +1,130 @@
+sweep_id: s1-deploy-01
+sweep_name: S1 capital deployment round on np (in-sample 2016-2021, policy v3)
+variants:
+- label: deploy
+  base: 01a17833-22c5-7713-8826-0ea6f4cbadb4
+  change: np with open-risk and per-position caps off and a flat ladder (capital deployment)
+  bundle: true
+  reason: 'owner 2026-10-26: idle capital is the failure; the three caps that kept ~68% cash, one candidate'
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  flat_ladder: true
+  policy_set: &id001
+  - global_open_risk_pct=1
+  - p_max.stage2-contraction-breakout=1
+- label: r2
+  base: deploy
+  change: risk per trade 1% -> 2%
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  flat_ladder: true
+  policy_set: *id001
+  risk_pct: 0.02
+- label: r3
+  base: deploy
+  change: risk per trade 1% -> 3%
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  flat_ladder: true
+  policy_set: *id001
+  risk_pct: 0.03
+- label: r5
+  base: deploy
+  change: risk per trade 1% -> 5%
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  flat_ladder: true
+  policy_set: *id001
+  risk_pct: 0.05
+- label: dry10
+  base: deploy
+  change: VCP volume dry-up 0.7 -> 1.0 of avg50
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  flat_ladder: true
+  policy_set: *id001
+- label: ratio100
+  base: deploy
+  change: VCP depth ratio max 0.75 -> 1.0
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=1.0
+  flat_ladder: true
+  policy_set: *id001
+- label: vcploose
+  base: deploy
+  change: 'looser VCP: dry-up 1.0, depth ratio 1.0, final depth 15%'
+  bundle: true
+  reason: one looser-base candidate to test signal count; dry10 and ratio100 isolate two of its parts
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=1.0
+  - playbooks[default].setup.criteria[vcp].params.final_depth_max_pct=15.0
+  flat_ladder: true
+  policy_set: *id001
+- label: tv5
+  base: deploy
+  change: universe min turnover 10 -> 5 cr
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - universe[min_turnover].params.inr_cr=5
+  flat_ladder: true
+  policy_set: *id001
+- label: trend200
+  base: deploy
+  change: 'regime: NIFTY 500 SMA50 above SMA200, both rising'
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - 'regime={"index": "NIFTY 500", "rule": "sma_fast_above_slow_both_rising", "params": {"fast": 50, "slow": 200}}'
+  flat_ladder: true
+  policy_set: *id001
+- label: volsize
+  base: deploy
+  change: regime sizing from the live regime engine (1/0.75/0.5/0.25)
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  flat_ladder: true
+  policy_set: *id001
+  regime_mult: policy

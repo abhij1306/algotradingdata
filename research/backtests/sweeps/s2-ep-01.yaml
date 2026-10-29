@@ -1,0 +1,47 @@
+sweep_id: s2-ep-01
+sweep_name: S2 EP refinement (plan Part C) - C1 baseline and the fixed variants V1-V6, in-sample 2022-01-01..2024-12-31 on the stored 5-minute bars
+# Strategy version: S2 v1 64274b85-696f-4aea-944e-717a62546682 (momentum-breakout-ep seed), the
+# whole config unchanged (breakout and episodic_pivot playbooks). 5-minute bars start 2021-10-26.
+# Each variant is one change against c1; V7 (V1+V2+V3+V4 + the better of V5/V6 by expectancy) is
+# added after C3. The window and universe are the command line's (--from/--to/--universe).
+# The previous s2-ep-01 (breakout-only, never run) is kept as s2-ep-01.yaml.prev-2026-10-27.bak.
+variants:
+- label: c1
+  change: baseline - the current S2 EP config unchanged
+  entry_bars: bars_5m
+- label: v1
+  base: c1
+  change: + earnings_catalyst as a hard trigger gate (B1; results filing in (previous 09:15, trigger], sales >=25% and eps >=25% or turnaround or sales >=50%)
+  entry_bars: bars_5m
+  set:
+  - 'playbooks[episodic_pivot].trigger[+]={"type": "earnings_catalyst", "mode": "hard"}'
+- label: v2
+  base: c1
+  change: early_volume mode time_anchored (B3; ADV20 x min(1, minutes from 09:15 / 30))
+  entry_bars: bars_5m
+  set:
+  - playbooks[episodic_pivot].trigger[early_volume].params.mode=time_anchored
+- label: v3
+  base: c1
+  change: neglect direction up_only (B4; a stock that fell more than 30% in 63 sessions passes)
+  entry_bars: bars_5m
+  set:
+  - playbooks[episodic_pivot].setup.criteria[neglect].params.direction=up_only
+- label: v4
+  base: c1
+  change: EP exempt from adr_min (B5; the EP playbook's own universe is the bot's without adr_min)
+  entry_bars: bars_5m
+  set:
+  - 'playbooks[episodic_pivot].universe=[{"type": "series_in", "params": {"series": ["EQ", "BE"]}}, {"type": "min_turnover", "params": {"days": 20, "inr_cr": 10}}]'
+- label: v5
+  base: c1
+  change: EP exits with the SMA10 trail active only once SMA10 is above the current stop (B6; breakout keeps the bot exits)
+  entry_bars: bars_5m
+  set:
+  - 'playbooks[episodic_pivot].exits=[{"rule": "hard_stop"}, {"rule": "partial_after_days", "days": 3, "sell_fraction": 0.33, "only_if_profit": true}, {"rule": "move_stop_to_breakeven", "after": "partial"}, {"rule": "close_below_sma", "sma": 10, "sell_fraction": 1.0, "above_stop": true}]'
+- label: v6
+  base: c1
+  change: EP exits with the SMA20 trail active only once SMA20 is above the current stop (B6; breakout keeps the bot exits)
+  entry_bars: bars_5m
+  set:
+  - 'playbooks[episodic_pivot].exits=[{"rule": "hard_stop"}, {"rule": "partial_after_days", "days": 3, "sell_fraction": 0.33, "only_if_profit": true}, {"rule": "move_stop_to_breakeven", "after": "partial"}, {"rule": "close_below_sma", "sma": 20, "sell_fraction": 1.0, "above_stop": true}]'

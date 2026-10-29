@@ -1,0 +1,191 @@
+# Owner 2026-10-27: variations of ride (ride_pess 01a17d5e), one knob each against it. Each variant
+# restates ride's own set lines (a run base needs them restated; rule 3).
+# Ride sizes 1% risk on a median 6.3% stop, about 16% of equity per position. Cash runs out near 6
+# positions: 359 signals refused size_zero_cash / size_below_min against 172 trades. The zero-cash
+# ones averaged +0.86R gross over 60 days (01a17d5e refusals.csv).
+# No industry-cap variant: a cap below max positions is refused while industries are incomplete
+# (backtest_industry_cap_without_industries, app/hat/data/audit.py:694).
+sweep_id: s1-ride-deploy
+sweep_name: S1 ride variants - more capital deployed, lower drawdown, more trades (in-sample 2016-2021, policy v3)
+variants:
+- label: r075
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: risk per trade 1% -> 0.75% (about 12% positions, room for about 8)
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: &id001
+  - global_open_risk_pct=1
+  - p_max.stage2-contraction-breakout=1
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  risk_pct: 0.0075
+- label: r050
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: risk per trade 1% -> 0.5% (about 8% positions, 10 slots fill about 80%)
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  risk_pct: 0.005
+- label: r050_pos15
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: risk 0.5% and max positions 10 -> 15 (industry cap lifted to 15 with them)
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  risk_pct: 0.005
+  max_positions: 15
+  max_per_industry: 15
+  bundle: true
+  reason: half-size positions only add trades and invested capital if there are slots; the industry cap must not bind (industries incomplete)
+- label: pmax15
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: position cap 100% -> 15% of equity
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set:
+  - global_open_risk_pct=1
+  - p_max.stage2-contraction-breakout=0.15
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+- label: slot_rs
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: slot order on a capped day time -> rs (strongest RS first)
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  slot_order: rs
+- label: tstop
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: time stop on (exit after 10 sessions below +0.5R)
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=true
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+- label: regime_rising
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: regime NIFTY 500 above SMA50 -> above a rising SMA50 (20 sessions)
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - regime.params.rising_days=20
+- label: be2r
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: stop to breakeven at +2R
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - 'exits[+]={"rule": "move_stop_to_breakeven", "at_r": 2}'
+- label: sma30
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: trailing close-below-SMA exit 50 -> 30
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=30
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+- label: fdepth15
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: VCP final contraction max depth 10% -> 15%
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.final_depth_max_pct=15
+- label: ratio09
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: VCP contraction depth ratio max 0.75 -> 0.9
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set: *id001
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9

@@ -1,0 +1,7 @@
+# 1. Qullamaggie EP alone: S2 with breakout off, current EP config (10% gap), 5m entries. In-sample.
+portfolio: p1-ep-only
+universe: nifty500
+window: {from: 2022-01-01, to: 2024-12-31}
+conventions: {entry_bars: bars_5m}
+strategies:
+  - {version: 64274b85-696f-4aea-944e-717a62546682, playbooks: [episodic_pivot]}

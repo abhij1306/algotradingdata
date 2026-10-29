@@ -1,0 +1,7 @@
+Compare shows invested share, plus two small fixes, branch hat/compare-invested. Goal:
+1. `python -m app.hat.backtest.compare` shows each run's invested share (the share of equity held in positions, already computed in metrics/run.json; mean, and max if available) as a column, so a sweep can be judged on capital deployment. Update docs/backtests/process.md step 4 and result-standard.md if they list compare columns.
+2. `python -m app.hat.data.golden rebase --items` splits on commas, but bars_daily_cap item ids contain a comma; make item ids passable unambiguously (e.g. repeatable --item, or a file), keep `all-drifted`.
+3. docs/invariants.md:152-153 still says hat_live may keep the legacy ISIN-merge tables until the owner drops them; the owner dropped them on 2026-10-26 and #288 removed the allowance. Make the docs (invariants, decisions, runbook) say so, compactly.
+Scope: backend/app/hat/backtest/compare*, app/hat/data/golden*, docs/. Tests for small pure functions only.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

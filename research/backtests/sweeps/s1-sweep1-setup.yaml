@@ -1,0 +1,27 @@
+# S1 v2 sweep 1 (2026-10-25): setup strictness, one or two changes each vs v2 on post-#268 code.
+# In-sample 2016-01-01..2021-12-31; 2022+ is held out for validation of the chosen set.
+- label: vcp33
+  set: ["playbooks[default].setup.criteria[vcp].params.contractions=[3,3]"]
+- label: vcp26
+  set: ["playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"]
+- label: depth1
+  set: ["playbooks[default].setup.criteria[vcp].params.depth_ratio_max=1.0"]
+- label: lag3
+  set: ["playbooks[default].setup.criteria[close_vs_pivot].params.max_above_pct=3"]
+- label: vcp33-lag3
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[3,3]"
+    - "playbooks[default].setup.criteria[close_vs_pivot].params.max_above_pct=3"
+- label: vcp33-spread5
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[3,3]"
+    - "playbooks[default].setup.criteria[vcp].params.max_high_spread_pct=5"
+- label: vcp33-mindepth3
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[3,3]"
+    - "playbooks[default].setup.criteria[vcp].params.min_depth_pct=3"
+- label: vcp33-close-vol
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[3,3]"
+    - "playbooks[default].trigger[price_breaks_level].params.entry_timing=daily_close"
+    - "playbooks[default].trigger[price_breaks_level].params.volume_vs_avg=1.5"

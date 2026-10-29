@@ -1,0 +1,32 @@
+# S1 sweep 2 (2026-10-25): base = v2 + vcp contractions [2,6] (sweep 1 best). Dated costs (#269).
+# In-sample 2016-01-01..2021-12-31.
+- label: b26
+  set: ["playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"]
+- label: b26-spread5
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "playbooks[default].setup.criteria[vcp].params.max_high_spread_pct=5"
+- label: b26-depth1
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "playbooks[default].setup.criteria[vcp].params.depth_ratio_max=1.0"
+- label: b26-notime
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[time_stop].enabled=false"
+- label: b26-sma50
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[close_below_sma].sma=50"
+- label: b26-swing20
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[trailing_swing_low].lookback_days=20"
+- label: b26-nostep
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[step_trail].enabled=false"
+- label: b26-size10
+  set: ["playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"]
+  risk_pct: 0.005
+  max_positions: 10

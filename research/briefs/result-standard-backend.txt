@@ -1,0 +1,35 @@
+Backtest Result Standard, backend writer + API. Branch hat/result-standard-backend.
+
+Owner (2026-10-26) wrote a standard for backtest results so runs are easy to track and compare. Every earlier run was deleted as unreliable (hat_backtest_run and HAT_DATA_ROOT/backtests/run_id=* are empty). The format and the code belong in the repo; the run data never does.
+
+Inputs (read all three first): /data/workspace/briefs/result-standard/SPEC.md, run.schema.json, example_run.json.
+
+Do:
+1. Put the spec in the repo as docs/backtests/result-standard.md, with run.schema.json and example_run.json beside it, and apply these orchestrator changes to it (mark them "v1.1 changes" at the end of the spec, bump format_version to "1.1" in schema and example):
+   a. `strategy_version` is the full strategy version id; `engine_commit` the repo HEAD, with `-dirty` when the tree has changes.
+   b. Run folders live at HAT_DATA_ROOT/backtests/runs/<run_id>/ (full run id). This replaces `backtests/run_id=<id>/report.json` and `trades.parquet`; remove that old format and its readers rather than keeping two. Nothing under HAT_DATA_ROOT is committed.
+   c. Stock attributes are point-in-time or null, never today's values. Check what point-in-time data exists (market cap / shares outstanding, index memberships beyond NIFTY 500). Where it doesn't exist, the field is null and the breakdown is empty, and the spec says so. `adv_20d_cr` and the liquidity bucket (quintile of 20-day average traded value within that day's point-in-time universe) are always filled.
+   d. `dsr_n_trials`: the number of distinct `resolved_hash` values among completed in-sample runs of the same strategy (same hash = duplicate, not a new trial). Keep it in a small registry the writer updates (a file under HAT_DATA_ROOT/backtests/, or the DB if that fits better); the DSR uses this count.
+   e. Refusal reasons are exactly the spec's fixed codes. Split today's `max_positions` refusal into `max_positions` (the policy's max_open_positions) and `ladder_level` (the current exposure-ladder level's cap, below the policy cap). Map every existing gate to a code; an unmapped reason fails the run loudly.
+   f. `fwd_r_20d`, `fwd_r_60d` (refusals) defined: from the would-be entry at the would-be stop, R at the close 20 / 60 sessions later, or −1 if a daily low reaches the stop first; null if the data ends first. Same no-lookahead rules as the engine; costs excluded and the column name says so if needed.
+   g. Variants file items gain `base` (a label in the same file or a run id), `change` (one line) and the file gains `sweep_id` / `sweep_name`; CLI flags for single runs. `binding` is computed against `base` (trade_list_hash over symbol, entry_date, exit_date).
+2. Writer: at the end of every backtest run (CLI and job), write run.json, trades.csv, equity.csv, refusals.csv, signals.csv, stocks.csv exactly per the spec, validated against run.schema.json before the folder is published (write to a temp folder, rename). A failed or stopped run still writes run.json with its status. Keep writing hat_backtest_run as today (promotion uses it); its metrics come from the same computation.
+3. All metrics and breakdowns in the spec, including the concentration fields (top5 share, cagr_ex_top5, top10 symbols share), ADV fields, avg/longest DD with dates and recovered flag, max consecutive losses, holds by win/loss, benchmark CAGR (NIFTY 500 TRI), sortino, avg_open_positions. Regime state at entry: the run's own regime rule's on/off and the market breadth % (breadth_daily, D−1) as a bucket.
+4. API (replace the old report routes, the frontend builder codes against this contract in parallel):
+   - GET /api/hat/backtests/runs?strategy=&sweep_id=&split= → list of {identity, data, metrics, refusals, binding} for each run, newest first.
+   - GET /api/hat/backtests/runs/{run_id} → the full run.json.
+   - GET /api/hat/backtests/runs/{run_id}/files/{name}, name in trades|equity|refusals|signals|stocks → the CSV (text/csv).
+   Regenerate frontend/openapi.json and frontend/lib/api/schema.d.ts. Remove frontend code only where it calls routes you delete, minimally, so the build passes; the frontend builder replaces the pages.
+5. Tests: small pure functions only (metric formulas, binding hash, fwd_r, refusal mapping, bucket assignment, dsr trial count, schema validation of a hand-built run.json). No test runs a backtest, the pipeline or a full database.
+6. Docs: runbook (how to run a sweep with base/change, where folders land), decisions.md one entry; compact.
+
+Scope: backend writer, variants parser, API routes, docs. Don't change strategy configs, the risk policy or hat_live data. Don't delete or disable any strategy. Never read or print .env or credentials. No backtest runs (the orchestrator runs real ones after merge).
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.
+
+ADDENDUM (orchestrator, 2026-10-26, owner): hat_live is the canonical DB and research must not write to it.
+7. Research runs (anything not --for-promotion: CLI single runs, variants sweeps, jobs) READ strategy versions, policy, universe and data from the DB but write NOTHING to it: no hat_backtest_run, no hat_backtest_bucket rows. Their only output is the run folder. Only a --for-promotion run records a hat_backtest_run row (strategy promotion links to it), and it also writes its run folder. The API's run list reads the folders, not the table. Unit-test the pure decision of whether a run records to the DB.
+
+ADDENDUM 2 (owner, 2026-10-26), replaces item 7: the canonical DB (hat_live) is read-only for backtesting, with NO exception. No run of any kind (research, sweep, job, --for-promotion) writes to it. Run results live only in the run folders (HAT_DATA_ROOT/backtests/runs/<run_id>/); the trial registry is a file there too. If --for-promotion needs a stored evidence record, keep it in the run folder (run.json `for_promotion: true`) and leave promotion's DB linkage unchanged but unused by backtests; say in the PR what promotion now reads. No DB migrations in this PR beyond what removing the writes needs.
+
+ADDENDUM 3 (owner, 2026-10-26): every run folder also holds `config.json`: the exact strategy version document and risk policy document the run used (after overrides), plus the CLI arguments and variants item. Add `python -m app.hat.backtest --rerun <run_id>` that reruns from that file alone and refuses if the data snapshot differs. Document both in the spec's v1.1 changes.

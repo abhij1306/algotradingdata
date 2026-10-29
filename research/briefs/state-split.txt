@@ -1,0 +1,23 @@
+Split hat_live: stock data only. Branch hat/state-split.
+
+Owner rule (2026-10-26): hat_live is the canonical DB. It holds stock data only and is written only by data updates. Configs become versioned JSON files; trading state goes to a separate database. Owner approved both.
+
+Today hat_live mixes three kinds of table (row counts 2026-10-26):
+- Stock data, stays in hat_live: instruments, symbol history, ISIN lineage/merges/overrides, corporate actions (+versions), index members/membership, industries, market, trading calendar, price bands, announcements, demerger notices, broker symbol map, data quality checks/quarantine, universe + members + versions (derived from index data). Check each; anything the data pipeline writes stays.
+- Config, moves to JSON: strategies (5) and strategy versions (6), risk policy versions (3, v3 in force), regime model versions, criterion types, bots (5), broker account (1), watchlist.
+- Trading/runtime state, moves to a new database `hat_state` (same Postgres container): orders, fills, positions, signals, approvals, allocation, daily bot snapshots, exposure state, kill switch, mode changes, command log, job runs, telegram cursor/messages, trade results, holding baseline, broker sessions, regime state, signal announcements, events (hat_event partitions: classify; data-pipeline events stay with data only if the pipeline needs them), backtest run/bucket tables (empty; backtests write run folders now, PR hat/result-standard-backend; drop them from code).
+
+Do:
+1. Configs as JSON under HAT_DATA_ROOT/admin/config/<kind>/<id>/<version>.json (or a layout you justify), each validated against a schema on load, written atomically (temp + rename), never edited after publish: a new version is a new file; "in force" is a small pointer file per kind changed atomically, with history kept. Every existing admin command (save-draft, set-policy, promote, show-policy, show) works on the files with the same rules it has today (refusals, market-hours guard, evidence gate). The IDs stay the same UUIDs.
+2. `hat_state` database with its own migrations (alembic branch or separate env, whichever fits the repo). The runtime, API, telegram, daily pipeline and execution code write only to hat_state. Foreign keys that crossed kinds (e.g. state → instrument) become plain columns validated in code; say which in the PR.
+3. hat_live connection becomes read-only for every process except the data pipeline/importers: a separate read-only role or `default_transaction_read_only` for non-data connections, so an accidental write fails loudly. Data jobs keep a write connection.
+4. One-off migration command: export the config rows from hat_live to JSON and copy the state rows to hat_state, verify counts and digests, print a report. It does NOT drop or alter anything in hat_live; the orchestrator runs it, and the owner decides later when the old tables are dropped. Make it idempotent and refuse to overwrite existing JSON that differs.
+5. Tests: small pure functions only (schema validation, pointer switch, version immutability, read-only guard decision, row-to-JSON mapping). No backtests, no pipeline runs, no full DB on fake data.
+6. Docs: architecture and invariants (what lives where, the read-only rule), runbook (migration command, admin commands), decisions.md; compact. Delete docs that describe the old layout.
+
+Coordinate: hat/result-standard-backend (in flight) removes backtest writes to the DB; rebase on it after it merges and don't reintroduce backtest tables.
+Scope: storage split only; no strategy logic, risk numbers or data-pipeline behaviour changes. Don't delete or disable any strategy. Never read or print .env or credentials; DB credentials for new roles go through /data/workspace/tools/set_secrets.py (say in the PR what the owner/orchestrator must run; don't create secrets yourself). Don't write hat_live.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.
+
+ADDENDUM (orchestrator, after #276): #276 stopped all backtest writes to the DB, so promotion now fails closed (publish-version --run unknown_run, promote --to backtested, risk-increase gate, signal_confidence not_backtested). In this PR, promotion and those gates read the run folder (HAT_DATA_ROOT/backtests/runs/<run_id>/run.json with for_promotion true, its audit status once hat/run-audits lands) instead of hat_backtest_run; the strategy version's evidence link becomes the run id string in its JSON.

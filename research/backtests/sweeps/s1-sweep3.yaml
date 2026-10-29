@@ -1,0 +1,50 @@
+# S1 sweep 3 (2026-10-25): base = v2 + vcp [2,6]; all at risk_pct 0.005, max_positions 10 (= b26-size10, 01a174e1).
+# In-sample 2016-01-01..2021-12-31. Ladder still throttles (flat-ladder option being built).
+- label: s3-c24
+  set: ["playbooks[default].setup.criteria[vcp].params.contractions=[2,4]"]
+  risk_pct: 0.005
+  max_positions: 10
+- label: s3-final15
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "playbooks[default].setup.criteria[vcp].params.final_depth_max_pct=15"
+  risk_pct: 0.005
+  max_positions: 10
+- label: s3-final8
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "playbooks[default].setup.criteria[vcp].params.final_depth_max_pct=8"
+  risk_pct: 0.005
+  max_positions: 10
+- label: s3-chase5
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "playbooks[default].entry_filters[max_chase].params.pct=5"
+  risk_pct: 0.005
+  max_positions: 10
+- label: s3-stop8
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "playbooks[default].stop.max_pct=8"
+  risk_pct: 0.005
+  max_positions: 10
+- label: s3-regime10
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "regime.params.rising_days=10"
+  risk_pct: 0.005
+  max_positions: 10
+- label: s3-partial2
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[partial_at_r].at_r=2.0"
+  risk_pct: 0.005
+  max_positions: 10
+- label: s3-wide
+  set:
+    - "playbooks[default].setup.criteria[vcp].params.contractions=[2,6]"
+    - "exits[time_stop].enabled=false"
+    - "exits[close_below_sma].sma=50"
+    - "exits[trailing_swing_low].lookback_days=20"
+  risk_pct: 0.005
+  max_positions: 10

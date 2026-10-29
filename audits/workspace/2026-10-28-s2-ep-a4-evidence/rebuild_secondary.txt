@@ -1,0 +1,13 @@
+('owners_profit_tag_swapped', 'net_profit within 2%') 99
+('owners_profit_tag_swapped', 'on a secondary page') 101
+('owners_profit_tag_swapped', 'rows') 172
+('quarter_start_mislabelled', 'on a secondary page') 40
+('quarter_start_mislabelled', 'revenue within 2%') 35
+('quarter_start_mislabelled', 'rows') 46
+  differs: ('quarter_start_mislabelled', 'CGCL', '2025-03-31', 'revenue', Decimal('17781580000.0000'), Decimal('9570000000'))
+  differs: ('quarter_start_mislabelled', 'DCMSHRIRAM', '2025-03-31', 'revenue', Decimal('30193200000.0000'), Decimal('28770000000'))
+  differs: ('quarter_start_mislabelled', 'IOC', '2026-03-31', 'revenue', Decimal('2368993300000.0000'), Decimal('2082890000000'))
+  differs: ('quarter_start_mislabelled', 'LTTS', '2025-03-31', 'revenue', Decimal('29824000000.0000'), Decimal('26380000000'))
+  differs: ('quarter_start_mislabelled', 'RAJESHEXPO', '2026-03-31', 'revenue', Decimal('4719624810000.0000'), Decimal('2368640000000'))
+  differs: ('owners_profit_tag_swapped', 'RKFORGE', '2024-09-30', 'net_profit', Decimal('1897661000.0000'), Decimal('1400000000'))
+  differs: ('owners_profit_tag_swapped', 'RPOWER', '2025-12-31', 'net_profit', Decimal('234200000.0000'), Decimal('250000000'))

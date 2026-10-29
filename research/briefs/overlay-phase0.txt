@@ -1,0 +1,17 @@
+Idle-cash ETF overlay plan, Phase 0 only (data, report only). Plan: docs/plans/idle-cash-etf-overlay.md (read the Ground rules and Phase 0). Owner 2026-10-28: start Phase 0 now, and fetch market data from Kotak Neo so that nothing hits NSE while the S2 results download runs (it is running now; do not touch it, its process, or hat_financial_result).
+
+Sources, in this order:
+1. What hat_live already has. ETFs trade in NSE's EQ series, so daily bars for NIFTYBEES, GOLDBEES and LIQUIDBEES, their corporate actions and NIFTY 50 index closes may already be stored. Read-only: PGOPTIONS='-c default_transaction_read_only=on'.
+2. Kotak Neo through the repo's scripts/data/kotak_5m.py pattern (market data APIs only: login, scrip_master, historical_data; about one call a second; never an order API). Use it for the ETF 5-minute bars from 2022 (Phase 0 item 4) and for any daily bars the DB lacks. Probe how far back the broker serves daily and 5-minute data for each ETF and state it. Credentials come from the environment or .env through the script's existing loader. Never print, log or copy them, and never read .env yourself.
+3. Index series (NIFTY 50 TRI, NIFTY 500 TRI, NIFTY 1D Rate Index) and LIQUIDBEES dividend history: from Kotak if it serves them, else from the index publisher's or the AMC's public files. Make no calls to NSE's own website or API (www.nseindia.com, nsearchives) until the S2 results download has finished. If something is only on NSE, list it as pending, with the exact source.
+
+Phase 0 items 1-5 as written: split/consolidation adjustments listed one by one; the LIQUIDBEES total-return series, with any proxy date ranges flagged; coverage, gaps and proxies per series.
+
+Storage: keep raw downloads in /data/workspace/overlay-data/ (outside the repo), cached and never overwritten. Do not write ETF rows into hat_live in this phase: whether and how ETF bars enter the DB is a Phase 1 decision. The stocks-only rule covers strategy universes; this sleeve is portfolio level and is allowed.
+Reusable fetch and build steps go in the repo as scripts (scripts/data/ or scripts/research/), with unit tests on their pure helpers (adjustment math, total-return build, proxy splicing) and no network in tests. One PR. Address CodeAnt findings once.
+
+Also note in the report, without acting on them: the three open review points from #303 (overlay hold-out not independent of S2's 2022-2024 in-sample; backtest sizing is per sleeve allocation, not total equity; one slippage rate for every instrument). Phase 1 must resolve these.
+
+Report: /data/workspace/audits/2026-10-28-overlay-phase0-data.md. No backtests. Then STOP.
+Deliver: the PR, then READY TO MERGE <full sha>, and the line PHASE0 READY.
+Follow docs/agents/builder-protocol.md.

@@ -1,0 +1,183 @@
+# S2 Momentum breakout + EP: living parameters and results log
+
+The owner's working document for S2 (`momentum-breakout-ep`, sleeve S2, Qullamaggie-style). Every
+backtest result on S2 is recorded here against the parameter set it used. Tuning follows the
+table, and nothing changes without a recorded run. Results go here; the repo keeps only code and
+canonical docs. Review of the first round: `/data/workspace/backtests/s2-ep-01-review.md`.
+
+## Ground rules
+
+- Same as S1: no backtest until the code and data audit is clean; trades from 2016-01-01 on
+  point-in-time NIFTY 500 membership (pre-2016 bars only warm up); every parameter in config; choose
+  on the in-sample window, read the hold-out once; one parameter at a time; a plateau, not a peak.
+- Stocks only (no ETFs). Every close exit happens before 15:15 (live: the 15:05-15:10 close phase;
+  the backtest prices it at the official close, known gap `close_exits_at_official_close`).
+- Two playbooks share one regime gate, one universe and one exit stack (these are bot-level in the
+  config). Only the breakout playbook is backtestable today. The episodic pivot (EP) makes no
+  trades in any run until `/data/workspace/briefs/s2-backtest.txt` lands, and its known gap
+  `episodic_pivot_not_backtested` blocks promotion of any version that contains it.
+- S2 is judged on its own at sleeve weight 1 (`sleeve_weight: 1`, as S1 runs at its base weight
+  1.0), so its invested share and CAGR compare directly with S1's. The policy's S2 base weight
+  (0.5) applies to the combined book later.
+
+## Strategy rules as refined (2026-10-27)
+
+Seed v1 is `64274b85-696f-4aea-944e-717a62546682`. The refined base is v1 plus the `s2base` sets
+of `/data/workspace/backtests/sweeps/s2-ep-01.yaml`. No new version was stored; promote the
+chosen sets to a v2 draft after round 1. Signal counts are from a read-only replay of the scan
+rules on the adjusted store, 2016-01-01..2026-10-22. They count signals (one per instrument and
+consolidation level), not trades: held names, the cash on hand and the 4-entries-per-day cap cut
+trades further.
+
+### Bot level
+
+| Parameter | Seed v1 | Refined | Why |
+|---|---|---|---|
+| Universe series | EQ, BE | same | |
+| Min turnover (20d mean) | ₹10 cr | **₹5 cr** | S1 lesson: ₹10 cr shrinks the universe in weak years. +12% signals. At ₹10 L equity a 25% position is 0.5% of a ₹5 cr ADV |
+| ADR(20) min | 4% (universe, both playbooks) | 4% for the breakout playbook, **none for EP** (needs code: `adr_min` is universe-only) | EP names are neglected and quiet before the gap: of 145 neglected 10% gappers passing ₹10 cr, ADR ≥ 4% keeps 79. Variant 3.5% (`adr35`, +60-75% signals) |
+| Regime | NIFTY 500 SMA10 > SMA20, both rising over 3 sessions (on 49% of sessions) | same; variant close > SMA50 without a slope test (on 68%) | The owner wants no trades in downtrends. The SMA50 rule gives +46% signals. NIFTY Smallcap 250 history starts in 2019, so it can't be the 2016-2021 index |
+
+### Breakout playbook
+
+| Parameter | Seed v1 | Refined | Why |
+|---|---|---|---|
+| Momentum rank | top 2% on any of 21/63/126 sessions | **top 10%** | Ranked within the ~500 PIT members, top 2% is 10 names per window. The reference's 1-2% is of ~5,000+ US stocks (about 50-100 names). Top 10% gives about 50 per window. Alone: 4 → 15 signals/yr |
+| Prior move | ≥ 30% low-to-high within 63 sessions | same | Barely binds after the rank (−4%) |
+| Consolidation | 5-15 sessions, range ≤ 15%, higher lows (score, weight 2, exposes the level) | same (round 2: longer base) | The tightest window wins, so 57% of signals use a 5-session window and 83% use 5-6. The level is in practice a 5-day high. A 10-30 session base at a 20% range and threshold 0.3 gives a similar count (107/yr) |
+| MA surf | within 5% of SMA10 and SMA20 (score, weight 1) | same | Median distance of the candidates is 7.3%, so most score 0 |
+| Setup threshold | 0.6 | **0.4** | The binding filter: 9,674 consolidation passes → 187 setups at 0.6 (4 signals/yr), 1,534 at 0.4. At 0.4 a range ≤ 6% passes alone, or ≤ 9% when the close sits within 1% of the MAs |
+| Trigger | 5m break of max(consolidation high, opening-range high), close-confirmed, + `volume_pace` 1.5× | same level; **`volume_pace` off** | The daily backtest can't evaluate `volume_pace`, and its known gap would block promotion (S1 did the same). Re-enable once the 5m backtest can test it |
+| Entry filters | ADTR ≤ 1.0×, chase ≤ 2% | same | Bind on ~10% and ~1% |
+| Stop | low of day − 1 tick | same | Median 2.6% wide (5m, 2022+: 2.9%) |
+
+### Episodic pivot playbook (rules for when EP is backtestable)
+
+| Parameter | Seed v1 | Refined | Why |
+|---|---|---|---|
+| Neglect | abs(63-session return) ≤ 30% to the previous close | same | |
+| Gap up | ≥ 10% | **≥ 8%** (variant 6%) | NIFTY 500 members rarely gap 10%: 406 member-days in 10.8 years. Full EP passes on 5m bars, 2022-2026, on the 59% of gap days the store has: gap ≥ 10% about 4/yr, ≥ 8% about 11/yr, ≥ 6% about 28/yr (before the regime gate, which keeps ~40%). Live gap scan floor is hard-coded at 10% (needs code) |
+| Early volume | ≥ 0.5× ADV20 at the trigger | same | Binds on 13% of 5m triggers (median 1.85× at the trigger) |
+| Catalyst | announcement within 24 h, required in confirm mode | same live; **not modelled** in the backtest | `hat_announcement` is empty and there are no results dates. The gap plus volume is the proxy |
+| Trigger | 5m opening-range-high break, close-confirmed | same | 56% of gap days break it (5m 2022+). Median trigger 09:35, 90th percentile 11:45 |
+| Entry filters, stop | ADTR ≤ 1.5×, chase ≤ 2%, low of day | same | LOD at the trigger is median 3.6% below the entry |
+
+### Exits (both playbooks)
+
+| Rule | Seed v1 | Refined | Variant |
+|---|---|---|---|
+| Hard stop | LOD | same | |
+| Partial | 33% at the first close ≥ day 3 that is in profit | same | |
+| Breakeven | after the partial | same | off (`nobe`). S1 lesson: early ratchets cut winners |
+| Trail | full exit on a close below SMA10 | same | SMA20 (`sma20`). Ride winners |
+
+### Sizing (policy v3, unchanged)
+
+Risk 1% with `p_max` 0.25 for S2. With a ~2.6-2.9% LOD stop the uncapped size is 35-40% of
+equity, so the `p_max` binds on nearly every trade: each position is ~25% (effective risk ~0.65-0.7%)
+and the book is full at 4 positions. Raising `risk_pct` therefore changes almost nothing; the
+lever is `p_max`. Run after the min-position fix (hat/min-position). Without it, a signal on a
+nearly full book opens a crumb.
+
+## What the backtest models, and the windows
+
+5-minute bars (`bars_5m`, Parquet under HAT_DATA_ROOT) cover 2021-10-26..2026-10-23: 89.8% of
+NIFTY 500 member-days in 2022-2026, none before. The loop never loads them today
+(`MarketData.intraday` is always empty), so every run uses daily bars.
+
+- **In-sample 2016-01-01..2021-12-31: daily-bar approximation** (the only option for these years).
+  Breakout: the level is the consolidation high alone; a tick through it fills at level + 1 tick;
+  the pre-break low (the stop) is estimated as max(day low, min(open, level × (1 − ADR20))); a low
+  under it comes after the entry; a gap over the level is skipped (`gap_over_no_intraday`, ~12%
+  of breaks). EP (after the brief): candidates from the daily open vs the previous close; the
+  opening-range high and the pre-trigger low are estimated, calibrated on the 5m years.
+- **Hold-out 2022-01-01..2026-10-23: 5m bars where stored** (after the brief), run once for the
+  candidate, as live would trade. Same windows as S1, so the combined book is judged on one
+  calendar.
+
+Bias of the daily approximation, measured on 482 base breakout triggers in 2022+ that have 5m
+bars (signal level only; no P&L was computed on the hold-out):
+- The live level is higher in 28% of triggers (the 09:15 bar trades above the consolidation high).
+  Live entries are a median 0.36% (IQR 0.15-0.78%) above the backtest's, about 0.13R at a 2.7%
+  stop. **Optimistic.**
+- 19% of daily triggers never fire live (no 5m bar closes above max(level, opening-range high)).
+  These are mostly weak breakouts, so including them is likely **pessimistic**, but unmeasured.
+- The estimated stop is slightly tight (median 2.63% vs 2.86% live): more same-day stop-outs and
+  a slightly larger uncapped size. **Mildly pessimistic** on win rate.
+- The gap-over skip drops strong breakouts: **pessimistic**. `volume_pace` ignored admits
+  low-volume breakouts: **pessimistic**.
+- EP: the daily estimate has no close-confirmation, early volume or catalyst. The 5m-confirmed
+  ORH break happens on 56% of gap days, against 80% for a naive "high > open + 0.5%" proxy
+  (95 false positives in 345). **Optimistic** unless calibrated.
+- **5m store bias (must be fixed before any 5m EP run):** of 580 member gap days ≥ 6% in 2022-2026,
+  235 have no 5m bars, 198 of them `basis_mismatch` rejects. Rejected gap days opened at their
+  high 41% of the time (kept: 14%) and closed a median −3.2% under the open (kept: −0.7%). The 5m
+  bars lack the pre-open auction print that sets NSE's official open, so gap-and-fade days fail
+  the high-match test. A 5m EP backtest on today's store would keep the winners and miss the
+  fades.
+
+## Promotion criteria (proposed 2026-10-27, fixed before the first S2 run unless the owner changes them)
+
+The same bar as S1, so the two sleeves compare directly. The S1 review's open owner decisions
+(longest DD judged on the combined book; `cagr_ex_top5` vs ride-winners) apply to S2 as well; if
+the owner changes S1's block, S2's follows. Invested share has no machine check; it is read from
+`compare` (`inv%`), and the S2 target is a ≥ 50% mean in-sample.
+
+A variant becomes the S2 candidate only if, in-sample 2016-01-01..2021-12-31:
+- MAR ≥ 0.6, longest drawdown < 500 sessions, ≥ 100 trades;
+- CAGR above NIFTY 500 TRI over the same window;
+- CAGR with the 5 best trades removed ≥ half the CAGR;
+- no entry above 5% of 20-day average traded value;
+- `binding.no_op` false against its base, and each key parameter one step either side keeps
+  MAR ≥ 0.5.
+Hold-out 2022-01-01..2026-10-23, run once for the candidate: expectancy ≥ half the in-sample
+expectancy and MAR ≥ 0.4. No run cap (owner): every variant counts in `dsr_n_trials`.
+
+```hat-criteria
+strategy: S2
+universe: NIFTY500_PIT
+in_sample: {from: 2022-01-01, to: 2024-12-31}
+hold_out: {from: 2025-01-01, to: 2026-10-23}
+trial_budget: 10000
+checks:
+  mar_min: 0.6
+  longest_dd_sessions_below: 500
+  trades_min: 100
+  cagr_above_benchmark: true
+  cagr_ex_top5_min_share: 0.5
+  max_pct_adv: 5
+  binding_required: true
+plateau:
+  mar_min: 0.5
+  parameters:
+    - {path: strategy.exits.2.enabled}
+    - {path: strategy.exits.3.sma, step: 5}
+    - {path: strategy.playbooks.0.setup.threshold, step: 0.1}
+    - {path: strategy.playbooks.0.setup.criteria.0.params.top_pct, step: 5}
+    - {path: strategy.universe.2.params.pct, step: 0.5}
+hold_out_checks:
+  expectancy_min_share: 0.5
+  mar_min: 0.4
+```
+
+Plateau paths are the v1 order: `exits.2` breakeven, `exits.3` the SMA trail, `playbooks.0` the
+breakout, `criteria.0` the momentum rank, `universe.2` the ADR minimum.
+
+## Versions
+
+- S2 v1 seed `64274b85-696f-4aea-944e-717a62546682` (2026-10-25, draft). Unrunnable as a strategy
+  in practice: about 4 breakout signals a year (19 in 2016-2021) and no EP trades in a backtest.
+- Refined base = v1 + `s2base` sets (sweep s2-ep-01): `volume_pace` off, top 10%, ₹5 cr, threshold 0.4.
+  ~124 signals/yr in-sample (741 in 2016-2021; by year 82/158/72/61/159/209).
+
+## Results log
+
+None yet. Sweep `s2-ep-01` is proposed and waits for the owner's go (and for hat/min-position).
+
+## Decisions
+
+- 2026-10-27: first S2 review (`/data/workspace/backtests/s2-ep-01-review.md`). The breakout
+  playbook can run on daily bars today; EP cannot (no backtest path; 5m bars never loaded; no
+  catalyst history; the 5m store misses gap-and-fade days). Code goals are in
+  `/data/workspace/briefs/s2-backtest.txt`. Seed parameters were tuned for US small caps; the
+  refinements above are counted, not backtested.

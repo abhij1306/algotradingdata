@@ -1,0 +1,13 @@
+S1 scan: stop republishing stale pivots, branch hat/s1-pivot-reuse. Read /data/workspace/audits/2026-10-25-s1-funnel.md section 3 and design issue 5, and verify them yourself (model output, not fact).
+
+Finding: the nightly scan (engine/watchlist.py scan_and_publish -> engine/scan.py scan_bot) keeps publishing the same pivot for a name the bot already holds, and keeps publishing it after the position exits. In the S1 v2 baseline (2016-2021) that produced 20 add_to_loser refusals and re-entries on the same pivot (VIPIND x2, COCHINSHIP x3, FINCABLES x2). Live and the backtest share this path.
+
+Do:
+1. The scan does not publish a watchlist row for an instrument the bot holds (open position, any state), live and backtest alike.
+2. A pivot is used once: after a position was opened on a setup's pivot, the same setup (same pivot level and base, or define the identity carefully from what criteria_results stores) is not republished; a re-entry needs a new setup (a new final contraction / new pivot). State the rule and its identity key in decisions.md. Keep it config-free unless a param is clearly needed (if so, default = used once).
+3. Unit tests on the small pure parts only (the identity/expiry decision). No backtest, no daily pipeline in tests, don't write hat_live.
+4. Docs: decisions.md and invariants if touched, compact.
+
+Don't change strategy seeds or any version config. Don't delete or disable any strategy. Never read or print .env or credentials.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

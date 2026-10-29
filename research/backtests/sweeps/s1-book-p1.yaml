@@ -1,0 +1,27 @@
+sweep_id: s1-book-p1
+sweep_name: S1 book rules Phase 1 - ride re-baseline on main 20fdcc73 (in-sample 2016-2021, policy v3)
+variants:
+- label: ride_rerun
+  base: 01a17ca4-3897-75bd-8afd-24a3cb53b489
+  change: control - ride unchanged on current main (daily entry bars as ride ran), isolates engine drift since fb83fe45
+  set: &rideset
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  flat_ladder: true
+  policy_set: &ridepol
+  - global_open_risk_pct=1
+  - p_max.stage2-contraction-breakout=1
+  entry_bars: daily
+- label: ride_pess
+  base: ride_rerun
+  change: ambiguous optimistic -> pessimistic (a raised stop's dip fills that day)
+  set: *rideset
+  flat_ladder: true
+  policy_set: *ridepol
+  entry_bars: daily
+  ambiguous: pessimistic

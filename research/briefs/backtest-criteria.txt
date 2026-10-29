@@ -1,0 +1,11 @@
+Promotion criteria tool and honest trial accounting, branch hat/backtest-criteria.
+Goal: a candidate's promotion decision is computed by a tool, never by hand, and DSR/PBO reflect the selection that really happened.
+Read first: /data/workspace/audits/2026-10-26-backtest-review-fable.md (H1, H3, M3, M4, M5, M6, L3) and docs/backtests/process.md. Criteria and trial budget live in /data/workspace/strategy-notes/s1-minervini.md ("Promotion criteria").
+Outcomes:
+1. `python -m app.hat.backtest.review <run_id> --criteria <notes>` computes every promotion criterion from the run folder (MAR, longest DD in sessions, trades, CAGR vs NIFTY 500 TRI, CAGR ex top-5, max %ADV, no-op/binding, plateau from a sweep, hold-out degradation via `--validates <run_id>`), checks the trial budget, hashes the criteria block, and writes a pass/fail table into the run folder (also referenced from review_request.md). Criteria are machine-readable: define the format (a fenced block in the notes or a JSON beside them) and convert S1's criteria to it.
+2. Trials: `dsr_n_trials` reports the N the DSR actually used (floored), or add an effective field and document it in result-standard.md; PBO family keyed by window too and null below 4 distinct variants; trials keyed by (strategy, universe, window) per L3. A way to seed prior trials, and seed S1 with the ~54 deleted earlier variants (they picked np) so DSR is not flattered; the trial count shows in sweep logs and review requests.
+3. Hold fields: `hold_sessions`/`avg_hold_sessions*` are calendar days; count real sessions or rename to *_days (bump the standard version if the schema changes).
+4. Audit warnings explained once: an explanation file keyed by data-audit digest (or `audit_notes.md` in the run folder); the run audit's `data` check names the warning checks and whether an explanation exists; review reads it.
+Scope: app/hat/backtest (review, trials, dsr, runs family stats, folder, run_audit), docs/backtests. Read-only on hat_live; no strategy or policy changes. Verification: run the criteria tool once on the existing np run of sweep s1-baseline-01 and show the table (expected to fail MAR, longest DD, CAGR vs TRI, CAGR ex top-5); no new backtests.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

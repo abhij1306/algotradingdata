@@ -1,0 +1,7 @@
+# HOLD-OUT run of candidate C1 (frozen p5-rotation.yaml), window only changed. Run once.
+portfolio: p5-rotation-holdout
+universe: nifty500
+window: {from: 2025-01-01, to: 2026-10-23}
+strategies:
+  - {version: c7d55ebe-2baa-42da-86e2-de8fd11bd2c9, weight: 1}
+overlay: {sleeve: liquid}

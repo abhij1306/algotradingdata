@@ -1,0 +1,8 @@
+No crumb positions, branch hat/min-position. Goal:
+1. Sizing never opens a position too small to matter. Today app/hat/risk/sizing.py:101-106 has no floor: when cash is nearly spent it opens 1-4 share positions (e.g. NBCC qty 1 at Rs 55). In backtest dry10 (run 01a17c0e) 41 of 226 trades were under 2% of equity; they dilute expectancy (+0.33R vs +0.51R without) and hold max_positions slots, so real signals are refused. Live it would send 1-share orders. Add a minimum position size to the account risk policy (default 2% of equity; choose the exact form yourself, e.g. min % of equity and/or min notional), refuse the entry below it with a named refusal reason that the run folders count like the existing ones, and apply it in backtest and live sizing alike. Bump the policy version if the policy schema requires it.
+2. Sweep variants with an unknown parameter path fail at parse time (parse_variants / the sweep loader), not silently later; today only Overrides.apply_config checks names.
+3. The run audit `equity_jump_without_positions` flags a same-day round trip (entry and stop-out on the same session, e.g. ASTRAL 2019-10-22 in s1-deploy-01 r5) as an equity move with no positions; count positions opened and closed that session as held.
+Docs: invariants/decisions/runbook compactly where they describe sizing, refusals or audits.
+Scope: backend/app/hat/risk/, backtest sweep parsing, run audits, policy file, docs/. Tests for small pure functions only; no backtests in tests.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

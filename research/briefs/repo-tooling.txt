@@ -1,0 +1,19 @@
+Bring the machine's automation scripts into the repo. Branch hat/repo-tooling.
+
+Owner (2026-10-26): this machine is not the owner's laptop. The database and working documents may stay outside the repo, but every script useful to agents or the public must be in the repo. And agents should script anything they do more than once.
+
+Do:
+1. CLAUDE.md: add one short line in the agent guidance: anything done more than once (a check, a launch, a report, a data step) becomes a script or module command in the repo instead of repeated hand-typed commands.
+2. Bring these in, cleaned up (read each fully first; parametrize paths with arguments/env, no hard-coded /data/workspace paths; no secrets, account ids, chat ids or tokens; fit the repo's layout and lint):
+   - /data/workspace/kotak/kotak5m.py and former.py: the 5-minute history downloader (current and former index members), as a data source tool (e.g. backend/app/hat/data/sources/ or scripts/data/, your call; how it fits next to bars5m_import).
+   - /data/workspace/nifty500-history/*.py (fetch, parse_notices, totext, make_csv, build, check, ev): the point-in-time NIFTY 500 membership builder. Keep only what produces the membership file the repo reads; say what each kept step does.
+   - /data/workspace/tools/set_secrets.py and fyers_login.py: operator helpers (credentials are entered at runtime, never stored in the script).
+   - /data/workspace/corrections/review-links.sh and /data/workspace/ca-research/tools/*.py: bring in only if they are reusable tools; otherwise list why not.
+   - Orchestrator procedures done by hand every PR: (a) the merge check: head sha + mergeStateStatus, required checks, code-review bot status (logic in /data/workspace/briefs/codeant.jq), unresolved review threads whose last comment is not by the repo owner (GraphQL), a secrets grep on the diff; prints one verdict and never merges; (b) builder launch: git worktree + branch from origin/main, terminal tab, start the agent, send it its brief, and the cleanup after merge (stop agent, close tab, remove worktree, delete branch local and remote). Put them under scripts/agents/ and document them in docs/agents/ (orchestrator guide). The terminal multiplexer commands used today: `herdr tab create --cwd <dir> --label <name> --no-focus`, `herdr agent start <name> --kind claude --pane <pane> -- --permission-mode auto`, `herdr agent prompt <name> "<text>"`, `herdr agent wait <name> [--until working]`, `herdr agent stop <name>`, `herdr tab close <tab>`.
+3. Not brought in (obsolete, say so in the PR): /data/workspace/tools/backtest_report_data.py, verify_backtest_trades.py, run_research_backtests.sh (old DB-backed backtest format, replaced by the result standard).
+4. Tests: small pure functions only (parsing, path/args handling, verdict logic of the merge check on hand-built JSON). No network calls in tests, no backtests, no pipeline runs, no full DB on fake data. No data downloads while verifying (a --help and a dry run on local files only).
+5. Docs: runbook data-tools section and docs/agents/ updated, compact.
+
+Scope: tooling and docs only. Don't change strategy configs, the risk policy, data or hat_live. Don't delete or disable any strategy. Never read or print .env or credentials. Don't name the code-review or AI vendors in docs beyond what the scripts need.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

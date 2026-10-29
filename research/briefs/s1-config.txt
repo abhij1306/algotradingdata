@@ -1,0 +1,21 @@
+S1 (Minervini) correctness and config-only parameters, branch hat/s1-config. Owner objective (2026-10-25): get S1 to the point where it can be backtested and trusted. There must be no code bug, and the parameters the S1 research needs must be settable through config (version YAML or --set). Not every constant has to be config; use judgement. Read /data/workspace/audits/2026-10-25-protocol-vs-code.md: B1 (S1-1..S1-4, OV-1), E and F. Verify each finding yourself; the audit is model output. The starting parameters are in /data/workspace/strategy-notes/s1-minervini.md. Read it; don't edit it.
+
+1. VCP correctness (engine/criteria/vcp.py):
+   - S1-1: judge the most recent contractions (the last ≤ cap), not the first 6 from the base start, so the final contraction, pivot and dry-up are current.
+   - S1-2: add a minimum contraction depth param so 3-bar noise wiggles don't count. Keep the default conservative and state it in decisions.md as "awaiting owner".
+   - S1-3: a sub-score sitting exactly at its pass limit must not score zero. Fix the scaling, or document why it's intended and make it configurable.
+   - Move the hard-coded constants (PIVOT_WINDOW, MIN_BASE_BARS, the dry-up baseline length, CONTRACTION_CAP) into the VCP params, with the current values as defaults.
+   - Unit tests on the pure detector with small hand-built price lists.
+2. Overrides (backtest/overrides.py, OV-1): select a criterion, entry filter or exit by type, e.g. setup.criteria[vcp] and entry_filters[max_chase]. Index selection stays. Fail loudly when a type is ambiguous or missing.
+3. Exit rules:
+   - step_trail: every +step_r of gain moves the stop up by move_r (owner example: step_r 1.5, move_r 1.0: −1R → 0R at +1.5R → +1R at +3R …). It ratchets: the stop never moves down.
+   - close_below_ema: an EMA counterpart of close_below_sma. This also covers the owner's open S4 decision.
+4. Entry timing: an entry_timing param, intraday_break (today's backtest behaviour) or daily_close. daily_close means the close is above the pivot and the fill is at the close (state the convention; respect the 15:15 closing-auction rule in docs/invariants.md). On daily_close, a breakout-volume param (volume ≥ k × the N-day average on the breakout day) is evaluated at the close with no lookahead. On intraday_break, refuse the volume param, or use the 5-minute cumulative-volume proxy if 5-minute bars exist; never use the full day's volume. Live parity: the shadow/live path honours entry_timing, or the gap is recorded as a known gap that blocks promotion.
+5. Regime: rising_days 0 means no slope test (just the close above the SMA).
+6. S1-4: S1's volume_pace trigger is ignored by the backtest. Record it as a known gap that blocks promotion of a version which relies on it, or replace it under entry_timing daily_close as in item 4.
+7. Docs: decisions.md, runbook (the override-by-type syntax, the new rules) and invariants, kept compact.
+
+Scope: S1's path and the shared exit/override machinery. Don't change the seed YAML defaults except where needed to keep behaviour identical. Don't delete or disable any strategy. Weekly timeframe is out of scope.
+Verification: unit tests on small pure functions only. Don't run a backtest. Don't write hat_live. Never read or print .env or credentials. A data-cleanup PR is running in parallel (data/store.py, index ingest, features): avoid those files.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

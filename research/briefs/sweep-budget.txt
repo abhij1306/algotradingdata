@@ -1,0 +1,10 @@
+Sweep budget, criteria columns and DuckDB temp folder, branch hat/sweep-budget.
+Goal: the remaining code follow-ups before S1 sweeps start. Read /data/workspace/followups/backtest-criteria.md (items 4, 5), /data/workspace/followups/sweep-discipline.md (item 1) and /data/workspace/followups/industry-audit.md (item 5).
+Outcomes:
+1. sweep refuses a new in-sample config hash once the family's own trials (prior seeded ones excluded) reach the criteria block's trial_budget; the sweep log prints own/budget and the DSR count.
+2. compare shows the promotion-criteria columns (longest DD sessions, CAGR vs benchmark, CAGR ex top-5, entries >5% ADV) and pass/fail per criterion when --criteria is given.
+3. one-change counts knobs by resolved path (exits[time_stop].enabled and exits[3].enabled are one knob).
+4. DataStore.connect creates its DuckDB temp folder, per process, so concurrent jobs on one data root don't share a spill file and a deleted folder doesn't crash every connection.
+Scope: app/hat/backtest (sweep, compare, discipline), app/hat/data store connect. Read-only on hat_live. Verification: compare --criteria on sweep s1-baseline-01; budget refusal shown on a pure-function test and a dry sweep plan if one exists; no backtests.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

@@ -1,0 +1,35 @@
+===== 2016-21
+Q4 position % of equity: median 10.6% (p10 7.2, p90 16.8); fee/trade median Rs 370 = 0.115% of each side
+   fees 93,598, slippage 163,877, gross(after slip) 1,623,690, net 1,530,092; fees/gross 5.8%; (fees+slip)/(gross+slip) 14.4%
+   friction per trade: fees 0.039R + slippage 0.067R = 0.106R vs net expectancy 0.688R; turnover 9.1x equity/yr; trades/yr 38
+   friction R by stop% quartile {Interval(2.7880000000000003, 4.955, closed='right'): 0.155, Interval(4.955, 6.454, closed='right'): 0.109, Interval(6.454, 7.608, closed='right'): 0.087, Interval(7.608, 9.898, closed='right'): 0.072}
+   trades held <=5 sessions: 57 (25%), their friction 5.8R of total 24.1R, their net R sum -46.0
+Q5 sessions invested <10%: 19%, >90%: 25%; regime-on sessions 71%
+   months with 0 signals 15 of 72 ; corr(monthly invested, regime_on) 0.63
+   low-invested months (<25%): 23, avg regime-on 39%, avg signals 1.1; high (>=75%): 29, regime-on 93%, signals 21.2
+   invested when regime on 65% / off 21%
+   capacity refusals 499 on 239 days vs 228 trades; refusals per month top: {Period('2021-02', 'M'): 29, Period('2021-06', 'M'): 49, Period('2021-07', 'M'): 61, Period('2021-09', 'M'): 64}
+Q6 by breadth: {Interval(0, 40, closed='right'): {'n': 39.0, 'exp': 0.4, 'win': 0.36}, Interval(40, 50, closed='right'): {'n': 39.0, 'exp': 0.27, 'win': 0.26}, Interval(50, 60, closed='right'): {'n': 54.0, 'exp': 0.29, 'win': 0.33}, Interval(60, 70, closed='right'): {'n': 44.0, 'exp': 0.36, 'win': 0.27}, Interval(70, 101, closed='right'): {'n': 52.0, 'exp': 1.91, 'win': 0.42}}
+   by NIFTY500 % above SMA50: {Interval(-50, 1, closed='right'): {'n': 27.0, 'exp': -0.02}, Interval(1, 2, closed='right'): {'n': 46.0, 'exp': 0.53}, Interval(2, 4, closed='right'): {'n': 89.0, 'exp': 1.0}, Interval(4, 50, closed='right'): {'n': 66.0, 'exp': 0.67}}
+   by NIFTY500 above SMA200: {False: {'n': 14.0, 'exp': 0.37}, True: {'n': 214.0, 'exp': 0.71}}
+Q7 fills outside the day range: 0; entries where the open was already above the fill (gap over pivot): 5 (avg open 0.57% above fill; their R -0.68 vs others 0.72); prior close already above the fill level: 3; exits on entry day: 10; scale via stop-multi: 31
+   max_positions refusals by open_positions_at_entry {10: 116}
+   by_regime from run.json {'index_on': 228, 'breadth_40_50': 39, 'breadth_50_60': 54, 'breadth_ge60': 96, 'breadth_lt40': 39} funnel regime_off_nights 425
+===== 2022-24
+Q4 position % of equity: median 10.8% (p10 7.7, p90 15.8); fee/trade median Rs 302 = 0.117% of each side
+   fees 47,277, slippage 80,789, gross(after slip) 242,441, net 195,164; fees/gross 19.5%; (fees+slip)/(gross+slip) 39.6%
+   friction per trade: fees 0.038R + slippage 0.065R = 0.103R vs net expectancy 0.242R; turnover 12.1x equity/yr; trades/yr 51
+   friction R by stop% quartile {Interval(2.802, 5.105, closed='right'): 0.142, Interval(5.105, 6.413, closed='right'): 0.109, Interval(6.413, 7.616, closed='right'): 0.089, Interval(7.616, 9.844, closed='right'): 0.073}
+   trades held <=5 sessions: 49 (32%), their friction 4.9R of total 15.9R, their net R sum -39.4
+Q5 sessions invested <10%: 26%, >90%: 32%; regime-on sessions 68%
+   months with 0 signals 7 of 36 ; corr(monthly invested, regime_on) 0.79
+   low-invested months (<25%): 11, avg regime-on 22%, avg signals 0.8; high (>=75%): 13, regime-on 99%, signals 28.3
+   invested when regime on 74% / off 9%
+   capacity refusals 357 on 183 days vs 154 trades; refusals per month top: {Period('2023-12', 'M'): 35, Period('2023-07', 'M'): 35, Period('2024-09', 'M'): 35, Period('2024-01', 'M'): 39}
+Q6 by breadth: {Interval(0, 40, closed='right'): {'n': 16.0, 'exp': -0.24, 'win': 0.31}, Interval(40, 50, closed='right'): {'n': 25.0, 'exp': 0.52, 'win': 0.2}, Interval(50, 60, closed='right'): {'n': 37.0, 'exp': 0.47, 'win': 0.32}, Interval(60, 70, closed='right'): {'n': 39.0, 'exp': -0.02, 'win': 0.23}, Interval(70, 101, closed='right'): {'n': 37.0, 'exp': 0.31, 'win': 0.24}}
+   by NIFTY500 % above SMA50: {Interval(-50, 1, closed='right'): {'n': 37.0, 'exp': 0.67}, Interval(1, 2, closed='right'): {'n': 36.0, 'exp': 0.55}, Interval(2, 4, closed='right'): {'n': 50.0, 'exp': -0.36}, Interval(4, 50, closed='right'): {'n': 31.0, 'exp': 0.34}}
+   by NIFTY500 above SMA200: {False: {'n': 9.0, 'exp': 2.74}, True: {'n': 145.0, 'exp': 0.09}}
+Q7 fills outside the day range: 0; entries where the open was already above the fill (gap over pivot): 3 (avg open 0.30% above fill; their R -0.84 vs others 0.26); prior close already above the fill level: 1; exits on entry day: 11; scale via stop-multi: 19
+   max_positions refusals by open_positions_at_entry {10: 20}
+   by_regime from run.json {'index_on': 154, 'breadth_40_50': 25, 'breadth_50_60': 37, 'breadth_ge60': 76, 'breadth_lt40': 16} funnel regime_off_nights 237
+NIFTY500 fwd 60-session return when regime on/off (2016-24): {'mean': {False: 0.052, True: 0.036}, 'count': {False: 620, True: 1549}}

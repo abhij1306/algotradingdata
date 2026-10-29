@@ -1,0 +1,25 @@
+Builder workflow on tmux or herdr, with hook-based agent state. Branch hat/agent-tmux.
+
+Owner decision (2026-10-27): the orchestrator and builders run in either tmux or herdr; the tooling picks the backend itself and works the same way in both. Builder state comes from Claude Code hooks, not from reading the screen, which also fixes the herdr problems (a missed READY line; `herdr agent wait --until idle` never firing; a builder stalled idle with no verdict going unnoticed).
+
+Verified on this machine with Claude Code 2.1.311 and tmux 3.5a (don't re-verify):
+- `tmux new-window -d -e BUILDER_SLUG=<slug> -c <dir> -P -F '#{pane_id}' '<cmd>'` passes the variable to hooks; TMUX_PANE is set too.
+- A fresh worktree stops at the folder-trust prompt with "No, exit" selected; Down then Enter accepts it.
+- `tmux load-buffer -b <slug> -` + `tmux paste-buffer -p -d -b <slug> -t <pane>`, ~1 s pause, then `send-keys Enter` submits a multi-line prompt as one prompt.
+- Hook stdin: UserPromptSubmit has `prompt_id` and `prompt`; Stop has the same `prompt_id`, `last_assistant_message` (the final reply text) and `background_tasks` (list); Notification has `notification_type` (`permission_prompt` when blocked on a permission dialog; `idle_prompt` is sent ~60 s after any Stop and must not count). All carry `cwd`, `session_id`.
+
+Do:
+1. Hook script in the repo (scripts/agents/), installed in the user's ~/.claude/settings.json (not the repo's settings) for UserPromptSubmit, Stop and Notification. It names the builder from BUILDER_SLUG, else from `cwd` under the worktrees dir; otherwise it does nothing (orchestrator and owner sessions are untouched). It writes state atomically to /data/workspace/agents/<slug>/ (outside the repo and worktree; root overridable by env): a turn counter incremented on UserPromptSubmit, state working / idle / needs-input / waiting-on-background-task, and on Stop the verdict line if the final message has one (`READY TO MERGE #N <sha>`, `BLOCKED #N: ...`, also `OWNER DECISION: ...`). It must never fail the agent's turn. A small install command (or `builder.py install-hooks`) adds the entries idempotently and removes nothing else.
+2. builder.py with two backends, chosen automatically (HERDR_ENV=1 → herdr, $TMUX → tmux, else a clear error; a flag overrides). Behaviour shared across backends:
+   - start: as today (worktree, trust prompt, brief via bracketed paste, waits for the first UserPromptSubmit), prints slug, pane and turn number.
+   - send <slug> <text|--file>: pastes the text and prints the turn number it opens.
+   - wait <slug> [--turn N] [--timeout 45m]: returns at once if that turn already ended; otherwise blocks (no busy shell loop; a cheap in-process wait is fine) until Stop or a permission_prompt for that turn, and prints one line: the verdict, `idle no-verdict`, `needs-input`, or `background-task`. At timeout it checks whether the pane's claude is alive: `still-working turn N` vs `crashed`.
+   - status: one line per builder (state, turn, last verdict, age).
+   - cleanup: as today (refuses while the PR is open; closes the window/tab; removes worktree, branch local and remote) and also removes the state dir.
+   herdr backend keeps today's herdr commands; tmux backend uses the verified commands above (named buffers per slug, window named after the slug). Optionally colour the tmux window by state from the hook.
+3. Tests: small pure functions only (backend choice, slug from cwd, verdict extraction from a message, state transitions incl. idle_prompt ignored and stale-turn wait returning at once, hook payload parsing from saved real samples). Nothing that launches claude, tmux or herdr.
+4. Docs: docs/agents/orchestrator.md (start/send/wait/status/cleanup replace the herdr wait-output regex and the polling monitor), builder-protocol.md, .claude/skills/hat-orchestrator/SKILL.md (accept tmux or herdr, not herdr only), CLAUDE.md agent-workflow paragraph; compact. Say in the PR what the owner runs once to install the hooks.
+
+Scope: agent tooling and docs only; no trading, data or backtest code. Never read or print .env or credentials. Don't edit ~/.claude/settings.json yourself; the orchestrator installs the hooks after merge.
+Follow docs/agents/builder-protocol.md. End your turn with exactly `READY TO MERGE #<n> <sha>` or `BLOCKED #<n>: <reason>` on its own last line.
+Follow-ups left to this PR: none.

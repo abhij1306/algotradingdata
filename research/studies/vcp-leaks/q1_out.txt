@@ -1,0 +1,36 @@
+2016-21 refusals unmapped 2
+2022-24 refusals unmapped 5
+my fwd vs engine fwd (refusals): |r20 diff| median 0.0 corr r60 0.997
+                            n   r20   r60  med_r60  stop_hit60  ge2R  mfe60     rs  stop_pct
+run     group                                                                               
+2016-21 TAKEN           228.0  0.40  0.58    -1.00        0.60  0.24   3.17  72.35      6.43
+        max_chase         1.0 -0.04  0.56     0.56        0.00  0.00   2.22  52.21      8.70
+        max_positions   115.0 -0.04  0.15    -1.00        0.77  0.16   4.02  47.95      6.04
+        size_below_min  184.0  0.33  0.67    -1.00        0.54  0.18   3.26  56.00      6.73
+        size_zero_cash  198.0  0.31  0.51    -1.00        0.61  0.24   3.14  56.62      6.48
+2022-24 TAKEN           154.0  0.21  0.53    -1.00        0.61  0.21   3.28  71.97      6.45
+        max_chase         4.0 -0.27  0.13    -0.60        0.50  0.25   1.69  71.73      7.74
+        max_positions    18.0 -0.06  1.61    -1.00        0.67  0.33   5.83  74.15      6.99
+        size_below_min  191.0  0.03  0.50    -1.00        0.68  0.21   3.48  63.95      6.11
+        size_zero_cash  144.0  0.17  0.45    -1.00        0.67  0.24   3.24  54.40      5.48
+        stopout_cap       1.0  0.83  0.97     0.97        0.00  0.00   2.18  55.51      5.60
+                      n   r20   r60  med_r60  stop_hit60  ge2R  mfe60     rs  stop_pct
+run     bucket                                                                        
+2016-21 TAKEN     228.0  0.40  0.58    -1.00        0.60  0.24   3.17  72.35      6.43
+        capacity  497.0  0.23  0.49    -1.00        0.62  0.20   3.39  54.38      6.47
+        other       1.0 -0.04  0.56     0.56        0.00  0.00   2.22  52.21      8.70
+2022-24 TAKEN     154.0  0.21  0.53    -1.00        0.61  0.21   3.28  71.97      6.45
+        capacity  353.0  0.08  0.54    -1.00        0.67  0.23   3.50  60.57      5.90
+        other       5.0 -0.05  0.30    -0.21        0.40  0.20   1.79  68.49      7.32
+rs_rank 2016-21 spearman r60 0.047 r60 by quartile [0.21, 0.5, 0.7, 0.66] n 726
+rs_rank 2022-24 spearman r60 0.049 r60 by quartile [0.21, 0.57, 0.42, 0.92] n 503
+setup_score 2016-21 spearman r60 -0.093 r60 by quartile [0.43, 0.71, 0.25, 0.67] n 726
+setup_score 2022-24 spearman r60 -0.022 r60 by quartile [0.27, 0.62, 0.67, 0.58] n 503
+stop_pct 2016-21 spearman r60 0.095 r60 by quartile [0.48, 0.7, 0.18, 0.7] n 726
+stop_pct 2022-24 spearman r60 0.002 r60 by quartile [0.53, 0.77, 0.72, 0.11] n 503
+same-day taken vs capacity-refused                    n   r60     rs
+run     bucket                   
+2016-21 TAKEN     45  0.56  65.32
+        capacity  62  0.12  44.08
+2022-24 TAKEN     28  0.56  75.44
+        capacity  35  1.47  56.84

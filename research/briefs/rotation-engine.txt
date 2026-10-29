@@ -1,0 +1,19 @@
+Momentum rotation as an engine strategy type, configured not coded. Branch hat/rotation-engine.
+Owner 2026-10-29 gave the orchestrator full authority to find a legitimate strategy. A pandas study (/data/workspace/research/momentum/REPORT.md, scripts in that folder: momentum.py, analyze.py, build_tr_panel.py) shows cross-sectional momentum rotation on PIT NIFTY 500 at 27.9% CAGR pre-tax 2016-2024 vs NIFTY 500 TRI 15.6%, beating the index in all three folds. It has to be reproduced in the HAT engine before it can be trusted, paper traded or combined with S1/S2 and the ETF sleeve.
+Scope:
+1. A rotation strategy type in the engine (backend/app/hat/engine/strategy config + backtest/loop.py), config-driven, so a portfolio file can declare it like S1/S2 (docs/backtests/process.md "How to define a backtest"). Needed, per the REPORT's "Engine gap":
+   - calendar rebalance (month_end | fortnight | weekly), decide on that session's close, execute at the next session's open (open auction fill rules as the engine already uses for opens; respect auction_days / suspensions)
+   - cross-sectional score over the eligible universe, z-scored per day: riskadj = 0.5*z(r6/sigma) + 0.5*z(r12/sigma) on total-return-adjusted closes (bars_daily via stored adjustment), plus r12_1, r6, hi52 as options; config params for lookbacks
+   - eligibility: PIT membership, ADV20 >= X cr, close >= X, min history bars
+   - selection: top N with a hold buffer (keep while rank <= buffer_rank and eligible)
+   - target-weight sizing (equal weight, equity/N) with an order diff: sells, trims, buys, top-ups; skip changes below a threshold (2% of target)
+   - exits: rank-based (fell out of buffer or ineligible); demerger forced exits and suspensions as today; no stop required. Rotation must opt out of stop-based risk caps, slots and per-trade risk sizing; S1/S2 behaviour unchanged (prove with resolved-config hashes as #308 did)
+   - works on its own and as one leg of a shared-capital portfolio with S1/S2 and the ETF overlay (#308/#311)
+   - run folder per docs/backtests/result-standard.md (trades, equity, signals/rebalances, metrics); trade records carry the rank/score at entry and exit
+2. A seed strategy version for the REPORT's pick (riskadj, N 20, monthly, buffer 40, equal-weight reset, ADV20 >= 10 cr, close >= 50, 240 bars) created through the normal strategy/version path, with its id in the PR. Do not run it on the hold-out.
+3. Parity check (the one allowed run, in-sample only): run the seed 2016-01-01..2024-12-31 on nifty500 and compare with the pandas pick: CAGR, max DD, turnover, round trips, and holdings on 3 sample rebalance dates. Explain every gap above ~1 pp CAGR (costs model, fill price, sizing). Put the table in the PR.
+4. Docs: decisions.md entry, process.md example portfolio file for rotation and for S1 + rotation, architecture.md one line. Compact.
+5. Unit tests on pure functions only (score/z-score, selection with buffer, order diff with threshold, rebalance calendar) with small hand-built inputs. No pipeline or backtest on fake data.
+Rules: hat_live read-only except creating the strategy version through the normal path; never read or print .env; no reads of data dated 2025-01-01 or later; few substantial PRs. Address CodeAnt findings once.
+Deliver: the PR, then READY TO MERGE <full sha> with the parity table.
+Follow docs/agents/builder-protocol.md.

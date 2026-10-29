@@ -1,0 +1,13 @@
+Dated cost schedule for backtests, branch hat/cost-schedule. Open items D7 and m2 (/data/workspace/open-items.md lines 45 and 52; verify them yourself, they are model output). The backtest charges today's delivery costs on every fill since 2016, and charges no depository (DP) fee on sells, so returns are mis-stated, most for small positions.
+
+Do:
+1. Cost-model files with `effective_from` (the repo's existing cost-model mechanism, `cnc-delivery-1`, extended, not a parallel one): a run picks, for each fill, the schedule in force on the fill date, and records each schedule digest it used in the run's conventions.
+2. History of CNC delivery charges for NSE equity from 2016-01-01 to today, each change dated and sourced in a comment or the data file (official circulars / exchange and regulator notices; no broker or third-party names in docs or code): STT (buy and sell), exchange transaction charges (NSE, each change incl. 2024-10-01 0.00297%), SEBI turnover fee, stamp duty (state-wise before 2020-07-01: choose one documented convention, e.g. the Maharashtra rate, and state it; 0.015% on buys after), GST 18% from 2017-07-01 (service tax 15% before), brokerage (keep the model's current convention), and the DP charge per scrip per sell day (a flat rupee amount incl. GST; one dated value is fine if the history is unclear, state it). Where a historical value cannot be sourced, use the nearest documented one and list it under "Deviations".
+3. DP charge applied once per instrument per sell day (partial exits on the same day pay once), in both the backtest and any live cost estimate that uses the same function.
+4. Unit tests only on the small pure parts: schedule selection by date, the charge maths on a hand-worked buy and sell, the DP once-per-day rule.
+5. Docs: decisions.md (convention for state stamp duty, DP) and invariants if touched, compact. Update open-items is the orchestrator's job; don't edit it.
+
+Scope: costs only; don't change strategy configs, seeds or risk policy. Don't delete or disable any strategy. A bars_5m import builder runs in parallel (app/hat/data/*): avoid those files.
+Verification: no backtest. Run the cost function once on a few real fills by hand and paste the numbers. Never read or print .env or credentials. Don't write hat_live.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

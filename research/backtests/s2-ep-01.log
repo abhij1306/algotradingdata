@@ -1,0 +1,7 @@
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.prefix, expected /data/workspace/algotrading/venv, got /data/workspace/algotrading/backend/../venv
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /data/workspace/algotrading/venv, got /data/workspace/algotrading/backend/../venv
+{"label": "c1", "run_id": "01a1828a-5d03-776d-869f-3429829a5fcb", "status": "complete", "code": null, "trades": 5, "expectancy_r": -1.1282, "dsr": 0.0, "dsr_n_trials": 1, "dsr_n_trials_effective": 5, "pbo": null, "trials": "1/10000"}
+{"label": "v1", "run_id": "01a18290-6256-75c5-9c7d-1ce796a38ae0", "status": "complete", "code": null, "trades": 4, "expectancy_r": -1.126, "dsr": 0.0, "dsr_n_trials": 2, "dsr_n_trials_effective": 5, "pbo": null, "trials": "2/10000"}
+{"label": "v2", "run_id": "01a18296-62e1-71bd-87ce-8e776493ce9e", "status": "complete", "code": null, "trades": 5, "expectancy_r": -1.1282, "dsr": 0.0, "dsr_n_trials": 3, "dsr_n_trials_effective": 5, "pbo": null, "trials": "3/10000"}
+{"label": "v3", "run_id": "01a1829c-5edf-7387-bb69-1e75244ed26f", "status": "complete", "code": null, "trades": 5, "expectancy_r": -1.1282, "dsr": 0.0, "dsr_n_trials": 4, "dsr_n_trials_effective": 5, "pbo": null, "trials": "4/10000"}
+{"label": "v4", "run_id": "01a182a2-68a8-7784-a055-3f429775db86", "status": "complete", "code": null, "trades": 7, "expectancy_r": -1.1179, "dsr": 0.0, "dsr_n_trials": 5, "dsr_n_trials_effective": 5, "pbo": null, "trials": "5/10000"}

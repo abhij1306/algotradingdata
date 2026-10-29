@@ -1,0 +1,17 @@
+growth rows | 18076
+rows | 18173
+version > 1 | 75
+rows secondary | 725
+D2 AARTIDRUGS/MMTC 2024-06-30 version>1 | 0
+rows nse | 17448
+period_mismatch rows | 0
+q4_derived | 0
+q4_derived with negative revenue | 0
+D2 AARTIDRUGS/MMTC 2024-06-30 rows | 2
+flag owners_profit_tag_swapped | 180
+rows insurance_skipped | 97
+D2 rows from the misdated documents | 0
+any quarter with negative revenue | 4
+flag quarter_start_mislabelled | 49
+filings-pre-rebuild.csv excluded reasons: {'xbrl_http_404': 75, 'q4_nine_month_missing': 60, 'period_missing': 6}
+filings.csv excluded reasons: {'xbrl_http_404': 75, 'quarter_context_not_a_quarter': 62, 'period_missing': 6, 'period_year_before_listing': 2, 'q4_nine_month_missing': 2}

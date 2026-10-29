@@ -1,0 +1,11 @@
+5-minute store on the raw basis, branch hat/bars5m-basis.
+Goal: every day in bars_5m is on the raw price basis the store promises, the write path cannot store an adjusted-basis day again, and the redundant raw Kotak downloads can be deleted.
+Read first: /data/workspace/audits/2026-10-26-data-review-fable.md F1 (3,880 days, mostly 2025-10-22..2026-10-21 from the minute_history fetch of 2026-10-22, "kept as stored" by bars5m_import; list of examples there).
+Outcomes:
+1. Root cause: find the path that wrote those days without the bars_basis check (minute_history `_flush`/`rebase_stored`, bars5m_import keep-as-stored) and close it, with a test on the pure function.
+2. A repair command (dry-run by default) that rebases the affected days to raw using the stored factors as of the fetch day, or drops days that cannot be converted, and records what it did. Do not write the live store yourself: the PR gives the exact commands and the dry-run counts; the orchestrator applies them after a backup.
+3. After the repair the store-wide 5m close scan (added in hat/industry-audit's data audit if merged; else a one-off query you show) finds no adjusted-basis day.
+4. Say in the PR whether anything still needs /data/workspace/kotak/data/raw_5m and raw_5m_former; if nothing does, the orchestrator deletes them.
+Scope: app/hat/data (minute_history, bars5m_import, bars_basis, bars_store). Do not touch data audit code (another builder is changing app/hat/data/audit.py and golden.py in hat/industry-audit). No broker calls, no downloads. Verification: the dry-run on the real store with counts; no backtests.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

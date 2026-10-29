@@ -1,0 +1,14 @@
+SonarCloud open issues: triage and fix the valid ones. Branch hat/sonar-triage.
+
+Owner (2026-10-26): triage the SonarCloud open issues on main and implement the valid ones.
+Source (no auth needed): curl -s "https://sonarcloud.io/api/issues/search?componentKeys=abhij1306_algotrading&resolved=false&ps=500" (120 open, all CODE_SMELL on 2026-10-26: S3776 cognitive complexity 39, S5778 pytest.raises with several calls 25, S5886 return type vs hint 11, S8572 8, S5655 argument type 5, S3358 nested ternary 4, S1192 duplicated literal 4, S1940 3, S7504 3, S5713 2, S8786 2, typescript S3776 2, others).
+
+Do:
+1. Triage every issue into: real bug (fix + a small pure test that fails before the fix), valid cleanup (fix), or not valid / not worth it (one line why). Type mismatches (S5886, S5655, S5713) first: each may hide a real bug.
+2. S5778: restructure the tests so only the raising call is inside pytest.raises.
+3. Cognitive complexity (S3776): refactor only where it is a clear, behaviour-preserving extraction with tests already covering the function; do NOT refactor engine, risk, fills, backtest loop or data pipeline core paths just for the metric. List the ones left with the reason.
+4. Write the triage table (issue key, rule, file:line, verdict, action) into the PR description, compact.
+
+Coordinate: PR #278 (hat/state-split, 139 files: storage split, configs as JSON) is about to merge. Skip issues in files it touches until it merges, then rebase and finish those. No behaviour changes beyond real-bug fixes; no strategy config, risk policy or data changes. Don't delete or disable any strategy. Tests: small pure functions only, no backtests, no pipeline runs, no full DB on fake data. Never read or print .env or credentials. No data downloads. Read-only on hat_live.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

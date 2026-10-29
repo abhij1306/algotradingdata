@@ -1,0 +1,46 @@
+sweep_id: s1-book-01
+sweep_name: S1 book rules (owner spec 2026-10-27, Minervini 2013) against ride (in-sample 2016-2021, policy v3)
+# Needs hat/s1-book-detector (book_vcp, rs_rank basis eligible) and hat/s1-book-engine
+# (exits[close_below_sma].grace_sessions, slot_order rs, volume_pace full_day): both on main.
+variants:
+- label: s1-book-01
+  base: 01a17ca4-3897-75bd-8afd-24a3cb53b489
+  change: the book's S1 rules (RS >= 70 in the eligible universe, book_vcp base C-G, volume 1.5x, book exits and sizing)
+  bundle: true
+  reason: 'the owner specified the book rules as one candidate (s1-book-spec); no part is tuned or evidence on its own'
+  set:
+  # Setup: trend template unchanged; RS rank hard >= 70 within the eligible universe (A);
+  # the book base (C-G) replaces the scored vcp and publishes the pivot close_vs_pivot reads
+  - playbooks[default].setup.criteria[rs_rank#0].enabled=true
+  - playbooks[default].setup.criteria[rs_rank#0].params.basis=eligible
+  - playbooks[default].setup.criteria[vcp].enabled=false
+  - playbooks[default].setup.criteria[vcp].order=20
+  - 'playbooks[default].setup.criteria[+]={"type": "book_vcp", "stage": "setup", "mode": "hard", "order": 11, "params": {}}'
+  # Trigger: break of the pivot on >= 1.5x the 50-day volume (full-day volume, decision 7);
+  # max_chase 2% and close_vs_pivot unchanged
+  - playbooks[default].trigger[volume_pace].enabled=true
+  - playbooks[default].trigger[volume_pace].params.vs_avg50=1.5
+  # Exits: stop 0.5% below the final contraction low, skip > 10% (unchanged); breakeven at
+  # +2.5R; 50% at +3R; the rest on a close below SMA20 after a 10-session grace
+  - 'exits[+]={"rule": "move_stop_to_breakeven", "at_r": 2.5}'
+  - exits[partial_at_r].enabled=true
+  - exits[partial_at_r].at_r=3
+  - exits[partial_at_r].sell_fraction=0.5
+  - exits[close_below_sma].sma=20
+  - exits[close_below_sma].grace_sessions=10
+  - exits[trailing_swing_low].enabled=false
+  - exits[time_stop].enabled=false
+  - exits[step_trail].enabled=false
+  # Sizing: 1% risk, 25% position cap, 6 positions, RS order on a capped day, cooldown 0, flat
+  risk_pct: 0.01
+  max_positions: 6
+  slot_order: rs
+  volume_pace: full_day
+  flat_ladder: true
+  # Same conventions as the Phase 1 baseline ride_pess (01a17d5e): daily entry bars, pessimistic fills
+  entry_bars: daily
+  ambiguous: pessimistic
+  policy_set:
+  - global_open_risk_pct=1
+  - p_max.stage2-contraction-breakout=0.25
+  - cooldown_sessions=0

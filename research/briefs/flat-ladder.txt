@@ -1,0 +1,12 @@
+Backtest research option: a flat exposure ladder, branch hat/flat-ladder. Owner asked (2026-10-25) to optimise S1 returns by backtest research. Finding (verify it): `--max-positions N` (backend/app/hat/backtest/overrides.py apply_policy) raises only the ladder's top level; the ladder still starts at L1 (2 positions, risk_mult 0.5) and climbs only after `up_after_wins` consecutive winners (app/hat/risk/exposure.py). With S1's ~35% win rate the run sits at L1 almost the whole time: in run 01a174e1 (--risk-pct 0.005 --max-positions 10) 246 of 363 signals were refused by max_positions. So research runs cannot measure the strategy at a given position count and risk, only the ladder's throttle.
+
+Do:
+1. A research override `--flat-ladder` (and `flat_ladder: true` in a `--variants` item): every ladder level gets the run's open-position cap (`max_open_positions`, or `--max-positions` when given) and risk_mult 1, so the run trades at a fixed size from day one. Other limits (per-industry cap, global open risk, entries/stop-outs per day, kill switches, health bands) stay as the policy says.
+2. It is recorded in the run's conventions like the other overrides, and a `--for-promotion` run refuses it (promotion uses the policy as written).
+3. Optionally, if it is a one-liner, `--max-per-industry N` alongside (same recording/refusal rules); skip it if not trivial.
+4. Unit tests on the pure policy rewrite only. Runbook (Backtest research variants paragraph) and decisions.md, one or two lines each.
+
+Scope: backtest overrides and CLI only; the live/shadow risk path and the policy in hat_live are unchanged. Don't change strategy configs or seeds. Don't delete or disable any strategy. A bars_5m import builder runs in parallel (app/hat/data/*): avoid those files.
+Verification: no backtest. Show the rewritten policy JSON for one real policy version (read-only DB). Never read or print .env or credentials. Don't write hat_live.
+Follow docs/agents/builder-protocol.md. Print "READY <pr-url>", "BLOCKED: <reason>" or "OWNER DECISION: <question>".
+Follow-ups left to this PR: none.

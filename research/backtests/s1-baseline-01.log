@@ -1,0 +1,2 @@
+{"label": "base", "run_id": "01a17709-e20d-74ea-8975-198c7b18e5c8", "status": "complete", "code": null, "trades": 23, "expectancy_r": -0.1971, "dsr": 0.011543, "dsr_n_trials": 1, "pbo": null}
+{"label": "np", "run_id": "01a17714-351d-73ca-bc03-df68ff425d83", "status": "complete", "code": null, "trades": 144, "expectancy_r": 0.3828, "dsr": 0.349305, "dsr_n_trials": 2, "pbo": 0.0}

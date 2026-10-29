@@ -1,0 +1,11 @@
+S1 book rules: engine, exits and reporting, branch hat/s1-book-engine. Spec: /data/workspace/briefs/s1-book-spec.md (read with the Phase 0 audit it names). A second builder does the detector (hat/s1-book-detector: setup criteria, RS rank, funnel); don't touch engine/criteria/vcp* or the RS feature.
+Goal:
+1. by_year in run folders (backtest/folder.py _yearly) stops mixing bases: keep the mark-to-market return, and report trades and expectancy by entry year and by exit year plus realized P&L by exit year, each named by its basis. Test with a trade spanning a year end (run 01a17ca4's VAKRANGEE 2017-01-12 -> 2018-01-31 is the real case). Results UI/review/compare read the new names.
+2. close_below_sma gets a grace window: no SMA exit for the first N sessions after entry (stop still active), config param, default off.
+3. A slot order that ranks a day's surplus triggers by RS (rs_weighted as of the signal night, highest first), selectable by --slot-order; record it in conventions like the others. Promotion still refuses it only if you find a reason in invariants; otherwise allow it and document.
+4. volume_pace on daily-estimated entries: today it is ignored there (spec.py trigger_is_level_break_only). On a daily-bar entry an enabled volume_pace checks the full-day volume >= vs_avg50 x avg50 through the previous session, refuses as a named refusal reason, and the run records a known gap naming the look-ahead (full-day volume is unknown at the trigger). 5m-decided entries keep the live pace. Also a run option to force the full-day rule on 5m days too (spec decision 7), recorded in conventions.
+5. Check that 50%-at-+3R partial, breakeven at +2.5R (raised intraday, so the `ambiguous: pessimistic` convention binds), max_chase 2% gap skip and stop skip > 10% work together on one position as the spec says; unit tests for breakeven move, 50% partial, SMA20 exit, grace window, max chase, breakout volume (pass + fail each).
+Docs: process.md option table, result-standard by_year fields, decisions/invariants where they describe these; compactly.
+Scope: backend/app/hat/backtest/, engine/exits.py and strategy/config.py exit models, engine/trigger.py only where parity needs it, results UI field names, docs/.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

@@ -1,0 +1,9 @@
+NIFTY 500 TRI in the nightly job and a raw-file check, branch hat/tri-nightly.
+Goal: the benchmark every backtest compares against is kept current without a manual backfill, and the stored TRI history is verified against niftyindices' own files kept on disk.
+Read first: app/hat/data/index_history.py (NiftyIndicesSource, tri_request, backfill), the nightly ingest (app/hat/data/ingest.py and its job), /data/workspace/audits/2026-10-26-data-review-fable.md ("Index series": TRI verified only by consistency; item 5 downloads), open-items.md "Nightly TRI".
+Outcomes:
+1. The nightly ingest fetches the NIFTY 500 TRI close for the night's session (niftyindices, same pacing and headers as the backfill) and stores it; a missing day is recorded, never carried; a research run stops failing closed for want of a backfill.
+2. `index_history verify-tri --from --to [--fetch]`: with --fetch, saves niftyindices' raw responses per year under HAT_DATA_ROOT (a raw folder, never the repo); then compares every stored TRI close with the raw files and reports mismatches. The owner approved this download (2026-10-26). Don't write hat_live or the store beyond saving the raw files; give the exact commands in the PR body and the orchestrator runs them.
+Scope: app/hat/data (index_history, ingest/nightly), docs/runbook.md. Verification: one real --fetch for a short range (e.g. 2026-10) and the compare output; a dry run of the nightly TRI step for 2026-10-23; no backtests.
+Follow docs/agents/builder-protocol.md.
+Follow-ups left to this PR: none.

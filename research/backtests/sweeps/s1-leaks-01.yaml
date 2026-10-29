@@ -1,0 +1,128 @@
+# S1 leak fixes from research/vcp-leaks (2026-10-29). Base = frozen rs_r075_ratio09 settings.
+# In-sample 2016-01-01..2024-12-31, daily entries (5m only from 2021-11). Judge by fold 2016-18/19-21/22-24.
+sweep_id: s1-leaks-01
+sweep_name: S1 exit and regime leak fixes, 2016-2024 in-sample
+variants:
+- label: base
+  base: 01a17d5e-5176-728c-8c2a-39bc88acfb16
+  change: frozen rs_r075_ratio09 settings over 2016-2024
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  slot_order: rs
+  risk_pct: 0.0075
+  policy_set: &pol
+  - global_open_risk_pct=1
+  - p_max.stage2-contraction-breakout=1
+  set: &s1
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9
+- label: x_sma50_2r
+  base: base
+  change: drop swing-low-20; SMA50 close exit active only after +2R
+  bundle: true
+  reason: the leak report's step-1 exit fix is one rule change expressed as two knobs
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  slot_order: rs
+  risk_pct: 0.0075
+  policy_set: *pol
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[close_below_sma].start_r=2
+  - exits[trailing_swing_low].enabled=false
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9
+- label: x_chand5
+  base: base
+  change: replace SMA50 + swing-low with a 5x ATR(21) trailing stop
+  bundle: true
+  reason: one exit replaced by another
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  slot_order: rs
+  risk_pct: 0.0075
+  policy_set: *pol
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].enabled=false
+  - exits[trailing_swing_low].enabled=false
+  - 'exits[+]={"rule": "trailing_atr", "days": 21, "multiple": 5}'
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9
+- label: x_sma100
+  base: base
+  change: SMA100 close exit, no swing-low
+  bundle: true
+  reason: one exit replaced by another
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  slot_order: rs
+  risk_pct: 0.0075
+  policy_set: *pol
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=100
+  - exits[trailing_swing_low].enabled=false
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9
+- label: g_sma200
+  base: base
+  change: regime gate loosened to NIFTY 500 close above SMA200 (no rising rule)
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  slot_order: rs
+  risk_pct: 0.0075
+  policy_set: *pol
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[trailing_swing_low].lookback_days=20
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9
+  - 'regime={"rule": "close_above_sma_and_rising", "index": "NIFTY 500", "params": {"sma": 200, "rising_days": 0}}'
+- label: x_sma50_2r_g200
+  base: base
+  change: x_sma50_2r exits + SMA200 regime
+  bundle: true
+  reason: the two largest leaks fixed together
+  flat_ladder: true
+  entry_bars: daily
+  ambiguous: pessimistic
+  slot_order: rs
+  risk_pct: 0.0075
+  policy_set: *pol
+  set:
+  - playbooks[default].setup.criteria[vcp].params.contractions=[2,6]
+  - exits[time_stop].enabled=false
+  - exits[close_below_sma].sma=50
+  - exits[close_below_sma].start_r=2
+  - exits[trailing_swing_low].enabled=false
+  - exits[partial_at_r].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0
+  - exits[step_trail].enabled=false
+  - playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9
+  - 'regime={"rule": "close_above_sma_and_rising", "index": "NIFTY 500", "params": {"sma": 200, "rising_days": 0}}'
