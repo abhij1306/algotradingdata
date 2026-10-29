@@ -1,0 +1,201 @@
+symbol,comp,market,series,isin,subject_raw,entitlement_ratio_parsed,premium_rs_parsed,faceVal,exDate,recDate,bcStartDate,bcEndDate
+BHARATGEAR,Bharat Gears Limited,equities_mainboard,EQ,INE561C01019,Rights 1:10 @ Premium Rs 95/-,1:10,95,10,28-Oct-2021,29-Oct-2021,-,-
+PATINTLOG,Patel Integrated Logistics Limited,equities_mainboard,EQ,INE529D01014,Rights 613:399,613:399,,10,28-Oct-2021,29-Oct-2021,-,-
+VIKASLIFE,Vikas Lifecare Limited,equities_mainboard,EQ,INE161L01027,Rights 4:21 @ Premium Rs 1.80/-,4:21,1.80,1,29-Oct-2021,01-Nov-2021,-,-
+INDHOTEL,The Indian Hotels Company Limited,equities_mainboard,EQ,INE053A01029,Rights 1:9 @ Premium Rs 149/-,1:9,149,1,11-Nov-2021,13-Nov-2021,-,-
+VIKASECO,Vikas EcoTech Limited,equities_mainboard,EQ,INE806A01020,Rights 12:25@ Premium Rs 0.60/-,12:25,0.60,1,24-Nov-2021,25-Nov-2021,-,-
+SHIVAMAUTO,Shivam Autotech Limited,equities_mainboard,EQ,INE637H01016,Rights 2:9 @ Premium Rs 16/-,2:9,16,2,09-Dec-2021,10-Dec-2021,-,-
+BEARDSELL,Beardsell Limited,equities_mainboard,EQ,INE520H01014,Rights 1:3 @ Premium Rs 8/-,1:3,8,2,16-Dec-2021,17-Dec-2021,-,-
+SDBL,Som Distilleries & Breweries Limited,equities_mainboard,EQ,INE480C01012,Rights 1:13@ Premium Rs 30/-,1:13,30,2,31-Dec-2021,03-Jan-2022,-,-
+WOCKPHARMA,Wockhardt Limited,equities_mainboard,EQ,INE049B01025,Rights 3:10@ Premium Rs 220 Per Share,3:10,220,5,08-Mar-2022,09-Mar-2022,-,-
+NGIL,Nakoda Group of Industries Limited,equities_mainboard,EQ,INE236Y01012,Rights 1:4@ Premium Rs 110/-,1:4,110,10,30-Mar-2022,01-Apr-2022,-,-
+BHAGCHEM,Bhagiradha Chemicals & Industries Limited,equities_mainboard,EQ,INE414D01019,Rights Issue 4:17@ Premium Rs 390/-,4:17,390,1,07-Apr-2022,09-Apr-2022,-,-
+ASIANTILES,Asian Granito India Limited,equities_mainboard,EQ,INE022I01019,Rights Issue 30:37@ Premium Rs 53/-,30:37,53,10,11-Apr-2022,12-Apr-2022,-,-
+AURUM,Aurum PropTech Limited,equities_mainboard,EQ,INE898S01029,Rights 3:2 @ Premium Rs 75/-,3:2,75,5,12-Apr-2022,14-Apr-2022,-,-
+ESSENTIA,Integra Essentia Limited,equities_mainboard,EQ,INE418N01035,Rights 33:13@ Premium Rs 0.80/-,33:13,0.80,1,04-May-2022,05-May-2022,-,-
+DYNPRO,Dynemic Products Limited,equities_mainboard,EQ,INE256H01015,Rights 1:20 @ Premium Rs. 440/-,1:20,440,10,12-May-2022,13-May-2022,-,-
+TEMBO,Tembo Global Industries Limited,equities_mainboard,EQ,INE869Y01010,Rights 9:25 @ Premium Rs 90/-,9:25,90,1,08-Aug-2022,10-Aug-2022,-,-
+COASTCORP,Coastal Corporation Limited,equities_mainboard,EQ,INE377E01016,Rights 1:6 @ Premium Rs 215/-,1:6,215,2,25-Aug-2022,26-Aug-2022,-,-
+LIBAS,Libas Consumer Products Limited,equities_mainboard,EQ,INE908V01012,Rights 1:2 @ Premium Rs 11/-,1:2,11,10,15-Sep-2022,16-Sep-2022,-,-
+SUZLON,Suzlon Energy Limited,equities_mainboard,EQ,INE040H01021,Rights 5:21 @ Premium Rs 3/-,5:21,3,2,03-Oct-2022,04-Oct-2022,-,-
+SUVEN,Suven Life Sciences Limited,equities_mainboard,EQ,INE495B01038,Rights 1:2 @ Premium Rs 54/-,1:2,54,1,17-Oct-2022,18-Oct-2022,-,-
+HILTON,Hilton Metal Forging Limited,equities_mainboard,EQ,INE788H01017,Rights 2:5 @ Premium Rs 45/-,2:5,45,10,20-Oct-2022,20-Oct-2022,-,-
+TFL,Transwarranty Finance Limited,equities_mainboard,EQ,INE804H01012,Rights 1:1,1:1,,10,04-Nov-2022,04-Nov-2022,-,-
+COMPINFO,Compuage Infocom Limited,equities_mainboard,EQ,INE070C01029,Rights 8:25 @ Premium Rs 18/-,8:25,18,2,14-Nov-2022,14-Nov-2022,-,-
+ESSENTIA,Integra Essentia Limited,equities_mainboard,EQ,INE418N01035,Rights 37:200 @ Premium Rs 6/-,37:200,6,1,17-Nov-2022,17-Nov-2022,-,-
+AJOONI,Ajooni Biotech Limited,equities_mainboard,EQ,INE820Y01013,Rights 29:30 @ Premium Rs 4/-,29:30,4,2,25-Nov-2022,25-Nov-2022,-,-
+HATSUN,Hatsun Agro Product Limited,equities_mainboard,EQ,INE473B01035,Rights 1:30 @ Premium Rs 418/-,1:30,418,1,07-Dec-2022,08-Dec-2022,-,-
+AKG,Akg Exim Limited,equities_mainboard,EQ,INE00Y801016,Rights 2:1 @ Premium Rs 2/-,2:1,2,10,16-Dec-2022,16-Dec-2022,-,-
+APCL,Anjani Portland Cement Limited,equities_mainboard,EQ,INE071F01012,Rights 1:2 @ Premium Rs 187/-,1:2,187,10,16-Dec-2022,16-Dec-2022,-,-
+RSWM,RSWM Limited,equities_mainboard,EQ,INE611A01016,Rights 1:1 @ Premium Rs 90/-,1:1,90,10,16-Dec-2022,16-Dec-2022,-,-
+SHAH,Shah Metacorp Limited,equities_mainboard,EQ,INE482J01021,Rights 110:100 @ Premium Rs 1.75/-,110:100,1.75,1,23-Dec-2022,23-Dec-2022,-,-
+JETFREIGHT,Jet Freight Logistics Limited,equities_mainboard,EQ,INE982V01017,Rights 1:1 @ Premium Rs 11.25/-,1:1,11.25,5,11-Jan-2023,11-Jan-2023,-,-
+INDOWIND,Indowind Energy Limited,equities_mainboard,EQ,INE227G01018,Rights 2:5@ Premium Rs 2/-,2:5,2,10,13-Jan-2023,13-Jan-2023,-,-
+AARTISURF,Aarti Surfactants Limited,equities_mainboard,EQ,INE09EO01013,Rights 2:17 @ Premium Rs 545/-,2:17,545,10,17-Jan-2023,17-Jan-2023,-,-
+HERITGFOOD,Heritage Foods Limited,equities_mainboard,EQ,INE978A01019,Rights 1:1 @ Premium Rs 0/-,1:1,0,5,20-Jan-2023,20-Jan-2023,-,-
+PATELENG,Patel Engineering Limited,equities_mainboard,EQ,INE244B01030,Rights 1:2@ Premium Rs 11.60/-,1:2,11.60,1,06-Feb-2023,06-Feb-2023,-,-
+ROML,Raj Oil Mills Limited,equities_mainboard,EQ,INE294G01026,Rights 1:1 @ Premium Rs 20/-,1:1,20,10,09-Feb-2023,09-Feb-2023,-,-
+CGCL,Capri Global Capital Limited,equities_mainboard,EQ,INE180C01018,Rights 11:64 @ Premium Rs 473/-,11:64,473,1,17-Feb-2023,17-Feb-2023,-,-
+SHAREINDIA,Share India Securities Limited,equities_mainboard,EQ,INE932X01018,Rights 1:50 @ Premium Rs 690/- With 17 Warrants For 50 Equity Shares,1:50,690,2,28-Feb-2023,28-Feb-2023,-,-
+GOKULAGRO,Gokul Agro Resources Limited,equities_mainboard,EQ,INE314T01025,Rights 1:32 @ Premium Rs 90/-,1:32,90,1,08-Mar-2023,08-Mar-2023,-,-
+SEPC,SEPC Limited,equities_mainboard,EQ,INE964H01014,Rights 2:53 @ Premium Rs 0/-,2:53,0,10,29-Mar-2023,29-Mar-2023,-,-
+PNBHOUSING,PNB Housing Finance Limited,equities_mainboard,EQ,INE572E01012,Rights 29:54@ Premium Rs 265/-,29:54,265,10,05-Apr-2023,05-Apr-2023,-,-
+RUSHIL,Rushil Decor Limited,equities_mainboard,EQ,INE573K01017,Rights 1:3 @ Premium Rs 152/-,1:3,152,1,13-Apr-2023,13-Apr-2023,-,-
+SDBL,Som Distilleries & Breweries Limited,equities_mainboard,EQ,INE480C01012,Rights 10:211@ Premium Rs 135/-,10:211,135,2,13-Apr-2023,14-Apr-2023,-,-
+TPHQ,Teamo Productions HQ Limited,equities_mainboard,EQ,INE065J01016,Rights 11:8 @ Premium Rs 0/-,11:8,0,1,18-Apr-2023,18-Apr-2023,-,-
+AURIGROW,Auri Grow India Limited,equities_mainboard,EQ,INE925Y01036,Rights 2:1 @ Premium Rs 0/-,2:1,0,1,12-May-2023,12-May-2023,-,-
+PRAXIS,Praxis Home Retail Limited,equities_mainboard,EQ,INE546Y01022,Rights 13:20 @ Premium Rs 5/-,13:20,5,5,30-May-2023,30-May-2023,-,-
+SHREERAMA,Shree Rama Multi-Tech Limited,equities_mainboard,EQ,INE879A01019,Rights 11:10@ Premium Rs 4/-,11:10,4,5,30-May-2023,30-May-2023,-,-
+DIL,Debock Industries Limited,equities_mainboard,EQ,INE411Y01011,Rights 3:7 @ Premium Rs 5/-,3:7,5,10,01-Jun-2023,01-Jun-2023,-,-
+NECCLTD,North Eastern Carrying Corporation Limited,equities_mainboard,EQ,INE553C01016,Rights 9:10 @ Premium Rs 8/-,9:10,8,10,02-Jun-2023,02-Jun-2023,-,-
+UDAICEMENT,Udaipur Cement Works Limited,equities_mainboard,EQ,INE225C01029,Rights 4:5 @ Premium Rs 14/-,4:5,14,4,14-Jun-2023,14-Jun-2023,-,-
+SRPL,Shree Ram Proteins Limited,equities_mainboard,EQ,INE008Z01012,Rights 1:1 @ Premium Rs 1.30/-,1:1,1.30,1,06-Jul-2023,06-Jul-2023,-,-
+VCL,Vaxtex Cotfab Limited,equities_mainboard,EQ,INE098201010,Rights 1:2 @ Premium Re 1.50/-,1:2,,1,24-Jul-2023,24-Jul-2023,-,-
+BROOKS,Brooks Laboratories Limited,equities_mainboard,EQ,INE650L01011,Rights 1:16 @ Premium Rs 65/-,1:16,65,10,28-Jul-2023,28-Jul-2023,-,-
+PPLPHARMA,Piramal Pharma Limited,equities_mainboard,EQ,INE0DK501011,Rights 5:46 @ Premium Rs 71/-,5:46,71,10,02-Aug-2023,02-Aug-2023,-,-
+GREENPOWER,Orient Green Power Company Limited,equities_mainboard,EQ,INE999K01014,Rights 19:62 @ Premium Rs 0/-,19:62,0,10,18-Aug-2023,18-Aug-2023,-,-
+NGIL,Nakoda Group of Industries Limited,equities_mainboard,EQ,INE236Y01012,Rights 1:7 @ Premium Rs 30/-,1:7,30,10,05-Sep-2023,05-Sep-2023,-,-
+BHANDARI,Bhandari Hosiery Exports Limited,equities_mainboard,EQ,INE474E01029,Rights 3:26 @ Premium Rs 3.50/-,3:26,3.50,1,22-Sep-2023,23-Sep-2023,-,-
+MARSHALL,Marshall Machines Limited,equities_mainboard,EQ,INE00SZ01018,Rights 7:10 @ Premium Rs 34.80/-,7:10,34.80,10,28-Sep-2023,29-Sep-2023,-,-
+SEPC,SEPC Limited,equities_mainboard,EQ,INE964H01014,Rights 1:36 @ Premium Rs 3/-,1:36,3,10,28-Nov-2023,28-Nov-2023,-,-
+LLOYDSENGG,LLOYDS ENGINEERING WORKS LIMITED,equities_mainboard,EQ,INE093R01011,Rights 1:17 @ Premium Rs 14.50/-,1:17,14.50,1,14-Dec-2023,14-Dec-2023,-,-
+GRASIM,Grasim Industries Limited,equities_mainboard,EQ,INE047A01013,Rights 6:179 @ Premium Rs 1810/-,6:179,1810,2,10-Jan-2024,10-Jan-2024,-,-
+SKIPPER,Skipper Limited,equities_mainboard,EQ,INE439E01022,Rights 1:10 @ Premium Rs 193/-,1:10,193,1,12-Jan-2024,12-Jan-2024,-,-
+ADROITINFO,Adroit Infotech Limited,equities_mainboard,EQ,INE737B01033,Rights 3:2 @ Premium Rs 5/-,3:2,5,10,19-Jan-2024,19-Jan-2024,-,-
+MAGNUM,Magnum Ventures Limited,equities_mainboard,EQ,INE387I01016,Rights 2:11 @ Premium Rs 44/-,2:11,44,10,25-Jan-2024,25-Jan-2024,-,-
+NAGREEKEXP,Nagreeka Exports Limited,equities_mainboard,EQ,INE123B01028,Rights 3:2 @ Premium Rs 15/-,3:2,15,5,30-Jan-2024,30-Jan-2024,-,-
+SAMMAANCAP,Sammaan Capital Limited,equities_mainboard,EQ,INE148I01020,Rights 1:2 @ Premium Rs 148/-,1:2,148,2,01-Feb-2024,01-Feb-2024,-,-
+SILGO,Silgo Retail Limited,equities_mainboard,EQ,INE01II01013,Rights 1:1 @ Premium Rs 15/-,1:1,15,10,22-Feb-2024,22-Feb-2024,-,-
+GLOBE,GLOBE ENTERPRISES (INDIA) LIMITED,equities_mainboard,EQ,INE581X01013,Rights 1:1 @ Premium Rs 1/-,1:1,1,2,23-Feb-2024,23-Feb-2024,-,-
+SOUTHBANK,The South Indian Bank Limited,equities_mainboard,EQ,INE683A01015,Rights 1:4 @ Premium Rs 21/-,1:4,21,1,27-Feb-2024,27-Feb-2024,-,-
+BALKRISHNA,Balkrishna Paper Mills Limited,equities_mainboard,EQ,INE875R01011,Rights 2:1 @ Premium Rs 11/-,2:1,11,10,15-Mar-2024,15-Mar-2024,-,-
+HCC,Hindustan Construction Company Limited,equities_mainboard,EQ,INE549A01026,Rights 13:118 @ Premium Rs 20/-,13:118,20,1,15-Mar-2024,16-Mar-2024,-,-
+JYOTISTRUC,Jyoti Structures Limited,equities_mainboard,EQ,INE197A01024,Rights 6:37 @ Premium Rs 13/-,6:37,13,2,21-Mar-2024,21-Mar-2024,-,-
+TIL,TIL Limited,equities_mainboard,EQ,INE806C01018,Rights 28:10 @ Premium Rs 0/-,28:10,0,10,22-Mar-2024,22-Mar-2024,-,-
+SAKUMA,Sakuma Exports Limited,equities_mainboard,EQ,INE190H01016,Rights 33:98 @ Premium Rs 24.30/-,33:98,24.30,1,15-Apr-2024,15-Apr-2024,-,-
+IIFL,IIFL Finance Limited,equities_mainboard,EQ,INE530B01024,Rights 1:9 @ Premium Rs 298/-,1:9,298,2,23-Apr-2024,23-Apr-2024,-,-
+AGASTYAEN,Agastya Energy and Infrastructure Limited,equities_mainboard,EQ,INE753W01010,Rights 1:2 @ Premium Rs 8/-,1:2,8,10,07-May-2024,07-May-2024,-,-
+AJOONI,Ajooni Biotech Limited,equities_mainboard,EQ,INE820Y01013,Rights 1:1 @ Premium Rs 3/-,1:1,3,2,07-May-2024,07-May-2024,-,-
+KEEPLEARN,DSJ Keep Learning Limited,equities_mainboard,EQ,INE055C01020,Rights 7:9 @ Premium Rs 0/-,7:9,0,1,14-May-2024,14-May-2024,-,-
+SOLARA,Solara Active Pharma Sciences Limited,equities_mainboard,EQ,INE624Z01016,Rights 1:3 @ Premium Rs 365/-,1:3,365,10,15-May-2024,15-May-2024,-,-
+VIJIFIN,Viji Finance Limited,equities_mainboard,EQ,INE159N01019,Rights 8:11 @ Premium Re 0.50/-,8:11,,1,15-May-2024,15-May-2024,-,-
+MGEL,Mangalam Global Enterprise Limited,equities_mainboard,EQ,INE0APB01016,Rights 1:7 @ Premium Rs 18/-,1:7,18,1,24-May-2024,24-May-2024,-,-
+NGIL,Nakoda Group of Industries Limited,equities_mainboard,EQ,INE236Y01012,Rights 4:10 @ Premium Rs 15/-,4:10,15,10,30-May-2024,30-May-2024,-,-
+ESSENTIA,Integra Essentia Limited,equities_mainboard,EQ,INE418N01035,Rights 20:119 @ Premium Rs 2.25/-,20:119,2.25,1,31-May-2024,01-Jun-2024,-,-
+KSHITIJPOL,Kshitij Polyline Limited,equities_mainboard,EQ,IN0000000000,Rights 4:5 @ Premium Rs 4.40/-,4:5,4.40,2,18-Jun-2024,18-Jun-2024,-,-
+BHANDARI,Bhandari Hosiery Exports Limited,equities_mainboard,EQ,INE474E01029,Rights 15:32 @ Premium Rs 5.26/-,15:32,5.26,1,19-Jun-2024,19-Jun-2024,-,-
+SOBHA,Sobha Limited,equities_mainboard,EQ,INE671H01015,Rights 6:47 @ Premium Rs 1641/-,6:47,1641,10,19-Jun-2024,19-Jun-2024,-,-
+MITCON,MITCON Consultancy & Engineering Services Limited,equities_mainboard,EQ,INE828O01033,Rights 6:19 @ Premium Rs 66/-,6:19,66,10,20-Jun-2024,20-Jun-2024,-,-
+SEPC,SEPC Limited,equities_mainboard,EQ,INE964H01014,Rights 6:55 @ Premium Rs 3,6:55,3,10,25-Jun-2024,25-Jun-2024,-,-
+JAIPURKURT,Nandani Creation Limited,equities_mainboard,EQ,INE696V01013,Rights 100:224 @ Premium Rs 20/-,100:224,20,10,04-Jul-2024,04-Jul-2024,-,-
+INVENTURE,Inventure Growth & Securities Limited,equities_mainboard,EQ,INE878H01016,Rights 1:4 @ Premium Rs 1.33/-,1:4,1.33,1,05-Jul-2024,05-Jul-2024,-,-
+GATECH,GACM Technologies Limited,equities_mainboard,EQ,INE224E01028,Rights 1:1 @ Premium Rs 0/-,1:1,0,1,16-Jul-2024,16-Jul-2024,-,-
+GATECHDVR,GACM Technologies Limited,equities_mainboard,EQ,INE224E01036,Rights 1:1 @ Premium Rs 0/-,1:1,0,1,16-Jul-2024,16-Jul-2024,-,-
+INDOWIND,Indowind Energy Limited,equities_mainboard,EQ,INE227G01018,Rights 1:5 @ Premium Rs 12.50/-,1:5,12.50,10,16-Jul-2024,16-Jul-2024,-,-
+TATACONSUM,TATA CONSUMER PRODUCTS LIMITED,equities_mainboard,EQ,INE192A01025,Rights 1:26 @ Premium Rs 817/-,1:26,817,1,26-Jul-2024,27-Jul-2024,-,-
+GREENPOWER,Orient Green Power Company Limited,equities_mainboard,EQ,INE999K01014,Rights 10:51 @ Premium Rs 3/-,10:51,3,10,13-Aug-2024,13-Aug-2024,-,-
+VINNY,Vinny Overseas Limited,equities_mainboard,EQ,INE01KI01019,Rights 1:1 @ Premium Rs 1/-,1:1,1,1,14-Aug-2024,14-Aug-2024,-,-
+ATALREAL,Atal Realtech Limited,equities_mainboard,EQ,INE0ALR01011,Rights 1:2 @ Premium Rs 5/-,1:2,5,2,22-Aug-2024,22-Aug-2024,-,-
+AKSHAR,Akshar Spintex Limited,equities_mainboard,EQ,INE256Z01017,Rights 13:8 @ Premium Rs 0/-,13:8,0,1,23-Aug-2024,23-Aug-2024,-,-
+VARDMNPOLY,Vardhman Polytex Limited,equities_mainboard,EQ,INE835A01011,Rights 7:23 @ Premium Rs 5/-,7:23,5,1,28-Aug-2024,28-Aug-2024,-,-
+DUCON,Ducon Infratechnologies Limited,equities_mainboard,EQ,INE741L01018,Rights 1:4 @ Premium Rs 6/-,1:4,6,1,30-Aug-2024,30-Aug-2024,-,-
+ORIENTALTL,Oriental Trimex Limited,equities_mainboard,EQ,INE998H01012,Rights 3:2 @ Premium Re 1/-,3:2,,10,05-Sep-2024,05-Sep-2024,-,-
+PATINTLOG,Patel Integrated Logistics Limited,equities_mainboard,EQ,INE529D01014,Rights 8:103 @ Premium Rs 8/-,8:103,8,10,06-Sep-2024,06-Sep-2024,-,-
+SGIL,Synergy Green Industries Limited,equities_mainboard,EQ,INE00QT01015,Rights 1:10 @ Premium Rs 315/-,1:10,315,10,11-Sep-2024,11-Sep-2024,-,-
+NARMADA,Narmada Agrobase Limited,equities_mainboard,EQ,INE117Z01011,Rights 9:5 @ Premium Rs 5/-,9:5,5,5,13-Sep-2024,16-Sep-2024,-,-
+SADHNANIQ,Sadhana Nitrochem Limited,equities_mainboard,EQ,INE888C01040,Rights 1:3 @ Premium Rs 5.06/-,1:3,5.06,1,13-Sep-2024,13-Sep-2024,-,-
+MITTAL,Mittal Life Style Limited,equities_mainboard,EQ,INE997Y01019,Rights 1:2 @ Premium Re 1/-,1:2,,1,03-Oct-2024,03-Oct-2024,-,-
+GEOJITFSL,Geojit Financial Services Limited,equities_mainboard,EQ,INE007B01023,Rights 1:6 @ Premium Rs 49/-,1:6,49,1,07-Oct-2024,07-Oct-2024,-,-
+HINDWAREAP,Hindware Home Innovation Limited,equities_mainboard,EQ,INE05AN01011,Rights 119:758 @ Premium Rs 218/-,119:758,218,2,25-Oct-2024,25-Oct-2024,-,-
+UPL,UPL Limited,equities_mainboard,EQ,INE628A01036,Rights 1:8 @ Premium Rs 358/-,1:8,358,2,26-Nov-2024,26-Nov-2024,-,-
+VHLTD,Viceroy Hotels Limited,equities_mainboard,EQ,INE048C01025,Rights 7:10 @ Prm Rs 102/-,7:10,,10,29-Nov-2024,29-Nov-2024,-,-
+SIKKO,Sikko Industries Limited,equities_mainboard,EQ,INE112X01017,Rights 3:10 @ Premium Rs 88/-,3:10,88,1,06-Dec-2024,06-Dec-2024,-,-
+AVONMORE,Avonmore Capital & Management Services Limited,equities_mainboard,EQ,INE323B01016,Rights 5:24 @ Premium Rs 9/-,5:24,9,1,12-Dec-2024,12-Dec-2024,-,-
+MOKSH,Moksh Ornaments Limited,equities_mainboard,EQ,INE514Y01012,Rights 14:23 @ Premium Rs 13/-,14:23,13,2,20-Dec-2024,20-Dec-2024,-,-
+DHANBANK,Dhanlaxmi Bank Limited,equities_mainboard,EQ,INE680A01011,Rights 14:25 @ Premium Rs 11/-,14:25,11,10,27-Dec-2024,27-Dec-2024,-,-
+CAMLINFINE,Camlin Fine Sciences Limited,equities_mainboard,EQ,INE052I01032,Rights 5:41 @ Premium Rs 109/-,5:41,109,1,08-Jan-2025,08-Jan-2025,-,-
+CALSOFT,California Software Company Limited,equities_mainboard,EQ,INE526B01014,Rights 3:1 @ Premium Rs 0/-,3:1,0,10,15-Jan-2025,15-Jan-2025,-,-
+GLOBE,GLOBE ENTERPRISES (INDIA) LIMITED,equities_mainboard,EQ,INE581X01013,Rights 1:2 @ Premium Rs 1/-,1:2,1,2,17-Jan-2025,17-Jan-2025,-,-
+JYOTISTRUC,Jyoti Structures Limited,equities_mainboard,EQ,INE197A01024,Rights 9:26 @ Premium Rs 14/-,9:26,14,2,10-Feb-2025,10-Feb-2025,-,-
+THANGAMAYL,Thangamayil Jewellery Limited,equities_mainboard,EQ,INE085J01014,Rights 2:15 @ Premium Rs 1390/-,2:15,1390,10,11-Feb-2025,11-Feb-2025,-,-
+ABINFRA,A B Infrabuild Limited,equities_mainboard,EQ,INE00YB01017,Rights 1:5 @ Premium Rs 27.50/-,1:5,27.50,1,10-Mar-2025,10-Mar-2025,-,-
+IRISDOREME,Iris Clothings Limited,equities_mainboard,EQ,INE01GN01017,Rights 1:6 @ Premium Rs 33/-,1:6,33,2,13-Mar-2025,13-Mar-2025,-,-
+PRAXIS,Praxis Home Retail Limited,equities_mainboard,EQ,INE546Y01022,Rights 11:30 @ Premium Rs 5/-,11:30,5,5,20-Mar-2025,20-Mar-2025,-,-
+BTML,Bodhi Tree Multimedia Limited,equities_mainboard,EQ,INE0EEJ01015,Rights 4:9 @ Premium Rs 7/-,4:9,7,1,24-Mar-2025,24-Mar-2025,-,-
+FUSION,Fusion Finance Limited,equities_mainboard,EQ,INE139R01012,Rights 55:91 @ Premium Rs 121/-,55:91,121,10,04-Apr-2025,04-Apr-2025,-,-
+GATECH,GACM Technologies Limited,equities_mainboard,EQ,INE224E01028,Rights 51:82 @ Premium Rs 0/-,51:82,0,1,28-Apr-2025,28-Apr-2025,-,-
+GATECHDVR,GACM Technologies Limited,equities_mainboard,EQ,INE224E01036,Rights 51:82 @ Premium Rs 0/-,51:82,0,1,28-Apr-2025,28-Apr-2025,-,-
+LLOYDSENGG,LLOYDS ENGINEERING WORKS LIMITED,equities_mainboard,EQ,INE093R01011,Rights 9:34 @ Premium Rs 31/-,9:34,31,1,28-Apr-2025,28-Apr-2025,-,-
+MAXIND,Max India Limited,equities_mainboard,EQ,INE0CG601016,Rights 19:100 @ Premium Rs 140/-,19:100,140,10,29-Apr-2025,29-Apr-2025,-,-
+BASML,Bannari Amman Spinning Mills Limited,equities_mainboard,EQ,INE186H01014,Rights 10:43 @ Premium Rs 22/-,10:43,22,5,30-Apr-2025,30-Apr-2025,-,-
+AVANTEL,Avantel Limited,equities_mainboard,EQ,INE005B01027,Rights 10:121@ Premium Rs 38/-,10:121,38,2,07-May-2025,07-May-2025,-,-
+M&MFIN,Mahindra & Mahindra Financial Services Limited,equities_mainboard,EQ,INE774D01016,Rights 1:8 @ Premium Rs 192/-,1:8,192,2,14-May-2025,14-May-2025,-,-
+MAHLIFE,Mahindra Lifespace Developers Limited,equities_mainboard,EQ,INE813A01018,Rights 3:8 @ Premium Rs 247/-,3:8,247,10,23-May-2025,23-May-2025,-,-
+SEPC,SEPC Limited,equities_mainboard,EQ,INE964H01014,Rights 11: 50 @ Premium Rs 0/-,11:50,0,10,23-May-2025,23-May-2025,-,-
+UGROCAP,Ugro Capital Limited,equities_mainboard,EQ,INE583D01011,Rights 50:189 @ Premium Rs 152/-,50:189,152,10,05-Jun-2025,05-Jun-2025,-,-
+ETHOSLTD,Ethos Limited,equities_mainboard,EQ,INE04TZ01018,Rights 4:43@ Premium Rs 1790/-,4:43,1790,10,12-Jun-2025,12-Jun-2025,-,-
+CAPTRUST,Capital Trust Limited,equities_mainboard,EQ,INE707C01018,Rights 5:14 @ Premium Rs 72/-,5:14,72,10,18-Jun-2025,18-Jun-2025,-,-
+CCAVENUE,AvenuesAI Limited,equities_mainboard,EQ,INE483S01020,Rights 67:267 @ Premium Rs 9/-,67:267,9,10,26-Jun-2025,26-Jun-2025,-,-
+GVPTECH,GVP Infotech Limited,equities_mainboard,EQ,INE382T01030,Rights 13:100 @ Premium Rs 8/-,13:100,8,2,30-Jun-2025,30-Jun-2025,-,-
+ONIDA,Onida Electronics Limited,equities_mainboard,EQ,INE831A01028,Rights 3:14 @ Premium Rs 9/-,3:14,9,1,30-Jun-2025,30-Jun-2025,-,-
+ASTEC,Astec LifeSciences Limited,equities_mainboard,EQ,INE563J01010,Rights 1:7 @ Premium Rs 880/-,1:7,880,10,04-Jul-2025,04-Jul-2025,-,-
+TTL,T T Limited,equities_mainboard,EQ,INE592B01016,Rights 4:27 @ Premium Rs 11/-,4:27,11,1,04-Jul-2025,04-Jul-2025,-,-
+EXICOM,Exicom Tele-Systems Limited,equities_mainboard,EQ,INE777F01014,Rights 3:20 @ Premium Rs 133/-,3:20,133,10,07-Jul-2025,07-Jul-2025,-,-
+KILITCH,Kilitch Drugs (India) Limited,equities_mainboard,EQ,INE729D01010,Rights 2:23 @ Premium Rs 347/-,2:23,347,10,15-Jul-2025,15-Jul-2025,-,-
+VALIANTLAB,Valiant Laboratories Limited,equities_mainboard,EQ,INE0JWS01017,Rights 1:4 @ Premium Rs 65/-,1:4,65,10,18-Jul-2025,19-Jul-2025,-,-
+MAHLOG,Mahindra Logistics Limited,equities_mainboard,EQ,INE766P01016,Rights 3:8 @ Premium Rs 267/-,3:8,267,10,23-Jul-2025,23-Jul-2025,-,-
+SPANDANA,Spandana Sphoorty Financial Limited,equities_mainboard,EQ,INE572J01011,Rights 10:41 @ Premium Rs 220/-,10:41,220,10,24-Jul-2025,24-Jul-2025,-,-
+JTEKTINDIA,Jtekt India Limited,equities_mainboard,EQ,INE643A01035,Rights 1:11 @ Premium Rs 107.10/-,1:11,107.10,1,25-Jul-2025,25-Jul-2025,-,-
+INOXWIND,Inox Wind Limited,equities_mainboard,EQ,INE066P01011,Rights 5:78 @ Premium Rs 110/-,5:78,110,10,29-Jul-2025,29-Jul-2025,-,-
+CYBERMEDIA,Cyber Media (India) Limited,equities_mainboard,EQ,INE278G01037,Rights 2:5 @ Premium Rs 5.80/-,2:5,5.80,10,01-Aug-2025,01-Aug-2025,-,-
+DAVANGERE,Davangere Sugar Company Limited,equities_mainboard,EQ,INE179G01011,Rights 13:25 @ Premium Rs 2.05/-,13:25,2.05,1,06-Aug-2025,06-Aug-2025,-,-
+LLOYDSENT,Lloyds Enterprises Limited,equities_mainboard,EQ,INE080I01025,Rights 1:5 @ Premium Rs 38/-,1:5,38,1,14-Aug-2025,14-Aug-2025,-,-
+SARVESHWAR,Sarveshwar Foods Limited,equities_mainboard,EQ,INE324X01018,Rights 12:47 @ Premium Rs 5/-,12:47,5,1,22-Aug-2025,22-Aug-2025,-,-
+NDTV,New Delhi Television Limited,equities_mainboard,EQ,INE155G01029,Rights 3:4 @ Premium Rs 78/-,3:4,78,4,12-Sep-2025,12-Sep-2025,-,-
+SHRADHA,Shradha Realty Limited,equities_mainboard,EQ,INE715Y01015,Rights 3:5 @ Premium Rs 38/-,3:5,38,2,16-Sep-2025,16-Sep-2025,-,-
+3IINFOLTD,3i Infotech Limited,equities_mainboard,EQ,INE748C01038,Rights 2:9 @ Premium Rs 7/-,2:9,7,10,26-Sep-2025,26-Sep-2025,-,-
+CAPTRUST,Capital Trust Limited,equities_mainboard,EQ,INE707C01018,Rights 1:1 @ Premium Rs 4/-,1:1,4,10,10-Oct-2025,10-Oct-2025,-,-
+DELPHIFX,DELPHI WORLD MONEY LIMITED,equities_mainboard,EQ,INE726L01019,Rights 23:49 @ Premium Rs 181/-,23:49,181,2,14-Oct-2025,14-Oct-2025,-,-
+UTKARSHBNK,Utkarsh Small Finance Bank Limited,equities_mainboard,EQ,INE735W01017,Rights 8:13 @ Premium Rs 4/-,8:13,4,10,14-Oct-2025,14-Oct-2025,-,-
+ATL,Allcargo Terminals Limited,equities_mainboard,EQ,INE0NN701020,Rights 3:19 @ Premium Rs 18/-,3:19,18,2,14-Nov-2025,14-Nov-2025,-,-
+ADANIENT,Adani Enterprises Limited,equities_mainboard,EQ,INE423A01024,Rights 3:25 @ Premium Rs 1799/-,3:25,1799,1,17-Nov-2025,17-Nov-2025,-,-
+BAIDFIN,Baid Finserv Limited,equities_mainboard,EQ,INE020D01022,Rights 1:4 @ Premium Rs 8/-,1:4,8,2,17-Nov-2025,17-Nov-2025,-,-
+INDOWIND,Indowind Energy Limited,equities_mainboard,EQ,INE227G01018,Rights 1:4 @ Premium Rs 5.35/-,1:4,5.35,10,19-Nov-2025,19-Nov-2025,-,-
+PATELENG,Patel Engineering Limited,equities_mainboard,EQ,INE244B01030,Rights 7:40 @ Premium Rs 26/-,7:40,26,1,04-Dec-2025,04-Dec-2025,-,-
+HCC,Hindustan Construction Company Limited,equities_mainboard,EQ,INE549A01026,Rights 277:630 @ Premium Rs 11.50/-,277:630,11.50,1,05-Dec-2025,05-Dec-2025,-,-
+NACLIND,NACL Industries Limited,equities_mainboard,EQ,INE295D01020,Rights 5:31 @ Premium Rs 75.70/-,5:31,75.70,1,12-Dec-2025,12-Dec-2025,-,-
+KRISHIVAL,Krishival Foods Limited,equities_mainboard,EQ,INE0GGO01015,Rights 45:301 @ Premium Rs 290/-,45:301,290,10,17-Dec-2025,17-Dec-2025,-,-
+VINEETLAB,Vineet Laboratories Limited,equities_mainboard,EQ,INE505Y01010,Rights 13:12 @ Premium Rs 20/-,13:12,20,10,23-Dec-2025,23-Dec-2025,-,-
+HILTON,Hilton Metal Forging Limited,equities_mainboard,EQ,INE788H01017,Rights 14:29 @ Premium Rs 18.32/-,14:29,18.32,10,26-Dec-2025,26-Dec-2025,-,-
+SILGO,Silgo Retail Limited,equities_mainboard,EQ,INE01II01013,Rights 3:10 @ Premium Rs 50/-,3:10,50,10,05-Jan-2026,05-Jan-2026,-,-
+STALLION,Stallion India Fluorochemicals Limited,equities_mainboard,EQ,INE0RYC01010,Rights 19:41 @ Premium Rs 89/-,19:41,89,10,11-Feb-2026,11-Feb-2026,-,-
+ONELIFECAP,Onelife Capital Advisors Limited,equities_mainboard,EQ,INE912L01015,Rights 300:167 @ Premium Rs 5/-,300:167,5,10,16-Feb-2026,16-Feb-2026,-,-
+SADHNANIQ,Sadhana Nitrochem Limited,equities_mainboard,EQ,INE888C01040,Rights 8:1 @ Premium Rs 0/-,8:1,0,1,18-Feb-2026,19-Feb-2026,-,-
+SICALLOG,Sical Logistics Limited,equities_mainboard,EQ,INE075B01020,Rights 11:5 @ Premium Rs 54/-,11:5,54,10,18-Feb-2026,18-Feb-2026,-,-
+HILTON,Hilton Metal Forging Limited,equities_mainboard,EQ,INE788H01017,Rights 29:60 @ Premium Rs 6.68/-,29:60,6.68,10,24-Feb-2026,24-Feb-2026,-,-
+BHANDARI,Bhandari Hosiery Exports Limited,equities_mainboard,EQ,INE474E01029,Rights 4:5 @ Premium Rs 1.56/-,4:5,1.56,1,25-Feb-2026,25-Feb-2026,-,-
+HCG,Healthcare Global Enterprises Limited,equities_mainboard,EQ,INE075I01017,Rights 1:17 @ Premium Rs 502/-,1:17,502,10,02-Mar-2026,02-Mar-2026,-,-
+PRABHA,Prabha Energy Limited,equities_mainboard,EQ,INE0I0M01023,Rights 5:14 @ Premium Rs 143/-,5:14,143,1,11-Mar-2026,11-Mar-2026,-,-
+5PAISA,5Paisa Capital Limited,equities_mainboard,EQ,INE618L01018,Rights 1:2 @ Premium Rs 290/-,1:2,290,10,17-Mar-2026,17-Mar-2026,-,-
+MAHAPEXLTD,Maha Rashtra Apex Corporation Limited,equities_mainboard,EQ,INE843B01013,Rights 1:1 @ Premium Rs 0/-,1:1,0,10,20-Mar-2026,20-Mar-2026,-,-
+TIL,TIL Limited,equities_mainboard,EQ,INE806C01018,Rights 11:64 @ Premium Rs 155/-,11:64,155,10,23-Mar-2026,23-Mar-2026,-,-
+EFCIL,EFC (I) Limited,equities_mainboard,EQ,INE886D01026,Rights 8:103 @ Premium Rs 148/-,8:103,148,2,07-May-2026,07-May-2026,-,-
+ESSENTIA,Integra Essentia Limited,equities_mainboard,EQ,INE418N01035,Rights 161:250 @ Premium Re 0.45 /-,161:250,,1,20-May-2026,20-May-2026,-,-
+AVG,AVG Logistics Limited,equities_mainboard,EQ,INE680Z01018,Rights 8:33 @ Premium Rs 135/-,8:33,135,10,21-May-2026,21-May-2026,-,-
+SHAH,Shah Metacorp Limited,equities_mainboard,EQ,INE482J01021,Rights 36:311 @ Premium Rs 3.86,36:311,3.86,1,27-May-2026,27-May-2026,-,-
+RELTD,Ravindra Energy Limited,equities_mainboard,EQ,INE206N01018,Rights 1:9 @ Premium 91,1:9,,10,08-Jun-2026,08-Jun-2026,-,-
+SUMEETINDS,Sumeet Industries Limited,equities_mainboard,EQ,INE235C01010,Rights 8:25 @ Premium Rs 9.86/-,8:25,9.86,2,12-Jun-2026,12-Jun-2026,-,-
+GANGAFORGE,Ganga Forging Limited,equities_mainboard,EQ,INE691Z01015,Rights 3:2 @ Premium Re. 0.63/-,3:2,,1,02-Jul-2026,02-Jul-2026,-,-
+GENESYS,Genesys International Corporation Limited,equities_mainboard,EQ,INE727B01018,Rights 3:5 @ Premium Rs 45/-,3:5,45,5,06-Aug-2026,06-Aug-2026,-,-
+SHANTIGOLD,Shanti Gold International Limited,equities_mainboard,EQ,INE06ZD01017,Rights 19:295 @ Premium Rs 205/-,19:295,205,10,06-Aug-2026,06-Aug-2026,-,-
+KSHITIJPOL,Kshitij Polyline Limited,equities_mainboard,EQ,IN0000000000,Rights 2:5 @ Premium Rs 1.17/-,2:5,1.17,2,19-Aug-2026,19-Aug-2026,-,-
+VHLTD,Viceroy Hotels Limited,equities_mainboard,EQ,INE048C01025,Rights 6:7 @ Premium Rs 105/-,6:7,105,10,20-Aug-2026,20-Aug-2026,-,-
+DUCON,Ducon Infratechnologies Limited,equities_mainboard,EQ,INE741L01018,Rights 10:13 @ Premium Rs 0/-,10:13,0,1,25-Aug-2026,25-Aug-2026,-,-
+QUINT,Quint Digital Limited,equities_mainboard,EQ,INE641R01017,Rights - 7 Ccps And 7 Warrants:40,,,10,25-Aug-2026,25-Aug-2026,-,-
+RATNAVEER,Ratnaveer Precision Engineering Limited,equities_mainboard,EQ,INE05CZ01011,Rights 7:40 @ Premium Rs 254/-,7:40,254,10,25-Aug-2026,26-Aug-2026,-,-
+JAYKAY,Jaykay Enterprises Limited,equities_mainboard,EQ,INE903A01025,Rights 3:19 @ Premium Rs 74/-,3:19,74,1,28-Aug-2026,28-Aug-2026,-,-
+CENTEXT,Century Extrusions Limited,equities_mainboard,EQ,INE281A01026,Rights 3:8 @ Premium Rs 14/-,3:8,14,1,15-Sep-2026,15-Sep-2026,-,-
+NATCOPHARM,Natco Pharma Limited,equities_mainboard,EQ,INE987B01018,Rights 2:21 @ Premium Rs 748/-,2:21,748,2,01-Oct-2026,01-Oct-2026,-,-
+OLAELEC,Ola Electric Mobility Limited,equities_mainboard,EQ,INE0LXG01040,Rights 2:25 @ Premium Rs 17/-,2:25,17,10,13-Oct-2026,13-Oct-2026,-,-
+SHIVAMAUTO,Shivam Autotech Limited,equities_mainboard,EQ,INE637H01016,Rights 19:25 @ Premium Rs 10/-,19:25,10,2,15-Oct-2026,15-Oct-2026,-,-
+SHRADDHA,Shraddha Prime Projects Limited,equities_mainboard,EQ,INE311M01018,Rights 3:20 @ Premium Rs 150/-,3:20,150,10,15-Oct-2026,15-Oct-2026,-,-

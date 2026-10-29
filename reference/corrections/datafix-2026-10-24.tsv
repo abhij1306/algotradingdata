@@ -1,0 +1,6 @@
+op	isin	ex_date	type	factor	new_ex_date	note
+add	INE483S01020	2026-10-19	split	10		CCAVENUE 10:1 consolidation (ISIN INE483S01020->INE483S01038); prev close 13.83 vs restated 138.30
+add	INE566M01017	2026-10-23	split	0.2		AZADIND FV split Rs10->Rs2 (NSE CA feed); ISIN INE566M01017->INE566M01025; feed row refused no_bars across ISIN change
+add	INF740KA1SW3	2026-08-28	split	0.1		GOLDADD ETF unit split 1:10 (ISIN ->INF740KA1ZP2); close 152.98 -> open 15.48
+add	INF740KA1RE3	2026-08-28	split	0.1		SILVERADD ETF unit split 1:10 (ISIN ->INF740KA1ZQ0); close 228.41 -> open 23.97
+add	INF205K01DA9	2026-07-31	split	0.1		IVZINNIFTY ETF unit split 1:10 (ISIN ->INF205KA1CC7); close 2786.51 -> open 276.50

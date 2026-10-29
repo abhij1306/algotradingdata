@@ -1,0 +1,37 @@
+symbol,comp,market,series,isin,subject_raw,entitlement_ratio_parsed,premium_rs_parsed,faceVal,exDate,recDate,bcStartDate,bcEndDate
+BTML,Bodhi Tree Multimedia Limited,sme_emerge,SM,364837,RIGHTS 1:1 @ PREMIUM RS 90/-,1:1,90,10,21-Apr-2022,22-Apr-2022,-,-
+DESTINY,Destiny Logistics & Infra Limited,sme_emerge,SM,381774,RIGHTS 1:1,1:1,,10,15-Nov-2022,15-Nov-2022,-,-
+DESTINY,Destiny Logistics & Infra Limited,sme_emerge,SM,386287,RIGHTS 1:1,1:1,,10,27-Jan-2023,27-Jan-2023,-,-
+BRIGHT,Bright Solar Limited,sme_emerge,SM,386592,RIGHTS 2:9 @ PREMIUM RS 0/-,2:9,0,10,06-Feb-2023,06-Feb-2023,-,-
+KHFM,Khfm Hospitality And Facility Management Services Limited,sme_emerge,SM,386973,RIGHTS 1:1 @ PRM RS 14/-,1:1,,10,10-Feb-2023,10-Feb-2023,-,-
+PERFECT,Perfect Infraengineers Limited,sme_emerge,SM,394817,RIGHTS 100:58 @ PREMIUM RS 8/-,100:58,8,10,01-Aug-2023,01-Aug-2023,-,-
+CLOUD,Varanium Cloud Limited,sme_emerge,SM,400438,RIGHTS 1:10 @ PREMIUM RS 118/-,1:10,118,5,15-Sep-2023,15-Sep-2023,-,-
+DUGLOBAL,DUDIGITAL GLOBAL LIMITED,sme_emerge,SM,403409,RIGHTS 1:5 @ PREMIUM RS 24.50/-,1:5,24.50,2,22-Sep-2023,22-Sep-2023,-,-
+GICL,Globe International Carriers Limited,sme_emerge,SM,403497,RIGHTS 6:25 @ PREMIUM RS 39.50 /-,6:25,39.50,5,22-Sep-2023,22-Sep-2023,-,-
+ABINFRA,A B Infrabuild Limited,sme_emerge,SM,413306,RIGHTS 1:8 @ PREMIUM RS 8/-,1:8,8,10,17-May-2024,17-May-2024,-,-
+SARTELE,Sar Televenture Limited,sme_emerge,SM,415691,RIGHTS 1:1 @ PREMIUM RS 198/-,1:1,198,2,09-Jul-2024,09-Jul-2024,-,-
+GSTL,Globesecure Technologies Limited,sme_emerge,SM,416175,RIGHTS 3:4 @ PREMIUM RS 30/-,3:4,30,10,12-Jul-2024,12-Jul-2024,-,-
+NIRMAN,Nirman Agri Genetics Limited,sme_emerge,SM,418121,RIGHTS 11:32 @ PREMIUM RS 229/-,11:32,229,10,29-Jul-2024,29-Jul-2024,-,-
+SSFL,Srivari Spices And Foods Limited,sme_emerge,SM,424007,RIGHTS 1:5 @ PREMIUM RS 165/-,1:5,165,10,04-Sep-2024,04-Sep-2024,-,-
+SAHANA,Sahana System Limited,sme_emerge,SM,431565,RIGHTS 1:15 @ PREMIUM RS 880/-,1:15,880,10,25-Sep-2024,25-Sep-2024,-,-
+UCL,Ushanti Colour Chem Limited,sme_emerge,SM,431807,RIGHTS 5:100 @ PREMIUM RS 45/-,5:100,45,10,11-Oct-2024,11-Oct-2024,-,-
+MANAV,Manav Infra Projects Limited,sme_emerge,SM,437426,RIGHTS 1:1 @ PREMIUM RE 1/-,1:1,,10,28-Feb-2025,28-Feb-2025,-,-
+DOLLEX,Dollex Agrotech Limited,sme_emerge,SM,439429,RIGHTS 3:5 @ PREMIUM RS 23/-,3:5,23,10,14-May-2025,14-May-2025,-,-
+ACCENTMIC,Accent Microcell Limited,sme_emerge,SM,440305,RIGHTS 7:50 @ PREMIUM RS 125/-,7:50,125,10,04-Jun-2025,04-Jun-2025,-,-
+GSMFOILS,GSM Foils Limited,sme_emerge,SM,458529,RIGHTS 1:10 @ PREMIUM RS 170/-,1:10,170,10,28-Aug-2025,28-Aug-2025,-,-
+QMSMEDI,QMS Medical Allied Services Limited,sme_emerge,SM,459120,RIGHTS 1:12 @ PREMIUM RS 71/-,1:12,71,10,04-Sep-2025,04-Sep-2025,-,-
+COOLCAPS,Cool Caps Industries Limited,sme_emerge,SM,462487,RIGHTS 1:1 @ PREMIUM RS 68/-,1:1,68,2,23-Sep-2025,23-Sep-2025,-,-
+IEML,Indian Emulsifiers Limited,sme_emerge,SM,462855,RIGHTS 1:2 @ PREMIUM RS 70/-,1:2,70,10,10-Oct-2025,10-Oct-2025,-,-
+ROCKINGDCE,Rockingdeals Circular Economy Limited,sme_emerge,SM,463604,RIGHTS 1:2 @ PREMIUM RS 150/-,1:2,150,10,29-Oct-2025,29-Oct-2025,-,-
+PRESSTONIC,Presstonic Engineering Limited,sme_emerge,SM,467023,RIGHTS 1:1 @ PREMIUM RS 25/-,1:1,25,10,29-Jan-2026,29-Jan-2026,-,-
+DURLAX,Durlax Top Surface Limited,sme_emerge,SM,468304,RIGHTS 37:50 @ PREMIUM RS 30/-,37:50,30,10,12-Feb-2026,12-Feb-2026,-,-
+OLIL,Oneclick Logistics India Limited,sme_emerge,SM,469245,RIGHTS 1:5 @ PREMIUM RS 303/-,1:5,303,10,26-Feb-2026,26-Feb-2026,-,-
+DHARIWAL,Dhariwalcorp Limited,sme_emerge,SM,469224,RIGHTS 1:1 @ PREMIUM RE 0.50/-,1:1,,2,27-Feb-2026,27-Feb-2026,-,-
+JFLLIFE,Jfl Life Sciences Limited,sme_emerge,SM,469571,RIGHTS 1:1 @ PREMIUM RS 0/-,1:1,0,10,10-Mar-2026,10-Mar-2026,-,-
+FALCONTECH,Falcon Technoprojects India Limited,sme_emerge,SM,470018,RIGHTS 4:1 @ PREMIUM RS 0/-,4:1,0,10,18-Mar-2026,18-Mar-2026,-,-
+SUNREST,Sunrest Lifescience Limited,sme_emerge,SM,470083,RIGHTS 1:1 @ PREMIUM RS 25/-,1:1,25,10,23-Mar-2026,23-Mar-2026,-,-
+SUNREST,Sunrest Lifescience Limited,sme_emerge,SM,478907,RIGHTS 1:1 @ PREMIUM RS 25/-,1:1,25,10,10-Aug-2026,10-Aug-2026,-,-
+RCDL,Rajgor Castor Derivatives Limited,sme_emerge,SM,480486,RIGHTS 1:1 @ PREMIUM RS 0/-,1:1,0,10,24-Aug-2026,24-Aug-2026,-,-
+MPEL,Manas Polymers and Energies Limited,sme_emerge,SM,481145,RIGHTS 2:1 @ PREMIUM RS 6/-,2:1,6,10,31-Aug-2026,31-Aug-2026,-,-
+ANONDITA,Anondita Medicare Limited,sme_emerge,SM,481478,RIGHTS 97:1831 @ PREMIUM RS 940/-,97:1831,940,10,02-Sep-2026,02-Sep-2026,-,-
+PARTYCRUS,Party Cruisers Limited,sme_emerge,SM,482798,RIGHTS 1:6 @ PREMIUM RS 110/-,1:6,110,10,11-Sep-2026,14-Sep-2026,-,-

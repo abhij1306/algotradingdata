@@ -1,0 +1,5 @@
+symbol,comp,market,series,isin,subject_raw,entitlement_ratio_parsed,premium_rs_parsed,faceVal,exDate,recDate,bcStartDate,bcEndDate
+IRBIT,IRB INFRASTRUCTURE TRUST,invit_not_equity,IV,INE0C8K23012,Rights 1:6 @ Premium Rs 100.98/-,1:6,100.98,100,28-Jul-2023,28-Jul-2023,-,-
+VERTIS,Vertis Infrastructure Trust,invit_not_equity,IV,INE0KXY23015,Rights 10:63,10:63,,100,28-Sep-2023,29-Sep-2023,-,-
+IRBIT,IRB INFRASTRUCTURE TRUST,invit_not_equity,IV,INE0C8K23012,Rights 1:11.10 @ Premium Rs 0/-,1:11.10,0,100,12-Mar-2024,12-Mar-2024,-,-
+IRBIT,IRB INFRASTRUCTURE TRUST,invit_not_equity,IV,INE0C8K23012,Rights 1:19.07 @ Premium Rs 0,1:19.07,0,100,13-Dec-2024,13-Dec-2024,-,-

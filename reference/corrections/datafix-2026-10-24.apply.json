@@ -1,0 +1,121 @@
+{
+  "applied": true,
+  "lines": 5,
+  "results": [
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "10",
+            "known_on": null,
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-10-19",
+          "isin": "INE483S01020",
+          "note": "CCAVENUE 10:1 consolidation (ISIN INE483S01020->INE483S01038); prev close 13.83 vs restated 138.30",
+          "symbol": "INFIBEAM",
+          "via": "cli"
+        }
+      ],
+      "line": 2,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.2",
+            "known_on": null,
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-10-23",
+          "isin": "INE566M01017",
+          "note": "AZADIND FV split Rs10->Rs2 (NSE CA feed); ISIN INE566M01017->INE566M01025; feed row refused no_bars across ISIN change",
+          "symbol": "AZADIND",
+          "via": "cli"
+        }
+      ],
+      "line": 3,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": null,
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-08-28",
+          "isin": "INF740KA1SW3",
+          "note": "GOLDADD ETF unit split 1:10 (ISIN ->INF740KA1ZP2); close 152.98 -> open 15.48",
+          "symbol": "DSPGOLDETF",
+          "via": "cli"
+        }
+      ],
+      "line": 4,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": null,
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-08-28",
+          "isin": "INF740KA1RE3",
+          "note": "SILVERADD ETF unit split 1:10 (ISIN ->INF740KA1ZQ0); close 228.41 -> open 23.97",
+          "symbol": "DSPSILVETF",
+          "via": "cli"
+        }
+      ],
+      "line": 5,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": null,
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-07-31",
+          "isin": "INF205K01DA9",
+          "note": "IVZINNIFTY ETF unit split 1:10 (ISIN ->INF205KA1CC7); close 2786.51 -> open 276.50",
+          "symbol": "RELGRNIFTY",
+          "via": "cli"
+        }
+      ],
+      "line": 6,
+      "op": "add"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+symbol,comp,event,exDate,source,evidence,note
+TITAN,Titan Company Limited,Bonus 1:1 + Face Value Split From Rs.10/- To Re.1/-,23-Jun-2011,NSE corporate-actions API (index=equities),"subject: 'Bonus 1:1 / Face Value Split From Rs.10/- To Re.1/-', exDate 23-Jun-2011","Named in user's HAT issue list (TITAN 2011). Predates the 15-year window start 24-Oct-2011; kept as separate source-backed reference, window not expanded. NSE CA feed has data back to at least 2010 if ever needed."

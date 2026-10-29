@@ -1,0 +1,73 @@
+symbol,comp,market,series,isin,subject_raw,entitlement_ratio_parsed,premium_rs_parsed,faceVal,exDate,recDate,bcStartDate,bcEndDate
+BHARATGEAR,Bharat Gears Limited,equities_mainboard,EQ,INE561C01019,Rights 1:7 @ Premium Rs 95 Per Share,1:7,95,10,02-Apr-2019,03-Apr-2019,-,-
+LGBFORGE,LGB Forge Limited,equities_mainboard,EQ,INE201J01017,Rights 588:1000@ Premium Rs 2/-,588:1000,2,1,03-Jan-2019,04-Jan-2019,-,-
+SATIN,Satin Creditcare Network Limited,equities_mainboard,EQ,INE836B01017,Rights 48:125 @ Premium Rs 50/-,48:125,50,10,04-Aug-2020,05-Aug-2020,-,-
+INDHOTEL,The Indian Hotels Company Limited,equities_mainboard,EQ,INE053A01029,Rights 1:5 @ Premium Rs 74/-,1:5,74,1,04-Oct-2017,05-Oct-2017,-,-
+LAKSHVILAS,Lakshmi Vilas Bank Limited,equities_mainboard,EQ,INE694C01018,Rights 1:3 @ Premium Rs 112/-,1:3,112,10,05-Dec-2017,06-Dec-2017,-,-
+BAJAJELEC,Bajaj Electricals Limited,equities_mainboard,EQ,INE193E01025,Rights 13:118 @ Premium Rs 308/-,13:118,308,2,05-Feb-2020,06-Feb-2020,-,-
+SHALPAINTS,Shalimar Paints Limited,equities_mainboard,EQ,INE849C01018,Rights 3:2 @ Premium Rs 62.50/-,3:2,62.50,2,06-Nov-2018,09-Nov-2018,-,-
+VSSL,Vardhman Special Steels Limited,equities_mainboard,EQ,INE050M01012,Rights 2:3 @ Premium Rs 40/-,2:3,40,10,07-Apr-2017,10-Apr-2017,-,-
+PRAXIS,Praxis Home Retail Limited,equities_mainboard,EQ,INE546Y01022,Rights 11:8 @ Premium Rs 6.35/-,11:8,6.35,5,07-Sep-2021,08-Sep-2021,-,-
+BASML,Bannari Amman Spinning Mills Limited,equities_mainboard,EQ,INE186H01014,Rights 21:20@ Premium Rs 25/-,21:20,25,5,08-Sep-2021,09-Sep-2021,-,-
+ASIANTILES,Asian Granito India Limited,equities_mainboard,EQ,INE022I01019,Rights 19:29 @ Premium Rs 90/-,19:29,90,10,08-Sep-2021,09-Sep-2021,-,-
+DHANI,Dhani Services Limited,equities_mainboard,EQ,INE274G01010,Rights 3:16 @ Premium Rs 238/-,3:16,238,2,09-Feb-2018,12-Feb-2018,-,-
+SHRIRAMFIN,Shriram Finance Limited,equities_mainboard,EQ,INE721A01013,Rights 3:26 @ Premium Rs 560/-,3:26,560,2,09-Jul-2020,10-Jul-2020,-,-
+PVRINOX,PVR INOX Limited,equities_mainboard,EQ,INE191H01014,Rights 7:94 @ Premium Rs 774/-,7:94,774,10,09-Jul-2020,10-Jul-2020,-,-
+VIKASECO,Vikas EcoTech Limited,equities_mainboard,EQ,INE806A01020,Rights 13:10 @ Premium Rs 0.35/-,13:10,0.35,1,09-Jun-2021,10-Jun-2021,-,-
+KINGFA,Kingfa Science & Technology (India) Limited,equities_mainboard,EQ,INE473D01015,Rights 18:91 @ Prem Rs 740,18:91,,10,09-Mar-2017,10-Mar-2017,-,-
+RUSHIL,Rushil Decor Limited,equities_mainboard,EQ,INE573K01017,Rights 1:3 @ Premium Rs 40/-,1:3,40,1,10-Sep-2020,11-Sep-2020,-,-
+BROOKS,Brooks Laboratories Limited,equities_mainboard,EQ,INE650L01011,Rights 9:20 @ Premium Rs 10/-,9:20,10,10,11-Feb-2020,12-Feb-2020,-,-
+ARROWGREEN,Arrow Greentech Limited,equities_mainboard,EQ,INE570D01018,Rights 1:5 @ Premium Rs 26/-,1:5,26,10,12-Feb-2020,13-Feb-2020,-,-
+SIGMAADV,SIGMA ADVANCED SYSTEMS LIMITED,equities_mainboard,EQ,INE933B01012,Rights 2:3,2:3,,10,12-Jul-2021,13-Jul-2021,-,-
+KARURVYSYA,Karur Vysya Bank Limited,equities_mainboard,EQ,INE036D01010,Rights 1:6 @ Premium Rs 74/-,1:6,74,2,12-Oct-2017,13-Oct-2017,-,-
+RELIANCE,Reliance Industries Limited,equities_mainboard,EQ,INE002A01018,Rights 1:15 @ Premium Rs 1247,1:15,1247,10,13-May-2020,14-May-2020,-,-
+ZUARI,Zuari Agro Chemicals Limited,equities_mainboard,EQ,INE840M01016,Rights:14 Compulosry Convertible Debentures For Every 15 Equity Shares,,,10,13-Sep-2019,16-Sep-2019,-,-
+UNOMINDA,UNO Minda Limited,equities_mainboard,EQ,INE405E01023,Rights 1:27 @ Premium Rs 248/-,1:27,248,2,14-Aug-2020,17-Aug-2020,-,-
+URJA,Urja Global Limited,equities_mainboard,EQ,INE550C01020,Rights 7:71 @ Premium Rs 4/-,7:71,4,1,14-Jan-2021,15-Jan-2021,-,-
+SUMEETINDS,Sumeet Industries Limited,equities_mainboard,EQ,INE235C01010,Rights 3:7 @ Premium Rs 14/-,3:7,14,2,15-Dec-2017,18-Dec-2017,-,-
+SOUTHBANK,The South Indian Bank Limited,equities_mainboard,EQ,INE683A01015,Rights 1:3 @ Premium Rs 13/- Per Share,1:3,13,1,16-Feb-2017,17-Feb-2017,-,-
+REFEX,Refex Industries Limited,equities_mainboard,EQ,INE056I01017,Rights 5:14@ Premium Rs 35/-,5:14,35,2,16-Jun-2020,17-Jun-2020,-,-
+DEEPAKFERT,Deepak Fertilizers and Petrochemicals Corporation Limited,equities_mainboard,EQ,INE501A01019,Rights 3:20 @ Premium Rs 123/-,3:20,123,10,16-Sep-2020,17-Sep-2020,-,-
+KESORAMIND,Kesoram Industries Limited,equities_mainboard,EQ,INE087A01019,Rights 133:274 @ Premium Rs 40/-,133:274,40,10,16-Sep-2021,17-Sep-2021,-,-
+CANBK,Canara Bank,equities_mainboard,EQ,INE476A01014,Rights 1:10 @ Prem Rs 197/- Per Share,1:10,,2,17-Feb-2017,20-Feb-2017,-,-
+PATINTLOG,Patel Integrated Logistics Limited,equities_mainboard,EQ,INE529D01014,Rights 27:47,27:47,,10,17-Feb-2021,18-Feb-2021,-,-
+INTELLECT,Intellect Design Arena Limited,equities_mainboard,EQ,INE306R01017,Rights 5:22 @ Premium Rs 81/-,5:22,81,5,17-Jul-2017,18-Jul-2017,-,-
+ARVINDFASN,Arvind Fashions Limited,equities_mainboard,EQ,INE955V01021,Rights 16:47 @ Premium Rs 146/-,16:47,146,4,17-Mar-2020,18-Mar-2020,-,-
+VIPCLOTHNG,VIP Clothing Limited,equities_mainboard,EQ,INE450G01024,Rights 1:4 @ Premium Rs 24/-,1:4,24,2,17-Nov-2017,20-Nov-2017,-,-
+HIRECT,Hirect Limited,equities_mainboard,EQ,INE835D01023,Rights 1:10 @ Premium Rs 78/-,1:10,78,2,17-Oct-2017,18-Oct-2017,-,-
+PATELENG,Patel Engineering Limited,equities_mainboard,EQ,INE244B01030,Rights 7:5 @ Premium Rs 8/- Per Share,7:5,8,1,17-Sep-2019,18-Sep-2019,-,-
+RPPINFRA,R.P.P. Infra Projects Limited,equities_mainboard,EQ,INE324L01013,Rights 3:5 @ Premium Rs 20/-,3:5,20,10,17-Sep-2021,20-Sep-2021,-,-
+ORIENTPPR,Orient Paper & Industries Limited,equities_mainboard,EQ,INE592A01026,Rights 1:28 @ Prem Rs 67/- Per Share,1:28,,1,18-Nov-2016,21-Nov-2016,-,-
+SHOPERSTOP,Shoppers Stop Limited,equities_mainboard,EQ,INE498B01016,Rights 17:70 @ Premium Rs 135/-,17:70,135,5,19-Nov-2020,20-Nov-2020,-,-
+VIKASLIFE,Vikas Lifecare Limited,equities_mainboard,EQ,INE161L01027,Rights 2:5 @ Premium Re 0.85/-,2:5,,1,20-May-2021,21-May-2021,-,-
+HCC,Hindustan Construction Company Limited,equities_mainboard,EQ,INE549A01026,Rights 49:100 @ Premium Rs 9/-,49:100,9,1,20-Nov-2018,22-Nov-2018,-,-
+LTF,L&T Finance Limited,equities_mainboard,EQ,INE498L01015,Rights 17:74@ Premium Rs 55 Per Share,17:74,55,10,21-Jan-2021,22-Jan-2021,-,-
+MAXVIL,Max Ventures and Industries Limited,equities_mainboard,EQ,INE154U01015,Rights 67:66 @ Premium Rs 51/-,67:66,51,10,21-Jun-2018,22-Jun-2018,-,-
+MOLDTKPAC,Mold-Tek Packaging Limited,equities_mainboard,EQ,INE893J01011,Rights 1:50 @ Premium Rs 175  With 6 Warrants For 50 Equity Shares,1:50,175,5,21-Oct-2020,22-Oct-2020,-,-
+TEXRAIL,Texmaco Rail & Engineering Limited,equities_mainboard,EQ,INE621L01012,Rights 2:7 @ Premium Rs 22/-,2:7,22,1,21-Oct-2021,22-Oct-2021,-,-
+M&MFIN,Mahindra & Mahindra Financial Services Limited,equities_mainboard,EQ,INE774D01016,Rights 1:1 @ Premium Rs 48/-,1:1,48,2,22-Jul-2020,23-Jul-2020,-,-
+NDLVENTURE,NDL Ventures Limited,equities_mainboard,EQ,INE353A01023,Rights 2:5 @ Premium Rs 290/-,2:5,290,10,22-Oct-2021,25-Oct-2021,-,-
+EIHOTEL,EIH Limited,equities_mainboard,EQ,INE230A01023,Rights 8:85 @ Premium Rs 63/-,8:85,63,2,22-Sep-2020,23-Sep-2020,-,-
+BHARTIARTL,Bharti Airtel Limited,equities_mainboard,EQ,INE397D01024,Rights 19:67 @ Premium Rs 215 Per Share,19:67,215,5,23-Apr-2019,24-Apr-2019,-,-
+ARVINDFASN,Arvind Fashions Limited,equities_mainboard,EQ,INE955V01021,Rights 3:20 @ Premium Rs 131/-,3:20,131,4,23-Feb-2021,24-Feb-2021,-,-
+GDL,Gateway Distriparks Limited,equities_mainboard,EQ,INE852F01015,Rights 4:27 @ Premium Rs 62/-,4:27,62,10,23-Jul-2020,24-Jul-2020,-,-
+TATASTLLP,Tata Steel Long Products Limited,equities_mainboard,EQ,INE674A01014,Rights 15:7@ Premium Rs 490 Per Share,15:7,490,10,24-Jun-2019,25-Jun-2019,-,-
+PRICOLLTD,Pricol Limited,equities_mainboard,EQ,INE726V01018,Rights 2:7 @ Premium Rs 29/-,2:7,29,1,24-Nov-2020,25-Nov-2020,-,-
+CNOVAPETRO,CIL Nova Petrochemicals Limited,equities_mainboard,EQ,INE672K01025,Rights  1:1 @ Premium Rs 4.50 Per Share,1:1,4.50,10,24-Oct-2016,25-Oct-2016,-,-
+KTKBANK,The Karnataka Bank Limited,equities_mainboard,EQ,INE614B01018,Rights 1:2 @ Premium Rs 60/- Per Share,1:2,60,10,24-Oct-2016,25-Oct-2016,-,-
+TEXRAIL,Texmaco Rail & Engineering Limited,equities_mainboard,EQ,INE621L01012,Rights 19:100 @ Premium Rs 45.70/-,19:100,45.70,1,24-Sep-2019,25-Sep-2019,-,-
+TSFINV,TSF INVESTMENTS LIMITED,equities_mainboard,EQ,INE202Z01029,Rights 23:49 @ Premium Rs 45/-,23:49,45,5,26-Apr-2021,27-Apr-2021,-,-
+BHARTIARTL,Bharti Airtel Limited,equities_mainboard,EQ,INE397D01024,Rights 1:14 @ Premium Rs 530/-,1:14,530,5,27-Sep-2021,28-Sep-2021,-,-
+SHALPAINTS,Shalimar Paints Limited,equities_mainboard,EQ,INE849C01018,Rights 6:32 @ Premium Rs 138/-,6:32,138,2,28-Dec-2017,29-Dec-2017,-,-
+SPENCERS,Spencer's Retail Limited,equities_mainboard,EQ,INE020801028,Rights 2:15 @ Premium Rs 70/-,2:15,70,5,28-Jul-2020,29-Jul-2020,-,-
+5PAISA,5Paisa Capital Limited,equities_mainboard,EQ,INE618L01018,Rights 1:1 @ Premium Rs 70 Per Share,1:1,70,10,28-May-2019,29-May-2019,-,-
+IDEA,Vodafone Idea Limited,equities_mainboard,EQ,INE669E01016,Rights 87:38 @ Premium Of Rs 2.50 Per Share,87:38,,10,29-Mar-2019,02-Apr-2019,-,-
+PEL,Piramal Enterprises Limited,equities_mainboard,EQ,INE140A01024,Rights 11:83 @ Premium Rs 1298/-,11:83,1298,2,30-Dec-2019,31-Dec-2019,-,-
+ABFRL,Aditya Birla Fashion and Retail Limited,equities_mainboard,EQ,INE647O01011,Rights 9:77 Partly Paid @ Premium Rs 100/-,9:77,100,10,30-Jun-2020,01-Jul-2020,-,-
+MAHLIFE,Mahindra Lifespace Developers Limited,equities_mainboard,EQ,INE813A01018,Rights 1:4 @ Premium Rs 282/-,1:4,282,10,30-Mar-2017,31-Mar-2017,-,-
+KDDL,KDDL Limited,equities_mainboard,EQ,INE291D01011,Rights 7:75 @ Premium Rs 220/-,7:75,220,10,30-Mar-2021,31-Mar-2021,-,-
+PEL,Piramal Enterprises Limited,equities_mainboard,EQ,INE140A01024,Rights 1:23 @ Premium Rs 2378/-,1:23,2378,2,31-Jan-2018,01-Feb-2018,-,-
+TATASTEEL,Tata Steel Limited,equities_mainboard,EQ,INE081A01012,Rights - 4:25 Fully Paid Up Shares @ Premium Rs 500/- Per Share / 2:25 Partly Paid Up Shares @ Premium Rs 605/- Per Share,4:25,500,1,31-Jan-2018,01-Feb-2018,-,-
+KREBSBIO,Krebs Biochemicals and Industries Limited,equities_mainboard,EQ,INE268B01013,Rights 21:100 @ Premium Rs 76 Per Share,21:100,76,10,31-Jan-2019,01-Feb-2019,-,-
+HATSUN,Hatsun Agro Product Limited,equities_mainboard,EQ,INE473B01035,Interim Dividend- Rs 3 Per Share / Rights 1:16 @ Premium Rs 554 Per Share,1:16,554,1,31-May-2018,01-Jun-2018,-,-
+HCL-INSYS,HCL Infosystems Limited,equities_mainboard,EQ,INE236A01020,Rights 10:21 @ Premium Rs 45/-,10:21,45,2,31-Oct-2017,01-Nov-2017,-,-

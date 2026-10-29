@@ -1,0 +1,811 @@
+{
+  "applied": true,
+  "lines": 35,
+  "results": [
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-07-10",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-07-10",
+          "isin": "INF373I01023",
+          "note": "PSUBANK Kotak PSU Bank ETF (KOTAKPSUBK renamed PSUBANK) unit split 1:10; ISIN INF373I01023->INF174KA1A86; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-07-09 close 822.75, new first 2026-07-10 prev 822.75 open 83.97 (x0.1021) close 85.31 (x0.1037, NIFTY 500 x1.0116)",
+          "symbol": "KOTAKPSUBK",
+          "via": "cli"
+        }
+      ],
+      "line": 2,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-07-03",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-07-03",
+          "isin": "INF740KA1QL0",
+          "note": "MIDQ50ADD DSP ETF unit split 1:10; ISIN INF740KA1QL0->INF740KA1ZF3; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-07-02 close 247.99, new first 2026-07-03 prev 247.99 open 24.93 (x0.1005) close 24.76 (x0.0998, NIFTY 500 x1.0016)",
+          "symbol": "DSPQ50ETF",
+          "via": "cli"
+        }
+      ],
+      "line": 3,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-07-03",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-07-03",
+          "isin": "INF740KA1UF4",
+          "note": "HEALTHADD DSP ETF unit split 1:10; ISIN INF740KA1UF4->INF740KA1ZG1; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-07-02 close 162.94, new first 2026-07-03 prev 162.94 open 16.55 (x0.1016) close 16.72 (x0.1026, NIFTY 500 x1.0016)",
+          "symbol": "HEALTHADD",
+          "via": "cli"
+        }
+      ],
+      "line": 4,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.01",
+            "known_on": "2026-04-30",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-04-30",
+          "isin": "INF205K01361",
+          "note": "IVZINGOLD Invesco gold ETF unit split 1:100; ISIN INF205K01361->INF205KA1BP1; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-04-29 close 12782.95, new first 2026-04-30 prev 12782.95 open 129.65 (x0.0101) close 130.25 (x0.0102, NIFTY 500 x0.9918)",
+          "symbol": "RELIGAREGO",
+          "via": "cli"
+        }
+      ],
+      "line": 5,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.01",
+            "known_on": "2026-03-06",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-03-06",
+          "isin": "INF397L01554",
+          "note": "LICMFGOLD IDBIGOLD renamed LICMFGOLD (IDBI MF schemes taken over by LIC MF) unit split 1:100; ISIN INF397L01554->INF767K01SM1; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-03-05 close 14401.80, new first 2026-03-06 prev 14401.80 open 147.70 (x0.0103) close 143.20 (x0.0099, NIFTY 500 x0.9905)",
+          "symbol": "IDBIGOLD",
+          "via": "cli"
+        }
+      ],
+      "line": 6,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-27",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-27",
+          "isin": "INF174KA1IB3",
+          "note": "MIDCAP Kotak ETF unit split 1:10; ISIN INF174KA1IB3->INF174KA1ZC5; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-26 close 173.63, new first 2026-02-27 prev 173.63 open 17.89 (x0.1030) close 17.22 (x0.0992, NIFTY 500 x0.9880)",
+          "symbol": "KOTAKMID50",
+          "via": "cli"
+        }
+      ],
+      "line": 7,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-27",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-27",
+          "isin": "INF174K01F59",
+          "note": "BANKNIFTY1 Kotak ETF unit split 1:10; ISIN INF174K01F59->INF174KA1ZB7; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-26 close 631.97, new first 2026-02-27 prev 631.97 open 63.55 (x0.1006) close 62.60 (x0.0991, NIFTY 500 x0.9880)",
+          "symbol": "KOTAKBKETF",
+          "via": "cli"
+        }
+      ],
+      "line": 8,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-27",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-27",
+          "isin": "INF174K01Z71",
+          "note": "NV20 Kotak ETF unit split 1:10; ISIN INF174K01Z71->INF174KA1ZE1; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-26 close 152.85, new first 2026-02-27 prev 152.85 open 16.19 (x0.1059) close 15.17 (x0.0992, NIFTY 500 x0.9880)",
+          "symbol": "KTKNV20ETF",
+          "via": "cli"
+        }
+      ],
+      "line": 9,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-27",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-27",
+          "isin": "INF174KA1JE5",
+          "note": "CONS Kotak ETF unit split 1:10; ISIN INF174KA1JE5->INF174KA1ZF8; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-26 close 120.26, new first 2026-02-27 prev 120.26 open 12.15 (x0.1010) close 11.89 (x0.0989, NIFTY 500 x0.9880)",
+          "symbol": "KOTAKCONS",
+          "via": "cli"
+        }
+      ],
+      "line": 10,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-27",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-27",
+          "isin": "INF174KA1KU9",
+          "note": "SILVER1 Kotak silver ETF unit split 1:10; ISIN INF174KA1KU9->INF174KA1ZD3; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-26 close 249.55, new first 2026-02-27 prev 249.55 open 26.89 (x0.1078) close 25.75 (x0.1032, NIFTY 500 x0.9880)",
+          "symbol": "KOTAKSILVE",
+          "via": "cli"
+        }
+      ],
+      "line": 11,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-13",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-13",
+          "isin": "INF082J01028",
+          "note": "QNIFTY Quantum Nifty ETF unit split 1:10; ISIN INF082J01028->INF082J01499; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-12 close 2824.21, new first 2026-02-13 prev 2824.21 open 285.00 (x0.1009) close 279.27 (x0.0989, NIFTY 500 x0.9857)",
+          "symbol": "QNIFTY",
+          "via": "cli"
+        }
+      ],
+      "line": 12,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-06",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-06",
+          "isin": "INF666M01LA1",
+          "note": "GROWWSLVR Groww silver ETF unit split 1:10; ISIN INF666M01LA1->INF666M01OF4; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-05 close 242.59, new first 2026-02-06 prev 242.59 open 24.00 (x0.0989) close 23.03 (x0.0949, NIFTY 500 x1.0010)",
+          "symbol": "GROWWSLVR",
+          "via": "cli"
+        }
+      ],
+      "line": 13,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2026-02-06",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2026-02-06",
+          "isin": "INF666M01IW1",
+          "note": "GROWWGOLD Groww gold ETF unit split 1:10; ISIN INF666M01IW1->INF666M01OE7; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2026-02-05 close 149.72, new first 2026-02-06 prev 149.72 open 14.50 (x0.0968) close 14.81 (x0.0989, NIFTY 500 x1.0010)",
+          "symbol": "GROWWGOLD",
+          "via": "cli"
+        }
+      ],
+      "line": 14,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-05-10",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-05-10",
+          "isin": "INF109KB1XT3",
+          "note": "MIDSELIETF ICICI Pru ETF unit split 1:10; ISIN INF109KB1XT3->INF109KC10W0; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-05-09 close 153.78, new first 2024-05-10 prev 153.78 open 18.70 (x0.1216) close 15.53 (x0.1010, NIFTY 500 x1.0061)",
+          "symbol": "IMIDCAP",
+          "via": "cli"
+        }
+      ],
+      "line": 15,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-05-10",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-05-10",
+          "isin": "INF109KA1962",
+          "note": "NIF100IETF ICICI Pru ETF unit split 1:10; ISIN INF109KA1962->INF109KC16V9; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-05-09 close 250.67, new first 2024-05-10 prev 250.67 open 29.99 (x0.1196) close 25.32 (x0.1010, NIFTY 500 x1.0061)",
+          "symbol": "ICCNX100",
+          "via": "cli"
+        }
+      ],
+      "line": 16,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-05-10",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-05-10",
+          "isin": "INF109KC15T5",
+          "note": "QUAL30IETF ICICI Pru ETF unit split 1:10; ISIN INF109KC15T5->INF109KC18V5; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-05-09 close 188.01, new first 2024-05-10 prev 188.01 open 19.33 (x0.1028) close 18.94 (x0.1007, NIFTY 500 x1.0061)",
+          "symbol": "ICICIQTY30",
+          "via": "cli"
+        }
+      ],
+      "line": 17,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-05-10",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-05-10",
+          "isin": "INF109KC1G82",
+          "note": "MIDCAPIETF ICICI Pru ETF unit split 1:10; ISIN INF109KC1G82->INF109KC11W8; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-05-09 close 186.92, new first 2024-05-10 prev 186.92 open 19.47 (x0.1042) close 18.97 (x0.1015, NIFTY 500 x1.0061)",
+          "symbol": "ICICIM150",
+          "via": "cli"
+        }
+      ],
+      "line": 18,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-05-10",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-05-10",
+          "isin": "INF109KC1N59",
+          "note": "ALPL30IETF ICICI Pru ETF unit split 1:10; ISIN INF109KC1N59->INF109KC17V7; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-05-09 close 267.09, new first 2024-05-10 prev 267.09 open 32.00 (x0.1198) close 27.09 (x0.1014, NIFTY 500 x1.0061)",
+          "symbol": "ICICIALPLV",
+          "via": "cli"
+        }
+      ],
+      "line": 19,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-05-10",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-05-10",
+          "isin": "INF109KC1R48",
+          "note": "FMCGIETF ICICI Pru ETF unit split 1:10; ISIN INF109KC1R48->INF109KC19V3; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-05-09 close 568.13, new first 2024-05-10 prev 568.13 open 56.80 (x0.1000) close 57.63 (x0.1014, NIFTY 500 x1.0061)",
+          "symbol": "ICICIFMCG",
+          "via": "cli"
+        }
+      ],
+      "line": 20,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-03-01",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-03-01",
+          "isin": "INF109KB10T8",
+          "note": "LOWVOLIETF ICICI Pru ETF unit split 1:10; ISIN INF109KB10T8->INF109KC19U5; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-29 close 195.43, new first 2024-03-01 prev 195.43 open 23.25 (x0.1190) close 19.67 (x0.1006, NIFTY 500 x1.0129)",
+          "symbol": "LOWVOLIWIN",
+          "via": "cli"
+        }
+      ],
+      "line": 21,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-03-01",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-03-01",
+          "isin": "INF109KB1WY5",
+          "note": "NV20IETF ICICI Pru ETF unit split 1:10; ISIN INF109KB1WY5->INF109KC11V0; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-29 close 135.97, new first 2024-03-01 prev 135.97 open 16.30 (x0.1199) close 13.82 (x0.1016, NIFTY 500 x1.0129)",
+          "symbol": "INV20",
+          "via": "cli"
+        }
+      ],
+      "line": 22,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-03-01",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-03-01",
+          "isin": "INF109KC1E35",
+          "note": "PVTBANIETF ICICI Pru ETF unit split 1:10; ISIN INF109KC1E35->INF109KC18U7; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-29 close 231.41, new first 2024-03-01 prev 231.41 open 23.78 (x0.1028) close 23.67 (x0.1023, NIFTY 500 x1.0129)",
+          "symbol": "ICICIBANKP",
+          "via": "cli"
+        }
+      ],
+      "line": 23,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-03-01",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-03-01",
+          "isin": "INF109KC1Y49",
+          "note": "AUTOIETF ICICI Pru ETF unit split 1:10; ISIN INF109KC1Y49->INF109KC10V2; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-29 close 207.44, new first 2024-03-01 prev 207.44 open 21.09 (x0.1017) close 21.27 (x0.1025, NIFTY 500 x1.0129)",
+          "symbol": "ICICIAUTO",
+          "via": "cli"
+        }
+      ],
+      "line": 24,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-02-02",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-02-02",
+          "isin": "INF179KC1973",
+          "note": "HDFCSENSEX HDFC ETF unit split 1:10; ISIN INF179KC1973->INF179KC1HX2; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-01 close 790.01, new first 2024-02-02 prev 790.01 open 81.99 (x0.1038) close 78.90 (x0.0999, NIFTY 500 x1.0067)",
+          "symbol": "HDFCSENETF",
+          "via": "cli"
+        }
+      ],
+      "line": 25,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-02-02",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-02-02",
+          "isin": "INF179KC1AN8",
+          "note": "HDFCNIFBAN HDFC ETF unit split 1:10; ISIN INF179KC1AN8->INF179KC1HY0; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-01 close 468.33, new first 2024-02-02 prev 468.33 open 47.78 (x0.1020) close 46.62 (x0.0995, NIFTY 500 x1.0067)",
+          "symbol": "HBANKETF",
+          "via": "cli"
+        }
+      ],
+      "line": 26,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-02-02",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-02-02",
+          "isin": "INF179KC1DW3",
+          "note": "HDFCPVTBAN HDFC ETF unit split 1:10; ISIN INF179KC1DW3->INF179KC1HZ7; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-01 close 237.30, new first 2024-02-02 prev 237.30 open 28.40 (x0.1197) close 23.59 (x0.0994, NIFTY 500 x1.0067)",
+          "symbol": "HDFCPVTBAN",
+          "via": "cli"
+        }
+      ],
+      "line": 27,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2024-02-02",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2024-02-02",
+          "isin": "INF179KC1DX1",
+          "note": "HDFCNIFIT HDFC ETF unit split 1:10; ISIN INF179KC1DX1->INF179KC1IA8; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2024-02-01 close 372.75, new first 2024-02-02 prev 372.75 open 44.42 (x0.1192) close 38.09 (x0.1022, NIFTY 500 x1.0067)",
+          "symbol": "HDFCNIFIT",
+          "via": "cli"
+        }
+      ],
+      "line": 28,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2023-10-20",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2023-10-20",
+          "isin": "INF179KC1FA4",
+          "note": "HDFCMID150 HDFC ETF unit split 1:10; ISIN INF179KC1FA4->INF179KC1HT0; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2023-10-19 close 151.59, new first 2023-10-20 prev 151.59 open 15.16 (x0.1000) close 15.03 (x0.0991, NIFTY 500 x0.9941)",
+          "symbol": "HDFCMID150",
+          "via": "cli"
+        }
+      ],
+      "line": 29,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2023-10-20",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2023-10-20",
+          "isin": "INF179KC1DA9",
+          "note": "HDFCNEXT50 HDFC ETF unit split 1:10; ISIN INF179KC1DA9->INF179KC1HS2; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2023-10-19 close 452.70, new first 2023-10-20 prev 452.70 open 44.15 (x0.0975) close 44.85 (x0.0991, NIFTY 500 x0.9941)",
+          "symbol": "HDFCNEXT50",
+          "via": "cli"
+        }
+      ],
+      "line": 30,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2023-10-20",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2023-10-20",
+          "isin": "INF179KC1DB7",
+          "note": "HDFCNIF100 HDFC ETF unit split 1:10; ISIN INF179KC1DB7->INF179KC1HR4; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2023-10-19 close 198.14, new first 2023-10-20 prev 198.14 open 19.71 (x0.0995) close 19.73 (x0.0996, NIFTY 500 x0.9941)",
+          "symbol": "HDFCNIF100",
+          "via": "cli"
+        }
+      ],
+      "line": 31,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2023-10-20",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2023-10-20",
+          "isin": "INF179KC1DM4",
+          "note": "HDFCMOMENT HDFC ETF unit split 1:10; ISIN INF179KC1DM4->INF179KC1HV6; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2023-10-19 close 233.23, new first 2023-10-20 prev 233.23 open 25.56 (x0.1096) close 22.88 (x0.0981, NIFTY 500 x0.9941)",
+          "symbol": "HDFCMOMENT",
+          "via": "cli"
+        }
+      ],
+      "line": 32,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2023-10-20",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2023-10-20",
+          "isin": "INF179KC1DN2",
+          "note": "HDFCLOWVOL HDFC ETF unit split 1:10; ISIN INF179KC1DN2->INF179KC1HU8; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2023-10-19 close 152.80, new first 2023-10-20 prev 152.80 open 17.55 (x0.1149) close 15.15 (x0.0991, NIFTY 500 x0.9941)",
+          "symbol": "HDFCLOWVOL",
+          "via": "cli"
+        }
+      ],
+      "line": 33,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2023-09-25",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2023-09-25",
+          "isin": "INF789FB1X41",
+          "note": "UTINIFTETF UTI Nifty ETF unit split 1:10; ISIN INF789FB1X41->INF789F1AZC0; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2023-09-22 close 2113.67, new first 2023-09-25 prev 2113.67 open 214.99 (x0.1017) close 211.23 (x0.0999, NIFTY 500 x1.0007)",
+          "symbol": "UTINIFTETF",
+          "via": "cli"
+        }
+      ],
+      "line": 34,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "0.1",
+            "known_on": "2018-11-16",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2018-11-16",
+          "isin": "INF109KC1JI4",
+          "note": "ICICINXT50 ICICI Pru Next 50 ETF unit split 1:10; ISIN INF109KC1JI4->INF109KC1NS5; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2018-11-14 close 272.83, new first 2018-11-16 prev 272.83 open 27.40 (x0.1004) close 29.93 (x0.1097, NIFTY 500 x1.0080)",
+          "symbol": "ICICINXT50",
+          "via": "cli"
+        }
+      ],
+      "line": 35,
+      "op": "add"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "added": true,
+            "factor": "10",
+            "known_on": "2025-07-11",
+            "type": "split"
+          },
+          "before": {
+            "absent": true,
+            "type": "split"
+          },
+          "ex_date": "2025-07-11",
+          "isin": "INE188Y01023",
+          "note": "VERTOZ Consolidation Re 1 -> Rs 10 (NSE CA feed, ex 25-Jun-2025, listed under INE188Y01015); ISIN INE188Y01023->INE188Y01031; stored on the old ISIN at the new ISIN's first day (lineage review price_jump/long_gap); old last 2025-06-24 close 9.17, new first 2025-07-11 prev 9.81 open 96.28 (x10.4995) close 87.11 (x9.4995, NIFTY 500 x1.0073)",
+          "symbol": "VERTOZ",
+          "via": "cli"
+        }
+      ],
+      "line": 36,
+      "op": "add"
+    }
+  ]
+}
