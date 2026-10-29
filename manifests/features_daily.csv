@@ -1,5 +1,5 @@
 path,rows,min_date,max_date,bytes,sha256
-features_daily/_state.json,,,,1741358,52c18cbdd303ca4ac396d2b8f3dd10a50dc12ebb4e96312796aab2fa796c4643
+features_daily/_state.json,,,,1741770,0c869ea09784217760a11029787a129a49c7a8afea4f3a0d709a5702660a221c
 features_daily/date=2011-06-22/part-features.parquet,1467,2011-06-22,2011-06-22,44553,8fea09f0d404065dfc03f24aec45ee2df6e9b6d085c68d58eb78a891aa9ccae8
 features_daily/date=2011-06-23/part-features.parquet,1469,2011-06-23,2011-06-23,44629,1879b16d1786a073a0a9d6efd28589bb941a77ce2cdda0a2e98c558d41a9eb9b
 features_daily/date=2011-06-24/part-features.parquet,1479,2011-06-24,2011-06-24,44892,60d839e8c9414b22410def632ceefd6e59f38220ad75909e11e3ee9ad0595dc1
@@ -3804,3 +3804,4 @@ features_daily/date=2026-10-23/part-features.parquet,2958,2026-10-23,2026-10-23,
 features_daily/date=2026-10-26/part-features.parquet,2972,2026-10-26,2026-10-26,501514,dadfcb13b6f3f57a25d249e919c1e71e56ce5503e923933ed0a07fc5c40be564
 features_daily/date=2026-10-27/part-features.parquet,2958,2026-10-27,2026-10-27,499835,e0eb9acf4d45256917783d5f43bd8b5fcee4cf224475b999020ca8d003ed5b90
 features_daily/date=2026-10-28/part-features.parquet,2954,2026-10-28,2026-10-28,509234,7151b4efe96543d18e16002b5231dfc13efacb5fdee03eb0fe8e82e02f9b78c4
+features_daily/date=2026-10-29/part-features.parquet,2959,2026-10-29,2026-10-29,512026,90145c70f0c20dad4b503b95dd2c7b0475682c341a8c5f48766daf94e766ae59
