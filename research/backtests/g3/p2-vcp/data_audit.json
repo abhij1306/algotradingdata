@@ -1,0 +1,651 @@
+{
+ "audit_version": "4",
+ "scope": {
+  "data_snapshot_id": "23e04fe1102a70455893d69f552a18834e213debb22763c4864a009a352ca6fa",
+  "universe": "01a17359-fe35-7207-abe4-fe26eae939bf",
+  "index": "NIFTY 500",
+  "period_start": "2022-01-01",
+  "period_end": "2024-12-31",
+  "members": 631
+ },
+ "status": "warn",
+ "checks": [
+  {
+   "name": "calendar",
+   "status": "pass",
+   "summary": {
+    "sessions": 743,
+    "stored": 743,
+    "store_last": "2024-12-31"
+   },
+   "findings": []
+  },
+  {
+   "name": "missing_sessions",
+   "status": "pass",
+   "summary": {
+    "member_sessions": 372159,
+    "missing": 0,
+    "missing_pct": 0.0,
+    "symbols_with_gaps": 0,
+    "worst": []
+   },
+   "findings": []
+  },
+  {
+   "name": "survivorship",
+   "status": "pass",
+   "summary": {
+    "samples": [
+     {
+      "date": "2022-01-03",
+      "members": 501,
+      "later_left": 108
+     },
+     {
+      "date": "2023-01-02",
+      "members": 501,
+      "later_left": 81
+     },
+     {
+      "date": "2024-01-01",
+      "members": 501,
+      "later_left": 57
+     }
+    ],
+    "leavers": 123
+   },
+   "findings": []
+  },
+  {
+   "name": "corporate_actions",
+   "status": "warn",
+   "summary": {
+    "instruments": 631,
+    "ex_dates": 194,
+    "jumps_at_ex_date": 2,
+    "jumps_elsewhere": 111,
+    "jumps_already_skipped": 0,
+    "threshold_pct": 20.0,
+    "largest_elsewhere": [
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-17",
+      "move_pct": 58.09,
+      "raw_move_pct": 58.09,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-06",
+      "move_pct": -56.11,
+      "raw_move_pct": -56.11,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-16",
+      "move_pct": 45.21,
+      "raw_move_pct": 45.21,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f252-77f9-80fa-f6e80dc79a37",
+      "symbol": "INDUSINDBK",
+      "date": "2020-03-26",
+      "move_pct": 44.67,
+      "raw_move_pct": 44.67,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f22a-746d-b001-ce61cc2b9b99",
+      "symbol": "IDEA",
+      "date": "2020-02-19",
+      "move_pct": 40.0,
+      "raw_move_pct": 40.0,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f598-76ee-922f-2ee0786b56a9",
+      "symbol": "ZEEL",
+      "date": "2021-09-14",
+      "move_pct": 39.98,
+      "raw_move_pct": 39.98,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-b345-7221-8f4b-c0d3a69e3011",
+      "symbol": "BANDHANBNK",
+      "date": "2020-03-26",
+      "move_pct": 39.32,
+      "raw_move_pct": 39.32,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f22a-746d-b001-ce61cc2b9b99",
+      "symbol": "IDEA",
+      "date": "2019-11-19",
+      "move_pct": 35.96,
+      "raw_move_pct": 35.96,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-11",
+      "move_pct": 35.53,
+      "raw_move_pct": 35.53,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f22a-746d-b001-ce61cc2b9b99",
+      "symbol": "IDEA",
+      "date": "2020-03-18",
+      "move_pct": -35.05,
+      "raw_move_pct": -35.05,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-33b9-74bb-881e-6817834acfac",
+      "symbol": "SAMMAANCAP",
+      "date": "2019-09-30",
+      "move_pct": -34.4,
+      "raw_move_pct": -34.4,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-33b9-74bb-881e-6817834acfac",
+      "symbol": "SAMMAANCAP",
+      "date": "2020-03-19",
+      "move_pct": -33.74,
+      "raw_move_pct": -33.74,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f22a-746d-b001-ce61cc2b9b99",
+      "symbol": "IDEA",
+      "date": "2020-03-13",
+      "move_pct": 33.33,
+      "raw_move_pct": 33.33,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2019-10-03",
+      "move_pct": 32.81,
+      "raw_move_pct": 32.81,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f598-76ee-922f-2ee0786b56a9",
+      "symbol": "ZEEL",
+      "date": "2024-01-23",
+      "move_pct": -32.61,
+      "raw_move_pct": -32.61,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f598-76ee-922f-2ee0786b56a9",
+      "symbol": "ZEEL",
+      "date": "2021-09-22",
+      "move_pct": 31.72,
+      "raw_move_pct": 31.72,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-09",
+      "move_pct": 31.58,
+      "raw_move_pct": 31.58,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-33b9-74bb-881e-6817834acfac",
+      "symbol": "SAMMAANCAP",
+      "date": "2020-06-19",
+      "move_pct": 31.1,
+      "raw_move_pct": 31.1,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-d5c9-729b-9e38-28e11b2a7349",
+      "symbol": "CHOLAFIN",
+      "date": "2020-03-23",
+      "move_pct": -29.6,
+      "raw_move_pct": -29.6,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f33b-7458-b058-6f948222ff57",
+      "symbol": "MFSL",
+      "date": "2020-03-23",
+      "move_pct": -29.23,
+      "raw_move_pct": -29.23,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2019-04-30",
+      "move_pct": -29.17,
+      "raw_move_pct": -29.17,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f292-74de-b62e-be259751ba6d",
+      "symbol": "JINDALSTEL",
+      "date": "2020-04-07",
+      "move_pct": 28.9,
+      "raw_move_pct": 28.9,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f3a6-72b4-b95c-3192eadd5d58",
+      "symbol": "OFSS",
+      "date": "2024-01-18",
+      "move_pct": 28.69,
+      "raw_move_pct": 28.69,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-2802-7582-9d6a-6d6075106111",
+      "symbol": "M&MFIN",
+      "date": "2020-03-23",
+      "move_pct": -28.64,
+      "raw_move_pct": -28.64,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f01e-7029-bdff-4f0eb1266213",
+      "symbol": "ADANIENT",
+      "date": "2023-02-01",
+      "move_pct": -28.2,
+      "raw_move_pct": -28.2,
+      "ex_date": false
+     }
+    ]
+   },
+   "findings": [
+    {
+     "code": "ex_date_jump",
+     "severity": "warn",
+     "count": 2,
+     "items": [
+      {
+       "instrument_id": "01a1629d-4387-7226-b52f-7a44ee10b8b1",
+       "symbol": "EASEMYTRIP",
+       "date": "2022-11-21",
+       "move_pct": 20.02,
+       "raw_move_pct": -85.0,
+       "ex_date": true
+      },
+      {
+       "instrument_id": "01a1629d-74d2-76e9-a174-0dce7508ff07",
+       "symbol": "CGCL",
+       "date": "2024-03-05",
+       "move_pct": 20.0,
+       "raw_move_pct": -70.0,
+       "ex_date": true
+      }
+     ],
+     "threshold_pct": 20.0
+    }
+   ]
+  },
+  {
+   "name": "lookahead",
+   "status": "pass",
+   "summary": {
+    "feature_samples": 96,
+    "breadth_samples": 8,
+    "features_compared": [
+     "sma10",
+     "sma20",
+     "sma50",
+     "sma150",
+     "sma200",
+     "high_52w",
+     "low_52w",
+     "adr20",
+     "adtr20",
+     "adv20",
+     "turnover20",
+     "ret21",
+     "ret63",
+     "ret126",
+     "ret252",
+     "rs_weighted"
+    ],
+    "engine_reads": "trade date D: scan, features, regime and breadth gates of D-1"
+   },
+   "findings": []
+  },
+  {
+   "name": "unique_keys",
+   "status": "pass",
+   "summary": {
+    "daily_dates": "date (IST trade date, no time)"
+   },
+   "findings": []
+  },
+  {
+   "name": "bars_5m",
+   "status": "warn",
+   "summary": {
+    "days_scanned": 930269,
+    "off": {
+     "close_off": {
+      "days": 252,
+      "member_days": 5
+     }
+    },
+    "used_by_run": false
+   },
+   "findings": [
+    {
+     "code": "bar_5m_close_off_daily",
+     "severity": "warn",
+     "count": 252,
+     "items": [
+      {
+       "instrument_id": "01a1629b-f1bb-7691-8a72-cac0d5d8dd86",
+       "date": "2024-09-03",
+       "member": true,
+       "ratio": 1.0516,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f1d0-76f3-bd1f-915ce0ae996f",
+       "date": "2022-03-17",
+       "member": true,
+       "ratio": 1.0724,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f2a9-7448-8d43-3f6e7f2d855c",
+       "date": "2023-03-08",
+       "member": true,
+       "ratio": 1.0598,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629c-5b24-7294-8d7e-35eb3f57dc5b",
+       "date": "2024-12-30",
+       "member": true,
+       "ratio": 1.0504,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629c-8d31-7549-9b41-03ca031a095a",
+       "date": "2023-06-15",
+       "member": true,
+       "ratio": 0.9485,
+       "later_factor": 0.25
+      },
+      {
+       "instrument_id": "01a1629b-f028-7000-bb0a-0ec1a93a7b29",
+       "date": "2025-11-07",
+       "member": false,
+       "ratio": 1.0662,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f03e-769d-beed-7a9178df988c",
+       "date": "2026-04-02",
+       "member": false,
+       "ratio": 1.0531,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-05-20",
+       "member": false,
+       "ratio": 1.0612,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-05-26",
+       "member": false,
+       "ratio": 1.0586,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-06-01",
+       "member": false,
+       "ratio": 1.1391,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-10-01",
+       "member": false,
+       "ratio": 1.0507,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f06d-71e8-b8f2-616d79f9021a",
+       "date": "2025-11-24",
+       "member": false,
+       "ratio": 1.0569,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f073-7288-bd7a-a32e31559283",
+       "date": "2026-09-11",
+       "member": false,
+       "ratio": 1.0612,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f0f8-775d-ac0f-bb84407e8b3a",
+       "date": "2026-03-30",
+       "member": false,
+       "ratio": 0.9275,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f10a-70ee-a955-5d4f548d7eae",
+       "date": "2025-12-01",
+       "member": false,
+       "ratio": 1.0605,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f10a-70ee-a955-5d4f548d7eae",
+       "date": "2025-12-24",
+       "member": false,
+       "ratio": 0.9327,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f10a-70ee-a955-5d4f548d7eae",
+       "date": "2026-03-11",
+       "member": false,
+       "ratio": 0.928,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f142-72a3-b16a-5fbe254533af",
+       "date": "2021-11-30",
+       "member": false,
+       "ratio": 0.9436,
+       "later_factor": 0.33335
+      },
+      {
+       "instrument_id": "01a1629b-f1a4-758a-ae9f-08330b6cc187",
+       "date": "2025-12-09",
+       "member": false,
+       "ratio": 1.0575,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f1e0-74cb-b91e-d5ffdd743fc1",
+       "date": "2026-03-20",
+       "member": false,
+       "ratio": 1.0846,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f1e0-74cb-b91e-d5ffdd743fc1",
+       "date": "2026-03-24",
+       "member": false,
+       "ratio": 0.9479,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f21c-7304-ae61-a8761be1cf98",
+       "date": "2026-03-16",
+       "member": false,
+       "ratio": 1.0512,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f256-771b-8869-ea4799eee012",
+       "date": "2026-07-08",
+       "member": false,
+       "ratio": 0.9328,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f256-771b-8869-ea4799eee012",
+       "date": "2026-08-18",
+       "member": false,
+       "ratio": 1.058,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f256-771b-8869-ea4799eee012",
+       "date": "2026-10-13",
+       "member": false,
+       "ratio": 1.0766,
+       "later_factor": 1.0
+      }
+     ],
+     "threshold_pct": 5.0
+    }
+   ]
+  },
+  {
+   "name": "industries",
+   "status": "pass",
+   "summary": {
+    "member_days": 372159,
+    "unknown_member_days": 562,
+    "unknown_pct": 0.151,
+    "unknown_members": 9
+   },
+   "findings": []
+  },
+  {
+   "name": "demergers",
+   "status": "pass",
+   "summary": {
+    "gaps_checked": 27,
+    "undated_member_demergers": 0,
+    "undated": []
+   },
+   "findings": []
+  },
+  {
+   "name": "verify",
+   "status": "warn",
+   "summary": {
+    "verified": false,
+    "report": "/data/workspace/hat-data-isin/audits/verify-2026-10-30-D2-evidence1/verify.json",
+    "reports": {},
+    "digest": null,
+    "created": null,
+    "checks": {}
+   },
+   "findings": [
+    {
+     "code": "verify_report_stale",
+     "severity": "warn",
+     "count": 6,
+     "items": [
+      "D1",
+      "D2",
+      "D3",
+      "D5",
+      "D6",
+      "D7"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "golden",
+   "status": "warn",
+   "summary": {
+    "file": "2026-10-26.2.json",
+    "digest": "0a449727b7add897f5b4b39684cba23bd9723e96668be25e1b8d78d12017900b",
+    "created": "2026-10-26",
+    "items": 463,
+    "counts": {
+     "pass": 463
+    },
+    "mismatch_counts": {
+     "fixed": 7,
+     "open": 5
+    }
+   },
+   "findings": [
+    {
+     "code": "golden_mismatch_open",
+     "severity": "warn",
+     "count": 5,
+     "items": [
+      {
+       "id": "bar_5m_daily_agg:INE879I01012:DBREALTY:2024-03-19:bars_5m:sum_volume",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1952771,
+       "store_value": 1648880
+      },
+      {
+       "id": "bar_5m_daily_agg:INE260B01028:GODFRYPHLP:2022-02-28:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1005.0,
+       "store_value": 991.4791
+      },
+      {
+       "id": "bar_5m_daily_agg:INE227W01023:CLEAN:2023-03-13:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1448.7,
+       "store_value": 1440.1
+      },
+      {
+       "id": "bar_5m_daily_agg:INE825V01034:MANYAVAR:2023-07-28:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1235.5,
+       "store_value": 1244.95
+      },
+      {
+       "id": "bar_5m_daily_agg:INE884A01027:VAIBHAVGBL:2022-02-21:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 421.0,
+       "store_value": 424.65
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "digest": "7fe728335c1bcd48e49dd024a241cd990a87badbd0d3e602e8e97e9ca2022653"
+}

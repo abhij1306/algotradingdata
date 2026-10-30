@@ -1,0 +1,13 @@
+{
+ "status": "pass",
+ "tolerance_inr": "1",
+ "sessions": 743,
+ "fills": 316,
+ "overlay_fills": 320,
+ "overlay_estimated_fills": 4,
+ "trades": 158,
+ "dividends": "10335.17",
+ "overlay_tax": "23825.43",
+ "worst_cash_diff": "0",
+ "findings": []
+}

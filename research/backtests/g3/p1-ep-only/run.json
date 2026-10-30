@@ -1,0 +1,597 @@
+{
+ "format_version": "1.5",
+ "identity": {
+  "run_id": "01a18c00-93e1-76fa-8e07-c07ff47eefc2",
+  "strategy": "S2",
+  "strategy_version": "64274b85-696f-4aea-944e-717a62546682",
+  "engine_commit": "8f4267d2e787da33128dd76794f4b82a9876ce4f",
+  "sweep_id": null,
+  "sweep_name": null,
+  "variant": "p1-ep-only",
+  "base_run_id": null,
+  "change": null,
+  "changed_knobs": null,
+  "bundle": null,
+  "created_at": "2026-10-30T08:59:16.757672+00:00",
+  "status": "complete",
+  "error": null,
+  "for_promotion": false
+ },
+ "data": {
+  "universe": "NIFTY500_PIT",
+  "data_snapshot_id": "e7a68fc909ea8f1dfcdea5271ff3311a4c1409da5d614997df42e202a4a27735",
+  "split": "in_sample",
+  "validates_run_id": null,
+  "period_start": "2022-01-01",
+  "period_end": "2024-12-31",
+  "benchmark": "NIFTY500_TRI",
+  "audit": {
+   "digest": "8658d86a0ff9791ce211a704020011eb6705e4fbe0b3478482ba177549d7cd80",
+   "status": "warn"
+  },
+  "industry_unknown_pct": 0.151,
+  "undated_member_demergers": 0,
+  "verified": false,
+  "verify_report": null
+ },
+ "config": {
+  "overrides": {
+   "playbooks": [
+    "episodic_pivot"
+   ]
+  },
+  "resolved": {
+   "strategy": {
+    "bot": "momentum-breakout-ep",
+    "market": "NSE",
+    "universe": [
+     {
+      "type": "series_in",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "series": [
+        "EQ",
+        "BE"
+       ]
+      },
+      "enabled": true,
+      "order": 0
+     },
+     {
+      "type": "min_turnover",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "days": 20,
+       "inr_cr": 10.0
+      },
+      "enabled": true,
+      "order": 1
+     },
+     {
+      "type": "adr_min",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "days": 20,
+       "pct": 4.0
+      },
+      "enabled": true,
+      "order": 2
+     }
+    ],
+    "regime": {
+     "index": "NIFTY 500",
+     "rule": "sma_fast_above_slow_both_rising",
+     "params": {
+      "fast": 10,
+      "slow": 20,
+      "rising_days": 3
+     }
+    },
+    "playbooks": [
+     {
+      "name": "episodic_pivot",
+      "setup": {
+       "threshold": 0.6,
+       "criteria": [
+        {
+         "type": "neglect",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "max_return_63d_pct": 30.0,
+          "max_range_126d_pct": null
+         },
+         "enabled": true,
+         "order": 0
+        }
+       ]
+      },
+      "trigger": [
+       {
+        "type": "gap_up",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "min_pct": 10.0
+        },
+        "enabled": true,
+        "order": 0
+       },
+       {
+        "type": "early_volume",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "vs_adv20": 0.5
+        },
+        "enabled": true,
+        "order": 1
+       },
+       {
+        "type": "catalyst_attached",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "within_hours": 24,
+         "required_in": [
+          "confirm"
+         ]
+        },
+        "enabled": true,
+        "order": 2
+       },
+       {
+        "type": "price_breaks_level",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "level": "opening_range_high",
+         "bar": "5m",
+         "confirm": "close"
+        },
+        "enabled": true,
+        "order": 3
+       }
+      ],
+      "entry_filters": [
+       {
+        "type": "adtr_filter",
+        "stage": "entry_filter",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "max_multiple": 1.5
+        },
+        "enabled": true,
+        "order": 0
+       },
+       {
+        "type": "max_chase",
+        "stage": "entry_filter",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "pct": 2.0
+        },
+        "enabled": true,
+        "order": 1
+       }
+      ],
+      "stop": {
+       "rule": "low_of_day",
+       "buffer_ticks": 1
+      }
+     }
+    ],
+    "exits": [
+     {
+      "rule": "hard_stop",
+      "enabled": true
+     },
+     {
+      "rule": "partial_after_days",
+      "days": 3,
+      "sell_fraction": 0.33,
+      "only_if_profit": true,
+      "enabled": true
+     },
+     {
+      "rule": "move_stop_to_breakeven",
+      "at_r": null,
+      "after": "partial",
+      "enabled": true
+     },
+     {
+      "sma": 10,
+      "sell_fraction": 1.0,
+      "enabled": true,
+      "rule": "close_below_sma"
+     }
+    ]
+   },
+   "risk_policy": {
+    "risk_pct": "0.01",
+    "p_max": {
+     "darvas-box-breakout": "0.20",
+     "momentum-breakout-ep": "0.25",
+     "rsi2-uptrend-reversion": "0.20",
+     "stage2-contraction-breakout": "0.20",
+     "trend-pullback-ema": "0.20"
+    },
+    "adv_cap_pct": "0.01",
+    "global_open_risk_pct": "0.1",
+    "max_open_positions": 10,
+    "max_positions_per_industry": 10,
+    "max_entries_per_day": 4,
+    "max_stopouts_per_day": 4,
+    "cooldown_sessions": 0,
+    "min_position_pct": "0.02",
+    "exposure_ladder": {
+     "L1": {
+      "max_positions": 6,
+      "risk_mult": "1.0"
+     },
+     "L2": {
+      "max_positions": 8,
+      "risk_mult": "1.0"
+     },
+     "L3": {
+      "max_positions": 10,
+      "risk_mult": "1.0"
+     },
+     "up_after_wins": 2,
+     "down_after_losses": 2
+    },
+    "kill": {
+     "account_drawdown_pct": "0.20",
+     "bot_drawdown_pct": "0.20"
+    },
+    "base_weight": {
+     "S1": "1.0",
+     "S2": "0.50",
+     "S3": "0",
+     "S4": "0",
+     "S5": "0"
+    },
+    "cluster_cap": "1.00",
+    "multiplier_bounds": {
+     "lo": "0.25",
+     "hi": "1.0"
+    },
+    "health_bands": {
+     "half_dd": "0.12",
+     "zero_dd": "0.18",
+     "full_mult": "1.0",
+     "half_mult": "0.5"
+    },
+    "weights_confirmed": true
+   },
+   "conventions": {
+    "fill_path": "open_low_high_close",
+    "entry_fill_rule": "penetration_1_tick",
+    "gap_through_rule": "min_open_stop",
+    "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+    "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+    "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+    "slippage_bps": "20",
+    "cost_model": {
+     "version": "cnc-delivery-2",
+     "schedules": [
+      {
+       "effective_from": "2021-08-05",
+       "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+      },
+      {
+       "effective_from": "2022-07-18",
+       "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+      },
+      {
+       "effective_from": "2023-04-01",
+       "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+      },
+      {
+       "effective_from": "2024-04-01",
+       "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+      },
+      {
+       "effective_from": "2024-10-01",
+       "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+      }
+     ]
+    },
+    "slot_order": "time",
+    "ambiguous": "optimistic",
+    "lower_circuit": "carry_to_next_unlocked_open",
+    "suspension_markdown": {
+     "after_sessions": 5,
+     "band_pct": "5"
+    },
+    "sleeve_weight": "0.5",
+    "regime_mult": "1",
+    "health_mult": "1",
+    "open_to_0920": {
+     "buy": "0.0002",
+     "sell": "0.0003",
+     "measured": true
+    }
+   }
+  },
+  "resolved_hash": "1811a5ac8c3a70d7db4af726eaf1fda931ca83450351d4f75a0791b7c7b3bfdc",
+  "risk_policy_version": 3,
+  "base_risk_policy_version": null,
+  "cost_model": "cnc-delivery-2",
+  "start_capital": 1000000,
+  "rf_pct": 0
+ },
+ "metrics": {
+  "trades": 2,
+  "win_pct": 0.0,
+  "avg_win_r": null,
+  "avg_loss_r": -1.1419,
+  "expectancy_r": -1.1419,
+  "avg_mfe_r": 0.0,
+  "avg_mae_r": -1.0,
+  "cagr_pct": -0.2855,
+  "max_dd_pct": 0.8542,
+  "avg_dd_pct": 0.8542,
+  "mar": -0.3342,
+  "sharpe": -0.8244,
+  "sortino": -0.8233,
+  "invested_pct": 0.0,
+  "avg_open_positions": 0.0,
+  "longest_dd_sessions": 145,
+  "longest_dd_recovered": false,
+  "longest_dd_start": "2024-05-31",
+  "longest_dd_end": "2024-12-31",
+  "total_return_pct": -0.8542,
+  "final_equity": 991457.74,
+  "fees": 577.03,
+  "cost_share_pct": null,
+  "benchmark_cagr_pct": 15.424,
+  "avg_hold_sessions_win": null,
+  "avg_hold_sessions_loss": 0.0,
+  "max_consecutive_losses": 2,
+  "symbols_traded": 2,
+  "top5_trades_pnl_share_pct": null,
+  "top10_symbols_pnl_share_pct": null,
+  "cagr_ex_top5_trades_pct": 0.0,
+  "signals": 6,
+  "dsr_prob": 0.0,
+  "dsr_n_trials": 10,
+  "dsr_n_trials_effective": 10,
+  "pbo": 0.7,
+  "max_position_pct_adv": 0.0079,
+  "trades_over_5pct_adv": 0
+ },
+ "refusals": {
+  "regime_off": 4
+ },
+ "binding": {
+  "trades_changed": null,
+  "trade_list_hash": "f7c7a93bd12f014d309715c5ece3cf114c50f74acdb49d30e97253d55db6d01f",
+  "no_op": null
+ },
+ "breakdowns": {
+  "by_year": [
+   {
+    "year": 2022,
+    "return_pct": 0.0,
+    "max_dd_pct": 0.0,
+    "trades_entered": 0,
+    "expectancy_r_by_entry": null,
+    "trades_exited": 0,
+    "expectancy_r_by_exit": null,
+    "realized_pnl_by_exit": 0.0,
+    "benchmark_return_pct": 4.2462,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2023,
+    "return_pct": 0.0,
+    "max_dd_pct": 0.0,
+    "trades_entered": 0,
+    "expectancy_r_by_entry": null,
+    "trades_exited": 0,
+    "expectancy_r_by_exit": null,
+    "realized_pnl_by_exit": 0.0,
+    "benchmark_return_pct": 26.9147,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2024,
+    "return_pct": -0.8542,
+    "max_dd_pct": 0.8542,
+    "trades_entered": 2,
+    "expectancy_r_by_entry": -1.1419,
+    "trades_exited": 2,
+    "expectancy_r_by_exit": -1.1419,
+    "realized_pnl_by_exit": -8542.26,
+    "benchmark_return_pct": 16.2408,
+    "entries_5m": 2,
+    "entries_daily": 0
+   }
+  ],
+  "by_regime": {
+   "index_on": {
+    "trades": 2,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1419,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -8542.26
+   },
+   "breadth_40_50": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1374,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -4402.04
+   },
+   "breadth_50_60": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1465,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -4140.22
+   }
+  },
+  "by_exit_reason": {
+   "initial_stop": {
+    "trades": 2,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1419,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -8542.26
+   }
+  },
+  "by_industry": {
+   "Construction": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1374,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -4402.04
+   },
+   "Financial Services": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1465,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -4140.22
+   }
+  },
+  "by_cap_bucket": {},
+  "by_liquidity_bucket": {
+   "q4": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1465,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -4140.22
+   },
+   "q5": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1374,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -4402.04
+   }
+  },
+  "by_playbook": {
+   "episodic_pivot": {
+    "signals": 6,
+    "refusals": {
+     "regime_off": 4
+    },
+    "trades": {
+     "trades": 2,
+     "win_pct": 0.0,
+     "expectancy_r": -1.1419,
+     "avg_hold_sessions": 0.0,
+     "net_pnl": -8542.26
+    }
+   }
+  },
+  "episodic_pivot": {
+   "episodic_pivot": {
+    "trades": {
+     "trades": 2,
+     "win_pct": 0.0,
+     "expectancy_r": -1.1419,
+     "avg_hold_sessions": 0.0,
+     "net_pnl": -8542.26
+    },
+    "by_catalyst_type": {
+     "none": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1419,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -8542.26
+     }
+    },
+    "by_sales_yoy": {
+     "unknown": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1419,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -8542.26
+     }
+    },
+    "by_gap": {
+     "10_15": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1419,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -8542.26
+     }
+    },
+    "by_trigger_time": {
+     "0920_0945": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1419,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -8542.26
+     }
+    },
+    "by_adr20": {
+     "4_6": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1419,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -8542.26
+     }
+    },
+    "by_range_126d": {
+     "gt60": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1419,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -8542.26
+     }
+    },
+    "by_exit_reason": {
+     "initial_stop": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1419,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -8542.26
+     }
+    }
+   }
+  }
+ },
+ "funnel": {
+  "regime_off_nights": 366,
+  "by_playbook": {
+   "episodic_pivot": {
+    "gap_scan": 37,
+    "gap_up": 37,
+    "neglect": 25,
+    "early_volume": 25,
+    "price_breaks_level": 8,
+    "adtr_filter": 6,
+    "max_chase": 6,
+    "filled": 2
+   }
+  }
+ }
+}

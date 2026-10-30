@@ -1,0 +1,861 @@
+{
+ "audit_version": "4",
+ "scope": {
+  "data_snapshot_id": "d5c43c659f1093f1397bfed444ff0dc286dfff7efc55db90f7bfd5404f9dc4ab",
+  "universe": "01a17359-fe35-7207-abe4-fe26eae939bf",
+  "index": "NIFTY 500",
+  "period_start": "2016-01-01",
+  "period_end": "2024-12-31",
+  "members": 869
+ },
+ "status": "warn",
+ "checks": [
+  {
+   "name": "calendar",
+   "status": "pass",
+   "summary": {
+    "sessions": 2229,
+    "stored": 2229,
+    "store_last": "2024-12-31"
+   },
+   "findings": []
+  },
+  {
+   "name": "missing_sessions",
+   "status": "pass",
+   "summary": {
+    "member_sessions": 1116584,
+    "missing": 4,
+    "missing_pct": 0.0004,
+    "symbols_with_gaps": 2,
+    "worst": [
+     {
+      "instrument_id": "01a1629b-f2dd-7030-9459-5257431f450f",
+      "symbol": "KKCL",
+      "member_sessions": 61,
+      "missing": 1,
+      "missing_pct": 1.64,
+      "longest_gap": 1,
+      "first_missing": "2016-02-25"
+     },
+     {
+      "instrument_id": "01a1629c-72a0-76fd-94b8-32472375a21f",
+      "symbol": "JKIL",
+      "member_sessions": 802,
+      "missing": 3,
+      "missing_pct": 0.37,
+      "longest_gap": 3,
+      "first_missing": "2017-08-08"
+     }
+    ]
+   },
+   "findings": []
+  },
+  {
+   "name": "survivorship",
+   "status": "pass",
+   "summary": {
+    "samples": [
+     {
+      "date": "2016-01-01",
+      "members": 500,
+      "later_left": 219
+     },
+     {
+      "date": "2017-01-02",
+      "members": 501,
+      "later_left": 199
+     },
+     {
+      "date": "2018-01-01",
+      "members": 501,
+      "later_left": 187
+     },
+     {
+      "date": "2019-01-01",
+      "members": 501,
+      "later_left": 162
+     },
+     {
+      "date": "2020-01-01",
+      "members": 501,
+      "later_left": 135
+     },
+     {
+      "date": "2021-01-01",
+      "members": 501,
+      "later_left": 127
+     },
+     {
+      "date": "2022-01-03",
+      "members": 501,
+      "later_left": 108
+     },
+     {
+      "date": "2023-01-02",
+      "members": 501,
+      "later_left": 81
+     },
+     {
+      "date": "2024-01-01",
+      "members": 501,
+      "later_left": 57
+     }
+    ],
+    "leavers": 357
+   },
+   "findings": []
+  },
+  {
+   "name": "corporate_actions",
+   "status": "warn",
+   "summary": {
+    "instruments": 869,
+    "ex_dates": 503,
+    "jumps_at_ex_date": 2,
+    "jumps_elsewhere": 284,
+    "jumps_already_skipped": 36,
+    "threshold_pct": 20.0,
+    "largest_elsewhere": [
+     {
+      "instrument_id": "01a1629b-f28a-77f3-b130-2c09067a6af8",
+      "symbol": "JETAIRWAYS",
+      "date": "2019-06-20",
+      "move_pct": 89.88,
+      "raw_move_pct": 89.88,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629d-fc25-734f-ab2c-ff47894e910b",
+      "symbol": "CCAVENUE",
+      "date": "2018-09-28",
+      "move_pct": -70.83,
+      "raw_move_pct": -70.83,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f175-76b6-b1e6-2d468a70c1a6",
+      "symbol": "63MOONS",
+      "date": "2013-08-01",
+      "move_pct": -64.5,
+      "raw_move_pct": -64.5,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-17",
+      "move_pct": 58.09,
+      "raw_move_pct": 58.09,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f4bf-7583-a6ef-cf56ae796da9",
+      "symbol": "STAR",
+      "date": "2013-12-19",
+      "move_pct": -57.64,
+      "raw_move_pct": -57.64,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-e3e8-71d0-ab61-85bdf27660e4",
+      "symbol": "RCOM",
+      "date": "2018-05-17",
+      "move_pct": 56.19,
+      "raw_move_pct": 56.19,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-06",
+      "move_pct": -56.11,
+      "raw_move_pct": -56.11,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f048-72d7-943c-ab2954a53418",
+      "symbol": "AMTEKAUTO",
+      "date": "2015-09-11",
+      "move_pct": 53.93,
+      "raw_move_pct": 53.93,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-57e0-772e-8dfb-60ccd2f74ffc",
+      "symbol": "PNB",
+      "date": "2017-10-25",
+      "move_pct": 46.2,
+      "raw_move_pct": 46.2,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-16",
+      "move_pct": 45.21,
+      "raw_move_pct": 45.21,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f252-77f9-80fa-f6e80dc79a37",
+      "symbol": "INDUSINDBK",
+      "date": "2020-03-26",
+      "move_pct": 44.67,
+      "raw_move_pct": 44.67,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629d-9a74-726e-9be9-9a71747c6dfa",
+      "symbol": "PCJEWELLER",
+      "date": "2018-05-04",
+      "move_pct": 43.8,
+      "raw_move_pct": 43.8,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f128-765c-b539-41fba6e899aa",
+      "symbol": "DHFL",
+      "date": "2018-09-21",
+      "move_pct": -42.58,
+      "raw_move_pct": -42.58,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f28a-77f3-b130-2c09067a6af8",
+      "symbol": "JETAIRWAYS",
+      "date": "2019-06-18",
+      "move_pct": -40.79,
+      "raw_move_pct": -40.79,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f222-75c7-a4cb-fb5d0bef4a8f",
+      "symbol": "EMBDL",
+      "date": "2017-04-17",
+      "move_pct": 40.01,
+      "raw_move_pct": 40.01,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f22a-746d-b001-ce61cc2b9b99",
+      "symbol": "IDEA",
+      "date": "2020-02-19",
+      "move_pct": 40.0,
+      "raw_move_pct": 40.0,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f598-76ee-922f-2ee0786b56a9",
+      "symbol": "ZEEL",
+      "date": "2021-09-14",
+      "move_pct": 39.98,
+      "raw_move_pct": 39.98,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-b345-7221-8f4b-c0d3a69e3011",
+      "symbol": "BANDHANBNK",
+      "date": "2020-03-26",
+      "move_pct": 39.32,
+      "raw_move_pct": 39.32,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629d-7ca7-76b5-91d5-ec0c2a625ec9",
+      "symbol": "CANBK",
+      "date": "2017-10-25",
+      "move_pct": 38.73,
+      "raw_move_pct": 38.73,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f3b1-7153-b804-8088a773e0ed",
+      "symbol": "OPTOCIRCUI",
+      "date": "2013-05-31",
+      "move_pct": -37.7,
+      "raw_move_pct": -37.7,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629d-9a74-726e-9be9-9a71747c6dfa",
+      "symbol": "PCJEWELLER",
+      "date": "2018-05-07",
+      "move_pct": 37.56,
+      "raw_move_pct": 37.56,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f22a-746d-b001-ce61cc2b9b99",
+      "symbol": "IDEA",
+      "date": "2019-11-19",
+      "move_pct": 35.96,
+      "raw_move_pct": 35.96,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629b-f552-7552-a046-d2e948e41da7",
+      "symbol": "UNITECH",
+      "date": "2015-06-03",
+      "move_pct": -35.69,
+      "raw_move_pct": -35.69,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-e3e8-71d0-ab61-85bdf27660e4",
+      "symbol": "RCOM",
+      "date": "2017-12-20",
+      "move_pct": 35.69,
+      "raw_move_pct": 35.69,
+      "ex_date": false
+     },
+     {
+      "instrument_id": "01a1629c-eba9-7598-aa95-cc67010d7ab5",
+      "symbol": "YESBANK",
+      "date": "2020-03-11",
+      "move_pct": 35.53,
+      "raw_move_pct": 35.53,
+      "ex_date": false
+     }
+    ]
+   },
+   "findings": [
+    {
+     "code": "ex_date_jump",
+     "severity": "warn",
+     "count": 2,
+     "items": [
+      {
+       "instrument_id": "01a1629d-4387-7226-b52f-7a44ee10b8b1",
+       "symbol": "EASEMYTRIP",
+       "date": "2022-11-21",
+       "move_pct": 20.02,
+       "raw_move_pct": -85.0,
+       "ex_date": true
+      },
+      {
+       "instrument_id": "01a1629d-74d2-76e9-a174-0dce7508ff07",
+       "symbol": "CGCL",
+       "date": "2024-03-05",
+       "move_pct": 20.0,
+       "raw_move_pct": -70.0,
+       "ex_date": true
+      }
+     ],
+     "threshold_pct": 20.0
+    }
+   ]
+  },
+  {
+   "name": "lookahead",
+   "status": "pass",
+   "summary": {
+    "feature_samples": 96,
+    "breadth_samples": 8,
+    "features_compared": [
+     "sma10",
+     "sma20",
+     "sma50",
+     "sma150",
+     "sma200",
+     "high_52w",
+     "low_52w",
+     "adr20",
+     "adtr20",
+     "adv20",
+     "turnover20",
+     "ret21",
+     "ret63",
+     "ret126",
+     "ret252",
+     "rs_weighted"
+    ],
+    "engine_reads": "trade date D: scan, features, regime and breadth gates of D-1"
+   },
+   "findings": []
+  },
+  {
+   "name": "unique_keys",
+   "status": "pass",
+   "summary": {
+    "daily_dates": "date (IST trade date, no time)"
+   },
+   "findings": []
+  },
+  {
+   "name": "bars_5m",
+   "status": "warn",
+   "summary": {
+    "days_scanned": 930269,
+    "off": {
+     "close_off": {
+      "days": 252,
+      "member_days": 6
+     }
+    },
+    "used_by_run": true
+   },
+   "findings": [
+    {
+     "code": "bar_5m_close_off_daily",
+     "severity": "warn",
+     "count": 252,
+     "items": [
+      {
+       "instrument_id": "01a1629b-f142-72a3-b16a-5fbe254533af",
+       "date": "2021-11-30",
+       "member": true,
+       "ratio": 0.9436,
+       "later_factor": 0.33335
+      },
+      {
+       "instrument_id": "01a1629b-f1bb-7691-8a72-cac0d5d8dd86",
+       "date": "2024-09-03",
+       "member": true,
+       "ratio": 1.0516,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f1d0-76f3-bd1f-915ce0ae996f",
+       "date": "2022-03-17",
+       "member": true,
+       "ratio": 1.0724,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f2a9-7448-8d43-3f6e7f2d855c",
+       "date": "2023-03-08",
+       "member": true,
+       "ratio": 1.0598,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629c-5b24-7294-8d7e-35eb3f57dc5b",
+       "date": "2024-12-30",
+       "member": true,
+       "ratio": 1.0504,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629c-8d31-7549-9b41-03ca031a095a",
+       "date": "2023-06-15",
+       "member": true,
+       "ratio": 0.9485,
+       "later_factor": 0.25
+      },
+      {
+       "instrument_id": "01a1629b-f028-7000-bb0a-0ec1a93a7b29",
+       "date": "2025-11-07",
+       "member": false,
+       "ratio": 1.0662,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f03e-769d-beed-7a9178df988c",
+       "date": "2026-04-02",
+       "member": false,
+       "ratio": 1.0531,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-05-20",
+       "member": false,
+       "ratio": 1.0612,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-05-26",
+       "member": false,
+       "ratio": 1.0586,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-06-01",
+       "member": false,
+       "ratio": 1.1391,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f066-73c5-b341-88737734cc40",
+       "date": "2026-10-01",
+       "member": false,
+       "ratio": 1.0507,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f06d-71e8-b8f2-616d79f9021a",
+       "date": "2025-11-24",
+       "member": false,
+       "ratio": 1.0569,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f073-7288-bd7a-a32e31559283",
+       "date": "2026-09-11",
+       "member": false,
+       "ratio": 1.0612,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f0f8-775d-ac0f-bb84407e8b3a",
+       "date": "2026-03-30",
+       "member": false,
+       "ratio": 0.9275,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f10a-70ee-a955-5d4f548d7eae",
+       "date": "2025-12-01",
+       "member": false,
+       "ratio": 1.0605,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f10a-70ee-a955-5d4f548d7eae",
+       "date": "2025-12-24",
+       "member": false,
+       "ratio": 0.9327,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f10a-70ee-a955-5d4f548d7eae",
+       "date": "2026-03-11",
+       "member": false,
+       "ratio": 0.928,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f1a4-758a-ae9f-08330b6cc187",
+       "date": "2025-12-09",
+       "member": false,
+       "ratio": 1.0575,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f1e0-74cb-b91e-d5ffdd743fc1",
+       "date": "2026-03-20",
+       "member": false,
+       "ratio": 1.0846,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f1e0-74cb-b91e-d5ffdd743fc1",
+       "date": "2026-03-24",
+       "member": false,
+       "ratio": 0.9479,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f21c-7304-ae61-a8761be1cf98",
+       "date": "2026-03-16",
+       "member": false,
+       "ratio": 1.0512,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f256-771b-8869-ea4799eee012",
+       "date": "2026-07-08",
+       "member": false,
+       "ratio": 0.9328,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f256-771b-8869-ea4799eee012",
+       "date": "2026-08-18",
+       "member": false,
+       "ratio": 1.058,
+       "later_factor": 1.0
+      },
+      {
+       "instrument_id": "01a1629b-f256-771b-8869-ea4799eee012",
+       "date": "2026-10-13",
+       "member": false,
+       "ratio": 1.0766,
+       "later_factor": 1.0
+      }
+     ],
+     "threshold_pct": 5.0
+    }
+   ]
+  },
+  {
+   "name": "industries",
+   "status": "warn",
+   "summary": {
+    "member_days": 1116584,
+    "unknown_member_days": 62973,
+    "unknown_pct": 5.64,
+    "unknown_members": 135
+   },
+   "findings": [
+    {
+     "code": "industry_unknown",
+     "severity": "warn",
+     "count": 135,
+     "items": [
+      {
+       "instrument_id": "01a1629b-f08c-70fa-8aca-3bb1064119b1",
+       "symbol": "BAJAJCON",
+       "member_days": 1546
+      },
+      {
+       "instrument_id": "01a1629b-f05b-7385-aaca-2142c030c94f",
+       "symbol": "GVPIL",
+       "member_days": 1422
+      },
+      {
+       "instrument_id": "01a1629b-f095-74c5-b1bd-149cc5166a1b",
+       "symbol": "BALMLAWRIE",
+       "member_days": 1422
+      },
+      {
+       "instrument_id": "01a1629c-3240-74fd-a913-b6b8cbf5bd4e",
+       "symbol": "FCONSUMER",
+       "member_days": 1422
+      },
+      {
+       "instrument_id": "01a1629b-f390-750d-8f2e-d754249130cd",
+       "symbol": "NILKAMAL",
+       "member_days": 1362
+      },
+      {
+       "instrument_id": "01a1629b-f2e2-75c3-bfd6-a11ddc7cf25a",
+       "symbol": "KOLTEPATIL",
+       "member_days": 1298
+      },
+      {
+       "instrument_id": "01a1629b-f3ab-75c5-a41a-63fd0d06ae43",
+       "symbol": "OMAXE",
+       "member_days": 1298
+      },
+      {
+       "instrument_id": "01a1629c-61c5-7664-a7a8-99446bee8e01",
+       "symbol": "VRLLOG",
+       "member_days": 1298
+      },
+      {
+       "instrument_id": "01a1629b-f1fd-76c4-840f-bc14f65c3846",
+       "symbol": "HEXAWARE",
+       "member_days": 1171
+      },
+      {
+       "instrument_id": "01a1629b-f202-75d7-89dc-a0e5d795008d",
+       "symbol": "HIMATSEIDE",
+       "member_days": 1171
+      },
+      {
+       "instrument_id": "01a1629b-f455-70e5-b98d-f54248adbd7f",
+       "symbol": "SADBHAV",
+       "member_days": 1171
+      },
+      {
+       "instrument_id": "01a1629c-8788-7500-90c8-5fc4bdff706a",
+       "symbol": "FRETAIL",
+       "member_days": 1082
+      },
+      {
+       "instrument_id": "01a1629c-70c5-70b5-9532-470f662a6693",
+       "symbol": "SHK",
+       "member_days": 1028
+      },
+      {
+       "instrument_id": "01a1629b-f0b7-7045-9120-c9babbb02dfa",
+       "symbol": "TATASTLBSL",
+       "member_days": 998
+      },
+      {
+       "instrument_id": "01a1629c-3843-72d0-a03b-52ee722fc0a7",
+       "symbol": "FLFL",
+       "member_days": 982
+      },
+      {
+       "instrument_id": "01a1629b-f195-709f-bb4b-cc47d76da0ca",
+       "symbol": "GDL",
+       "member_days": 923
+      },
+      {
+       "instrument_id": "01a1629b-f1d3-7203-9ed3-b1e530103aa3",
+       "symbol": "GSKCONS",
+       "member_days": 923
+      },
+      {
+       "instrument_id": "01a1629b-f526-724c-b5aa-86ce47200ab1",
+       "symbol": "TNPL",
+       "member_days": 923
+      },
+      {
+       "instrument_id": "01a1629c-934e-76d4-b8fc-49827ce87815",
+       "symbol": "GAYAPROJ",
+       "member_days": 893
+      },
+      {
+       "instrument_id": "01a1629b-f1e2-714f-b22d-85e984a186d1",
+       "symbol": "GFLLIMITED",
+       "member_days": 862
+      },
+      {
+       "instrument_id": "01a1629b-f28a-77f3-b130-2c09067a6af8",
+       "symbol": "JETAIRWAYS",
+       "member_days": 859
+      },
+      {
+       "instrument_id": "01a1629b-f13a-7780-9cc0-28b638cad45e",
+       "symbol": "DREDGECORP",
+       "member_days": 802
+      },
+      {
+       "instrument_id": "01a1629b-f166-76fe-91c5-232ce8ae20d6",
+       "symbol": "EVEREADY",
+       "member_days": 802
+      },
+      {
+       "instrument_id": "01a1629b-f1f2-74b4-9a81-eccd8dd50eeb",
+       "symbol": "HCL-INSYS",
+       "member_days": 802
+      },
+      {
+       "instrument_id": "01a1629b-f23c-7484-a9dc-d9a71c8d9bfa",
+       "symbol": "IL&FSTRANS",
+       "member_days": 802
+      }
+     ],
+     "threshold_pct": 5.0
+    }
+   ]
+  },
+  {
+   "name": "demergers",
+   "status": "pass",
+   "summary": {
+    "gaps_checked": 64,
+    "undated_member_demergers": 5,
+    "undated": [
+     {
+      "instrument_id": "01a1629b-f108-7178-9790-f54ef2fd2bb8",
+      "symbol": "COX&KINGS",
+      "ex_date": "2018-10-25"
+     },
+     {
+      "instrument_id": "01a1629c-74e5-73a3-87b2-de083387b00a",
+      "symbol": "GREENPLY",
+      "ex_date": "2019-07-12"
+     },
+     {
+      "instrument_id": "01a1629b-f035-70ec-8ba6-c634c965486c",
+      "symbol": "ALEMBICLTD",
+      "ex_date": "2019-08-26"
+     },
+     {
+      "instrument_id": "01a1629b-f2d0-70a5-a305-142d53178b44",
+      "symbol": "KESORAMIND",
+      "ex_date": "2019-12-24"
+     },
+     {
+      "instrument_id": "01a1629b-fc8c-7363-9ecf-cae0da80ac22",
+      "symbol": "IBULLSLTD",
+      "ex_date": "2022-09-01"
+     }
+    ]
+   },
+   "findings": []
+  },
+  {
+   "name": "verify",
+   "status": "warn",
+   "summary": {
+    "verified": false,
+    "report": "/data/workspace/hat-data-isin/audits/verify-2026-10-30-D2-evidence1/verify.json",
+    "reports": {},
+    "digest": null,
+    "created": null,
+    "checks": {}
+   },
+   "findings": [
+    {
+     "code": "verify_report_stale",
+     "severity": "warn",
+     "count": 7,
+     "items": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "golden",
+   "status": "warn",
+   "summary": {
+    "file": "2026-10-26.2.json",
+    "digest": "0a449727b7add897f5b4b39684cba23bd9723e96668be25e1b8d78d12017900b",
+    "created": "2026-10-26",
+    "items": 463,
+    "counts": {
+     "pass": 463
+    },
+    "mismatch_counts": {
+     "fixed": 7,
+     "open": 5
+    }
+   },
+   "findings": [
+    {
+     "code": "golden_mismatch_open",
+     "severity": "warn",
+     "count": 5,
+     "items": [
+      {
+       "id": "bar_5m_daily_agg:INE879I01012:DBREALTY:2024-03-19:bars_5m:sum_volume",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1952771,
+       "store_value": 1648880
+      },
+      {
+       "id": "bar_5m_daily_agg:INE260B01028:GODFRYPHLP:2022-02-28:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1005.0,
+       "store_value": 991.4791
+      },
+      {
+       "id": "bar_5m_daily_agg:INE227W01023:CLEAN:2023-03-13:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1448.7,
+       "store_value": 1440.1
+      },
+      {
+       "id": "bar_5m_daily_agg:INE825V01034:MANYAVAR:2023-07-28:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 1235.5,
+       "store_value": 1244.95
+      },
+      {
+       "id": "bar_5m_daily_agg:INE884A01027:VAIBHAVGBL:2022-02-21:bars_5m:first_open",
+       "kind": "bar_5m_daily_agg",
+       "risk": "5m_reject_neighbor",
+       "status": "open",
+       "value": 421.0,
+       "store_value": 424.65
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "digest": "d496fc9a1808f4ab8ea9ae16385597a13fd7ccf3587a2872f86d9fc87cdaa048"
+}

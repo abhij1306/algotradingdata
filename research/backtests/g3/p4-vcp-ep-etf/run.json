@@ -1,0 +1,2988 @@
+{
+ "format_version": "1.5",
+ "identity": {
+  "run_id": "01a18c1b-d5dc-7359-9be4-79a3e40ebbb9",
+  "strategy": "S1+S2",
+  "strategy_version": "aac4fda7-86b2-421d-b7f8-1247edef7f1d",
+  "engine_commit": "8f4267d2e787da33128dd76794f4b82a9876ce4f",
+  "sweep_id": null,
+  "sweep_name": null,
+  "variant": "p4-vcp-ep-etf",
+  "base_run_id": null,
+  "change": null,
+  "changed_knobs": null,
+  "bundle": null,
+  "created_at": "2026-10-30T09:37:37.076979+00:00",
+  "status": "complete",
+  "error": null,
+  "for_promotion": false
+ },
+ "data": {
+  "universe": "NIFTY500_PIT",
+  "data_snapshot_id": "e7a68fc909ea8f1dfcdea5271ff3311a4c1409da5d614997df42e202a4a27735",
+  "split": "in_sample",
+  "validates_run_id": null,
+  "period_start": "2022-01-01",
+  "period_end": "2024-12-31",
+  "benchmark": "NIFTY500_TRI",
+  "audit": {
+   "digest": "8658d86a0ff9791ce211a704020011eb6705e4fbe0b3478482ba177549d7cd80",
+   "status": "warn"
+  },
+  "industry_unknown_pct": 0.151,
+  "undated_member_demergers": 0,
+  "verified": false,
+  "verify_report": null
+ },
+ "config": {
+  "overrides": {
+   "set": [
+    {
+     "path": "playbooks[default].setup.criteria[vcp].params.contractions",
+     "value": [
+      2,
+      6
+     ]
+    },
+    {
+     "path": "exits[time_stop].enabled",
+     "value": false
+    },
+    {
+     "path": "exits[close_below_sma].sma",
+     "value": 50
+    },
+    {
+     "path": "exits[trailing_swing_low].lookback_days",
+     "value": 20
+    },
+    {
+     "path": "exits[partial_at_r].enabled",
+     "value": false
+    },
+    {
+     "path": "playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50",
+     "value": 1.0
+    },
+    {
+     "path": "exits[step_trail].enabled",
+     "value": false
+    },
+    {
+     "path": "playbooks[default].setup.criteria[vcp].params.depth_ratio_max",
+     "value": 0.9
+    }
+   ],
+   "policy_set": [
+    {
+     "path": "global_open_risk_pct",
+     "value": 1
+    },
+    {
+     "path": "p_max.stage2-contraction-breakout",
+     "value": 1
+    }
+   ],
+   "risk_pct": "0.0075",
+   "flat_ladder": true
+  },
+  "resolved": {
+   "strategy": {
+    "bot": "stage2-contraction-breakout",
+    "market": "NSE",
+    "universe": [
+     {
+      "type": "series_in",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "series": [
+        "EQ",
+        "BE"
+       ]
+      },
+      "enabled": true,
+      "order": 0
+     },
+     {
+      "type": "min_turnover",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "days": 20,
+       "inr_cr": 10.0
+      },
+      "enabled": true,
+      "order": 1
+     },
+     {
+      "type": "min_price",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "inr": 50.0
+      },
+      "enabled": true,
+      "order": 2
+     }
+    ],
+    "regime": {
+     "index": "NIFTY 500",
+     "rule": "close_above_sma_and_rising",
+     "params": {
+      "sma": 50,
+      "rising_days": 0
+     }
+    },
+    "playbooks": [
+     {
+      "name": "default",
+      "setup": {
+       "threshold": 0.6,
+       "criteria": [
+        {
+         "type": "sma_above",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "a": "close",
+          "b": 150
+         },
+         "enabled": true,
+         "order": 0
+        },
+        {
+         "type": "sma_above",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "a": "close",
+          "b": 200
+         },
+         "enabled": true,
+         "order": 1
+        },
+        {
+         "type": "sma_above",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "a": 150,
+          "b": 200
+         },
+         "enabled": true,
+         "order": 2
+        },
+        {
+         "type": "sma_rising",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "sma": 200,
+          "lookback_days": 21
+         },
+         "enabled": true,
+         "order": 3
+        },
+        {
+         "type": "sma_above",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "a": 50,
+          "b": 150
+         },
+         "enabled": true,
+         "order": 4
+        },
+        {
+         "type": "sma_above",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "a": 50,
+          "b": 200
+         },
+         "enabled": true,
+         "order": 5
+        },
+        {
+         "type": "sma_above",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "a": "close",
+          "b": 50
+         },
+         "enabled": true,
+         "order": 6
+        },
+        {
+         "type": "pct_from_52w_low",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "min_pct": 30.0
+         },
+         "enabled": true,
+         "order": 7
+        },
+        {
+         "type": "pct_from_52w_high",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "max_pct_below": 25.0
+         },
+         "enabled": true,
+         "order": 8
+        },
+        {
+         "type": "rs_rank",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "min_percentile": 70.0,
+          "score_from": 70.0,
+          "score_full": 95.0
+         },
+         "enabled": false,
+         "order": 9
+        },
+        {
+         "type": "rs_rank",
+         "stage": "setup",
+         "mode": "score",
+         "weight": 1.0,
+         "params": {
+          "min_percentile": 70.0,
+          "score_from": 70.0,
+          "score_full": 95.0
+         },
+         "enabled": false,
+         "order": 10
+        },
+        {
+         "type": "vcp",
+         "stage": "setup",
+         "mode": "score",
+         "weight": 2.0,
+         "params": {
+          "contractions": [
+           2,
+           6
+          ],
+          "depth_ratio_max": 0.9,
+          "final_depth_max_pct": 10.0,
+          "lookback_days": 120,
+          "dryup_vs_avg50": 1.0,
+          "max_high_spread_pct": null,
+          "min_first_depth_pct": null,
+          "min_contraction_bars": null,
+          "pivot_source": "vcp"
+         },
+         "enabled": true,
+         "order": 11
+        },
+        {
+         "type": "close_vs_pivot",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "max_above_pct": 0.0
+         },
+         "enabled": true,
+         "order": 12
+        },
+        {
+         "type": "earnings_growth",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "eps_yoy": 20.0,
+          "sales_yoy": 20.0,
+          "accelerating": true
+         },
+         "enabled": false,
+         "order": 13
+        }
+       ]
+      },
+      "trigger": [
+       {
+        "type": "price_breaks_level",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "level": "pivot",
+         "bar": "5m",
+         "confirm": "close"
+        },
+        "enabled": true,
+        "order": 0
+       },
+       {
+        "type": "volume_pace",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "vs_avg50": 1.5
+        },
+        "enabled": false,
+        "order": 1
+       }
+      ],
+      "entry_filters": [
+       {
+        "type": "max_chase",
+        "stage": "entry_filter",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "pct": 2.0
+        },
+        "enabled": true,
+        "order": 0
+       }
+      ],
+      "stop": {
+       "rule": "below_final_contraction_low",
+       "buffer_pct": 0.5,
+       "max_pct": 10.0,
+       "min_pct": 0.0
+      }
+     }
+    ],
+    "exits": [
+     {
+      "rule": "hard_stop",
+      "enabled": true
+     },
+     {
+      "rule": "step_trail",
+      "step_r": 1.5,
+      "move_r": 1.0,
+      "enabled": false
+     },
+     {
+      "rule": "partial_at_r",
+      "at_r": 3.0,
+      "sell_fraction": 0.33,
+      "enabled": false
+     },
+     {
+      "sma": 50,
+      "sell_fraction": 1.0,
+      "enabled": true,
+      "rule": "close_below_sma"
+     },
+     {
+      "rule": "trailing_swing_low",
+      "lookback_days": 20,
+      "sell_fraction": 1.0,
+      "enabled": true
+     },
+     {
+      "rule": "time_stop",
+      "days": 10,
+      "min_r": 0.5,
+      "enabled": false
+     }
+    ]
+   },
+   "risk_policy": {
+    "risk_pct": "0.0075",
+    "p_max": {
+     "darvas-box-breakout": "0.20",
+     "momentum-breakout-ep": "0.25",
+     "rsi2-uptrend-reversion": "0.20",
+     "stage2-contraction-breakout": "1",
+     "trend-pullback-ema": "0.20"
+    },
+    "adv_cap_pct": "0.01",
+    "global_open_risk_pct": "1",
+    "max_open_positions": 10,
+    "max_positions_per_industry": 10,
+    "max_entries_per_day": 4,
+    "max_stopouts_per_day": 4,
+    "cooldown_sessions": 0,
+    "min_position_pct": "0.02",
+    "exposure_ladder": {
+     "L1": {
+      "max_positions": 10,
+      "risk_mult": "1"
+     },
+     "L2": {
+      "max_positions": 10,
+      "risk_mult": "1"
+     },
+     "L3": {
+      "max_positions": 10,
+      "risk_mult": "1"
+     },
+     "up_after_wins": 2,
+     "down_after_losses": 2
+    },
+    "kill": {
+     "account_drawdown_pct": "0.20",
+     "bot_drawdown_pct": "0.20"
+    },
+    "base_weight": {
+     "S1": "1.0",
+     "S2": "0.50",
+     "S3": "0",
+     "S4": "0",
+     "S5": "0"
+    },
+    "cluster_cap": "1.00",
+    "multiplier_bounds": {
+     "lo": "0.25",
+     "hi": "1.0"
+    },
+    "health_bands": {
+     "half_dd": "0.12",
+     "zero_dd": "0.18",
+     "full_mult": "1.0",
+     "half_mult": "0.5"
+    },
+    "weights_confirmed": true
+   },
+   "conventions": {
+    "fill_path": "open_low_high_close",
+    "entry_fill_rule": "penetration_1_tick",
+    "gap_through_rule": "min_open_stop",
+    "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+    "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+    "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+    "slippage_bps": "20",
+    "cost_model": {
+     "version": "cnc-delivery-2",
+     "schedules": [
+      {
+       "effective_from": "2021-08-05",
+       "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+      },
+      {
+       "effective_from": "2022-07-18",
+       "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+      },
+      {
+       "effective_from": "2023-04-01",
+       "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+      },
+      {
+       "effective_from": "2024-04-01",
+       "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+      },
+      {
+       "effective_from": "2024-10-01",
+       "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+      }
+     ]
+    },
+    "slot_order": "rs",
+    "ambiguous": "optimistic",
+    "lower_circuit": "carry_to_next_unlocked_open",
+    "suspension_markdown": {
+     "after_sessions": 5,
+     "band_pct": "5"
+    },
+    "sleeve_weight": "0.5",
+    "regime_mult": "1",
+    "health_mult": "1",
+    "co_sleeves": [
+     {
+      "strategy_version_id": "64274b85-696f-4aea-944e-717a62546682",
+      "bot": "momentum-breakout-ep",
+      "weight": "0.5",
+      "regime_table": {
+       "bull_quiet": "1.0",
+       "bull_volatile": "0.75",
+       "correction": "0.5",
+       "bear": "0.25"
+      }
+     }
+    ],
+    "overlay": {
+     "sleeve": "regime",
+     "regime": {
+      "index": "NIFTY 50",
+      "sma": 200,
+      "upper": "1.02",
+      "lower": "0.98",
+      "confirm": 5
+     },
+     "gold_regime": {
+      "sma": 200,
+      "upper": "1.02",
+      "lower": "0.98",
+      "confirm": 5
+     },
+     "cash_buffer_pct": "0.05",
+     "rebalance_pct": "0.02",
+     "same_day_sale_credit_pct": [
+      {
+       "from": "2000-01-01",
+       "pct": "0.8"
+      },
+      {
+       "from": "2024-10-07",
+       "pct": "1"
+      }
+     ],
+     "slippage_bps": {
+      "NIFTYBEES": "5",
+      "GOLDBEES": "5",
+      "LIQUIDBEES": "1"
+     },
+     "tax": {
+      "enabled": true,
+      "slab_rate": "0.30",
+      "cess": "0.04"
+     }
+    },
+    "open_to_0920": {
+     "buy": "0.0002",
+     "sell": "0.0003",
+     "measured": true
+    }
+   },
+   "co_sleeve_strategies": [
+    {
+     "bot": "momentum-breakout-ep",
+     "market": "NSE",
+     "universe": [
+      {
+       "type": "series_in",
+       "stage": "universe",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "series": [
+         "EQ",
+         "BE"
+        ]
+       },
+       "enabled": true,
+       "order": 0
+      },
+      {
+       "type": "min_turnover",
+       "stage": "universe",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "days": 20,
+        "inr_cr": 10.0
+       },
+       "enabled": true,
+       "order": 1
+      },
+      {
+       "type": "adr_min",
+       "stage": "universe",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "days": 20,
+        "pct": 4.0
+       },
+       "enabled": true,
+       "order": 2
+      }
+     ],
+     "regime": {
+      "index": "NIFTY 500",
+      "rule": "sma_fast_above_slow_both_rising",
+      "params": {
+       "fast": 10,
+       "slow": 20,
+       "rising_days": 3
+      }
+     },
+     "playbooks": [
+      {
+       "name": "episodic_pivot",
+       "setup": {
+        "threshold": 0.6,
+        "criteria": [
+         {
+          "type": "neglect",
+          "stage": "setup",
+          "mode": "hard",
+          "weight": 1.0,
+          "params": {
+           "max_return_63d_pct": 30.0,
+           "max_range_126d_pct": null
+          },
+          "enabled": true,
+          "order": 0
+         }
+        ]
+       },
+       "trigger": [
+        {
+         "type": "gap_up",
+         "stage": "trigger",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "min_pct": 10.0
+         },
+         "enabled": true,
+         "order": 0
+        },
+        {
+         "type": "early_volume",
+         "stage": "trigger",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "vs_adv20": 0.5
+         },
+         "enabled": true,
+         "order": 1
+        },
+        {
+         "type": "catalyst_attached",
+         "stage": "trigger",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "within_hours": 24,
+          "required_in": [
+           "confirm"
+          ]
+         },
+         "enabled": true,
+         "order": 2
+        },
+        {
+         "type": "price_breaks_level",
+         "stage": "trigger",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "level": "opening_range_high",
+          "bar": "5m",
+          "confirm": "close"
+         },
+         "enabled": true,
+         "order": 3
+        }
+       ],
+       "entry_filters": [
+        {
+         "type": "adtr_filter",
+         "stage": "entry_filter",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "max_multiple": 1.5
+         },
+         "enabled": true,
+         "order": 0
+        },
+        {
+         "type": "max_chase",
+         "stage": "entry_filter",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "pct": 2.0
+         },
+         "enabled": true,
+         "order": 1
+        }
+       ],
+       "stop": {
+        "rule": "low_of_day",
+        "buffer_ticks": 1
+       }
+      }
+     ],
+     "exits": [
+      {
+       "rule": "hard_stop",
+       "enabled": true
+      },
+      {
+       "rule": "partial_after_days",
+       "days": 3,
+       "sell_fraction": 0.33,
+       "only_if_profit": true,
+       "enabled": true
+      },
+      {
+       "rule": "move_stop_to_breakeven",
+       "at_r": null,
+       "after": "partial",
+       "enabled": true
+      },
+      {
+       "sma": 10,
+       "sell_fraction": 1.0,
+       "enabled": true,
+       "rule": "close_below_sma"
+      }
+     ]
+    }
+   ]
+  },
+  "resolved_hash": "c1d4d43cfae9fd054c78571ffbc1f94600f1a35c96c05bc6c90d8ead2c98fc33",
+  "risk_policy_version": 3,
+  "base_risk_policy_version": null,
+  "cost_model": "cnc-delivery-2",
+  "start_capital": 1000000,
+  "rf_pct": 0
+ },
+ "metrics": {
+  "trades": 158,
+  "win_pct": 28.481,
+  "avg_win_r": 2.8063,
+  "avg_loss_r": -0.7677,
+  "expectancy_r": 0.2502,
+  "avg_mfe_r": 2.0608,
+  "avg_mae_r": -0.6821,
+  "cagr_pct": 2.4889,
+  "max_dd_pct": 22.0145,
+  "avg_dd_pct": 3.6553,
+  "mar": 0.1131,
+  "sharpe": 0.261,
+  "sortino": 0.34,
+  "invested_pct": 94.2978,
+  "avg_open_positions": 4.7147,
+  "longest_dd_sessions": 394,
+  "longest_dd_recovered": true,
+  "longest_dd_start": "2022-01-17",
+  "longest_dd_end": "2023-08-21",
+  "total_return_pct": 7.6559,
+  "final_equity": 1076559.17,
+  "fees": 24934.76,
+  "cost_share_pct": 19.984,
+  "benchmark_cagr_pct": 15.424,
+  "avg_hold_sessions_win": 55.8222,
+  "avg_hold_sessions_loss": 8.7699,
+  "max_consecutive_losses": 21,
+  "symbols_traded": 131,
+  "top5_trades_pnl_share_pct": 174.4156,
+  "top10_symbols_pnl_share_pct": 258.6493,
+  "cagr_ex_top5_trades_pct": -3.3637,
+  "signals": 411,
+  "dsr_prob": 0.253918,
+  "dsr_n_trials": 6,
+  "dsr_n_trials_effective": 6,
+  "pbo": 0.5,
+  "max_position_pct_adv": 0.0721,
+  "trades_over_5pct_adv": 0
+ },
+ "refusals": {
+  "max_chase": 4,
+  "max_positions": 243,
+  "regime_off": 4,
+  "stopout_cap": 2
+ },
+ "binding": {
+  "trades_changed": null,
+  "trade_list_hash": "403dba583800d1a9c98f934a4d30363b1e2c7697f11a761159c79dad3c7211d6",
+  "no_op": null
+ },
+ "breakdowns": {
+  "by_year": [
+   {
+    "year": 2022,
+    "return_pct": -13.2545,
+    "max_dd_pct": 19.8184,
+    "trades_entered": 35,
+    "expectancy_r_by_entry": -0.4769,
+    "trades_exited": 34,
+    "expectancy_r_by_exit": -0.5112,
+    "realized_pnl_by_exit": -60874.25,
+    "benchmark_return_pct": 4.2462,
+    "entries_5m": 31,
+    "entries_daily": 4
+   },
+   {
+    "year": 2023,
+    "return_pct": 31.4453,
+    "max_dd_pct": 10.2075,
+    "trades_entered": 44,
+    "expectancy_r_by_entry": 1.9037,
+    "trades_exited": 35,
+    "expectancy_r_by_exit": 1.5661,
+    "realized_pnl_by_exit": 165307.34,
+    "benchmark_return_pct": 26.9147,
+    "entries_5m": 38,
+    "entries_daily": 6
+   },
+   {
+    "year": 2024,
+    "return_pct": -5.584,
+    "max_dd_pct": 12.0416,
+    "trades_entered": 79,
+    "expectancy_r_by_entry": -0.3485,
+    "trades_exited": 89,
+    "expectancy_r_by_exit": 0.0236,
+    "realized_pnl_by_exit": -4594.31,
+    "benchmark_return_pct": 16.2408,
+    "entries_5m": 66,
+    "entries_daily": 13
+   }
+  ],
+  "by_regime": {
+   "index_on": {
+    "trades": 158,
+    "win_pct": 28.481,
+    "expectancy_r": 0.2502,
+    "avg_hold_sessions": 22.1709,
+    "net_pnl": 99838.79
+   },
+   "breadth_40_50": {
+    "trades": 27,
+    "win_pct": 18.5185,
+    "expectancy_r": 0.4074,
+    "avg_hold_sessions": 21.2222,
+    "net_pnl": 26776.2
+   },
+   "breadth_50_60": {
+    "trades": 36,
+    "win_pct": 30.5556,
+    "expectancy_r": 0.44,
+    "avg_hold_sessions": 23.9444,
+    "net_pnl": 51442.84
+   },
+   "breadth_ge60": {
+    "trades": 84,
+    "win_pct": 30.9524,
+    "expectancy_r": 0.1946,
+    "avg_hold_sessions": 22.9881,
+    "net_pnl": 37980.89
+   },
+   "breadth_lt40": {
+    "trades": 11,
+    "win_pct": 27.2727,
+    "expectancy_r": -0.3319,
+    "avg_hold_sessions": 12.4545,
+    "net_pnl": -16361.15
+   }
+  },
+  "by_exit_reason": {
+   "initial_stop": {
+    "trades": 47,
+    "win_pct": 0.0,
+    "expectancy_r": -1.0802,
+    "avg_hold_sessions": 6.7447,
+    "net_pnl": -205628.3
+   },
+   "period_end": {
+    "trades": 3,
+    "win_pct": 100.0,
+    "expectancy_r": 0.5068,
+    "avg_hold_sessions": 15.6667,
+    "net_pnl": 6308.13
+   },
+   "sma50_close": {
+    "trades": 103,
+    "win_pct": 35.9223,
+    "expectancy_r": 0.5044,
+    "avg_hold_sessions": 26.7573,
+    "net_pnl": 180085.62
+   },
+   "trailing_swing_low": {
+    "trades": 5,
+    "win_pct": 100.0,
+    "expectancy_r": 7.3656,
+    "avg_hold_sessions": 76.6,
+    "net_pnl": 119073.34
+   }
+  },
+  "by_industry": {
+   "Automobile and Auto Components": {
+    "trades": 11,
+    "win_pct": 36.3636,
+    "expectancy_r": 0.4789,
+    "avg_hold_sessions": 22.3636,
+    "net_pnl": 19266.39
+   },
+   "Capital Goods": {
+    "trades": 27,
+    "win_pct": 29.6296,
+    "expectancy_r": 0.4315,
+    "avg_hold_sessions": 26.1852,
+    "net_pnl": 22963.15
+   },
+   "Chemicals": {
+    "trades": 11,
+    "win_pct": 18.1818,
+    "expectancy_r": -0.5214,
+    "avg_hold_sessions": 13.2727,
+    "net_pnl": -22645.08
+   },
+   "Construction": {
+    "trades": 2,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1135,
+    "avg_hold_sessions": 5.0,
+    "net_pnl": -9402.94
+   },
+   "Construction Materials": {
+    "trades": 4,
+    "win_pct": 50.0,
+    "expectancy_r": 0.0155,
+    "avg_hold_sessions": 28.5,
+    "net_pnl": 594.66
+   },
+   "Consumer Durables": {
+    "trades": 5,
+    "win_pct": 20.0,
+    "expectancy_r": -0.2347,
+    "avg_hold_sessions": 20.2,
+    "net_pnl": -4783.19
+   },
+   "Consumer Services": {
+    "trades": 4,
+    "win_pct": 25.0,
+    "expectancy_r": -0.0191,
+    "avg_hold_sessions": 23.5,
+    "net_pnl": 202.84
+   },
+   "Diversified": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.0502,
+    "avg_hold_sessions": 4.0,
+    "net_pnl": -3638.8
+   },
+   "Fast Moving Consumer Goods": {
+    "trades": 12,
+    "win_pct": 25.0,
+    "expectancy_r": -0.0275,
+    "avg_hold_sessions": 15.8333,
+    "net_pnl": 858.69
+   },
+   "Financial Services": {
+    "trades": 28,
+    "win_pct": 35.7143,
+    "expectancy_r": 1.1471,
+    "avg_hold_sessions": 27.0714,
+    "net_pnl": 98589.28
+   },
+   "Forest Materials": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -0.4882,
+    "avg_hold_sessions": 17.0,
+    "net_pnl": -1927.52
+   },
+   "Healthcare": {
+    "trades": 13,
+    "win_pct": 30.7692,
+    "expectancy_r": 0.1242,
+    "avg_hold_sessions": 22.9231,
+    "net_pnl": 6425.31
+   },
+   "Information Technology": {
+    "trades": 7,
+    "win_pct": 28.5714,
+    "expectancy_r": 0.7785,
+    "avg_hold_sessions": 27.0,
+    "net_pnl": 17781.22
+   },
+   "Media Entertainment & Publication": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -0.4884,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -2172.73
+   },
+   "Metals & Mining": {
+    "trades": 6,
+    "win_pct": 16.6667,
+    "expectancy_r": -0.5858,
+    "avg_hold_sessions": 17.1667,
+    "net_pnl": -15235.89
+   },
+   "Oil Gas & Consumable Fuels": {
+    "trades": 4,
+    "win_pct": 0.0,
+    "expectancy_r": -0.6739,
+    "avg_hold_sessions": 10.5,
+    "net_pnl": -10087.82
+   },
+   "Power": {
+    "trades": 8,
+    "win_pct": 50.0,
+    "expectancy_r": 0.3833,
+    "avg_hold_sessions": 31.75,
+    "net_pnl": 12908.99
+   },
+   "Realty": {
+    "trades": 2,
+    "win_pct": 0.0,
+    "expectancy_r": -0.7222,
+    "avg_hold_sessions": 11.0,
+    "net_pnl": -5645.3
+   },
+   "Services": {
+    "trades": 4,
+    "win_pct": 0.0,
+    "expectancy_r": -0.8615,
+    "avg_hold_sessions": 7.0,
+    "net_pnl": -12917.35
+   },
+   "Telecommunication": {
+    "trades": 4,
+    "win_pct": 25.0,
+    "expectancy_r": -0.4211,
+    "avg_hold_sessions": 8.75,
+    "net_pnl": -7136.13
+   },
+   "Textiles": {
+    "trades": 3,
+    "win_pct": 66.6667,
+    "expectancy_r": 1.5537,
+    "avg_hold_sessions": 48.3333,
+    "net_pnl": 15840.99
+   }
+  },
+  "by_cap_bucket": {},
+  "by_liquidity_bucket": {
+   "q1": {
+    "trades": 12,
+    "win_pct": 33.3333,
+    "expectancy_r": 0.6375,
+    "avg_hold_sessions": 30.5833,
+    "net_pnl": 28623.75
+   },
+   "q2": {
+    "trades": 39,
+    "win_pct": 28.2051,
+    "expectancy_r": 0.1794,
+    "avg_hold_sessions": 22.4103,
+    "net_pnl": 15423.43
+   },
+   "q3": {
+    "trades": 40,
+    "win_pct": 27.5,
+    "expectancy_r": 0.1563,
+    "avg_hold_sessions": 18.825,
+    "net_pnl": 8958.67
+   },
+   "q4": {
+    "trades": 36,
+    "win_pct": 25.0,
+    "expectancy_r": 0.3871,
+    "avg_hold_sessions": 21.8056,
+    "net_pnl": 35954.68
+   },
+   "q5": {
+    "trades": 31,
+    "win_pct": 32.2581,
+    "expectancy_r": 0.1518,
+    "avg_hold_sessions": 23.3548,
+    "net_pnl": 10878.26
+   }
+  },
+  "by_playbook": {
+   "momentum-breakout-ep:episodic_pivot": {
+    "signals": 6,
+    "refusals": {
+     "regime_off": 4
+    },
+    "trades": {
+     "trades": 2,
+     "win_pct": 0.0,
+     "expectancy_r": -1.1415,
+     "avg_hold_sessions": 0.0,
+     "net_pnl": -9613.75
+    }
+   },
+   "stage2-contraction-breakout:default": {
+    "signals": 405,
+    "refusals": {
+     "max_chase": 4,
+     "max_positions": 243,
+     "stopout_cap": 2
+    },
+    "trades": {
+     "trades": 156,
+     "win_pct": 28.8462,
+     "expectancy_r": 0.2681,
+     "avg_hold_sessions": 22.4551,
+     "net_pnl": 109452.54
+    }
+   }
+  },
+  "episodic_pivot": {
+   "momentum-breakout-ep:episodic_pivot": {
+    "trades": {
+     "trades": 2,
+     "win_pct": 0.0,
+     "expectancy_r": -1.1415,
+     "avg_hold_sessions": 0.0,
+     "net_pnl": -9613.75
+    },
+    "by_catalyst_type": {
+     "none": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1415,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -9613.75
+     }
+    },
+    "by_sales_yoy": {
+     "unknown": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1415,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -9613.75
+     }
+    },
+    "by_gap": {
+     "10_15": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1415,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -9613.75
+     }
+    },
+    "by_trigger_time": {
+     "0920_0945": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1415,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -9613.75
+     }
+    },
+    "by_adr20": {
+     "4_6": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1415,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -9613.75
+     }
+    },
+    "by_range_126d": {
+     "gt60": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1415,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -9613.75
+     }
+    },
+    "by_exit_reason": {
+     "initial_stop": {
+      "trades": 2,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1415,
+      "avg_hold_sessions": 0.0,
+      "net_pnl": -9613.75
+     }
+    }
+   }
+  }
+ },
+ "funnel": {
+  "regime_off_nights": 237,
+  "by_playbook": {
+   "stage2-contraction-breakout:default": {
+    "evaluated": 253452,
+    "universe": 218885,
+    "trend_template": 86392,
+    "close_vs_pivot": 2371,
+    "setup": 2371,
+    "watchlist": 2064,
+    "trigger": 549,
+    "breakout_volume": 454,
+    "stop": 409,
+    "max_chase": 405
+   },
+   "momentum-breakout-ep:episodic_pivot": {
+    "gap_scan": 37,
+    "gap_up": 37,
+    "neglect": 25,
+    "early_volume": 25,
+    "price_breaks_level": 8,
+    "adtr_filter": 6,
+    "max_chase": 6,
+    "filled": 2
+   }
+  }
+ },
+ "overlay": {
+  "config": {
+   "sleeve": "regime",
+   "regime": {
+    "index": "NIFTY 50",
+    "sma": 200,
+    "upper": "1.02",
+    "lower": "0.98",
+    "confirm": 5
+   },
+   "gold_regime": {
+    "sma": 200,
+    "upper": "1.02",
+    "lower": "0.98",
+    "confirm": 5
+   },
+   "cash_buffer_pct": "0.05",
+   "rebalance_pct": "0.02",
+   "same_day_sale_credit_pct": [
+    {
+     "from": "2000-01-01",
+     "pct": "0.8"
+    },
+    {
+     "from": "2024-10-07",
+     "pct": "1"
+    }
+   ],
+   "slippage_bps": {
+    "NIFTYBEES": "5",
+    "GOLDBEES": "5",
+    "LIQUIDBEES": "1"
+   },
+   "tax": {
+    "enabled": true,
+    "slab_rate": "0.30",
+    "cess": "0.04"
+   }
+  },
+  "data": {
+   "liquidbees_tr_proxy": [
+    [
+     "2015-01-02",
+     "2020-03-31"
+    ]
+   ]
+  },
+  "counts": {
+   "insufficient_same_day_credit": 0,
+   "sleeve_price_estimated": 4,
+   "funding_sales": 113
+  },
+  "tax_paid": "23825.43",
+  "tax_unpaid": "0.00",
+  "tax_by_fy": [
+   {
+    "fy": "2021-22",
+    "tax": "312.00",
+    "income": "1000",
+    "exemption_used": "0",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "0E-24",
+     "lt_other": "0",
+     "lt_equity": "0"
+    },
+    "carried_st": "49925.16016884875846501128699",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2022-23",
+    "tax": "3484.68",
+    "income": "11168.86",
+    "exemption_used": "0",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "0E-23",
+     "lt_other": "0",
+     "lt_equity": "0"
+    },
+    "carried_st": "192792.2080000000000000000003",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2023-24",
+    "tax": "19550.30",
+    "income": "10632.77",
+    "exemption_used": "0",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "78042.6564504504504504504503",
+     "lt_other": "0",
+     "lt_equity": "0"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2024-25",
+    "tax": "478.45",
+    "income": "1533.50",
+    "exemption_used": "0",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "0E-22",
+     "lt_other": "0",
+     "lt_equity": "0"
+    },
+    "carried_st": "2119.2730144144144144144144",
+    "carried_lt": "0"
+   }
+  ],
+  "by_year": {
+   "2022": {
+    "costs": "16976.1331",
+    "turnover": "10905380.5967",
+    "switches": "4",
+    "rebalances": "50"
+   },
+   "2023": {
+    "costs": "11079.7354",
+    "turnover": "6733492.4106",
+    "switches": "2",
+    "rebalances": "53"
+   },
+   "2024": {
+    "costs": "16555.1082",
+    "turnover": "9593369.0284",
+    "switches": "0",
+    "rebalances": "89"
+   }
+  },
+  "events": [
+   {
+    "date": "2022-01-03",
+    "event": "start",
+    "asset": "NIFTYBEES",
+    "target": "950000.00",
+    "price": "188.7",
+    "estimated": false
+   },
+   {
+    "date": "2022-01-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "843890.026685",
+    "price": "196.56",
+    "estimated": false
+   },
+   {
+    "date": "2022-01-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "797535.442245",
+    "price": "195.69",
+    "estimated": false
+   },
+   {
+    "date": "2022-01-17",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "724777.355955",
+    "price": "197.61",
+    "estimated": false
+   },
+   {
+    "date": "2022-01-21",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "773785.910700",
+    "price": "190.46",
+    "estimated": false
+   },
+   {
+    "date": "2022-01-25",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "819645.417670",
+    "price": "183.27",
+    "estimated": false
+   },
+   {
+    "date": "2022-01-27",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "871667.780835",
+    "price": "183.95",
+    "estimated": false
+   },
+   {
+    "date": "2022-01-28",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "927742.610075",
+    "price": "186.89",
+    "estimated": false
+   },
+   {
+    "date": "2022-03-10",
+    "event": "switch",
+    "asset": "LIQUIDBEES",
+    "target": "887972.553450",
+    "price": "1000",
+    "estimated": false
+   },
+   {
+    "date": "2022-03-31",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "866514.893480",
+    "price": "1000.01",
+    "estimated": false
+   },
+   {
+    "date": "2022-04-04",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "827211.544580",
+    "price": "999.41",
+    "estimated": false
+   },
+   {
+    "date": "2022-04-06",
+    "event": "switch",
+    "asset": "NIFTYBEES",
+    "target": "826898.941080",
+    "price": "193.59",
+    "estimated": false
+   },
+   {
+    "date": "2022-04-07",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "785979.395140",
+    "price": "192.2",
+    "estimated": false
+   },
+   {
+    "date": "2022-04-28",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "780431.779870",
+    "price": "185.49",
+    "estimated": false
+   },
+   {
+    "date": "2022-05-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "784153.141370",
+    "price": "176.2",
+    "estimated": false
+   },
+   {
+    "date": "2022-05-11",
+    "event": "switch",
+    "asset": "LIQUIDBEES",
+    "target": "777349.465680",
+    "price": "1000.01",
+    "estimated": false
+   },
+   {
+    "date": "2022-05-16",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "821197.948540",
+    "price": "1000.01",
+    "estimated": false
+   },
+   {
+    "date": "2022-08-11",
+    "event": "switch",
+    "asset": "NIFTYBEES",
+    "target": "828352.992765",
+    "price": "192.32",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-01",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "789677.717605",
+    "price": "191.72",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "722104.695455",
+    "price": "192.25",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-06",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "663795.198895",
+    "price": "193.6",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-07",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "605317.298470",
+    "price": "191.45",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-16",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "673146.560800",
+    "price": "194.45",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "595713.207335",
+    "price": "192.1",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "627154.062180",
+    "price": "187.6",
+    "estimated": false
+   },
+   {
+    "date": "2022-09-29",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "668787.091620",
+    "price": "186.05",
+    "estimated": false
+   },
+   {
+    "date": "2022-10-07",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "750558.081470",
+    "price": "188.63",
+    "estimated": false
+   },
+   {
+    "date": "2022-10-27",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "680083.767315",
+    "price": "193.61",
+    "estimated": false
+   },
+   {
+    "date": "2022-10-28",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "620739.184825",
+    "price": "194",
+    "estimated": false
+   },
+   {
+    "date": "2022-10-31",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "679430.766260",
+    "price": "195.59",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-01",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "615915.033635",
+    "price": "197.42",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "534032.629475",
+    "price": "197.75",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-03",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "483160.966315",
+    "price": "196.66",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "437209.446265",
+    "price": "197.35",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-11",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "477672.379790",
+    "price": "199.3",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-15",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "419822.513585",
+    "price": "200.6",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-18",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "458296.232765",
+    "price": "200.3",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-21",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "581612.151190",
+    "price": "199.04",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "623482.961650",
+    "price": "198.51",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-24",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "569701.997505",
+    "price": "199.8",
+    "estimated": false
+   },
+   {
+    "date": "2022-11-29",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "442652.150385",
+    "price": "203.4",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "408992.509930",
+    "price": "205.33",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-05",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "362524.381035",
+    "price": "204.28",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-06",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "322647.196130",
+    "price": "203.93",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-07",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "364761.286145",
+    "price": "204",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-08",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "267519.756810",
+    "price": "202.86",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-12",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "369874.509405",
+    "price": "201.2",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "280677.057525",
+    "price": "204.25",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-16",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "369064.423515",
+    "price": "200.99",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "285242.892440",
+    "price": "200.28",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-21",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "335849.526135",
+    "price": "201.9",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "497350.495875",
+    "price": "199.98",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "586518.766615",
+    "price": "197.33",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "698925.229235",
+    "price": "195.43",
+    "estimated": false
+   },
+   {
+    "date": "2022-12-27",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "783881.347985",
+    "price": "197.97",
+    "estimated": false
+   },
+   {
+    "date": "2023-01-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "813393.914950",
+    "price": "196.84",
+    "estimated": false
+   },
+   {
+    "date": "2023-03-21",
+    "event": "switch",
+    "asset": "LIQUIDBEES",
+    "target": "775794.310975",
+    "price": "1000",
+    "estimated": false
+   },
+   {
+    "date": "2023-04-11",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "727326.284900",
+    "price": "999.99",
+    "estimated": false
+   },
+   {
+    "date": "2023-04-13",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "682579.058120",
+    "price": "1000.01",
+    "estimated": false
+   },
+   {
+    "date": "2023-04-17",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "643541.565915",
+    "price": "999.99",
+    "estimated": false
+   },
+   {
+    "date": "2023-04-19",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "599028.939535",
+    "price": "1000",
+    "estimated": false
+   },
+   {
+    "date": "2023-04-28",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "474115.992850",
+    "price": "999.99",
+    "estimated": false
+   },
+   {
+    "date": "2023-05-02",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "430764.958220",
+    "price": "999.99",
+    "estimated": false
+   },
+   {
+    "date": "2023-05-04",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "390969.100285",
+    "price": "999.99",
+    "estimated": false
+   },
+   {
+    "date": "2023-05-08",
+    "event": "switch",
+    "asset": "NIFTYBEES",
+    "target": "435861.043800",
+    "price": "198.59",
+    "estimated": false
+   },
+   {
+    "date": "2023-05-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "392298.113315",
+    "price": "199.28",
+    "estimated": false
+   },
+   {
+    "date": "2023-05-25",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "487947.054005",
+    "price": "200.3",
+    "estimated": false
+   },
+   {
+    "date": "2023-05-29",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "535562.996640",
+    "price": "203.95",
+    "estimated": false
+   },
+   {
+    "date": "2023-05-31",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "499753.681140",
+    "price": "203.97",
+    "estimated": false
+   },
+   {
+    "date": "2023-06-07",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "429818.147160",
+    "price": "204.55",
+    "estimated": false
+   },
+   {
+    "date": "2023-06-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "385164.324980",
+    "price": "204.88",
+    "estimated": false
+   },
+   {
+    "date": "2023-06-15",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "337280.206640",
+    "price": "205.53",
+    "estimated": false
+   },
+   {
+    "date": "2023-06-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "380451.897720",
+    "price": "204.95",
+    "estimated": false
+   },
+   {
+    "date": "2023-06-28",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "325302.631380",
+    "price": "207.02",
+    "estimated": false
+   },
+   {
+    "date": "2023-06-30",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "375238.107090",
+    "price": "209.1",
+    "estimated": false
+   },
+   {
+    "date": "2023-07-03",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "291871.512990",
+    "price": "211.45",
+    "estimated": false
+   },
+   {
+    "date": "2023-07-05",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "351209.904320",
+    "price": "212.8",
+    "estimated": false
+   },
+   {
+    "date": "2023-07-06",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "299768.456315",
+    "price": "212.98",
+    "estimated": false
+   },
+   {
+    "date": "2023-07-12",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "338666.403810",
+    "price": "213.77",
+    "estimated": false
+   },
+   {
+    "date": "2023-07-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "276289.763075",
+    "price": "214.12",
+    "estimated": false
+   },
+   {
+    "date": "2023-08-11",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "335086.648005",
+    "price": "215.09",
+    "estimated": false
+   },
+   {
+    "date": "2023-08-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "286170.038625",
+    "price": "213.36",
+    "estimated": false
+   },
+   {
+    "date": "2023-08-21",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "340694.676190",
+    "price": "213.59",
+    "estimated": false
+   },
+   {
+    "date": "2023-08-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "263747.782650",
+    "price": "213.42",
+    "estimated": false
+   },
+   {
+    "date": "2023-09-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "413490.105650",
+    "price": "221.95",
+    "estimated": false
+   },
+   {
+    "date": "2023-09-15",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "250820.345490",
+    "price": "222.14",
+    "estimated": false
+   },
+   {
+    "date": "2023-09-18",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "301380.691605",
+    "price": "222",
+    "estimated": false
+   },
+   {
+    "date": "2023-09-20",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "380725.228955",
+    "price": "220.65",
+    "estimated": false
+   },
+   {
+    "date": "2023-09-21",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "468339.462475",
+    "price": "218.58",
+    "estimated": false
+   },
+   {
+    "date": "2023-09-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "527694.104130",
+    "price": "216.72",
+    "estimated": false
+   },
+   {
+    "date": "2023-09-28",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "438619.859565",
+    "price": "217.69",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-03",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "297328.860750",
+    "price": "215.58",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "380704.277040",
+    "price": "215.05",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "570032.218675",
+    "price": "216.3",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-11",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "500135.274275",
+    "price": "218.06",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "397754.157325",
+    "price": "216",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "318292.879845",
+    "price": "215.48",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-25",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "713966.602155",
+    "price": "213.99",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "786443.816265",
+    "price": "210.33",
+    "estimated": false
+   },
+   {
+    "date": "2023-10-27",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "881286.129040",
+    "price": "209.92",
+    "estimated": false
+   },
+   {
+    "date": "2023-11-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "830301.555665",
+    "price": "213.69",
+    "estimated": false
+   },
+   {
+    "date": "2023-11-12",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "777156.687780",
+    "price": "215.5844",
+    "estimated": true
+   },
+   {
+    "date": "2023-11-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "723861.901410",
+    "price": "214.64",
+    "estimated": false
+   },
+   {
+    "date": "2023-11-15",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "775755.249685",
+    "price": "216.54",
+    "estimated": false
+   },
+   {
+    "date": "2023-11-16",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "628024.160925",
+    "price": "216.72",
+    "estimated": false
+   },
+   {
+    "date": "2023-11-17",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "579377.776305",
+    "price": "217.85",
+    "estimated": false
+   },
+   {
+    "date": "2023-11-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "432864.537855",
+    "price": "218.38",
+    "estimated": false
+   },
+   {
+    "date": "2023-11-24",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "289467.375655",
+    "price": "218.68",
+    "estimated": false
+   },
+   {
+    "date": "2023-12-20",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "382385.429980",
+    "price": "237.72",
+    "estimated": false
+   },
+   {
+    "date": "2023-12-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "312829.396260",
+    "price": "235.6",
+    "estimated": false
+   },
+   {
+    "date": "2024-01-15",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "382124.257780",
+    "price": "243.1",
+    "estimated": false
+   },
+   {
+    "date": "2024-01-16",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "331673.891920",
+    "price": "243.4",
+    "estimated": false
+   },
+   {
+    "date": "2024-01-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "379023.005750",
+    "price": "238.99",
+    "estimated": false
+   },
+   {
+    "date": "2024-01-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "419153.741845",
+    "price": "239.91",
+    "estimated": false
+   },
+   {
+    "date": "2024-01-29",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "292630.646295",
+    "price": "237.63",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-01",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "435559.662520",
+    "price": "240",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "289047.657380",
+    "price": "241.6",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-12",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "355317.213820",
+    "price": "241.35",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "552471.307930",
+    "price": "239.67",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "488481.298470",
+    "price": "238.9",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-15",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "376257.926395",
+    "price": "242",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-16",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "330205.268945",
+    "price": "243.11",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-21",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "243699.456925",
+    "price": "245.68",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "329931.322465",
+    "price": "244.07",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "394772.385920",
+    "price": "245.16",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-27",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "502473.966685",
+    "price": "244.57",
+    "estimated": false
+   },
+   {
+    "date": "2024-02-29",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "363962.261615",
+    "price": "242.86",
+    "estimated": false
+   },
+   {
+    "date": "2024-03-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "307479.526900",
+    "price": "247.6036",
+    "estimated": true
+   },
+   {
+    "date": "2024-03-11",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "357056.223715",
+    "price": "248.74",
+    "estimated": false
+   },
+   {
+    "date": "2024-03-12",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "456272.999385",
+    "price": "247.6",
+    "estimated": false
+   },
+   {
+    "date": "2024-03-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "542550.067315",
+    "price": "247.87",
+    "estimated": false
+   },
+   {
+    "date": "2024-03-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "672757.726340",
+    "price": "243.19",
+    "estimated": false
+   },
+   {
+    "date": "2024-03-18",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "729832.137975",
+    "price": "243.64",
+    "estimated": false
+   },
+   {
+    "date": "2024-03-20",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "890587.488315",
+    "price": "242.47",
+    "estimated": false
+   },
+   {
+    "date": "2024-04-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "603627.998555",
+    "price": "248.03",
+    "estimated": false
+   },
+   {
+    "date": "2024-04-03",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "733497.121405",
+    "price": "247.77",
+    "estimated": false
+   },
+   {
+    "date": "2024-04-15",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "820870.456235",
+    "price": "247.54",
+    "estimated": false
+   },
+   {
+    "date": "2024-04-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "678736.400160",
+    "price": "241.92",
+    "estimated": false
+   },
+   {
+    "date": "2024-04-24",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "628468.745410",
+    "price": "248.19",
+    "estimated": false
+   },
+   {
+    "date": "2024-04-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "586235.782275",
+    "price": "249.66",
+    "estimated": false
+   },
+   {
+    "date": "2024-04-29",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "493273.862795",
+    "price": "249",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "449503.075610",
+    "price": "250.5",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-08",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "485821.261965",
+    "price": "246.3",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "403051.744590",
+    "price": "246.99",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "454901.638680",
+    "price": "243.93",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "582053.735985",
+    "price": "243.9",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-14",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "626755.050065",
+    "price": "245.85",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-18",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "562604.577235",
+    "price": "249.1",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-21",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "492612.220465",
+    "price": "249.1",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "438787.974270",
+    "price": "249.95",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "385144.569020",
+    "price": "250.58",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-29",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "433542.140425",
+    "price": "253.21",
+    "estimated": false
+   },
+   {
+    "date": "2024-05-31",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "464082.384855",
+    "price": "251.34",
+    "estimated": false
+   },
+   {
+    "date": "2024-06-03",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "563090.084245",
+    "price": "257.72",
+    "estimated": false
+   },
+   {
+    "date": "2024-06-04",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "437090.589780",
+    "price": "253.69",
+    "estimated": false
+   },
+   {
+    "date": "2024-06-05",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "854690.194805",
+    "price": "244.55",
+    "estimated": false
+   },
+   {
+    "date": "2024-06-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "792499.585340",
+    "price": "259.42",
+    "estimated": false
+   },
+   {
+    "date": "2024-06-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "718751.603850",
+    "price": "263.68",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-02",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "656019.899955",
+    "price": "269.25",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-03",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "538330.441435",
+    "price": "269.78",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-05",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "430446.980165",
+    "price": "269.61",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "337645.098915",
+    "price": "270.69",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "432801.617465",
+    "price": "271.24",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-11",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "358593.836215",
+    "price": "270.82",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "424268.630770",
+    "price": "275.25",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "619662.741865",
+    "price": "271.99",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "523963.045835",
+    "price": "273.05",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-24",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "560147.877385",
+    "price": "272.08",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-25",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "444139.589580",
+    "price": "270.2",
+    "estimated": false
+   },
+   {
+    "date": "2024-07-26",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "369832.655820",
+    "price": "272.5",
+    "estimated": false
+   },
+   {
+    "date": "2024-08-06",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "461783.078505",
+    "price": "271.78",
+    "estimated": false
+   },
+   {
+    "date": "2024-08-12",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "419977.752805",
+    "price": "270.7",
+    "estimated": false
+   },
+   {
+    "date": "2024-08-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "460006.461630",
+    "price": "271.37",
+    "estimated": false
+   },
+   {
+    "date": "2024-08-16",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "526165.548000",
+    "price": "271.34",
+    "estimated": false
+   },
+   {
+    "date": "2024-08-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "464060.115410",
+    "price": "274.7",
+    "estimated": false
+   },
+   {
+    "date": "2024-08-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "410560.419200",
+    "price": "276.56",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "472171.915880",
+    "price": "278.4",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-11",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "370134.452150",
+    "price": "278.81",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-12",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "422773.778850",
+    "price": "279",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "382905.462175",
+    "price": "282.36",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-17",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "427376.555410",
+    "price": "283.19",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-19",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "366145.672920",
+    "price": "285.07",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-20",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "472996.094780",
+    "price": "284.37",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "544307.081715",
+    "price": "288.18",
+    "estimated": false
+   },
+   {
+    "date": "2024-09-30",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "685602.518240",
+    "price": "291.16",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-03",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "572494.688935",
+    "price": "286.04",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-04",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "501227.271375",
+    "price": "281.3",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-07",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "599808.882250",
+    "price": "280.75",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-08",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "695272.118670",
+    "price": "277.13",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "751023.773560",
+    "price": "280.08",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-11",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "810704.344245",
+    "price": "278.75",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-18",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "806287.961610",
+    "price": "275",
+    "estimated": false
+   },
+   {
+    "date": "2024-10-22",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "908833.874890",
+    "price": "277",
+    "estimated": false
+   },
+   {
+    "date": "2024-11-01",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "977770.067115",
+    "price": "271.7290",
+    "estimated": true
+   },
+   {
+    "date": "2024-11-13",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "1026999.090585",
+    "price": "266.7",
+    "estimated": false
+   },
+   {
+    "date": "2024-12-06",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "883759.562035",
+    "price": "275.94",
+    "estimated": false
+   },
+   {
+    "date": "2024-12-09",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "751300.832725",
+    "price": "275.77",
+    "estimated": false
+   },
+   {
+    "date": "2024-12-10",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "679105.814950",
+    "price": "275.2",
+    "estimated": false
+   },
+   {
+    "date": "2024-12-23",
+    "event": "rebalance",
+    "asset": "NIFTYBEES",
+    "target": "809766.722300",
+    "price": "265.74",
+    "estimated": false
+   }
+  ],
+  "liquidbees_tr_proxy": [
+   [
+    "2015-01-02",
+    "2020-03-31"
+   ]
+  ],
+  "net_flow": "-23279.6213",
+  "benchmarks": {
+   "buy_hold_niftybees": {
+    "final_equity_after_tax": "1361612.5570",
+    "tax_paid": "35355.90",
+    "final_equity_pre_tax": "1396968.4570"
+   },
+   "sleeve_alone": {
+    "sleeve": "regime",
+    "final_equity_after_tax": "1119692.3474",
+    "tax_paid": "4679.98",
+    "final_equity_pre_tax": "1124372.3274"
+   },
+   "NIFTY 50 TRI": {
+    "final_equity_pre_tax": "1389631.375295816413774184610"
+   },
+   "NIFTY 500 TRI": {
+    "final_equity_pre_tax": "1516830.699456636914541933679"
+   }
+  }
+ }
+}

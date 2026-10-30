@@ -1,0 +1,183 @@
+{
+ "audit_version": "3",
+ "run_id": "01a18c06-bcbe-7718-96f4-68a842b6a652",
+ "status": "warn",
+ "checks": [
+  {
+   "name": "binding",
+   "status": "pass",
+   "summary": {
+    "base_run_id": null,
+    "trades_changed": null,
+    "changed": null,
+    "risk_policy_version": 3,
+    "base_risk_policy_version": null
+   },
+   "findings": []
+  },
+  {
+   "name": "fills",
+   "status": "pass",
+   "summary": {
+    "fills_checked": 316,
+    "fills_without_bar": 0,
+    "slippage_bps": "20"
+   },
+   "findings": []
+  },
+  {
+   "name": "sequence",
+   "status": "pass",
+   "summary": {
+    "trades": 158
+   },
+   "findings": []
+  },
+  {
+   "name": "pnl",
+   "status": "pass",
+   "summary": {
+    "trades": 158,
+    "net_pnl": 126855.1685,
+    "fees": 26632.01
+   },
+   "findings": []
+  },
+  {
+   "name": "costs",
+   "status": "pass",
+   "summary": {
+    "cost_share_pct": 17.3513,
+    "cost_model": "cnc-delivery-2"
+   },
+   "findings": []
+  },
+  {
+   "name": "liquidity",
+   "status": "pass",
+   "summary": {
+    "max_position_pct_adv": 0.0781,
+    "entries_without_adv": 0
+   },
+   "findings": []
+  },
+  {
+   "name": "concentration",
+   "status": "warn",
+   "summary": {
+    "top5_trades_pnl_share_pct": 157.1338103579122,
+    "top10_symbols_pnl_share_pct": 229.6466,
+    "cagr_ex_top5_trades_pct": -2.4762
+   },
+   "findings": [
+    {
+     "code": "top5_concentrated",
+     "severity": "warn",
+     "count": 1,
+     "items": [
+      157.13
+     ],
+     "threshold_pct": 50.0
+    },
+    {
+     "code": "edge_in_top5",
+     "severity": "warn",
+     "count": 1,
+     "items": [
+      {
+       "cagr_pct": 4.0604,
+       "cagr_ex_top5_trades_pct": -2.4762
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "equity_jumps",
+   "status": "pass",
+   "summary": {
+    "sessions": 743,
+    "jumps": 0,
+    "threshold_pct": 5.0
+   },
+   "findings": []
+  },
+  {
+   "name": "ledger",
+   "status": "pass",
+   "summary": {
+    "sessions": 743,
+    "reconciled": "pass",
+    "worst_cash_diff": "0"
+   },
+   "findings": []
+  },
+  {
+   "name": "lookahead",
+   "status": "warn",
+   "summary": {
+    "hindsight": {
+     "breakout_vol_ratio": 413,
+     "ep_estimate_close": 10,
+     "ep_estimate_volume": 10
+    }
+   },
+   "findings": [
+    {
+     "code": "lookahead_hindsight",
+     "severity": "warn",
+     "count": 1,
+     "items": [
+      {
+       "ep_estimate_close": 10,
+       "ep_estimate_volume": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "refusals",
+   "status": "pass",
+   "summary": {
+    "refusals": 253
+   },
+   "findings": []
+  },
+  {
+   "name": "trials",
+   "status": "pass",
+   "summary": {
+    "dsr_n_trials": 5,
+    "dsr_prob": 0.460158
+   },
+   "findings": []
+  },
+  {
+   "name": "data",
+   "status": "warn",
+   "summary": {
+    "status": "warn",
+    "digest": "8658d86a0ff9791ce211a704020011eb6705e4fbe0b3478482ba177549d7cd80"
+   },
+   "findings": [
+    {
+     "code": "data_audit_warn",
+     "severity": "warn",
+     "count": 1,
+     "items": [
+      "8658d86a0ff9791ce211a704020011eb6705e4fbe0b3478482ba177549d7cd80"
+     ],
+     "checks": [
+      "corporate_actions",
+      "bars_5m",
+      "verify",
+      "golden"
+     ],
+     "explained": null
+    }
+   ]
+  }
+ ],
+ "digest": "51e42ab6a850937a0696cb90cd050972935b69c7cf863ce5b6a7e4f8d49b0fd1"
+}

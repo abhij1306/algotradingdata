@@ -1,0 +1,361 @@
+{
+ "run_id": "01a18c4c-e180-73db-845b-23f21d48ed63",
+ "strategy": "momentum-rotation",
+ "resolved_hash": "d244d86736e6a1d0bbed25fb70e1e69d912f232e3ec6611f471fe0bc86424b27",
+ "strategy_id": "82ac5101-b05a-4c76-a025-a4447470716f",
+ "strategy_version_id": "c7d55ebe-2baa-42da-86e2-de8fd11bd2c9",
+ "universe_id": "01a171d7-c436-713e-ad13-63416dada7ec",
+ "membership_key": "395a93f7eeec7476238e081a8506e20be46e167fdd3c45d0a5dfbbc44f89dcc0",
+ "metrics": {
+  "trades": 486,
+  "sum_r": "45.710033",
+  "expectancy_r": "0.094054",
+  "win_rate": 0.5,
+  "avg_win_r": "0.301001",
+  "avg_loss_r": "-0.112894",
+  "avg_mfe_r": "0.368909",
+  "avg_mae_r": "-0.136666",
+  "net_pnl": "6757416.2045",
+  "fees": "196844.96",
+  "initial_equity": "1000000",
+  "final_equity": "6535825.3845",
+  "total_return": 5.5358253845,
+  "max_drawdown": 0.356910752908569,
+  "sharpe_annual": 1.0555183507736325,
+  "returns": {
+   "sr": 0.06649140620028744,
+   "t": 2229,
+   "skew": -1.2950638598562625,
+   "kurtosis": 11.04291516582783
+  },
+  "sessions": 2229,
+  "first_session": "2016-01-01",
+  "last_session": "2024-12-31",
+  "held_sessions": 2229,
+  "exposure": 1.0,
+  "cagr": 0.23644254242112028,
+  "mar": 0.6624696524110905,
+  "longest_drawdown_sessions": 500,
+  "tail_trimmed_r": {
+   "top_1pct": "0.073825",
+   "top_5pct": "0.033288",
+   "top_10pct": "0.002008"
+  },
+  "cost_share": "0.028306",
+  "invested_share": "0.993467",
+  "pct_basis": {
+   "equity": "account",
+   "sleeve_weight": "1",
+   "regime_mult": "1"
+  },
+  "strategy_version_id": "c7d55ebe-2baa-42da-86e2-de8fd11bd2c9",
+  "risk_policy_version_id": "01a175fa-4839-7729-a280-01c828281fe6",
+  "cooldown_sessions": 0,
+  "known_gaps": [
+   "close_exits_at_official_close",
+   "close_rules_decided_on_official_close",
+   "close_bias_large_on_expiry_and_rebalance_days",
+   "kill_switches_not_simulated",
+   "upper_circuit_inferred_from_bar",
+   "multipliers_fixed_at_one",
+   "regime_table_shared_momentum",
+   "single_sleeve_caps",
+   "daily_close_entry_not_live",
+   "tax_rules_current_for_all_years",
+   "tax_paid_at_fy_end",
+   "sleeve_price_estimated_from_prev_close",
+   "liquidbees_tr_proxy",
+   "etf_costs_on_stock_cost_model",
+   "rotation_fills_0920_estimated_without_5m",
+   "rotation_sized_on_decision_close"
+  ],
+  "entry_bars_by_year": {},
+  "entry_day_low": "bars_5m_else_max_low_min_open_level_less_adr20",
+  "fill_path": "open_low_high_close",
+  "entry_fill_rule": "penetration_1_tick",
+  "gap_through_rule": "min_open_stop",
+  "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+  "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+  "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+  "slippage_bps": "20",
+  "cost_model": {
+   "version": "cnc-delivery-2",
+   "schedules": [
+    {
+     "effective_from": "2016-01-01",
+     "digest": "4d7618fab26152ee4b67d95b7afd03c1978a3992c147e467e90f85767f7eacc1"
+    },
+    {
+     "effective_from": "2016-06-01",
+     "digest": "8514f4a64a8a3e02f2f71a802efcaef88e12fcd0ee705a37ddeff467d5828f86"
+    },
+    {
+     "effective_from": "2017-04-01",
+     "digest": "3e5ece87eb7da6b02a6332fc94a26c6b36ce0eb63cfe05e9594cc17b3cc935ba"
+    },
+    {
+     "effective_from": "2017-07-01",
+     "digest": "380c4b63bc8d0482c8f23e3c3196652f9fc07314d1233603887699ca9cbf191c"
+    },
+    {
+     "effective_from": "2019-04-01",
+     "digest": "129122f63b70252fbf7051385c21ae2d964f7048a3ea5c6a617cc3ded1e85878"
+    },
+    {
+     "effective_from": "2020-06-01",
+     "digest": "c6c9eb8ec7f68c8055318bcbeec26950aa688067085063cdb030e9b93b63d57b"
+    },
+    {
+     "effective_from": "2020-07-01",
+     "digest": "d2c787e9af50b69ead9eeac1f104d3d19ef9d788ce15f3edae4fe1a0d35e0a4e"
+    },
+    {
+     "effective_from": "2021-01-01",
+     "digest": "e068c301459df99060e622c3a5bd08d85603527b9d6bcd99826b342683cc123b"
+    },
+    {
+     "effective_from": "2021-04-01",
+     "digest": "0258c45e4477afc617c0c2c0ce993877596b55d956d35e59da1c9d880bacca84"
+    },
+    {
+     "effective_from": "2021-08-05",
+     "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+    },
+    {
+     "effective_from": "2022-07-18",
+     "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+    },
+    {
+     "effective_from": "2023-04-01",
+     "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+    },
+    {
+     "effective_from": "2024-04-01",
+     "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+    },
+    {
+     "effective_from": "2024-10-01",
+     "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+    }
+   ]
+  },
+  "slot_order": "time",
+  "ambiguous": "optimistic",
+  "lower_circuit": "carry_to_next_unlocked_open",
+  "suspension_markdown": {
+   "after_sessions": 5,
+   "band_pct": "5"
+  },
+  "sleeve_weight": "1",
+  "regime_mult": "1",
+  "health_mult": "1",
+  "overlay": {
+   "sleeve": "liquid",
+   "regime": {
+    "index": "NIFTY 50",
+    "sma": 200,
+    "upper": "1.02",
+    "lower": "0.98",
+    "confirm": 5
+   },
+   "gold_regime": {
+    "sma": 200,
+    "upper": "1.02",
+    "lower": "0.98",
+    "confirm": 5
+   },
+   "cash_buffer_pct": "0.05",
+   "rebalance_pct": "0.02",
+   "same_day_sale_credit_pct": [
+    {
+     "from": "2000-01-01",
+     "pct": "0.8"
+    },
+    {
+     "from": "2024-10-07",
+     "pct": "1"
+    }
+   ],
+   "slippage_bps": {
+    "NIFTYBEES": "5",
+    "GOLDBEES": "5",
+    "LIQUIDBEES": "1"
+   },
+   "tax": {
+    "enabled": true,
+    "slab_rate": "0.30",
+    "cess": "0.04"
+   }
+  },
+  "open_to_0920": {
+   "buy": "0.0002",
+   "sell": "0.0003",
+   "measured": true
+  },
+  "conventions": {
+   "fill_path": "open_low_high_close",
+   "entry_fill_rule": "penetration_1_tick",
+   "gap_through_rule": "min_open_stop",
+   "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+   "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+   "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+   "slippage_bps": "20",
+   "cost_model": {
+    "version": "cnc-delivery-2",
+    "schedules": [
+     {
+      "effective_from": "2016-01-01",
+      "digest": "4d7618fab26152ee4b67d95b7afd03c1978a3992c147e467e90f85767f7eacc1"
+     },
+     {
+      "effective_from": "2016-06-01",
+      "digest": "8514f4a64a8a3e02f2f71a802efcaef88e12fcd0ee705a37ddeff467d5828f86"
+     },
+     {
+      "effective_from": "2017-04-01",
+      "digest": "3e5ece87eb7da6b02a6332fc94a26c6b36ce0eb63cfe05e9594cc17b3cc935ba"
+     },
+     {
+      "effective_from": "2017-07-01",
+      "digest": "380c4b63bc8d0482c8f23e3c3196652f9fc07314d1233603887699ca9cbf191c"
+     },
+     {
+      "effective_from": "2019-04-01",
+      "digest": "129122f63b70252fbf7051385c21ae2d964f7048a3ea5c6a617cc3ded1e85878"
+     },
+     {
+      "effective_from": "2020-06-01",
+      "digest": "c6c9eb8ec7f68c8055318bcbeec26950aa688067085063cdb030e9b93b63d57b"
+     },
+     {
+      "effective_from": "2020-07-01",
+      "digest": "d2c787e9af50b69ead9eeac1f104d3d19ef9d788ce15f3edae4fe1a0d35e0a4e"
+     },
+     {
+      "effective_from": "2021-01-01",
+      "digest": "e068c301459df99060e622c3a5bd08d85603527b9d6bcd99826b342683cc123b"
+     },
+     {
+      "effective_from": "2021-04-01",
+      "digest": "0258c45e4477afc617c0c2c0ce993877596b55d956d35e59da1c9d880bacca84"
+     },
+     {
+      "effective_from": "2021-08-05",
+      "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+     },
+     {
+      "effective_from": "2022-07-18",
+      "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+     },
+     {
+      "effective_from": "2023-04-01",
+      "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+     },
+     {
+      "effective_from": "2024-04-01",
+      "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+     },
+     {
+      "effective_from": "2024-10-01",
+      "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+     }
+    ]
+   },
+   "slot_order": "time",
+   "ambiguous": "optimistic",
+   "lower_circuit": "carry_to_next_unlocked_open",
+   "suspension_markdown": {
+    "after_sessions": 5,
+    "band_pct": "5"
+   },
+   "sleeve_weight": "1",
+   "regime_mult": "1",
+   "health_mult": "1",
+   "overlay": {
+    "sleeve": "liquid",
+    "regime": {
+     "index": "NIFTY 50",
+     "sma": 200,
+     "upper": "1.02",
+     "lower": "0.98",
+     "confirm": 5
+    },
+    "gold_regime": {
+     "sma": 200,
+     "upper": "1.02",
+     "lower": "0.98",
+     "confirm": 5
+    },
+    "cash_buffer_pct": "0.05",
+    "rebalance_pct": "0.02",
+    "same_day_sale_credit_pct": [
+     {
+      "from": "2000-01-01",
+      "pct": "0.8"
+     },
+     {
+      "from": "2024-10-07",
+      "pct": "1"
+     }
+    ],
+    "slippage_bps": {
+     "NIFTYBEES": "5",
+     "GOLDBEES": "5",
+     "LIQUIDBEES": "1"
+    },
+    "tax": {
+     "enabled": true,
+     "slab_rate": "0.30",
+     "cess": "0.04"
+    }
+   },
+   "open_to_0920": {
+    "buy": "0.0002",
+    "sell": "0.0003",
+    "measured": true
+   }
+  },
+  "for_promotion": false,
+  "config_digest": "db0aaff838a8cc62cfa40a24a6d270a36c5e67ac3dbbf5df5e6200e9db2f8800",
+  "skips": {},
+  "signals": 0,
+  "rejections": {},
+  "ambiguous_days": 0,
+  "lower_circuit_days": 0,
+  "demerger_exits": {
+   "trades": 0,
+   "net_pnl": "0",
+   "sum_r": "0.000000"
+  },
+  "auction_risk_exits": {
+   "rule": "close-priced exits on an F&O monthly expiry or the session before an index reconstitution takes effect (`auction_days`)",
+   "exits": 0,
+   "by_tag": {},
+   "sum_r": "0.000000"
+  },
+  "dividend_income": "281002.64",
+  "dividend_credits": 234,
+  "rotation_fills_0920": 680,
+  "rotation_fills_estimated": 1630,
+  "dsr": {
+   "prob": 0.9038098807170585,
+   "trials": 5,
+   "reason": null
+  },
+  "pbo": {
+   "prob": "0.0"
+  },
+  "completed_at": "2026-10-30T10:15:14.660566+00:00"
+ },
+ "buckets": [
+  {
+   "playbook": "rotation",
+   "band": "0.90-1.00",
+   "trades": 3,
+   "mean_r": "0.260779",
+   "ci90_low": "0.067294",
+   "ci90_high": "0.454264",
+   "win_rate": "1.000000"
+  }
+ ]
+}

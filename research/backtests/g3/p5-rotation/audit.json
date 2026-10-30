@@ -1,0 +1,149 @@
+{
+ "audit_version": "3",
+ "run_id": "01a18c4c-e180-73db-845b-23f21d48ed63",
+ "status": "warn",
+ "checks": [
+  {
+   "name": "binding",
+   "status": "pass",
+   "summary": {
+    "base_run_id": null,
+    "trades_changed": null,
+    "changed": null,
+    "risk_policy_version": 3,
+    "base_risk_policy_version": null
+   },
+   "findings": []
+  },
+  {
+   "name": "fills",
+   "status": "pass",
+   "summary": {
+    "fills_checked": 1730,
+    "fills_without_bar": 0,
+    "slippage_bps": "20"
+   },
+   "findings": []
+  },
+  {
+   "name": "sequence",
+   "status": "pass",
+   "summary": {
+    "trades": 486
+   },
+   "findings": []
+  },
+  {
+   "name": "pnl",
+   "status": "pass",
+   "summary": {
+    "trades": 486,
+    "net_pnl": 5535825.3845,
+    "fees": 196844.96
+   },
+   "findings": []
+  },
+  {
+   "name": "costs",
+   "status": "pass",
+   "summary": {
+    "cost_share_pct": 2.8306,
+    "cost_model": "cnc-delivery-2"
+   },
+   "findings": []
+  },
+  {
+   "name": "liquidity",
+   "status": "pass",
+   "summary": {
+    "max_position_pct_adv": 0.4164,
+    "entries_without_adv": 0
+   },
+   "findings": []
+  },
+  {
+   "name": "concentration",
+   "status": "pass",
+   "summary": {
+    "top5_trades_pnl_share_pct": 27.38894472960682,
+    "top10_symbols_pnl_share_pct": 48.33,
+    "cagr_ex_top5_trades_pct": 18.7153
+   },
+   "findings": []
+  },
+  {
+   "name": "equity_jumps",
+   "status": "pass",
+   "summary": {
+    "sessions": 2229,
+    "jumps": 19,
+    "threshold_pct": 5.0
+   },
+   "findings": []
+  },
+  {
+   "name": "ledger",
+   "status": "pass",
+   "summary": {
+    "sessions": 2229,
+    "reconciled": "pass",
+    "worst_cash_diff": "0"
+   },
+   "findings": []
+  },
+  {
+   "name": "lookahead",
+   "status": "pass",
+   "summary": {
+    "hindsight": {
+     "breakout_vol_ratio": 486
+    }
+   },
+   "findings": []
+  },
+  {
+   "name": "refusals",
+   "status": "pass",
+   "summary": {
+    "refusals": 0
+   },
+   "findings": []
+  },
+  {
+   "name": "trials",
+   "status": "pass",
+   "summary": {
+    "dsr_n_trials": 5,
+    "dsr_prob": 0.90381
+   },
+   "findings": []
+  },
+  {
+   "name": "data",
+   "status": "warn",
+   "summary": {
+    "status": "warn",
+    "digest": "d496fc9a1808f4ab8ea9ae16385597a13fd7ccf3587a2872f86d9fc87cdaa048"
+   },
+   "findings": [
+    {
+     "code": "data_audit_warn",
+     "severity": "warn",
+     "count": 1,
+     "items": [
+      "d496fc9a1808f4ab8ea9ae16385597a13fd7ccf3587a2872f86d9fc87cdaa048"
+     ],
+     "checks": [
+      "corporate_actions",
+      "bars_5m",
+      "industries",
+      "verify",
+      "golden"
+     ],
+     "explained": null
+    }
+   ]
+  }
+ ],
+ "digest": "1c2c3a0e421120a3550bd82d47775c10d7a7788440ab8e17b30b54197572edf4"
+}

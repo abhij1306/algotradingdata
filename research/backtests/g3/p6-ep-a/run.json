@@ -1,0 +1,812 @@
+{
+ "format_version": "1.5",
+ "identity": {
+  "run_id": "01a18c09-c414-76fe-8867-9ba3b74a021f",
+  "strategy": "S2",
+  "strategy_version": "64274b85-696f-4aea-944e-717a62546682",
+  "engine_commit": "8f4267d2e787da33128dd76794f4b82a9876ce4f",
+  "sweep_id": null,
+  "sweep_name": null,
+  "variant": "p6-ep-a",
+  "base_run_id": null,
+  "change": null,
+  "changed_knobs": null,
+  "bundle": null,
+  "created_at": "2026-10-30T09:19:39.192348+00:00",
+  "status": "complete",
+  "error": null,
+  "for_promotion": false
+ },
+ "data": {
+  "universe": "NIFTY500_PIT",
+  "data_snapshot_id": "e7a68fc909ea8f1dfcdea5271ff3311a4c1409da5d614997df42e202a4a27735",
+  "split": "in_sample",
+  "validates_run_id": null,
+  "period_start": "2022-01-01",
+  "period_end": "2024-12-31",
+  "benchmark": "NIFTY500_TRI",
+  "audit": {
+   "digest": "8658d86a0ff9791ce211a704020011eb6705e4fbe0b3478482ba177549d7cd80",
+   "status": "warn"
+  },
+  "industry_unknown_pct": 0.151,
+  "undated_member_demergers": 0,
+  "verified": false,
+  "verify_report": null
+ },
+ "config": {
+  "overrides": {
+   "playbooks": [
+    "episodic_pivot"
+   ],
+   "set": [
+    {
+     "path": "playbooks[episodic_pivot].trigger[gap_up].params.min_pct",
+     "value": 6
+    },
+    {
+     "path": "playbooks[episodic_pivot].setup.criteria[neglect].params.max_return_63d_pct",
+     "value": 100000
+    },
+    {
+     "path": "playbooks[episodic_pivot].trigger[catalyst_attached].enabled",
+     "value": false
+    },
+    {
+     "path": "playbooks[episodic_pivot].trigger[+]",
+     "value": {
+      "type": "earnings_catalyst",
+      "stage": "trigger",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "sales_yoy_pct": -100,
+       "eps_yoy_pct": -100,
+       "sales_alone_pct": -100
+      },
+      "enabled": true,
+      "order": 4
+     }
+    },
+    {
+     "path": "exits[partial_after_days].enabled",
+     "value": false
+    },
+    {
+     "path": "exits[move_stop_to_breakeven].enabled",
+     "value": false
+    },
+    {
+     "path": "exits[close_below_sma].sma",
+     "value": 20
+    },
+    {
+     "path": "exits[close_below_sma].grace_sessions",
+     "value": 2
+    },
+    {
+     "path": "exits[+]",
+     "value": {
+      "rule": "max_hold",
+      "days": 60
+     }
+    },
+    {
+     "path": "regime",
+     "value": {
+      "index": "NIFTY 500",
+      "rule": "breadth_above",
+      "params": {
+       "min_pct": 0
+      }
+     }
+    }
+   ]
+  },
+  "resolved": {
+   "strategy": {
+    "bot": "momentum-breakout-ep",
+    "market": "NSE",
+    "universe": [
+     {
+      "type": "series_in",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "series": [
+        "EQ",
+        "BE"
+       ]
+      },
+      "enabled": true,
+      "order": 0
+     },
+     {
+      "type": "min_turnover",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "days": 20,
+       "inr_cr": 10.0
+      },
+      "enabled": true,
+      "order": 1
+     },
+     {
+      "type": "adr_min",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "days": 20,
+       "pct": 4.0
+      },
+      "enabled": true,
+      "order": 2
+     }
+    ],
+    "regime": {
+     "index": "NIFTY 500",
+     "rule": "breadth_above",
+     "params": {
+      "min_pct": 0.0,
+      "smooth_days": 1
+     }
+    },
+    "playbooks": [
+     {
+      "name": "episodic_pivot",
+      "setup": {
+       "threshold": 0.6,
+       "criteria": [
+        {
+         "type": "neglect",
+         "stage": "setup",
+         "mode": "hard",
+         "weight": 1.0,
+         "params": {
+          "max_return_63d_pct": 100000.0,
+          "max_range_126d_pct": null
+         },
+         "enabled": true,
+         "order": 0
+        }
+       ]
+      },
+      "trigger": [
+       {
+        "type": "gap_up",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "min_pct": 6.0
+        },
+        "enabled": true,
+        "order": 0
+       },
+       {
+        "type": "early_volume",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "vs_adv20": 0.5
+        },
+        "enabled": true,
+        "order": 1
+       },
+       {
+        "type": "catalyst_attached",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "within_hours": 24,
+         "required_in": [
+          "confirm"
+         ]
+        },
+        "enabled": false,
+        "order": 2
+       },
+       {
+        "type": "price_breaks_level",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "level": "opening_range_high",
+         "bar": "5m",
+         "confirm": "close"
+        },
+        "enabled": true,
+        "order": 3
+       },
+       {
+        "type": "earnings_catalyst",
+        "stage": "trigger",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "sales_yoy_pct": -100.0,
+         "eps_yoy_pct": -100.0,
+         "sales_alone_pct": -100.0
+        },
+        "enabled": true,
+        "order": 4
+       }
+      ],
+      "entry_filters": [
+       {
+        "type": "adtr_filter",
+        "stage": "entry_filter",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "max_multiple": 1.5
+        },
+        "enabled": true,
+        "order": 0
+       },
+       {
+        "type": "max_chase",
+        "stage": "entry_filter",
+        "mode": "hard",
+        "weight": 1.0,
+        "params": {
+         "pct": 2.0
+        },
+        "enabled": true,
+        "order": 1
+       }
+      ],
+      "stop": {
+       "rule": "low_of_day",
+       "buffer_ticks": 1
+      }
+     }
+    ],
+    "exits": [
+     {
+      "rule": "hard_stop",
+      "enabled": true
+     },
+     {
+      "rule": "partial_after_days",
+      "days": 3,
+      "sell_fraction": 0.33,
+      "only_if_profit": true,
+      "enabled": false
+     },
+     {
+      "rule": "move_stop_to_breakeven",
+      "at_r": null,
+      "after": "partial",
+      "enabled": false
+     },
+     {
+      "sma": 20,
+      "sell_fraction": 1.0,
+      "enabled": true,
+      "rule": "close_below_sma",
+      "grace_sessions": 2
+     },
+     {
+      "rule": "max_hold",
+      "days": 60,
+      "enabled": true
+     }
+    ]
+   },
+   "risk_policy": {
+    "risk_pct": "0.01",
+    "p_max": {
+     "darvas-box-breakout": "0.20",
+     "momentum-breakout-ep": "0.25",
+     "rsi2-uptrend-reversion": "0.20",
+     "stage2-contraction-breakout": "0.20",
+     "trend-pullback-ema": "0.20"
+    },
+    "adv_cap_pct": "0.01",
+    "global_open_risk_pct": "0.1",
+    "max_open_positions": 10,
+    "max_positions_per_industry": 10,
+    "max_entries_per_day": 4,
+    "max_stopouts_per_day": 4,
+    "cooldown_sessions": 0,
+    "min_position_pct": "0.02",
+    "exposure_ladder": {
+     "L1": {
+      "max_positions": 6,
+      "risk_mult": "1.0"
+     },
+     "L2": {
+      "max_positions": 8,
+      "risk_mult": "1.0"
+     },
+     "L3": {
+      "max_positions": 10,
+      "risk_mult": "1.0"
+     },
+     "up_after_wins": 2,
+     "down_after_losses": 2
+    },
+    "kill": {
+     "account_drawdown_pct": "0.20",
+     "bot_drawdown_pct": "0.20"
+    },
+    "base_weight": {
+     "S1": "1.0",
+     "S2": "0.50",
+     "S3": "0",
+     "S4": "0",
+     "S5": "0"
+    },
+    "cluster_cap": "1.00",
+    "multiplier_bounds": {
+     "lo": "0.25",
+     "hi": "1.0"
+    },
+    "health_bands": {
+     "half_dd": "0.12",
+     "zero_dd": "0.18",
+     "full_mult": "1.0",
+     "half_mult": "0.5"
+    },
+    "weights_confirmed": true
+   },
+   "conventions": {
+    "fill_path": "open_low_high_close",
+    "entry_fill_rule": "penetration_1_tick",
+    "gap_through_rule": "min_open_stop",
+    "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+    "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+    "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+    "slippage_bps": "20",
+    "cost_model": {
+     "version": "cnc-delivery-2",
+     "schedules": [
+      {
+       "effective_from": "2021-08-05",
+       "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+      },
+      {
+       "effective_from": "2022-07-18",
+       "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+      },
+      {
+       "effective_from": "2023-04-01",
+       "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+      },
+      {
+       "effective_from": "2024-04-01",
+       "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+      },
+      {
+       "effective_from": "2024-10-01",
+       "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+      }
+     ]
+    },
+    "slot_order": "time",
+    "ambiguous": "optimistic",
+    "lower_circuit": "carry_to_next_unlocked_open",
+    "suspension_markdown": {
+     "after_sessions": 5,
+     "band_pct": "5"
+    },
+    "sleeve_weight": "0.5",
+    "regime_mult": "1",
+    "health_mult": "1",
+    "open_to_0920": {
+     "buy": "0.0002",
+     "sell": "0.0003",
+     "measured": true
+    }
+   }
+  },
+  "resolved_hash": "168770cc7b15125f64a43682feb96d4db15fc2221285f057ddd347f255ab95b2",
+  "risk_policy_version": 3,
+  "base_risk_policy_version": null,
+  "cost_model": "cnc-delivery-2",
+  "start_capital": 1000000,
+  "rf_pct": 0
+ },
+ "metrics": {
+  "trades": 16,
+  "win_pct": 18.75,
+  "avg_win_r": 1.6901,
+  "avg_loss_r": -1.1265,
+  "expectancy_r": -0.5984,
+  "avg_mfe_r": 2.4477,
+  "avg_mae_r": -0.9243,
+  "cagr_pct": -1.6395,
+  "max_dd_pct": 9.6819,
+  "avg_dd_pct": 3.1464,
+  "mar": -0.1693,
+  "sharpe": -0.4429,
+  "sortino": -0.6722,
+  "invested_pct": 1.4714,
+  "avg_open_positions": 0.1211,
+  "longest_dd_sessions": 640,
+  "longest_dd_recovered": false,
+  "longest_dd_start": "2022-06-02",
+  "longest_dd_end": "2024-12-31",
+  "total_return_pct": -4.8394,
+  "final_equity": 951606.3,
+  "fees": 4155.37,
+  "cost_share_pct": null,
+  "benchmark_cagr_pct": 15.424,
+  "avg_hold_sessions_win": 18.6667,
+  "avg_hold_sessions_loss": 2.6154,
+  "max_consecutive_losses": 8,
+  "symbols_traded": 14,
+  "top5_trades_pnl_share_pct": null,
+  "top10_symbols_pnl_share_pct": null,
+  "cagr_ex_top5_trades_pct": -2.0312,
+  "signals": 17,
+  "dsr_prob": 0.021323,
+  "dsr_n_trials": 11,
+  "dsr_n_trials_effective": 11,
+  "pbo": 0.714286,
+  "max_position_pct_adv": 0.0934,
+  "trades_over_5pct_adv": 0
+ },
+ "refusals": {
+  "max_chase": 1
+ },
+ "binding": {
+  "trades_changed": null,
+  "trade_list_hash": "5521d13ee1484b6225e040d0ca0533c48abbfd8f831975466910ad2bd69cd09c",
+  "no_op": null
+ },
+ "breakdowns": {
+  "by_year": [
+   {
+    "year": 2022,
+    "return_pct": -1.964,
+    "max_dd_pct": 6.9528,
+    "trades_entered": 7,
+    "expectancy_r_by_entry": -0.3805,
+    "trades_exited": 7,
+    "expectancy_r_by_exit": -0.3805,
+    "realized_pnl_by_exit": -19639.83,
+    "benchmark_return_pct": 4.2462,
+    "entries_5m": 5,
+    "entries_daily": 2
+   },
+   {
+    "year": 2023,
+    "return_pct": 0.0,
+    "max_dd_pct": 0.0,
+    "trades_entered": 0,
+    "expectancy_r_by_entry": null,
+    "trades_exited": 0,
+    "expectancy_r_by_exit": null,
+    "realized_pnl_by_exit": 0.0,
+    "benchmark_return_pct": 26.9147,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2024,
+    "return_pct": -2.933,
+    "max_dd_pct": 5.1642,
+    "trades_entered": 9,
+    "expectancy_r_by_entry": -0.7679,
+    "trades_exited": 9,
+    "expectancy_r_by_exit": -0.7679,
+    "realized_pnl_by_exit": -28753.87,
+    "benchmark_return_pct": 16.2408,
+    "entries_5m": 6,
+    "entries_daily": 3
+   }
+  ],
+  "by_regime": {
+   "index_on": {
+    "trades": 16,
+    "win_pct": 18.75,
+    "expectancy_r": -0.5984,
+    "avg_hold_sessions": 5.625,
+    "net_pnl": -48393.7
+   },
+   "breadth_40_50": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.0832,
+    "avg_hold_sessions": 5.0,
+    "net_pnl": -5440.18
+   },
+   "breadth_50_60": {
+    "trades": 5,
+    "win_pct": 20.0,
+    "expectancy_r": -0.4887,
+    "avg_hold_sessions": 5.2,
+    "net_pnl": -9574.82
+   },
+   "breadth_ge60": {
+    "trades": 3,
+    "win_pct": 0.0,
+    "expectancy_r": -1.0945,
+    "avg_hold_sessions": 5.3333,
+    "net_pnl": -16060.26
+   },
+   "breadth_lt40": {
+    "trades": 7,
+    "win_pct": 28.5714,
+    "expectancy_r": -0.3949,
+    "avg_hold_sessions": 6.1429,
+    "net_pnl": -17318.43
+   }
+  },
+  "by_exit_reason": {
+   "initial_stop": {
+    "trades": 13,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1265,
+    "avg_hold_sessions": 2.6154,
+    "net_pnl": -67807.68
+   },
+   "sma20_close": {
+    "trades": 3,
+    "win_pct": 100.0,
+    "expectancy_r": 1.6901,
+    "avg_hold_sessions": 18.6667,
+    "net_pnl": 19413.98
+   }
+  },
+  "by_industry": {
+   "Capital Goods": {
+    "trades": 5,
+    "win_pct": 20.0,
+    "expectancy_r": -0.3046,
+    "avg_hold_sessions": 4.6,
+    "net_pnl": -11546.97
+   },
+   "Chemicals": {
+    "trades": 2,
+    "win_pct": 50.0,
+    "expectancy_r": -0.4689,
+    "avg_hold_sessions": 7.5,
+    "net_pnl": -4712.54
+   },
+   "Fast Moving Consumer Goods": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.0816,
+    "avg_hold_sessions": 6.0,
+    "net_pnl": -5312.38
+   },
+   "Financial Services": {
+    "trades": 3,
+    "win_pct": 0.0,
+    "expectancy_r": -1.102,
+    "avg_hold_sessions": 4.3333,
+    "net_pnl": -15164.43
+   },
+   "Realty": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.0864,
+    "avg_hold_sessions": 0.0,
+    "net_pnl": -5413.25
+   },
+   "Services": {
+    "trades": 3,
+    "win_pct": 0.0,
+    "expectancy_r": -1.2149,
+    "avg_hold_sessions": 2.3333,
+    "net_pnl": -16460.91
+   },
+   "Telecommunication": {
+    "trades": 1,
+    "win_pct": 100.0,
+    "expectancy_r": 2.0056,
+    "avg_hold_sessions": 26.0,
+    "net_pnl": 10216.78
+   }
+  },
+  "by_cap_bucket": {},
+  "by_liquidity_bucket": {
+   "q2": {
+    "trades": 5,
+    "win_pct": 40.0,
+    "expectancy_r": -0.1037,
+    "avg_hold_sessions": 7.4,
+    "net_pnl": -8746.11
+   },
+   "q3": {
+    "trades": 6,
+    "win_pct": 16.6667,
+    "expectancy_r": -0.5859,
+    "avg_hold_sessions": 5.3333,
+    "net_pnl": -14536.6
+   },
+   "q4": {
+    "trades": 4,
+    "win_pct": 0.0,
+    "expectancy_r": -1.1143,
+    "avg_hold_sessions": 4.0,
+    "net_pnl": -19670.81
+   },
+   "q5": {
+    "trades": 1,
+    "win_pct": 0.0,
+    "expectancy_r": -1.0832,
+    "avg_hold_sessions": 5.0,
+    "net_pnl": -5440.18
+   }
+  },
+  "by_playbook": {
+   "episodic_pivot": {
+    "signals": 17,
+    "refusals": {
+     "max_chase": 1
+    },
+    "trades": {
+     "trades": 16,
+     "win_pct": 18.75,
+     "expectancy_r": -0.5984,
+     "avg_hold_sessions": 5.625,
+     "net_pnl": -48393.7
+    }
+   }
+  },
+  "episodic_pivot": {
+   "episodic_pivot": {
+    "trades": {
+     "trades": 16,
+     "win_pct": 18.75,
+     "expectancy_r": -0.5984,
+     "avg_hold_sessions": 5.625,
+     "net_pnl": -48393.7
+    },
+    "by_catalyst_type": {
+     "earnings": {
+      "trades": 16,
+      "win_pct": 18.75,
+      "expectancy_r": -0.5984,
+      "avg_hold_sessions": 5.625,
+      "net_pnl": -48393.7
+     }
+    },
+    "by_sales_yoy": {
+     "25_50": {
+      "trades": 3,
+      "win_pct": 33.3333,
+      "expectancy_r": 0.2375,
+      "avg_hold_sessions": 6.6667,
+      "net_pnl": -1686.26
+     },
+     "50_100": {
+      "trades": 6,
+      "win_pct": 16.6667,
+      "expectancy_r": -0.8923,
+      "avg_hold_sessions": 5.1667,
+      "net_pnl": -25580.27
+     },
+     "gt100": {
+      "trades": 4,
+      "win_pct": 25.0,
+      "expectancy_r": -0.4045,
+      "avg_hold_sessions": 8.25,
+      "net_pnl": -6522.14
+     },
+     "lt25": {
+      "trades": 3,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1051,
+      "avg_hold_sessions": 2.0,
+      "net_pnl": -14605.03
+     }
+    },
+    "by_gap": {
+     "10_15": {
+      "trades": 6,
+      "win_pct": 16.6667,
+      "expectancy_r": -0.5878,
+      "avg_hold_sessions": 5.6667,
+      "net_pnl": -15120.92
+     },
+     "lt10": {
+      "trades": 10,
+      "win_pct": 20.0,
+      "expectancy_r": -0.6048,
+      "avg_hold_sessions": 5.6,
+      "net_pnl": -33272.78
+     }
+    },
+    "by_trigger_time": {
+     "0920_0945": {
+      "trades": 11,
+      "win_pct": 18.1818,
+      "expectancy_r": -0.4825,
+      "avg_hold_sessions": 6.2727,
+      "net_pnl": -29149.79
+     },
+     "0945_1100": {
+      "trades": 4,
+      "win_pct": 25.0,
+      "expectancy_r": -0.7963,
+      "avg_hold_sessions": 3.75,
+      "net_pnl": -13931.53
+     },
+     "after_1100": {
+      "trades": 1,
+      "win_pct": 0.0,
+      "expectancy_r": -1.0816,
+      "avg_hold_sessions": 6.0,
+      "net_pnl": -5312.38
+     }
+    },
+    "by_adr20": {
+     "4_6": {
+      "trades": 13,
+      "win_pct": 23.0769,
+      "expectancy_r": -0.46,
+      "avg_hold_sessions": 5.9231,
+      "net_pnl": -31024.67
+     },
+     "gt6": {
+      "trades": 3,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1981,
+      "avg_hold_sessions": 4.3333,
+      "net_pnl": -17369.02
+     }
+    },
+    "by_range_126d": {
+     "30_60": {
+      "trades": 6,
+      "win_pct": 50.0,
+      "expectancy_r": 0.2918,
+      "avg_hold_sessions": 10.1667,
+      "net_pnl": 4614.74
+     },
+     "gt60": {
+      "trades": 10,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1325,
+      "avg_hold_sessions": 2.9,
+      "net_pnl": -53008.44
+     }
+    },
+    "by_exit_reason": {
+     "initial_stop": {
+      "trades": 13,
+      "win_pct": 0.0,
+      "expectancy_r": -1.1265,
+      "avg_hold_sessions": 2.6154,
+      "net_pnl": -67807.68
+     },
+     "sma20_close": {
+      "trades": 3,
+      "win_pct": 100.0,
+      "expectancy_r": 1.6901,
+      "avg_hold_sessions": 18.6667,
+      "net_pnl": 19413.98
+     }
+    }
+   }
+  }
+ },
+ "funnel": {
+  "regime_off_nights": 0,
+  "by_playbook": {
+   "episodic_pivot": {
+    "gap_scan": 182,
+    "gap_up": 182,
+    "neglect": 182,
+    "earnings_catalyst": 35,
+    "early_volume": 35,
+    "price_breaks_level": 18,
+    "adtr_filter": 17,
+    "max_chase": 16,
+    "filled": 16
+   }
+  }
+ }
+}

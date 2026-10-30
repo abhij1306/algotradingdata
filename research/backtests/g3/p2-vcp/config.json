@@ -1,0 +1,528 @@
+{
+ "format_version": "1.5",
+ "run_id": "01a18bfd-8f82-720b-9b88-65c54660f2a0",
+ "strategy": "S1",
+ "strategy_id": "63fd5ce1-5966-4e47-998f-3d92b0dc6974",
+ "strategy_version_id": "aac4fda7-86b2-421d-b7f8-1247edef7f1d",
+ "strategy_config": {
+  "bot": "stage2-contraction-breakout",
+  "market": "NSE",
+  "universe": [
+   {
+    "type": "series_in",
+    "stage": "universe",
+    "mode": "hard",
+    "weight": 1.0,
+    "params": {
+     "series": [
+      "EQ",
+      "BE"
+     ]
+    },
+    "enabled": true,
+    "order": 0
+   },
+   {
+    "type": "min_turnover",
+    "stage": "universe",
+    "mode": "hard",
+    "weight": 1.0,
+    "params": {
+     "days": 20,
+     "inr_cr": 10.0
+    },
+    "enabled": true,
+    "order": 1
+   },
+   {
+    "type": "min_price",
+    "stage": "universe",
+    "mode": "hard",
+    "weight": 1.0,
+    "params": {
+     "inr": 50.0
+    },
+    "enabled": true,
+    "order": 2
+   }
+  ],
+  "regime": {
+   "index": "NIFTY 500",
+   "rule": "close_above_sma_and_rising",
+   "params": {
+    "sma": 50,
+    "rising_days": 0
+   }
+  },
+  "playbooks": [
+   {
+    "name": "default",
+    "setup": {
+     "threshold": 0.6,
+     "criteria": [
+      {
+       "type": "sma_above",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "a": "close",
+        "b": 150
+       },
+       "enabled": true,
+       "order": 0
+      },
+      {
+       "type": "sma_above",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "a": "close",
+        "b": 200
+       },
+       "enabled": true,
+       "order": 1
+      },
+      {
+       "type": "sma_above",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "a": 150,
+        "b": 200
+       },
+       "enabled": true,
+       "order": 2
+      },
+      {
+       "type": "sma_rising",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "sma": 200,
+        "lookback_days": 21
+       },
+       "enabled": true,
+       "order": 3
+      },
+      {
+       "type": "sma_above",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "a": 50,
+        "b": 150
+       },
+       "enabled": true,
+       "order": 4
+      },
+      {
+       "type": "sma_above",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "a": 50,
+        "b": 200
+       },
+       "enabled": true,
+       "order": 5
+      },
+      {
+       "type": "sma_above",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "a": "close",
+        "b": 50
+       },
+       "enabled": true,
+       "order": 6
+      },
+      {
+       "type": "pct_from_52w_low",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "min_pct": 30.0
+       },
+       "enabled": true,
+       "order": 7
+      },
+      {
+       "type": "pct_from_52w_high",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "max_pct_below": 25.0
+       },
+       "enabled": true,
+       "order": 8
+      },
+      {
+       "type": "rs_rank",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "min_percentile": 70.0,
+        "score_from": 70.0,
+        "score_full": 95.0
+       },
+       "enabled": false,
+       "order": 9
+      },
+      {
+       "type": "rs_rank",
+       "stage": "setup",
+       "mode": "score",
+       "weight": 1.0,
+       "params": {
+        "min_percentile": 70.0,
+        "score_from": 70.0,
+        "score_full": 95.0
+       },
+       "enabled": false,
+       "order": 10
+      },
+      {
+       "type": "vcp",
+       "stage": "setup",
+       "mode": "score",
+       "weight": 2.0,
+       "params": {
+        "contractions": [
+         2,
+         6
+        ],
+        "depth_ratio_max": 0.9,
+        "final_depth_max_pct": 10.0,
+        "lookback_days": 120,
+        "dryup_vs_avg50": 1.0,
+        "max_high_spread_pct": null,
+        "min_first_depth_pct": null,
+        "min_contraction_bars": null,
+        "pivot_source": "vcp"
+       },
+       "enabled": true,
+       "order": 11
+      },
+      {
+       "type": "close_vs_pivot",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "max_above_pct": 0.0
+       },
+       "enabled": true,
+       "order": 12
+      },
+      {
+       "type": "earnings_growth",
+       "stage": "setup",
+       "mode": "hard",
+       "weight": 1.0,
+       "params": {
+        "eps_yoy": 20.0,
+        "sales_yoy": 20.0,
+        "accelerating": true
+       },
+       "enabled": false,
+       "order": 13
+      }
+     ]
+    },
+    "trigger": [
+     {
+      "type": "price_breaks_level",
+      "stage": "trigger",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "level": "pivot",
+       "bar": "5m",
+       "confirm": "close"
+      },
+      "enabled": true,
+      "order": 0
+     },
+     {
+      "type": "volume_pace",
+      "stage": "trigger",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "vs_avg50": 1.5
+      },
+      "enabled": false,
+      "order": 1
+     }
+    ],
+    "entry_filters": [
+     {
+      "type": "max_chase",
+      "stage": "entry_filter",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "pct": 2.0
+      },
+      "enabled": true,
+      "order": 0
+     }
+    ],
+    "stop": {
+     "rule": "below_final_contraction_low",
+     "buffer_pct": 0.5,
+     "max_pct": 10.0,
+     "min_pct": 0.0
+    }
+   }
+  ],
+  "exits": [
+   {
+    "rule": "hard_stop",
+    "enabled": true
+   },
+   {
+    "rule": "step_trail",
+    "step_r": 1.5,
+    "move_r": 1.0,
+    "enabled": false
+   },
+   {
+    "rule": "partial_at_r",
+    "at_r": 3.0,
+    "sell_fraction": 0.33,
+    "enabled": false
+   },
+   {
+    "sma": 50,
+    "sell_fraction": 1.0,
+    "enabled": true,
+    "rule": "close_below_sma"
+   },
+   {
+    "rule": "trailing_swing_low",
+    "lookback_days": 20,
+    "sell_fraction": 1.0,
+    "enabled": true
+   },
+   {
+    "rule": "time_stop",
+    "days": 10,
+    "min_r": 0.5,
+    "enabled": false
+   }
+  ]
+ },
+ "risk_policy": {
+  "version_id": "01a175fa-4839-7729-a280-01c828281fe6",
+  "version": 3,
+  "document": {
+   "risk_pct": "0.0075",
+   "p_max": {
+    "darvas-box-breakout": "0.20",
+    "momentum-breakout-ep": "0.25",
+    "rsi2-uptrend-reversion": "0.20",
+    "stage2-contraction-breakout": "1",
+    "trend-pullback-ema": "0.20"
+   },
+   "adv_cap_pct": "0.01",
+   "global_open_risk_pct": "1",
+   "max_open_positions": 10,
+   "max_positions_per_industry": 10,
+   "max_entries_per_day": 4,
+   "max_stopouts_per_day": 4,
+   "cooldown_sessions": 0,
+   "min_position_pct": "0.02",
+   "exposure_ladder": {
+    "L1": {
+     "max_positions": 10,
+     "risk_mult": "1"
+    },
+    "L2": {
+     "max_positions": 10,
+     "risk_mult": "1"
+    },
+    "L3": {
+     "max_positions": 10,
+     "risk_mult": "1"
+    },
+    "up_after_wins": 2,
+    "down_after_losses": 2
+   },
+   "kill": {
+    "account_drawdown_pct": "0.20",
+    "bot_drawdown_pct": "0.20"
+   },
+   "base_weight": {
+    "S1": "1.0",
+    "S2": "0.50",
+    "S3": "0",
+    "S4": "0",
+    "S5": "0"
+   },
+   "cluster_cap": "1.00",
+   "multiplier_bounds": {
+    "lo": "0.25",
+    "hi": "1.0"
+   },
+   "health_bands": {
+    "half_dd": "0.12",
+    "zero_dd": "0.18",
+    "full_mult": "1.0",
+    "half_mult": "0.5"
+   },
+   "weights_confirmed": true
+  }
+ },
+ "universe": {
+  "universe_id": "01a171d7-c436-713e-ad13-63416dada7ec",
+  "universe_version_id": "01a17359-fe35-7207-abe4-fe26eae939bf",
+  "label": "NIFTY500_PIT"
+ },
+ "period": {
+  "start": "2022-01-01",
+  "end": "2024-12-31"
+ },
+ "fills": {
+  "slippage_bps": "20",
+  "cost_model": "cnc-delivery-2"
+ },
+ "for_promotion": false,
+ "known_gaps": [
+  "close_exits_at_official_close",
+  "close_rules_decided_on_official_close",
+  "close_bias_large_on_expiry_and_rebalance_days",
+  "kill_switches_not_simulated",
+  "upper_circuit_inferred_from_bar",
+  "multipliers_fixed_at_one",
+  "regime_table_shared_momentum",
+  "single_sleeve_caps",
+  "daily_close_entry_not_live",
+  "trigger_is_level_break_only",
+  "entry_day_low_estimated",
+  "gap_over_fills_0920_estimate"
+ ],
+ "conventions": {
+  "entry_fill_rule": "penetration_1_tick",
+  "slot_order": "rs",
+  "ambiguous": "pessimistic",
+  "suspension_sessions": 5,
+  "sleeve_weight": null,
+  "regime_mult": "1",
+  "regime_table": {
+   "bull_quiet": "1.0",
+   "bull_volatile": "0.75",
+   "correction": "0.5",
+   "bear": "0.25"
+  },
+  "start_capital": "1000000",
+  "entry_bars": "daily",
+  "volume_pace": "live"
+ },
+ "labels": {
+  "sweep_id": null,
+  "sweep_name": null,
+  "variant": "p2-vcp",
+  "base_run_id": null,
+  "change": null,
+  "split": "in_sample",
+  "validates_run_id": null,
+  "bundle": null
+ },
+ "knobs": {
+  "set:playbooks[0].setup.criteria[11].params.contractions": "[2,6]",
+  "set:exits[5].enabled": "false",
+  "set:exits[3].sma": "50",
+  "set:exits[4].lookback_days": "20",
+  "set:exits[2].enabled": "false",
+  "set:playbooks[0].setup.criteria[11].params.dryup_vs_avg50": "1.0",
+  "set:exits[1].enabled": "false",
+  "set:playbooks[0].setup.criteria[11].params.depth_ratio_max": "0.9",
+  "policy_set:global_open_risk_pct": "1",
+  "policy_set:p_max.stage2-contraction-breakout": "1",
+  "policy": "null",
+  "risk_pct": "0.0075",
+  "max_positions": "null",
+  "max_per_industry": "null",
+  "flat_ladder": "true",
+  "sleeve_weight": "null",
+  "slot_order": "\"rs\"",
+  "entry_fill": "\"penetration_1_tick\"",
+  "ambiguous": "\"pessimistic\"",
+  "suspension_sessions": "5",
+  "regime_mult": "\"1\"",
+  "start_capital": "1000000",
+  "entry_bars": "\"daily\"",
+  "slippage_bps": "20",
+  "cost_model": "\"cnc-delivery-2\"",
+  "cooldown_sessions": "null"
+ },
+ "asked": {
+  "args": [
+   "--portfolio",
+   "/data/workspace/g3-inputs/backtests/portfolios/p2-vcp.yaml"
+  ],
+  "variant_item": null
+ },
+ "data_snapshot_id": "23e04fe1102a70455893d69f552a18834e213debb22763c4864a009a352ca6fa",
+ "data_snapshot": {
+  "store_first": "2019-03-06",
+  "store_last": "2024-12-31",
+  "sessions": 1443,
+  "bars": 824406,
+  "features": 447834,
+  "index": "NIFTY 500",
+  "index_points": 3187,
+  "breadth_points": 1443,
+  "bars_5m_sessions": 738,
+  "members": 631,
+  "membership": {
+   "index": "NIFTY 500",
+   "source": "nifty500-membership.csv",
+   "digest": "91eb0e0f849d0e94c93380f5167287ad571820e844cebae4e868b09ef644c6ea",
+   "rows": 1275,
+   "covered_from": "2016-01-01",
+   "covered_to": "2026-10-30",
+   "off_size_dates": 126,
+   "universe_version_id": "01a17359-fe35-7207-abe4-fe26eae939bf",
+   "universe_key": "395a93f7eeec7476238e081a8506e20be46e167fdd3c45d0a5dfbbc44f89dcc0"
+  },
+  "dividends": 3851,
+  "last_traded": 16,
+  "jump_skip": {
+   "rule": "no trade or mark within 10 sessions of an open jump",
+   "jumps": 0,
+   "instrument_days": 0
+  },
+  "factor_pending": {
+   "rule": "no scan or entry from an ex-date while no version is available or the available one differs from the series' (CA6)",
+   "instruments": 26,
+   "instrument_days": 217
+  },
+  "demerger_exits": {
+   "rule": "a position held into a demerger whose record date was announced before the last session before its ex-date exits at that session's close (CA8)",
+   "exits": 26
+  },
+  "actions_digest": "8074ee985114e7ab65419170218405760da22454ecb894e352245b5e0a803437",
+  "point_in_time": {
+   "versions_digest": "ed7da2a99626d970c8e18b30518009cd9d39fdfc687bd1ddef76a6ce591738e6",
+   "versions": 22647
+  },
+  "content_digest": "23e04fe1102a70455893d69f552a18834e213debb22763c4864a009a352ca6fa"
+ },
+ "data_audit": {
+  "digest": "7fe728335c1bcd48e49dd024a241cd990a87badbd0d3e602e8e97e9ca2022653",
+  "status": "warn"
+ }
+}

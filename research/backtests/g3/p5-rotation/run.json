@@ -1,0 +1,989 @@
+{
+ "format_version": "1.5",
+ "identity": {
+  "run_id": "01a18c4c-e180-73db-845b-23f21d48ed63",
+  "strategy": "momentum-rotation",
+  "strategy_version": "c7d55ebe-2baa-42da-86e2-de8fd11bd2c9",
+  "engine_commit": "d6d99b6d0caa4b7bab1a131a9ef6a8ea63b6ac14-dirty",
+  "sweep_id": null,
+  "sweep_name": null,
+  "variant": "p5-rotation",
+  "base_run_id": null,
+  "change": null,
+  "changed_knobs": null,
+  "bundle": null,
+  "created_at": "2026-10-30T10:15:14.290902+00:00",
+  "status": "complete",
+  "error": null,
+  "for_promotion": false
+ },
+ "data": {
+  "universe": "NIFTY500_PIT",
+  "data_snapshot_id": "d5c43c659f1093f1397bfed444ff0dc286dfff7efc55db90f7bfd5404f9dc4ab",
+  "split": "in_sample",
+  "validates_run_id": null,
+  "period_start": "2016-01-01",
+  "period_end": "2024-12-31",
+  "benchmark": "NIFTY500_TRI",
+  "audit": {
+   "digest": "d496fc9a1808f4ab8ea9ae16385597a13fd7ccf3587a2872f86d9fc87cdaa048",
+   "status": "warn"
+  },
+  "industry_unknown_pct": 5.64,
+  "undated_member_demergers": 5,
+  "verified": false,
+  "verify_report": null
+ },
+ "config": {
+  "overrides": {},
+  "resolved": {
+   "strategy": {
+    "bot": "momentum-rotation",
+    "market": "NSE",
+    "universe": [
+     {
+      "type": "series_in",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "series": [
+        "EQ",
+        "BE"
+       ]
+      },
+      "enabled": true,
+      "order": 0
+     },
+     {
+      "type": "min_turnover",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "days": 20,
+       "inr_cr": 10.0
+      },
+      "enabled": true,
+      "order": 1
+     },
+     {
+      "type": "min_price",
+      "stage": "universe",
+      "mode": "hard",
+      "weight": 1.0,
+      "params": {
+       "inr": 50.0
+      },
+      "enabled": true,
+      "order": 2
+     }
+    ],
+    "regime": {
+     "index": "NIFTY 500",
+     "rule": "close_above_sma_and_rising",
+     "params": {
+      "sma": 200,
+      "rising_days": 0
+     }
+    },
+    "playbooks": [],
+    "exits": [],
+    "rotation": {
+     "rebalance": "month_end",
+     "score": "riskadj",
+     "short_sessions": 126,
+     "long_sessions": 252,
+     "skip_sessions": 21,
+     "vol_sessions": 252,
+     "min_bars": 240,
+     "top_n": 20,
+     "buffer_rank": 40,
+     "reweight": true,
+     "min_change_pct": 2.0,
+     "market_filter": false
+    }
+   },
+   "risk_policy": {
+    "risk_pct": "0.01",
+    "p_max": {
+     "darvas-box-breakout": "0.20",
+     "momentum-breakout-ep": "0.25",
+     "rsi2-uptrend-reversion": "0.20",
+     "stage2-contraction-breakout": "0.20",
+     "trend-pullback-ema": "0.20"
+    },
+    "adv_cap_pct": "0.01",
+    "global_open_risk_pct": "0.1",
+    "max_open_positions": 10,
+    "max_positions_per_industry": 10,
+    "max_entries_per_day": 4,
+    "max_stopouts_per_day": 4,
+    "cooldown_sessions": 0,
+    "min_position_pct": "0.02",
+    "exposure_ladder": {
+     "L1": {
+      "max_positions": 6,
+      "risk_mult": "1.0"
+     },
+     "L2": {
+      "max_positions": 8,
+      "risk_mult": "1.0"
+     },
+     "L3": {
+      "max_positions": 10,
+      "risk_mult": "1.0"
+     },
+     "up_after_wins": 2,
+     "down_after_losses": 2
+    },
+    "kill": {
+     "account_drawdown_pct": "0.20",
+     "bot_drawdown_pct": "0.20"
+    },
+    "base_weight": {
+     "S1": "1.0",
+     "S2": "0.50",
+     "S3": "0",
+     "S4": "0",
+     "S5": "0"
+    },
+    "cluster_cap": "1.00",
+    "multiplier_bounds": {
+     "lo": "0.25",
+     "hi": "1.0"
+    },
+    "health_bands": {
+     "half_dd": "0.12",
+     "zero_dd": "0.18",
+     "full_mult": "1.0",
+     "half_mult": "0.5"
+    },
+    "weights_confirmed": true
+   },
+   "conventions": {
+    "fill_path": "open_low_high_close",
+    "entry_fill_rule": "penetration_1_tick",
+    "gap_through_rule": "min_open_stop",
+    "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+    "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+    "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+    "slippage_bps": "20",
+    "cost_model": {
+     "version": "cnc-delivery-2",
+     "schedules": [
+      {
+       "effective_from": "2016-01-01",
+       "digest": "4d7618fab26152ee4b67d95b7afd03c1978a3992c147e467e90f85767f7eacc1"
+      },
+      {
+       "effective_from": "2016-06-01",
+       "digest": "8514f4a64a8a3e02f2f71a802efcaef88e12fcd0ee705a37ddeff467d5828f86"
+      },
+      {
+       "effective_from": "2017-04-01",
+       "digest": "3e5ece87eb7da6b02a6332fc94a26c6b36ce0eb63cfe05e9594cc17b3cc935ba"
+      },
+      {
+       "effective_from": "2017-07-01",
+       "digest": "380c4b63bc8d0482c8f23e3c3196652f9fc07314d1233603887699ca9cbf191c"
+      },
+      {
+       "effective_from": "2019-04-01",
+       "digest": "129122f63b70252fbf7051385c21ae2d964f7048a3ea5c6a617cc3ded1e85878"
+      },
+      {
+       "effective_from": "2020-06-01",
+       "digest": "c6c9eb8ec7f68c8055318bcbeec26950aa688067085063cdb030e9b93b63d57b"
+      },
+      {
+       "effective_from": "2020-07-01",
+       "digest": "d2c787e9af50b69ead9eeac1f104d3d19ef9d788ce15f3edae4fe1a0d35e0a4e"
+      },
+      {
+       "effective_from": "2021-01-01",
+       "digest": "e068c301459df99060e622c3a5bd08d85603527b9d6bcd99826b342683cc123b"
+      },
+      {
+       "effective_from": "2021-04-01",
+       "digest": "0258c45e4477afc617c0c2c0ce993877596b55d956d35e59da1c9d880bacca84"
+      },
+      {
+       "effective_from": "2021-08-05",
+       "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+      },
+      {
+       "effective_from": "2022-07-18",
+       "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+      },
+      {
+       "effective_from": "2023-04-01",
+       "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+      },
+      {
+       "effective_from": "2024-04-01",
+       "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+      },
+      {
+       "effective_from": "2024-10-01",
+       "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+      }
+     ]
+    },
+    "slot_order": "time",
+    "ambiguous": "optimistic",
+    "lower_circuit": "carry_to_next_unlocked_open",
+    "suspension_markdown": {
+     "after_sessions": 5,
+     "band_pct": "5"
+    },
+    "sleeve_weight": "1",
+    "regime_mult": "1",
+    "health_mult": "1",
+    "overlay": {
+     "sleeve": "liquid",
+     "regime": {
+      "index": "NIFTY 50",
+      "sma": 200,
+      "upper": "1.02",
+      "lower": "0.98",
+      "confirm": 5
+     },
+     "gold_regime": {
+      "sma": 200,
+      "upper": "1.02",
+      "lower": "0.98",
+      "confirm": 5
+     },
+     "cash_buffer_pct": "0.05",
+     "rebalance_pct": "0.02",
+     "same_day_sale_credit_pct": [
+      {
+       "from": "2000-01-01",
+       "pct": "0.8"
+      },
+      {
+       "from": "2024-10-07",
+       "pct": "1"
+      }
+     ],
+     "slippage_bps": {
+      "NIFTYBEES": "5",
+      "GOLDBEES": "5",
+      "LIQUIDBEES": "1"
+     },
+     "tax": {
+      "enabled": true,
+      "slab_rate": "0.30",
+      "cess": "0.04"
+     }
+    },
+    "open_to_0920": {
+     "buy": "0.0002",
+     "sell": "0.0003",
+     "measured": true
+    }
+   }
+  },
+  "resolved_hash": "d244d86736e6a1d0bbed25fb70e1e69d912f232e3ec6611f471fe0bc86424b27",
+  "risk_policy_version": 3,
+  "base_risk_policy_version": null,
+  "cost_model": "cnc-delivery-2",
+  "start_capital": 1000000,
+  "rf_pct": 0
+ },
+ "metrics": {
+  "trades": 486,
+  "win_pct": 50.0,
+  "avg_win_r": 0.301,
+  "avg_loss_r": -0.1129,
+  "expectancy_r": 0.0941,
+  "avg_mfe_r": 0.3689,
+  "avg_mae_r": -0.1367,
+  "cagr_pct": 23.188,
+  "max_dd_pct": 35.6911,
+  "avg_dd_pct": 3.4962,
+  "mar": 0.6497,
+  "sharpe": 1.0555,
+  "sortino": 1.4052,
+  "invested_pct": 99.4846,
+  "avg_open_positions": 19.991,
+  "longest_dd_sessions": 501,
+  "longest_dd_recovered": true,
+  "longest_dd_start": "2018-08-31",
+  "longest_dd_end": "2020-09-14",
+  "total_return_pct": 553.5825,
+  "final_equity": 6535825.38,
+  "fees": 196844.96,
+  "cost_share_pct": 2.8306,
+  "benchmark_cagr_pct": 15.5805,
+  "avg_hold_sessions_win": 128.572,
+  "avg_hold_sessions_loss": 54.8025,
+  "max_consecutive_losses": 9,
+  "symbols_traded": 341,
+  "top5_trades_pnl_share_pct": 27.3889,
+  "top10_symbols_pnl_share_pct": 48.33,
+  "cagr_ex_top5_trades_pct": 18.7153,
+  "signals": 486,
+  "dsr_prob": 0.90381,
+  "dsr_n_trials": 5,
+  "dsr_n_trials_effective": 5,
+  "pbo": 0.0,
+  "max_position_pct_adv": 0.4164,
+  "trades_over_5pct_adv": 0
+ },
+ "refusals": {},
+ "binding": {
+  "trades_changed": null,
+  "trade_list_hash": "3965e55ebd07091a9932bfbef7e9dbee2e418c3b06d3f1e8a2886ebd8c99899e",
+  "no_op": null
+ },
+ "breakdowns": {
+  "by_year": [
+   {
+    "year": 2016,
+    "return_pct": -4.225,
+    "max_dd_pct": 21.6661,
+    "trades_entered": 66,
+    "expectancy_r_by_entry": 0.0411,
+    "trades_exited": 46,
+    "expectancy_r_by_exit": -0.0481,
+    "realized_pnl_by_exit": -115102.54,
+    "benchmark_return_pct": 5.1242,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2017,
+    "return_pct": 75.2266,
+    "max_dd_pct": 8.4425,
+    "trades_entered": 56,
+    "expectancy_r_by_entry": 0.1294,
+    "trades_exited": 56,
+    "expectancy_r_by_exit": 0.1113,
+    "realized_pnl_by_exit": 331294.68,
+    "benchmark_return_pct": 37.6545,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2018,
+    "return_pct": -8.7841,
+    "max_dd_pct": 23.5032,
+    "trades_entered": 44,
+    "expectancy_r_by_entry": -0.0038,
+    "trades_exited": 44,
+    "expectancy_r_by_exit": 0.0858,
+    "realized_pnl_by_exit": 255110.95,
+    "benchmark_return_pct": -2.1365,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2019,
+    "return_pct": 13.4035,
+    "max_dd_pct": 13.2928,
+    "trades_entered": 56,
+    "expectancy_r_by_entry": 0.0048,
+    "trades_exited": 56,
+    "expectancy_r_by_exit": 0.0061,
+    "realized_pnl_by_exit": 43193.06,
+    "benchmark_return_pct": 8.9723,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2020,
+    "return_pct": 29.6459,
+    "max_dd_pct": 35.3332,
+    "trades_entered": 52,
+    "expectancy_r_by_entry": 0.2119,
+    "trades_exited": 52,
+    "expectancy_r_by_exit": 0.0399,
+    "realized_pnl_by_exit": 143503.39,
+    "benchmark_return_pct": 17.8922,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2021,
+    "return_pct": 73.5511,
+    "max_dd_pct": 6.7141,
+    "trades_entered": 54,
+    "expectancy_r_by_entry": 0.1467,
+    "trades_exited": 54,
+    "expectancy_r_by_exit": 0.2182,
+    "realized_pnl_by_exit": 1246176.91,
+    "benchmark_return_pct": 31.5961,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2022,
+    "return_pct": 3.0622,
+    "max_dd_pct": 29.3577,
+    "trades_entered": 48,
+    "expectancy_r_by_entry": 0.0569,
+    "trades_exited": 48,
+    "expectancy_r_by_exit": 0.1092,
+    "realized_pnl_by_exit": 626610.8,
+    "benchmark_return_pct": 4.2462,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2023,
+    "return_pct": 59.9086,
+    "max_dd_pct": 15.2115,
+    "trades_entered": 45,
+    "expectancy_r_by_entry": 0.3289,
+    "trades_exited": 45,
+    "expectancy_r_by_exit": 0.1235,
+    "realized_pnl_by_exit": 1105246.27,
+    "benchmark_return_pct": 26.9147,
+    "entries_5m": 0,
+    "entries_daily": 0
+   },
+   {
+    "year": 2024,
+    "return_pct": 1.5299,
+    "max_dd_pct": 17.4497,
+    "trades_entered": 65,
+    "expectancy_r_by_entry": -0.0126,
+    "trades_exited": 85,
+    "expectancy_r_by_exit": 0.1519,
+    "realized_pnl_by_exit": 3121382.67,
+    "benchmark_return_pct": 16.2408,
+    "entries_5m": 0,
+    "entries_daily": 0
+   }
+  ],
+  "by_regime": {
+   "index_off": {
+    "trades": 118,
+    "win_pct": 56.7797,
+    "expectancy_r": 0.1071,
+    "avg_hold_sessions": 101.9322,
+    "net_pnl": 1900271.57
+   },
+   "index_on": {
+    "trades": 368,
+    "win_pct": 47.8261,
+    "expectancy_r": 0.0899,
+    "avg_hold_sessions": 88.4022,
+    "net_pnl": 4857144.64
+   },
+   "breadth_40_50": {
+    "trades": 71,
+    "win_pct": 45.0704,
+    "expectancy_r": 0.0694,
+    "avg_hold_sessions": 82.0141,
+    "net_pnl": 518611.89
+   },
+   "breadth_50_60": {
+    "trades": 75,
+    "win_pct": 48.0,
+    "expectancy_r": 0.1199,
+    "avg_hold_sessions": 93.4533,
+    "net_pnl": 1047039.34
+   },
+   "breadth_ge60": {
+    "trades": 172,
+    "win_pct": 47.6744,
+    "expectancy_r": 0.0857,
+    "avg_hold_sessions": 91.3372,
+    "net_pnl": 2977636.84
+   },
+   "breadth_lt40": {
+    "trades": 168,
+    "win_pct": 55.3571,
+    "expectancy_r": 0.1015,
+    "avg_hold_sessions": 95.3452,
+    "net_pnl": 2214128.13
+   }
+  },
+  "by_exit_reason": {
+   "period_end": {
+    "trades": 20,
+    "win_pct": 55.0,
+    "expectancy_r": 0.1057,
+    "avg_hold_sessions": 61.1,
+    "net_pnl": 721884.66
+   },
+   "rotation_not_eligible": {
+    "trades": 87,
+    "win_pct": 32.1839,
+    "expectancy_r": -0.0261,
+    "avg_hold_sessions": 46.6782,
+    "net_pnl": -271123.37
+   },
+   "rotation_out": {
+    "trades": 379,
+    "win_pct": 53.8259,
+    "expectancy_r": 0.121,
+    "avg_hold_sessions": 103.6332,
+    "net_pnl": 6306654.92
+   }
+  },
+  "by_industry": {
+   "Automobile and Auto Components": {
+    "trades": 19,
+    "win_pct": 57.8947,
+    "expectancy_r": 0.0653,
+    "avg_hold_sessions": 87.0526,
+    "net_pnl": 196761.95
+   },
+   "Capital Goods": {
+    "trades": 53,
+    "win_pct": 54.717,
+    "expectancy_r": 0.1264,
+    "avg_hold_sessions": 97.3019,
+    "net_pnl": 1146677.82
+   },
+   "Chemicals": {
+    "trades": 41,
+    "win_pct": 41.4634,
+    "expectancy_r": 0.1049,
+    "avg_hold_sessions": 82.4634,
+    "net_pnl": 348804.8
+   },
+   "Construction": {
+    "trades": 9,
+    "win_pct": 44.4444,
+    "expectancy_r": 0.1391,
+    "avg_hold_sessions": 98.3333,
+    "net_pnl": 210300.64
+   },
+   "Construction Materials": {
+    "trades": 4,
+    "win_pct": 50.0,
+    "expectancy_r": 0.0155,
+    "avg_hold_sessions": 57.5,
+    "net_pnl": 110.71
+   },
+   "Consumer Durables": {
+    "trades": 28,
+    "win_pct": 39.2857,
+    "expectancy_r": 0.0544,
+    "avg_hold_sessions": 88.2143,
+    "net_pnl": 283651.13
+   },
+   "Consumer Services": {
+    "trades": 15,
+    "win_pct": 53.3333,
+    "expectancy_r": 0.1103,
+    "avg_hold_sessions": 98.4667,
+    "net_pnl": 418923.73
+   },
+   "Diversified": {
+    "trades": 1,
+    "win_pct": 100.0,
+    "expectancy_r": 0.0136,
+    "avg_hold_sessions": 19.0,
+    "net_pnl": 1103.24
+   },
+   "Fast Moving Consumer Goods": {
+    "trades": 27,
+    "win_pct": 48.1481,
+    "expectancy_r": 0.0605,
+    "avg_hold_sessions": 121.5556,
+    "net_pnl": 171426.28
+   },
+   "Financial Services": {
+    "trades": 81,
+    "win_pct": 45.679,
+    "expectancy_r": 0.105,
+    "avg_hold_sessions": 99.4815,
+    "net_pnl": 1804606.07
+   },
+   "Forest Materials": {
+    "trades": 1,
+    "win_pct": 100.0,
+    "expectancy_r": 0.1498,
+    "avg_hold_sessions": 85.0,
+    "net_pnl": 27286.4
+   },
+   "Healthcare": {
+    "trades": 56,
+    "win_pct": 41.0714,
+    "expectancy_r": 0.0179,
+    "avg_hold_sessions": 71.0714,
+    "net_pnl": -170450.96
+   },
+   "Information Technology": {
+    "trades": 44,
+    "win_pct": 56.8182,
+    "expectancy_r": 0.0872,
+    "avg_hold_sessions": 106.2273,
+    "net_pnl": 483078.89
+   },
+   "Media Entertainment & Publication": {
+    "trades": 4,
+    "win_pct": 25.0,
+    "expectancy_r": -0.0539,
+    "avg_hold_sessions": 46.0,
+    "net_pnl": -16486.66
+   },
+   "Metals & Mining": {
+    "trades": 16,
+    "win_pct": 68.75,
+    "expectancy_r": 0.292,
+    "avg_hold_sessions": 125.0,
+    "net_pnl": 479206.91
+   },
+   "Oil Gas & Consumable Fuels": {
+    "trades": 24,
+    "win_pct": 45.8333,
+    "expectancy_r": 0.1014,
+    "avg_hold_sessions": 93.625,
+    "net_pnl": 276384.42
+   },
+   "Power": {
+    "trades": 21,
+    "win_pct": 76.1905,
+    "expectancy_r": 0.229,
+    "avg_hold_sessions": 90.1429,
+    "net_pnl": 741682.25
+   },
+   "Realty": {
+    "trades": 5,
+    "win_pct": 40.0,
+    "expectancy_r": 0.0549,
+    "avg_hold_sessions": 44.8,
+    "net_pnl": 52867.52
+   },
+   "Services": {
+    "trades": 5,
+    "win_pct": 60.0,
+    "expectancy_r": 0.0042,
+    "avg_hold_sessions": 53.2,
+    "net_pnl": 23428.29
+   },
+   "Telecommunication": {
+    "trades": 11,
+    "win_pct": 81.8182,
+    "expectancy_r": 0.1774,
+    "avg_hold_sessions": 80.6364,
+    "net_pnl": 289618.35
+   },
+   "Textiles": {
+    "trades": 7,
+    "win_pct": 57.1429,
+    "expectancy_r": 0.1015,
+    "avg_hold_sessions": 118.0,
+    "net_pnl": 37328.94
+   },
+   "unknown": {
+    "trades": 14,
+    "win_pct": 28.5714,
+    "expectancy_r": -0.0585,
+    "avg_hold_sessions": 48.6429,
+    "net_pnl": -48894.52
+   }
+  },
+  "by_cap_bucket": {},
+  "by_liquidity_bucket": {
+   "q1": {
+    "trades": 3,
+    "win_pct": 33.3333,
+    "expectancy_r": -0.0605,
+    "avg_hold_sessions": 62.3333,
+    "net_pnl": -55283.6
+   },
+   "q2": {
+    "trades": 26,
+    "win_pct": 50.0,
+    "expectancy_r": 0.0563,
+    "avg_hold_sessions": 58.4615,
+    "net_pnl": 282268.06
+   },
+   "q3": {
+    "trades": 98,
+    "win_pct": 47.9592,
+    "expectancy_r": 0.1037,
+    "avg_hold_sessions": 81.5816,
+    "net_pnl": 1403446.48
+   },
+   "q4": {
+    "trades": 175,
+    "win_pct": 51.4286,
+    "expectancy_r": 0.1021,
+    "avg_hold_sessions": 93.4457,
+    "net_pnl": 2340031.59
+   },
+   "q5": {
+    "trades": 184,
+    "win_pct": 50.0,
+    "expectancy_r": 0.0891,
+    "avg_hold_sessions": 100.5707,
+    "net_pnl": 2786953.67
+   }
+  },
+  "by_playbook": {
+   "rotation": {
+    "signals": 486,
+    "refusals": {},
+    "trades": {
+     "trades": 486,
+     "win_pct": 50.0,
+     "expectancy_r": 0.0941,
+     "avg_hold_sessions": 91.6872,
+     "net_pnl": 6757416.2
+    }
+   }
+  }
+ },
+ "funnel": {
+  "regime_off_nights": 0,
+  "by_playbook": {}
+ },
+ "overlay": {
+  "config": {
+   "sleeve": "liquid",
+   "regime": {
+    "index": "NIFTY 50",
+    "sma": 200,
+    "upper": "1.02",
+    "lower": "0.98",
+    "confirm": 5
+   },
+   "gold_regime": {
+    "sma": 200,
+    "upper": "1.02",
+    "lower": "0.98",
+    "confirm": 5
+   },
+   "cash_buffer_pct": "0.05",
+   "rebalance_pct": "0.02",
+   "same_day_sale_credit_pct": [
+    {
+     "from": "2000-01-01",
+     "pct": "0.8"
+    },
+    {
+     "from": "2024-10-07",
+     "pct": "1"
+    }
+   ],
+   "slippage_bps": {
+    "NIFTYBEES": "5",
+    "GOLDBEES": "5",
+    "LIQUIDBEES": "1"
+   },
+   "tax": {
+    "enabled": true,
+    "slab_rate": "0.30",
+    "cess": "0.04"
+   }
+  },
+  "data": {
+   "liquidbees_tr_proxy": [
+    [
+     "2015-01-02",
+     "2020-03-31"
+    ]
+   ]
+  },
+  "counts": {
+   "insufficient_same_day_credit": 0,
+   "sleeve_price_estimated": 6,
+   "funding_sales": 4
+  },
+  "tax_paid": "1218828.1300",
+  "tax_unpaid": "0.0000",
+  "tax_by_fy": [
+   {
+    "fy": "2015-16",
+    "tax": "1057.80",
+    "income": "3390.39",
+    "exemption_used": "0",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "0E-25",
+     "lt_other": "0",
+     "lt_equity": "0"
+    },
+    "carried_st": "117173.4960102045495086356711",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2016-17",
+    "tax": "7900.21",
+    "income": "25321.19",
+    "exemption_used": "0E-24",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "0E-22",
+     "lt_other": "0",
+     "lt_equity": "0E-24"
+    },
+    "carried_st": "56088.07954007523339690391706",
+    "carried_lt": "0E-24"
+   },
+   {
+    "fy": "2017-18",
+    "tax": "61091.91",
+    "income": "11283.42",
+    "exemption_used": "81223.17941441382826019660398",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "276785.9814721880102578948118",
+     "lt_other": "0",
+     "lt_equity": "81223.17941441382826019660398"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2018-19",
+    "tax": "16038.64",
+    "income": "18972.10",
+    "exemption_used": "79917.07973777108560349152746",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "48650.7132786143531003900749",
+     "lt_other": "0",
+     "lt_equity": "79917.07973777108560349152746"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2019-20",
+    "tax": "16931.63",
+    "income": "20398.63",
+    "exemption_used": "50957.47345723794391720702536",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "50804.1053545409225585811652",
+     "lt_other": "0",
+     "lt_equity": "50957.47345723794391720702536"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2020-21",
+    "tax": "73736.46",
+    "income": "19139.73",
+    "exemption_used": "28437.96819723213119760919160",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "325792.6230568711591901885716",
+     "lt_other": "0",
+     "lt_equity": "28437.96819723213119760919160"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2021-22",
+    "tax": "254334.21",
+    "income": "19932.41",
+    "exemption_used": "125000",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "1121719.065635224847441362397",
+     "lt_other": "0",
+     "lt_equity": "238828.6803542174955687623813"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2022-23",
+    "tax": "61729.44",
+    "income": "33523.52",
+    "exemption_used": "125000",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "187605.1601888469954019979715",
+     "lt_other": "0",
+     "lt_equity": "219217.1745290916036913673101"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2023-24",
+    "tax": "519552.16",
+    "income": "90424.60",
+    "exemption_used": "125000",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "2350779.133481080937117155380",
+     "lt_other": "0",
+     "lt_equity": "143289.4303522873170473030963"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   },
+   {
+    "fy": "2024-25",
+    "tax": "206455.67",
+    "income": "38616.65",
+    "exemption_used": "125000",
+    "taxable": {
+     "st_slab": "0",
+     "st_equity": "584662.444492221733681071032",
+     "lt_other": "0",
+     "lt_equity": "684980.6614981596359654214558"
+    },
+    "carried_st": "0",
+    "carried_lt": "0"
+   }
+  ],
+  "by_year": {
+   "2016": {
+    "costs": "2762.6500",
+    "turnover": "2171997.2000",
+    "switches": "0",
+    "rebalances": "1"
+   }
+  },
+  "events": [
+   {
+    "date": "2016-01-01",
+    "event": "start",
+    "asset": "LIQUIDBEES",
+    "target": "950000.00",
+    "price": "1000.0000",
+    "estimated": true
+   },
+   {
+    "date": "2016-01-04",
+    "event": "rebalance",
+    "asset": "LIQUIDBEES",
+    "target": "143524.620865",
+    "price": "999.9900",
+    "estimated": true
+   }
+  ],
+  "liquidbees_tr_proxy": [
+   [
+    "2015-01-02",
+    "2020-03-31"
+   ]
+  ],
+  "net_flow": "-1221590.8200",
+  "benchmarks": {
+   "buy_hold_niftybees": {
+    "final_equity_after_tax": "3005299.8235",
+    "tax_paid": "280964.34",
+    "final_equity_pre_tax": "3286264.1635"
+   },
+   "sleeve_alone": {
+    "sleeve": "regime",
+    "final_equity_after_tax": "2023832.6949",
+    "tax_paid": "117259.76",
+    "final_equity_pre_tax": "2141092.4549"
+   },
+   "NIFTY 50 TRI": {
+    "final_equity_pre_tax": "3317207.963766748443102472165"
+   },
+   "NIFTY 500 TRI": {
+    "final_equity_pre_tax": "3666314.461130714569384663402"
+   }
+  }
+ }
+}

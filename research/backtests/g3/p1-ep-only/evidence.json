@@ -1,0 +1,213 @@
+{
+ "run_id": "01a18c00-93e1-76fa-8e07-c07ff47eefc2",
+ "strategy": "S2",
+ "resolved_hash": "1811a5ac8c3a70d7db4af726eaf1fda931ca83450351d4f75a0791b7c7b3bfdc",
+ "strategy_id": "be667571-1813-4dcb-9dd0-450f779848f0",
+ "strategy_version_id": "64274b85-696f-4aea-944e-717a62546682",
+ "universe_id": "01a171d7-c436-713e-ad13-63416dada7ec",
+ "membership_key": "395a93f7eeec7476238e081a8506e20be46e167fdd3c45d0a5dfbbc44f89dcc0",
+ "metrics": {
+  "trades": 2,
+  "sum_r": "-2.283853",
+  "expectancy_r": "-1.141926",
+  "win_rate": 0.0,
+  "avg_win_r": null,
+  "avg_loss_r": "-1.141926",
+  "avg_mfe_r": "0.000000",
+  "avg_mae_r": "-1.000000",
+  "net_pnl": "-8542.2585",
+  "fees": "577.0300",
+  "initial_equity": "1000000",
+  "final_equity": "991457.7415",
+  "total_return": -0.00854225850000001,
+  "max_drawdown": 0.00854225850000001,
+  "sharpe_annual": -0.8243849334761192,
+  "returns": {
+   "sr": -0.051931369489674695,
+   "t": 743,
+   "skew": -19.219880782134133,
+   "kurtosis": 370.7048375575979
+  },
+  "sessions": 743,
+  "first_session": "2022-01-03",
+  "last_session": "2024-12-31",
+  "held_sessions": 2,
+  "exposure": 0.0026917900403768506,
+  "cagr": -0.0029054561400230217,
+  "mar": -0.34012739605375064,
+  "longest_drawdown_sessions": 145,
+  "tail_trimmed_r": {
+   "top_1pct": "-1.146478",
+   "top_5pct": "-1.146478",
+   "top_10pct": "-1.146478"
+  },
+  "cost_share": null,
+  "invested_share": "0.000000",
+  "pct_basis": {
+   "equity": "account",
+   "sleeve_weight": "0.5",
+   "regime_mult": "1"
+  },
+  "strategy_version_id": "64274b85-696f-4aea-944e-717a62546682",
+  "risk_policy_version_id": "01a175fa-4839-7729-a280-01c828281fe6",
+  "cooldown_sessions": 0,
+  "known_gaps": [
+   "close_exits_at_official_close",
+   "close_rules_decided_on_official_close",
+   "close_bias_large_on_expiry_and_rebalance_days",
+   "kill_switches_not_simulated",
+   "upper_circuit_inferred_from_bar",
+   "multipliers_fixed_at_one",
+   "regime_table_shared_momentum",
+   "single_sleeve_caps",
+   "daily_close_entry_not_live",
+   "episodic_pivot_trigger_estimated",
+   "catalyst_not_evaluated"
+  ],
+  "entry_bars_by_year": {
+   "2024": {
+    "bars_5m": 2
+   }
+  },
+  "entry_day_low": "bars_5m_else_max_low_min_open_level_less_adr20",
+  "fill_path": "open_low_high_close",
+  "entry_fill_rule": "penetration_1_tick",
+  "gap_through_rule": "min_open_stop",
+  "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+  "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+  "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+  "slippage_bps": "20",
+  "cost_model": {
+   "version": "cnc-delivery-2",
+   "schedules": [
+    {
+     "effective_from": "2021-08-05",
+     "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+    },
+    {
+     "effective_from": "2022-07-18",
+     "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+    },
+    {
+     "effective_from": "2023-04-01",
+     "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+    },
+    {
+     "effective_from": "2024-04-01",
+     "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+    },
+    {
+     "effective_from": "2024-10-01",
+     "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+    }
+   ]
+  },
+  "slot_order": "time",
+  "ambiguous": "optimistic",
+  "lower_circuit": "carry_to_next_unlocked_open",
+  "suspension_markdown": {
+   "after_sessions": 5,
+   "band_pct": "5"
+  },
+  "sleeve_weight": "0.5",
+  "regime_mult": "1",
+  "health_mult": "1",
+  "overrides": {
+   "playbooks": [
+    "episodic_pivot"
+   ]
+  },
+  "open_to_0920": {
+   "buy": "0.0002",
+   "sell": "0.0003",
+   "measured": true
+  },
+  "conventions": {
+   "fill_path": "open_low_high_close",
+   "entry_fill_rule": "penetration_1_tick",
+   "gap_through_rule": "min_open_stop",
+   "trigger_proxy": "bars_5m_live_trigger_else_daily_bar_level_break",
+   "replay_rule": "first_bar_clean_grid_open_5pct_no_refused_bucket_no_coverage_gap",
+   "bars5m_gaps": "8543df1d24b055b56e1cea71e7b2deabb69e8e897b4b67c69ca2e5718be24418",
+   "slippage_bps": "20",
+   "cost_model": {
+    "version": "cnc-delivery-2",
+    "schedules": [
+     {
+      "effective_from": "2021-08-05",
+      "digest": "01c199d38c78782d67f2ba886263576ca92dc6cadf3b1bd9846d3db892a4c6f5"
+     },
+     {
+      "effective_from": "2022-07-18",
+      "digest": "5eea80cb4105480b8d4e0b6353d849d2a9e991e2ca66aeba2f9a361dac701033"
+     },
+     {
+      "effective_from": "2023-04-01",
+      "digest": "a1a8937127652f5f35f2ed1ee80a638eca9f324d9c0aa45166eae5753bc874fc"
+     },
+     {
+      "effective_from": "2024-04-01",
+      "digest": "788b49df8efd4154687871f7f5d650d0c64182e5de2869abfad138ddc56d7801"
+     },
+     {
+      "effective_from": "2024-10-01",
+      "digest": "301b8ffde848aa14e31dbafa8f7f3cc9ade671078d12ce61942bc76dd6a60fc7"
+     }
+    ]
+   },
+   "slot_order": "time",
+   "ambiguous": "optimistic",
+   "lower_circuit": "carry_to_next_unlocked_open",
+   "suspension_markdown": {
+    "after_sessions": 5,
+    "band_pct": "5"
+   },
+   "sleeve_weight": "0.5",
+   "regime_mult": "1",
+   "health_mult": "1",
+   "overrides": {
+    "playbooks": [
+     "episodic_pivot"
+    ]
+   },
+   "open_to_0920": {
+    "buy": "0.0002",
+    "sell": "0.0003",
+    "measured": true
+   }
+  },
+  "for_promotion": false,
+  "config_digest": "f78e4c5a17c298f3a551b684d2e5abd5ae109e055be964f45b7ecf40721f68e3",
+  "skips": {},
+  "signals": 8,
+  "rejections": {
+   "adtr_filter": 2,
+   "regime_gate": 4
+  },
+  "ambiguous_days": 0,
+  "lower_circuit_days": 0,
+  "demerger_exits": {
+   "trades": 0,
+   "net_pnl": "0",
+   "sum_r": "0.000000"
+  },
+  "auction_risk_exits": {
+   "rule": "close-priced exits on an F&O monthly expiry or the session before an index reconstitution takes effect (`auction_days`)",
+   "exits": 0,
+   "by_tag": {},
+   "sum_r": "0.000000"
+  },
+  "dividend_income": "0",
+  "dividend_credits": 0,
+  "dsr": {
+   "prob": 1.709897180744072e-08,
+   "trials": 10,
+   "reason": null
+  },
+  "pbo": {
+   "prob": "0.7"
+  },
+  "completed_at": "2026-10-30T08:59:16.820202+00:00"
+ },
+ "buckets": []
+}
