@@ -1,0 +1,480 @@
+{
+  "applied": true,
+  "lines": 20,
+  "results": [
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "2",
+            "factor": "1",
+            "known_on": "2013-09-16",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "2",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2013-09-16",
+          "isin": "INE842C01013",
+          "note": "MINDACORP 2013-09-16 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "MINDACORP",
+          "via": "cli"
+        }
+      ],
+      "line": 2,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "0.60",
+            "factor": "1",
+            "known_on": "2014-09-17",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "0.60",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2014-09-17",
+          "isin": "INE573I01011",
+          "note": "HIRAFERRO 2014-09-17 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "HIRAFERRO",
+          "via": "cli"
+        }
+      ],
+      "line": 3,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "62.50",
+            "factor": "1",
+            "known_on": "2015-07-23",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "62.50",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2015-07-23",
+          "isin": "INE159A01016",
+          "note": "GLAXO 2015-07-23 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "GLAXO",
+          "via": "cli"
+        }
+      ],
+      "line": 4,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "7.5",
+            "factor": "1",
+            "known_on": "2015-08-03",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "7.5",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2015-08-03",
+          "isin": "INE341R01014",
+          "note": "DTIL 2015-08-03 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 5,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "8",
+            "factor": "1",
+            "known_on": "2016-08-03",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "8",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2016-08-03",
+          "isin": "INE341R01014",
+          "note": "DTIL 2016-08-03 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 6,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "5",
+            "factor": "1",
+            "known_on": "2017-07-27",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "5",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2017-07-27",
+          "isin": "INE276A01018",
+          "note": "GARFIBRES 2017-07-27 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "GARFIBRES",
+          "via": "cli"
+        }
+      ],
+      "line": 7,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "8",
+            "factor": "1",
+            "known_on": "2017-07-28",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "8",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2017-07-28",
+          "isin": "INE341R01014",
+          "note": "DTIL 2017-07-28 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 8,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "8",
+            "factor": "1",
+            "known_on": "2018-07-30",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "8",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2018-07-30",
+          "isin": "INE341R01014",
+          "note": "DTIL 2018-07-30 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 9,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "12.5",
+            "factor": "1",
+            "known_on": "2019-07-03",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "12.5",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2019-07-03",
+          "isin": "INE660A01013",
+          "note": "SUNDARMFIN 2019-07-03 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "SUNDARMFIN",
+          "via": "cli"
+        }
+      ],
+      "line": 10,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "5",
+            "factor": "1",
+            "known_on": "2019-08-05",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "5",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2019-08-05",
+          "isin": "INE341R01014",
+          "note": "DTIL 2019-08-05 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 11,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "2.5",
+            "factor": "1",
+            "known_on": "2020-09-15",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "2.5",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2020-09-15",
+          "isin": "INE341R01014",
+          "note": "DTIL 2020-09-15 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 12,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "5",
+            "factor": "1",
+            "known_on": "2021-07-01",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "5",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2021-07-01",
+          "isin": "INE341R01014",
+          "note": "DTIL 2021-07-01 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 13,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "1.25",
+            "factor": "1",
+            "known_on": "2021-08-06",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "1.25",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2021-08-06",
+          "isin": "INE932X01018",
+          "note": "SHAREINDIA 2021-08-06 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "SHAREINDIA",
+          "via": "cli"
+        }
+      ],
+      "line": 14,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "4",
+            "factor": "1",
+            "known_on": "2022-08-24",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "4",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2022-08-24",
+          "isin": "INE341R01014",
+          "note": "DTIL 2022-08-24 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 15,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "3",
+            "factor": "1",
+            "known_on": "2023-09-12",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "3",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2023-09-12",
+          "isin": "INE341R01014",
+          "note": "DTIL 2023-09-12 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 16,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "1",
+            "factor": "1",
+            "known_on": "2025-08-01",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "1",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2025-08-01",
+          "isin": "INE341R01014",
+          "note": "DTIL 2025-08-01 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 17,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "factor": "0.1",
+            "known_on": "2026-07-31",
+            "type": "split"
+          },
+          "before": {
+            "factor": "0.1",
+            "type": "split"
+          },
+          "ex_date": "2026-07-31",
+          "isin": "INF205K01DA9",
+          "note": "RELGRNIFTY 2026-07-31 ETF unit split dated at its ex-date open (CA5 ex_open): the ex-date open confirms the factor (see the correction's close -> open); stored undated",
+          "symbol": "RELGRNIFTY",
+          "via": "cli"
+        }
+      ],
+      "line": 18,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "cash": "2",
+            "factor": "1",
+            "known_on": "2026-08-12",
+            "type": "dividend"
+          },
+          "before": {
+            "cash": "2",
+            "factor": "1",
+            "type": "dividend"
+          },
+          "ex_date": "2026-08-12",
+          "isin": "INE341R01014",
+          "note": "DTIL 2026-08-12 dividend amount dated at its ex-date open (CA5 ex_open): NSE announced it before the ex-date; the earlier correction fixed an import misread or missed row, no new fact, but was stored undated",
+          "symbol": "DTIL",
+          "via": "cli"
+        }
+      ],
+      "line": 19,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "factor": "0.1",
+            "known_on": "2026-08-28",
+            "type": "split"
+          },
+          "before": {
+            "factor": "0.1",
+            "type": "split"
+          },
+          "ex_date": "2026-08-28",
+          "isin": "INF740KA1RE3",
+          "note": "DSPSILVETF 2026-08-28 ETF unit split dated at its ex-date open (CA5 ex_open): the ex-date open confirms the factor (see the correction's close -> open); stored undated",
+          "symbol": "DSPSILVETF",
+          "via": "cli"
+        }
+      ],
+      "line": 20,
+      "op": "replace"
+    },
+    {
+      "done": [
+        {
+          "after": {
+            "factor": "0.1",
+            "known_on": "2026-08-28",
+            "type": "split"
+          },
+          "before": {
+            "factor": "0.1",
+            "type": "split"
+          },
+          "ex_date": "2026-08-28",
+          "isin": "INF740KA1SW3",
+          "note": "DSPGOLDETF 2026-08-28 ETF unit split dated at its ex-date open (CA5 ex_open): the ex-date open confirms the factor (see the correction's close -> open); stored undated",
+          "symbol": "DSPGOLDETF",
+          "via": "cli"
+        }
+      ],
+      "line": 21,
+      "op": "replace"
+    }
+  ]
+}
