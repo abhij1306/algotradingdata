@@ -1,0 +1,7 @@
+# wf10b d3: 2012-07..2021-12 drawdown levers on the c1 core (configs fixed before results, 2026-10-31).
+portfolio: wf10b-d3
+universe: nifty500
+window: {from: 2012-07-02, to: 2021-12-31}
+conventions: {impact_bps: 100}
+strategies:
+  - {version: c7d55ebe-2baa-42da-86e2-de8fd11bd2c9, weight: 1, set: ["rotation.vol_sessions=63", "rotation.refuse_near_limit=true", "rotation.liquidity={\"entry_pct\": 70, \"hold_pct\": 90}", "universe[min_turnover].enabled=false", "rotation.inverse_beta={\"sessions\": 252, \"floor\": 0.5}", "rotation.wide_book={\"top_n\": 30, \"checks\": [{\"rule\": \"breadth_above\", \"min_pct\": 40}]}"]}

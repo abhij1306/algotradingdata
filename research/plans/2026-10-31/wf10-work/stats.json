@@ -1,0 +1,977 @@
+{
+ "ref": {
+  "run_id": "01a191b6-4b9d-7179-94c6-024bf7b8bf2d",
+  "metrics": {
+   "invested_pct": 99.4973,
+   "avg_open_positions": 19.9915,
+   "avg_position_size_pct": 4.977,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 29.3448,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 34.1783,
+   "avg_dd_pct": 3.1998,
+   "longest_dd_sessions": 352,
+   "sharpe": 1.3736,
+   "sortino": 1.8999,
+   "mar": 0.8586,
+   "cagr_per_invested_pct": 29.4931,
+   "profit_factor": 3.4823,
+   "win_pct": 56.0606,
+   "avg_win_pct": 25.3184,
+   "avg_loss_pct": -10.3289,
+   "payoff_ratio_pct": 2.4512,
+   "payoff_ratio_r": 2.4512,
+   "expectancy_r": 0.0966,
+   "mfe_capture": 0.2822,
+   "cagr_ex_top5_trades_pct": 24.8538,
+   "top5_trades_pnl_share_pct": 31.2279,
+   "fees": 253856.28,
+   "trades": 528
+  },
+  "years": {
+   "2012": {
+    "ret": 7.72,
+    "tri": 14.08,
+    "excess": -6.36,
+    "dd": 4.33,
+    "tri_dd": 5.36,
+    "inv": 99.7
+   },
+   "2013": {
+    "ret": 13.02,
+    "tri": 4.82,
+    "excess": 8.2,
+    "dd": 15.26,
+    "tri_dd": 15.92,
+    "inv": 99.6
+   },
+   "2014": {
+    "ret": 78.29,
+    "tri": 39.3,
+    "excess": 39.0,
+    "dd": 10.35,
+    "tri_dd": 6.71,
+    "inv": 99.5
+   },
+   "2015": {
+    "ret": 18.14,
+    "tri": 0.22,
+    "excess": 17.92,
+    "dd": 14.7,
+    "tri_dd": 13.29,
+    "inv": 99.6
+   },
+   "2016": {
+    "ret": -6.45,
+    "tri": 5.12,
+    "excess": -11.57,
+    "dd": 20.25,
+    "tri_dd": 13.8,
+    "inv": 99.6
+   },
+   "2017": {
+    "ret": 81.53,
+    "tri": 37.65,
+    "excess": 43.87,
+    "dd": 7.88,
+    "tri_dd": 4.81,
+    "inv": 99.3
+   },
+   "2018": {
+    "ret": -11.14,
+    "tri": -2.14,
+    "excess": -9.0,
+    "dd": 22.56,
+    "tri_dd": 15.64,
+    "inv": 99.5
+   },
+   "2019": {
+    "ret": 15.11,
+    "tri": 8.97,
+    "excess": 6.14,
+    "dd": 13.65,
+    "tri_dd": 11.54,
+    "inv": 99.7
+   },
+   "2020": {
+    "ret": 37.52,
+    "tri": 17.89,
+    "excess": 19.63,
+    "dd": 34.18,
+    "tri_dd": 38.11,
+    "inv": 99.4
+   },
+   "2021": {
+    "ret": 88.68,
+    "tri": 31.6,
+    "excess": 57.08,
+    "dd": 8.11,
+    "tri_dd": 9.82,
+    "inv": 99.1
+   }
+  }
+ },
+ "c0": {
+  "run_id": "01a191b7-d8ee-7573-93cc-aabbfe4604c0",
+  "metrics": {
+   "invested_pct": 99.3113,
+   "avg_open_positions": 19.9932,
+   "avg_position_size_pct": 4.9673,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 31.9154,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 36.3848,
+   "avg_dd_pct": 2.9414,
+   "longest_dd_sessions": 343,
+   "sharpe": 1.5169,
+   "sortino": 2.0895,
+   "mar": 0.8772,
+   "cagr_per_invested_pct": 32.1367,
+   "profit_factor": 3.6395,
+   "win_pct": 53.6398,
+   "avg_win_pct": 29.9797,
+   "avg_loss_pct": -11.0106,
+   "payoff_ratio_pct": 2.7228,
+   "payoff_ratio_r": 2.7228,
+   "expectancy_r": 0.1098,
+   "mfe_capture": 0.282,
+   "cagr_ex_top5_trades_pct": 27.0803,
+   "top5_trades_pnl_share_pct": 32.1821,
+   "fees": 270022.54,
+   "trades": 522
+  },
+  "years": {
+   "2012": {
+    "ret": 13.36,
+    "tri": 14.08,
+    "excess": -0.71,
+    "dd": 3.84,
+    "tri_dd": 5.36,
+    "inv": 99.6
+   },
+   "2013": {
+    "ret": 2.53,
+    "tri": 4.82,
+    "excess": -2.3,
+    "dd": 20.96,
+    "tri_dd": 15.92,
+    "inv": 99.7
+   },
+   "2014": {
+    "ret": 87.88,
+    "tri": 39.3,
+    "excess": 48.58,
+    "dd": 8.78,
+    "tri_dd": 6.71,
+    "inv": 99.0
+   },
+   "2015": {
+    "ret": 18.77,
+    "tri": 0.22,
+    "excess": 18.55,
+    "dd": 14.91,
+    "tri_dd": 13.29,
+    "inv": 99.3
+   },
+   "2016": {
+    "ret": -4.66,
+    "tri": 5.12,
+    "excess": -9.78,
+    "dd": 20.9,
+    "tri_dd": 13.8,
+    "inv": 99.5
+   },
+   "2017": {
+    "ret": 86.91,
+    "tri": 37.65,
+    "excess": 49.26,
+    "dd": 7.91,
+    "tri_dd": 4.81,
+    "inv": 99.2
+   },
+   "2018": {
+    "ret": -5.73,
+    "tri": -2.14,
+    "excess": -3.59,
+    "dd": 21.4,
+    "tri_dd": 15.64,
+    "inv": 99.4
+   },
+   "2019": {
+    "ret": 13.37,
+    "tri": 8.97,
+    "excess": 4.4,
+    "dd": 14.09,
+    "tri_dd": 11.54,
+    "inv": 99.7
+   },
+   "2020": {
+    "ret": 46.89,
+    "tri": 17.89,
+    "excess": 29.0,
+    "dd": 36.38,
+    "tri_dd": 38.11,
+    "inv": 99.3
+   },
+   "2021": {
+    "ret": 92.56,
+    "tri": 31.6,
+    "excess": 60.97,
+    "dd": 8.1,
+    "tri_dd": 9.82,
+    "inv": 98.6
+   }
+  }
+ },
+ "c1": {
+  "run_id": "01a191b9-9316-7780-a7d1-f2d08538ed15",
+  "metrics": {
+   "invested_pct": 99.2117,
+   "avg_open_positions": 19.9932,
+   "avg_position_size_pct": 4.9623,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 32.1667,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 35.0241,
+   "avg_dd_pct": 2.7881,
+   "longest_dd_sessions": 342,
+   "sharpe": 1.5926,
+   "sortino": 2.197,
+   "mar": 0.9184,
+   "cagr_per_invested_pct": 32.4223,
+   "profit_factor": 3.9589,
+   "win_pct": 53.6398,
+   "avg_win_pct": 28.4143,
+   "avg_loss_pct": -10.9444,
+   "payoff_ratio_pct": 2.5962,
+   "payoff_ratio_r": 2.5962,
+   "expectancy_r": 0.1017,
+   "mfe_capture": 0.2612,
+   "cagr_ex_top5_trades_pct": 27.0297,
+   "top5_trades_pnl_share_pct": 33.7695,
+   "fees": 276114.67,
+   "trades": 522
+  },
+  "years": {
+   "2012": {
+    "ret": 14.15,
+    "tri": 14.08,
+    "excess": 0.07,
+    "dd": 3.57,
+    "tri_dd": 5.36,
+    "inv": 99.5
+   },
+   "2013": {
+    "ret": 3.63,
+    "tri": 4.82,
+    "excess": -1.2,
+    "dd": 20.04,
+    "tri_dd": 15.92,
+    "inv": 99.6
+   },
+   "2014": {
+    "ret": 81.94,
+    "tri": 39.3,
+    "excess": 42.65,
+    "dd": 8.88,
+    "tri_dd": 6.71,
+    "inv": 98.7
+   },
+   "2015": {
+    "ret": 21.29,
+    "tri": 0.22,
+    "excess": 21.07,
+    "dd": 14.46,
+    "tri_dd": 13.29,
+    "inv": 99.2
+   },
+   "2016": {
+    "ret": -4.48,
+    "tri": 5.12,
+    "excess": -9.61,
+    "dd": 20.04,
+    "tri_dd": 13.8,
+    "inv": 99.6
+   },
+   "2017": {
+    "ret": 78.21,
+    "tri": 37.65,
+    "excess": 40.56,
+    "dd": 7.18,
+    "tri_dd": 4.81,
+    "inv": 99.2
+   },
+   "2018": {
+    "ret": -4.62,
+    "tri": -2.14,
+    "excess": -2.48,
+    "dd": 19.4,
+    "tri_dd": 15.64,
+    "inv": 99.3
+   },
+   "2019": {
+    "ret": 12.09,
+    "tri": 8.97,
+    "excess": 3.11,
+    "dd": 14.16,
+    "tri_dd": 11.54,
+    "inv": 99.7
+   },
+   "2020": {
+    "ret": 48.4,
+    "tri": 17.89,
+    "excess": 30.5,
+    "dd": 35.02,
+    "tri_dd": 38.11,
+    "inv": 99.3
+   },
+   "2021": {
+    "ret": 102.21,
+    "tri": 31.6,
+    "excess": 70.61,
+    "dd": 7.64,
+    "tri_dd": 9.82,
+    "inv": 98.3
+   }
+  }
+ },
+ "c2": {
+  "run_id": "01a191bd-00e1-7011-9f56-5782ad95bea0",
+  "metrics": {
+   "invested_pct": 98.8344,
+   "avg_open_positions": 79.6943,
+   "avg_position_size_pct": 1.2401,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 30.0347,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 38.9187,
+   "avg_dd_pct": 2.97,
+   "longest_dd_sessions": 501,
+   "sharpe": 1.4514,
+   "sortino": 1.9787,
+   "mar": 0.7717,
+   "cagr_per_invested_pct": 30.3889,
+   "profit_factor": 3.0041,
+   "win_pct": 50.9579,
+   "avg_win_pct": 31.6825,
+   "avg_loss_pct": -11.2865,
+   "payoff_ratio_pct": 2.8071,
+   "payoff_ratio_r": 2.8071,
+   "expectancy_r": 0.1061,
+   "mfe_capture": 0.2716,
+   "cagr_ex_top5_trades_pct": 28.7578,
+   "top5_trades_pnl_share_pct": 9.7535,
+   "fees": 333968.72,
+   "trades": 2088
+  },
+  "years": {
+   "2012": {
+    "ret": 16.81,
+    "tri": 14.08,
+    "excess": 2.74,
+    "dd": 2.98,
+    "tri_dd": 5.36,
+    "inv": 94.3
+   },
+   "2013": {
+    "ret": 5.79,
+    "tri": 4.82,
+    "excess": 0.97,
+    "dd": 18.66,
+    "tri_dd": 15.92,
+    "inv": 99.4
+   },
+   "2014": {
+    "ret": 92.0,
+    "tri": 39.3,
+    "excess": 52.7,
+    "dd": 9.06,
+    "tri_dd": 6.71,
+    "inv": 98.2
+   },
+   "2015": {
+    "ret": 13.7,
+    "tri": 0.22,
+    "excess": 13.48,
+    "dd": 14.86,
+    "tri_dd": 13.29,
+    "inv": 99.1
+   },
+   "2016": {
+    "ret": -1.03,
+    "tri": 5.12,
+    "excess": -6.16,
+    "dd": 20.04,
+    "tri_dd": 13.8,
+    "inv": 99.5
+   },
+   "2017": {
+    "ret": 82.1,
+    "tri": 37.65,
+    "excess": 44.45,
+    "dd": 7.93,
+    "tri_dd": 4.81,
+    "inv": 99.2
+   },
+   "2018": {
+    "ret": -13.08,
+    "tri": -2.14,
+    "excess": -10.95,
+    "dd": 24.43,
+    "tri_dd": 15.64,
+    "inv": 98.8
+   },
+   "2019": {
+    "ret": 8.54,
+    "tri": 8.97,
+    "excess": -0.43,
+    "dd": 13.35,
+    "tri_dd": 11.54,
+    "inv": 99.5
+   },
+   "2020": {
+    "ret": 38.82,
+    "tri": 17.89,
+    "excess": 20.92,
+    "dd": 35.44,
+    "tri_dd": 38.11,
+    "inv": 99.1
+   },
+   "2021": {
+    "ret": 90.62,
+    "tri": 31.6,
+    "excess": 59.02,
+    "dd": 9.45,
+    "tri_dd": 9.82,
+    "inv": 98.9
+   }
+  }
+ },
+ "c3": {
+  "run_id": "01a191c7-c391-736e-b171-124a3a4fde47",
+  "metrics": {
+   "invested_pct": 99.1386,
+   "avg_open_positions": 19.9945,
+   "avg_position_size_pct": 4.9583,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 30.1382,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 35.7429,
+   "avg_dd_pct": 2.778,
+   "longest_dd_sessions": 356,
+   "sharpe": 1.4374,
+   "sortino": 1.9679,
+   "mar": 0.8432,
+   "cagr_per_invested_pct": 30.4,
+   "profit_factor": 3.4883,
+   "win_pct": 55.3819,
+   "avg_win_pct": 24.5108,
+   "avg_loss_pct": -9.8708,
+   "payoff_ratio_pct": 2.4832,
+   "payoff_ratio_r": 2.4832,
+   "expectancy_r": 0.0917,
+   "mfe_capture": 0.3046,
+   "cagr_ex_top5_trades_pct": 25.8887,
+   "top5_trades_pnl_share_pct": 29.4623,
+   "fees": 274155.05,
+   "trades": 576
+  },
+  "years": {
+   "2012": {
+    "ret": 13.63,
+    "tri": 14.08,
+    "excess": -0.45,
+    "dd": 4.49,
+    "tri_dd": 5.36,
+    "inv": 99.2
+   },
+   "2013": {
+    "ret": 2.53,
+    "tri": 4.82,
+    "excess": -2.29,
+    "dd": 19.6,
+    "tri_dd": 15.92,
+    "inv": 99.4
+   },
+   "2014": {
+    "ret": 77.03,
+    "tri": 39.3,
+    "excess": 37.73,
+    "dd": 9.31,
+    "tri_dd": 6.71,
+    "inv": 99.2
+   },
+   "2015": {
+    "ret": 22.2,
+    "tri": 0.22,
+    "excess": 21.97,
+    "dd": 13.49,
+    "tri_dd": 13.29,
+    "inv": 99.0
+   },
+   "2016": {
+    "ret": -3.22,
+    "tri": 5.12,
+    "excess": -8.34,
+    "dd": 21.52,
+    "tri_dd": 13.8,
+    "inv": 99.5
+   },
+   "2017": {
+    "ret": 73.03,
+    "tri": 37.65,
+    "excess": 35.37,
+    "dd": 10.02,
+    "tri_dd": 4.81,
+    "inv": 99.0
+   },
+   "2018": {
+    "ret": -13.68,
+    "tri": -2.14,
+    "excess": -11.54,
+    "dd": 22.47,
+    "tri_dd": 15.64,
+    "inv": 99.3
+   },
+   "2019": {
+    "ret": 15.15,
+    "tri": 8.97,
+    "excess": 6.18,
+    "dd": 12.58,
+    "tri_dd": 11.54,
+    "inv": 99.6
+   },
+   "2020": {
+    "ret": 46.18,
+    "tri": 17.89,
+    "excess": 28.29,
+    "dd": 35.74,
+    "tri_dd": 38.11,
+    "inv": 98.5
+   },
+   "2021": {
+    "ret": 99.74,
+    "tri": 31.6,
+    "excess": 68.14,
+    "dd": 8.58,
+    "tri_dd": 9.82,
+    "inv": 98.6
+   }
+  }
+ },
+ "c4": {
+  "run_id": "01a191c2-5d72-73ef-978c-64b5cb4164ef",
+  "metrics": {
+   "invested_pct": 98.7049,
+   "avg_open_positions": 79.6756,
+   "avg_position_size_pct": 1.2388,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 29.5536,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 37.3295,
+   "avg_dd_pct": 2.9659,
+   "longest_dd_sessions": 502,
+   "sharpe": 1.5019,
+   "sortino": 2.0464,
+   "mar": 0.7917,
+   "cagr_per_invested_pct": 29.9413,
+   "profit_factor": 3.1153,
+   "win_pct": 50.8629,
+   "avg_win_pct": 30.1405,
+   "avg_loss_pct": -11.213,
+   "payoff_ratio_pct": 2.688,
+   "payoff_ratio_r": 2.688,
+   "expectancy_r": 0.0982,
+   "mfe_capture": 0.2512,
+   "cagr_ex_top5_trades_pct": 27.7223,
+   "top5_trades_pnl_share_pct": 13.8319,
+   "fees": 337582.19,
+   "trades": 2086
+  },
+  "years": {
+   "2012": {
+    "ret": 18.13,
+    "tri": 14.08,
+    "excess": 4.06,
+    "dd": 2.63,
+    "tri_dd": 5.36,
+    "inv": 93.6
+   },
+   "2013": {
+    "ret": 6.62,
+    "tri": 4.82,
+    "excess": 1.8,
+    "dd": 17.58,
+    "tri_dd": 15.92,
+    "inv": 99.3
+   },
+   "2014": {
+    "ret": 85.89,
+    "tri": 39.3,
+    "excess": 46.59,
+    "dd": 9.07,
+    "tri_dd": 6.71,
+    "inv": 98.0
+   },
+   "2015": {
+    "ret": 15.84,
+    "tri": 0.22,
+    "excess": 15.62,
+    "dd": 14.01,
+    "tri_dd": 13.29,
+    "inv": 98.7
+   },
+   "2016": {
+    "ret": -0.8,
+    "tri": 5.12,
+    "excess": -5.92,
+    "dd": 19.86,
+    "tri_dd": 13.8,
+    "inv": 99.4
+   },
+   "2017": {
+    "ret": 73.52,
+    "tri": 37.65,
+    "excess": 35.86,
+    "dd": 7.72,
+    "tri_dd": 4.81,
+    "inv": 99.1
+   },
+   "2018": {
+    "ret": -13.22,
+    "tri": -2.14,
+    "excess": -11.08,
+    "dd": 22.4,
+    "tri_dd": 15.64,
+    "inv": 99.1
+   },
+   "2019": {
+    "ret": 6.53,
+    "tri": 8.97,
+    "excess": -2.44,
+    "dd": 12.55,
+    "tri_dd": 11.54,
+    "inv": 99.3
+   },
+   "2020": {
+    "ret": 38.51,
+    "tri": 17.89,
+    "excess": 20.62,
+    "dd": 33.82,
+    "tri_dd": 38.11,
+    "inv": 99.2
+   },
+   "2021": {
+    "ret": 96.09,
+    "tri": 31.6,
+    "excess": 64.49,
+    "dd": 9.1,
+    "tri_dd": 9.82,
+    "inv": 98.8
+   }
+  }
+ },
+ "c5": {
+  "run_id": "01a191c9-b1e5-71f1-9759-2d0a48bc1acd",
+  "metrics": {
+   "invested_pct": 99.0923,
+   "avg_open_positions": 19.9945,
+   "avg_position_size_pct": 4.956,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 29.8895,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 34.1024,
+   "avg_dd_pct": 2.5444,
+   "longest_dd_sessions": 503,
+   "sharpe": 1.5026,
+   "sortino": 2.0601,
+   "mar": 0.8765,
+   "cagr_per_invested_pct": 30.1633,
+   "profit_factor": 3.5692,
+   "win_pct": 54.8611,
+   "avg_win_pct": 23.7841,
+   "avg_loss_pct": -9.7897,
+   "payoff_ratio_pct": 2.4295,
+   "payoff_ratio_r": 2.4295,
+   "expectancy_r": 0.0863,
+   "mfe_capture": 0.2866,
+   "cagr_ex_top5_trades_pct": 25.0726,
+   "top5_trades_pnl_share_pct": 32.9071,
+   "fees": 276830.76,
+   "trades": 576
+  },
+  "years": {
+   "2012": {
+    "ret": 14.88,
+    "tri": 14.08,
+    "excess": 0.8,
+    "dd": 4.58,
+    "tri_dd": 5.36,
+    "inv": 99.3
+   },
+   "2013": {
+    "ret": 4.67,
+    "tri": 4.82,
+    "excess": -0.15,
+    "dd": 17.86,
+    "tri_dd": 15.92,
+    "inv": 99.5
+   },
+   "2014": {
+    "ret": 73.55,
+    "tri": 39.3,
+    "excess": 34.25,
+    "dd": 8.36,
+    "tri_dd": 6.71,
+    "inv": 98.7
+   },
+   "2015": {
+    "ret": 21.18,
+    "tri": 0.22,
+    "excess": 20.96,
+    "dd": 12.3,
+    "tri_dd": 13.29,
+    "inv": 99.0
+   },
+   "2016": {
+    "ret": -4.8,
+    "tri": 5.12,
+    "excess": -9.93,
+    "dd": 21.07,
+    "tri_dd": 13.8,
+    "inv": 99.6
+   },
+   "2017": {
+    "ret": 68.91,
+    "tri": 37.65,
+    "excess": 31.26,
+    "dd": 10.42,
+    "tri_dd": 4.81,
+    "inv": 98.8
+   },
+   "2018": {
+    "ret": -14.17,
+    "tri": -2.14,
+    "excess": -12.04,
+    "dd": 21.43,
+    "tri_dd": 15.64,
+    "inv": 99.4
+   },
+   "2019": {
+    "ret": 15.12,
+    "tri": 8.97,
+    "excess": 6.14,
+    "dd": 12.52,
+    "tri_dd": 11.54,
+    "inv": 99.6
+   },
+   "2020": {
+    "ret": 45.83,
+    "tri": 17.89,
+    "excess": 27.94,
+    "dd": 34.1,
+    "tri_dd": 38.11,
+    "inv": 98.6
+   },
+   "2021": {
+    "ret": 105.78,
+    "tri": 31.6,
+    "excess": 74.18,
+    "dd": 8.54,
+    "tri_dd": 9.82,
+    "inv": 98.5
+   }
+  }
+ },
+ "c6": {
+  "run_id": "01a191cb-b64a-77c7-bc56-8e07de887ac0",
+  "metrics": {
+   "invested_pct": 98.5504,
+   "avg_open_positions": 79.6229,
+   "avg_position_size_pct": 1.2377,
+   "zero_position_days_pct": 0.0425,
+   "cagr_pct": 29.0012,
+   "benchmark_cagr_pct": 15.7309,
+   "max_dd_pct": 36.2479,
+   "avg_dd_pct": 2.9528,
+   "longest_dd_sessions": 344,
+   "sharpe": 1.4173,
+   "sortino": 1.9372,
+   "mar": 0.8001,
+   "cagr_per_invested_pct": 29.4278,
+   "profit_factor": 3.2311,
+   "win_pct": 55.3053,
+   "avg_win_pct": 24.7432,
+   "avg_loss_pct": -10.3103,
+   "payoff_ratio_pct": 2.3999,
+   "payoff_ratio_r": 2.3999,
+   "expectancy_r": 0.0908,
+   "mfe_capture": 0.3009,
+   "cagr_ex_top5_trades_pct": 27.7405,
+   "top5_trades_pnl_share_pct": 9.7784,
+   "fees": 327046.0,
+   "trades": 2309
+  },
+  "years": {
+   "2012": {
+    "ret": 15.74,
+    "tri": 14.08,
+    "excess": 1.66,
+    "dd": 3.27,
+    "tri_dd": 5.36,
+    "inv": 93.6
+   },
+   "2013": {
+    "ret": 2.0,
+    "tri": 4.82,
+    "excess": -2.82,
+    "dd": 19.86,
+    "tri_dd": 15.92,
+    "inv": 99.2
+   },
+   "2014": {
+    "ret": 81.27,
+    "tri": 39.3,
+    "excess": 41.97,
+    "dd": 8.66,
+    "tri_dd": 6.71,
+    "inv": 98.2
+   },
+   "2015": {
+    "ret": 10.76,
+    "tri": 0.22,
+    "excess": 10.53,
+    "dd": 13.98,
+    "tri_dd": 13.29,
+    "inv": 98.3
+   },
+   "2016": {
+    "ret": -2.75,
+    "tri": 5.12,
+    "excess": -7.88,
+    "dd": 19.99,
+    "tri_dd": 13.8,
+    "inv": 99.4
+   },
+   "2017": {
+    "ret": 71.75,
+    "tri": 37.65,
+    "excess": 34.1,
+    "dd": 8.48,
+    "tri_dd": 4.81,
+    "inv": 98.5
+   },
+   "2018": {
+    "ret": -12.43,
+    "tri": -2.14,
+    "excess": -10.29,
+    "dd": 21.96,
+    "tri_dd": 15.64,
+    "inv": 98.6
+   },
+   "2019": {
+    "ret": 15.16,
+    "tri": 8.97,
+    "excess": 6.18,
+    "dd": 12.36,
+    "tri_dd": 11.54,
+    "inv": 99.3
+   },
+   "2020": {
+    "ret": 48.8,
+    "tri": 17.89,
+    "excess": 30.91,
+    "dd": 36.25,
+    "tri_dd": 38.11,
+    "inv": 99.1
+   },
+   "2021": {
+    "ret": 89.28,
+    "tri": 31.6,
+    "excess": 57.69,
+    "dd": 8.71,
+    "tri_dd": 9.82,
+    "inv": 98.8
+   }
+  }
+ },
+ "_walk_forward": [
+  {
+   "test": 2015,
+   "pick": "c4",
+   "ret": 15.84,
+   "tri": 0.22,
+   "excess": 15.62,
+   "dd": 14.01,
+   "tri_dd": 13.29,
+   "inv": 98.7,
+   "base_excess": 18.55
+  },
+  {
+   "test": 2016,
+   "pick": "c4",
+   "ret": -0.8,
+   "tri": 5.12,
+   "excess": -5.92,
+   "dd": 19.86,
+   "tri_dd": 13.8,
+   "inv": 99.4,
+   "base_excess": -9.78
+  },
+  {
+   "test": 2017,
+   "pick": "c2",
+   "ret": 82.1,
+   "tri": 37.65,
+   "excess": 44.45,
+   "dd": 7.93,
+   "tri_dd": 4.81,
+   "inv": 99.2,
+   "base_excess": 49.26
+  },
+  {
+   "test": 2018,
+   "pick": "c1",
+   "ret": -4.62,
+   "tri": -2.14,
+   "excess": -2.48,
+   "dd": 19.4,
+   "tri_dd": 15.64,
+   "inv": 99.3,
+   "base_excess": -3.59
+  },
+  {
+   "test": 2019,
+   "pick": "c0",
+   "ret": 13.37,
+   "tri": 8.97,
+   "excess": 4.4,
+   "dd": 14.09,
+   "tri_dd": 11.54,
+   "inv": 99.7,
+   "base_excess": 4.4
+  },
+  {
+   "test": 2020,
+   "pick": "c1",
+   "ret": 48.4,
+   "tri": 17.89,
+   "excess": 30.5,
+   "dd": 35.02,
+   "tri_dd": 38.11,
+   "inv": 99.3,
+   "base_excess": 29.0
+  },
+  {
+   "test": 2021,
+   "pick": "c1",
+   "ret": 102.21,
+   "tri": 31.6,
+   "excess": 70.61,
+   "dd": 7.64,
+   "tri_dd": 9.82,
+   "inv": 98.3,
+   "base_excess": 60.97
+  }
+ ]
+}
