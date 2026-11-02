@@ -529,7 +529,7 @@ INE907A01026,KSL,2011-08-04,dividend,1,2,f,,2011-08-04,ex_open,nse_ca_feed,Divid
 INE093A01033,HEXAWARE,2011-08-05,dividend,1,1,f,,2011-08-05,ex_open,nse_ca_feed,Dividend interim 1: Interim Dividend Re.1/- Per Share
 INE320B01020,CENTUM,2011-08-05,dividend,1,1,f,,2011-08-05,ex_open,nse_ca_feed,Dividend final 1: Annual General Meeting And Dividend Re.1/- Per Share
 INE424H01027,SUNTV,2011-08-05,dividend,1,2.50,f,,2011-08-05,ex_open,nse_ca_feed,Dividend interim 2.5: Interim Dividend Rs.2.50 Per Share (Purpose Revised)
-INE429F01012,HORIZONINF,2011-08-05,dividend,1,1.50,f,,2011-08-05,ex_open,nse_ca_feed,Dividend final 1.5: Annual General Meeting And Dividend Rs.1.50 Per Share
+INE429F01012,SKIL,2011-08-05,dividend,1,1.50,f,,2011-08-05,ex_open,nse_ca_feed,Dividend final 1.5: Annual General Meeting And Dividend Rs.1.50 Per Share
 INE548C01032,EMAMILTD,2011-08-05,dividend,1,3.50,f,,2011-08-05,ex_open,nse_ca_feed,Dividend final 3.5: Annual General Meeting And Dividend Rs.3.50 Per Share
 INE725G01011,ICRA,2011-08-05,dividend,1,17,f,,2011-08-05,ex_open,nse_ca_feed,Dividend final 17: Dividend-Rs.17/- Per Share
 INE916G01016,GEECEE,2011-08-05,dividend,1,1.50,f,,2011-08-05,ex_open,nse_ca_feed,Dividend final 1.5: Annual General Meeting And Dividend Rs.1.50 Per Share
@@ -2153,7 +2153,7 @@ INE130B01023,SURANAT&P,2012-09-24,dividend,1,0.50,f,,2012-09-24,ex_open,nse_ca_f
 INE255A01020,EPL,2012-09-24,dividend,1,0.65,f,,2012-09-24,ex_open,nse_ca_feed,Dividend final 0.65: Annual General Meeting/Dividend Re 0.65 Per Share
 INE272L01014,SURANAVEL,2012-09-24,dividend,1,0.50,f,,2012-09-24,ex_open,nse_ca_feed,Dividend final 0.5: Aanual General Meeting/ Diviednd Rs 0.50 Per Share
 INE385B01031,REIAGROLTD,2012-09-24,dividend,1,0.05,f,,2012-09-24,ex_open,nse_ca_feed,Dividend final 0.05: Annual General Meeting/Dividend Rs 0.05 Per Share
-INE429F01012,HORIZONINF,2012-09-24,dividend,1,1,f,,2012-09-24,ex_open,nse_ca_feed,Dividend final 1: Annual General Meeting And Dividend Re.1/- Per Share
+INE429F01012,SKIL,2012-09-24,dividend,1,1,f,,2012-09-24,ex_open,nse_ca_feed,Dividend final 1: Annual General Meeting And Dividend Re.1/- Per Share
 INE458B01028,BHAGYNAGAR,2012-09-24,dividend,1,0.40,f,,2012-09-24,ex_open,nse_ca_feed,Dividend final 0.4: Annual General Meeting/ Dividend Rs 0.40 Per Share
 INE618H01016,PARABDRUGS,2012-09-24,dividend,1,0.25,f,,2012-09-24,ex_open,nse_ca_feed,Dividend final 0.25: Annual General Meeting/Dividend Re 0.25 Per Share
 INE729D01010,KILITCH,2012-09-24,dividend,1,30,f,,2012-09-24,ex_open,nse_ca_feed,Dividend special 30: Special Interim Dividend Rs.30/- Per Share
@@ -3364,7 +3364,7 @@ INE320D01018,MANJEERA,2013-09-23,dividend,1,1.20,f,,2013-09-23,ex_open,nse_ca_fe
 INE324A01024,JINDALSAW,2013-09-23,dividend,1,1,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 1: Annual General Meeting And Dividend Re.1/- Per Share
 INE385B01031,REIAGROLTD,2013-09-23,dividend,1,0.50,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 0.5: Annual General Meeting / Final Dividend - Re 0.50/- Per Share
 INE411B01019,VENUSREM,2013-09-23,dividend,1,3,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 3: Annual General Meeting / Dividend - Rs 3/- Per Share
-INE429F01012,HORIZONINF,2013-09-23,dividend,1,1,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 1: Annual General Meeting/Dividend Re 1/- Per Share
+INE429F01012,SKIL,2013-09-23,dividend,1,1,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 1: Annual General Meeting/Dividend Re 1/- Per Share
 INE545H01011,TIIL,2013-09-23,dividend,1,2,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 2: Annual General Meeting / Final Dividend - Rs 2/- Per Share
 INE586G01017,GULFPETRO,2013-09-23,dividend,1,0.01,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 0.01: Annual General Meeting And Dividend Re.0.01 Per Share
 INE665J01013,VMART,2013-09-23,dividend,1,1,f,,2013-09-23,ex_open,nse_ca_feed,Dividend final 1: Annual General Meeting / Dividend - Re 1/- Per Share
