@@ -1,0 +1,11 @@
+# wf12 v2: c1 0.7 + VCP 0.3 (owner go 2026-11-02). Old VCP B2 (aac4fda7 + the 10-31 b2-oldvcp overrides), E1 stop_order entry.
+portfolio: wf12-v2
+universe: nifty500
+window: {from: 2016-01-01, to: 2021-12-31}
+conventions: {impact_bps: 100, slot_order: rs, ambiguous: pessimistic}
+risk_pct: 0.0075
+flat_ladder: true
+policy_set: ['global_open_risk_pct=1', 'p_max.stage2-contraction-breakout=1']
+strategies:
+  - {version: c7d55ebe-2baa-42da-86e2-de8fd11bd2c9, weight: 0.7, set: ["rotation.vol_sessions=63", "rotation.refuse_near_limit=true", "rotation.liquidity={\"entry_pct\": 70, \"hold_pct\": 90}", "universe[min_turnover].enabled=false", "rotation.inverse_beta={\"sessions\": 252, \"floor\": 0.5}"]}
+  - {version: aac4fda7-86b2-421d-b7f8-1247edef7f1d, weight: 0.3, set: ["playbooks[default].setup.criteria[vcp].params.contractions=[2,6]", "playbooks[default].setup.criteria[vcp].params.dryup_vs_avg50=1.0", "playbooks[default].setup.criteria[vcp].params.depth_ratio_max=0.9", "exits[step_trail].enabled=false", "exits[partial_at_r].enabled=false", "exits[close_below_sma].sma=50", "exits[trailing_swing_low].lookback_days=20", "exits[time_stop].enabled=false", "playbooks[default].trigger[price_breaks_level].params.entry_timing=stop_order"]}

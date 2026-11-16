@@ -1,0 +1,7 @@
+# wf11 f5: c1 core + fundamentals screen, 2016-01..2021-12 (owner go 2026-11-02). loose quality: CFO>0 only
+portfolio: wf11-f5
+universe: nifty500
+window: {from: 2016-01-01, to: 2021-12-31}
+conventions: {impact_bps: 100}
+strategies:
+  - {version: c7d55ebe-2baa-42da-86e2-de8fd11bd2c9, weight: 1, set: ["rotation.vol_sessions=63", "rotation.refuse_near_limit=true", "rotation.liquidity={\"entry_pct\": 70, \"hold_pct\": 90}", "universe[min_turnover].enabled=false", "rotation.inverse_beta={\"sessions\": 252, \"floor\": 0.5}", "rotation.fundamentals={\"quality\": {\"positive_cfo\": true}}"]}
