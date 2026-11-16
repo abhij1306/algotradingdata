@@ -1,0 +1,10 @@
+# wf12 v0: c1 alone under the same account settings (control) (owner go 2026-11-02). Old VCP B2 (aac4fda7 + the 10-31 b2-oldvcp overrides), E1 stop_order entry.
+portfolio: wf12-v0
+universe: nifty500
+window: {from: 2016-01-01, to: 2021-12-31}
+conventions: {impact_bps: 100, slot_order: rs, ambiguous: pessimistic}
+risk_pct: 0.0075
+flat_ladder: true
+policy_set: ['global_open_risk_pct=1', 'p_max.stage2-contraction-breakout=1']
+strategies:
+  - {version: c7d55ebe-2baa-42da-86e2-de8fd11bd2c9, weight: 1, set: ["rotation.vol_sessions=63", "rotation.refuse_near_limit=true", "rotation.liquidity={\"entry_pct\": 70, \"hold_pct\": 90}", "universe[min_turnover].enabled=false", "rotation.inverse_beta={\"sessions\": 252, \"floor\": 0.5}"]}

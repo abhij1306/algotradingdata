@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HAT Momentum System</title>
+<meta name="description" content="How HAT works: the data it reads, the c1 momentum strategy's parameters, what each backtest produces, and the results so far.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~72ch) with full-width tables; sections follow the data → rules → output → results path. */
+:root{
+  --bg:#f5f7f6; --surface:#ffffff; --fg:#17211f; --muted:#5a6964; --line:#d7dfdc;
+  --accent:#0f6b5c; --accent-soft:#e1efeb; --tri:#b7791f; --neg:#b4413a; --pos:#0f6b5c;
+  --display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101614; --surface:#172120; --fg:#e4ece9; --muted:#9aaba5; --line:#2a3734;
+    --accent:#4fbfa8; --accent-soft:#1d3430; --tri:#e0a84a; --neg:#e07a70; --pos:#4fbfa8; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101614; --surface:#172120; --fg:#e4ece9; --muted:#9aaba5; --line:#2a3734;
+  --accent:#4fbfa8; --accent-soft:#1d3430; --tri:#e0a84a; --neg:#e07a70; --pos:#4fbfa8; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:980px;margin:0 auto;padding-block:48px 72px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);font-weight:650;line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5vw,2.9rem)}
+h2{font-size:1.65rem}
+h3{font-size:1.1rem;font-family:var(--body);font-weight:600}
+p{margin:0;max-width:72ch}
+section{display:flex;flex-direction:column;gap:18px;min-width:0}
+.eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:1.12rem;color:var(--muted);max-width:68ch}
+.muted{color:var(--muted)}
+code,.mono{font-family:var(--mono);font-size:.86em}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* pipeline */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:step}
+.flow div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.flow b{font:500 .72rem/1 var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.flow span{font-size:.92rem}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font:500 .72rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--accent-soft)}
+td.v{font-family:var(--mono);font-size:.85rem;white-space:nowrap;color:var(--accent)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:.85rem;white-space:nowrap}
+.neg{color:var(--neg)} .pos{color:var(--pos)}
+.group td{font:600 .8rem/1.2 var(--body);background:var(--bg);color:var(--fg)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stats div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.stats strong{font:500 1.5rem/1.2 var(--mono);font-variant-numeric:tabular-nums}
+.stats span{font-size:.8rem;color:var(--muted)}
+
+/* chart */
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:620px;height:auto}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.cols>div{display:flex;flex-direction:column;gap:10px;min-width:0}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.status{display:inline-block;font:500 .72rem/1 var(--mono);padding:4px 8px;border-radius:3px;background:var(--accent-soft);color:var(--accent);letter-spacing:.04em}
+.status.no{background:color-mix(in srgb,var(--neg) 14%,transparent);color:var(--neg)}
+footer{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;max-width:72ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+
+<header style="display:flex;flex-direction:column;gap:14px">
+  <div class="eyebrow">HAT · NSE equities · long only · as of 16 Nov 2026</div>
+  <h1>HAT momentum system</h1>
+  <p class="lede">HAT is a rules-based system that holds the 20 strongest NIFTY 500 stocks and rebalances once a month. This page sets out what it reads, the rules it follows, what every backtest reports, and how the current strategy (called <b>c1</b>) has done. It trades on paper only; real orders need the owner's approval.</p>
+</header>
+
+<section>
+  <div class="eyebrow">How it works</div>
+  <h2>From data to orders</h2>
+  <div class="flow">
+    <div><b>Data</b><span>Daily and 5-minute prices, corporate actions, index membership, costs</span></div>
+    <div><b>Universe</b><span>NIFTY 500 members on that date, liquid and priced at ₹50 or more</span></div>
+    <div><b>Ranking</b><span>Risk-adjusted 6- and 12-month momentum, every month-end close</span></div>
+    <div><b>Portfolio</b><span>Top 20, kept while still in the top 40, weighted by inverse beta</span></div>
+    <div><b>Orders</b><span>Trade at 09:20 next session; never at the 09:15 open</span></div>
+    <div><b>Review</b><span>Owner approves trades; a switch moves between manual and automatic</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Inputs</div>
+  <h2>Data the system reads</h2>
+  <p>All data is point in time: a backtest only sees what was known on each date. History starts on 22 Jun 2011.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Input</th><th>Source</th><th>Used for</th></tr></thead>
+    <tbody>
+      <tr><td>Daily prices (open, high, low, close, volume)</td><td>NSE end-of-day bhavcopy, through NSE's MCP service</td><td>Ranking, volatility, beta, liquidity, valuations</td></tr>
+      <tr><td>5-minute prices</td><td>Fyers and Kotak broker history (from 26 Oct 2021)</td><td>The 09:20 fill price</td></tr>
+      <tr><td>Corporate actions</td><td>NSE corporate-action files</td><td>Split, bonus and dividend adjustment; demerger and delisting exits</td></tr>
+      <tr><td>NIFTY 500 membership</td><td>NSE index changes, rebuilt for every date since 2011</td><td>Which stocks are eligible on each date (no survivorship bias)</td></tr>
+      <tr><td>NIFTY 500 Total Return Index</td><td>NSE index history</td><td>Benchmark, and beta for position weights</td></tr>
+      <tr><td>Price bands (circuit limits)</td><td>NSE, stored by date</td><td>Refusing trades that could not fill at a locked limit</td></tr>
+      <tr><td>Trading calendar and listings</td><td>NSE</td><td>Session dates, symbols, series</td></tr>
+      <tr><td>Transaction costs</td><td>Statutory schedule by date since 2011</td><td>STT, stamp duty, exchange, SEBI and DP charges, GST</td></tr>
+      <tr><td>Company fundamentals</td><td>NSE results filings (first published), secondary source for gaps</td><td>Research only: tested as a screen, not used by c1</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div class="eyebrow">Strategy parameters</div>
+  <h2>The c1 rules</h2>
+  <p>c1 has no stop losses and no profit targets. A stock leaves the book when its rank falls out of the top 40, or on a demerger, delisting or suspension. The book stays about 99% invested.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Parameter</th><th>Value</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr class="group"><td colspan="3">Universe</td></tr>
+      <tr><td>Index</td><td class="v">NIFTY 500 (on the date)</td><td>Only stocks that were members on the decision date</td></tr>
+      <tr><td>Series</td><td class="v">EQ, BE</td><td>Ordinary equity only; no ETFs</td></tr>
+      <tr><td>Minimum price</td><td class="v">₹50</td><td>Skips low-priced stocks</td></tr>
+      <tr><td>Minimum history</td><td class="v">240 of 252 sessions</td><td>A stock needs about a year of prices to be ranked</td></tr>
+      <tr><td>Liquidity, to buy</td><td class="v">top 70%</td><td>Bought only if in the top 70% of members by 20-day median traded value</td></tr>
+      <tr><td>Liquidity, to keep</td><td class="v">top 90%</td><td>A holding stays eligible while in the top 90%</td></tr>
+      <tr class="group"><td colspan="3">Ranking</td></tr>
+      <tr><td>Score</td><td class="v">risk-adjusted momentum</td><td>Mean of the cross-sectional z-scores of the 6-month and 12-month returns, each divided by volatility</td></tr>
+      <tr><td>Return windows</td><td class="v">126 and 252 sessions</td><td>About 6 and 12 months, on dividend-adjusted closes</td></tr>
+      <tr><td>Volatility window</td><td class="v">63 sessions</td><td>About 3 months of daily returns, annualised</td></tr>
+      <tr><td>Rebalance</td><td class="v">month-end close</td><td>Decided on the last close of each month</td></tr>
+      <tr class="group"><td colspan="3">Portfolio</td></tr>
+      <tr><td>Holdings</td><td class="v">20</td><td>Fills to the 20 best-ranked stocks</td></tr>
+      <tr><td>Buffer</td><td class="v">rank 40</td><td>A holding is kept while it ranks within the top 40, which cuts turnover</td></tr>
+      <tr><td>Weights</td><td class="v">1 ÷ max(beta, 0.5)</td><td>Lower-beta stocks get more weight; beta to the NIFTY 500 TRI over 252 sessions; scaled so the book stays fully invested</td></tr>
+      <tr><td>Rebalance trades</td><td class="v">reweight on, 2% minimum</td><td>Tops up and trims to target; changes under 2% of a target are skipped</td></tr>
+      <tr><td>Market filter</td><td class="v">off</td><td>Never moves to cash because of the market trend</td></tr>
+      <tr class="group"><td colspan="3">Execution</td></tr>
+      <tr><td>Order time</td><td class="v">09:20 next session</td><td>No fills at the 09:15 open</td></tr>
+      <tr><td>Circuit limits</td><td class="v">refuse within 1 tick</td><td>A buy near the upper band is skipped; a sale near the lower band waits a day</td></tr>
+      <tr><td>Market impact</td><td class="v">100 bps</td><td>Extra cost charged on every trade in backtests</td></tr>
+      <tr><td>Slippage</td><td class="v">20 bps</td><td>Added to every fill</td></tr>
+      <tr><td>Costs</td><td class="v">delivery schedule by date</td><td>All statutory charges on the trade date; zero brokerage</td></tr>
+      <tr><td>Start capital</td><td class="v">₹10,00,000</td><td>Backtest starting equity</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div class="eyebrow">Outputs</div>
+  <h2>What every backtest produces</h2>
+  <p>Each run writes one folder with its full configuration, a fingerprint of the data it read, and these results. A run can be replayed exactly from its folder.</p>
+  <div class="cols">
+    <div>
+      <h3>Files</h3>
+      <div class="tw"><table><tbody>
+        <tr><td class="v">run.json</td><td>Identity, settings and all metrics</td></tr>
+        <tr><td class="v">equity.csv</td><td>Daily equity, cash and invested share</td></tr>
+        <tr><td class="v">trades.csv</td><td>Every trade with entry, exit, costs and P&amp;L</td></tr>
+        <tr><td class="v">rebalances.csv</td><td>Each month's ranking, buys, sells and weights</td></tr>
+        <tr><td class="v">refusals.csv, skips.csv</td><td>Trades not taken, and why</td></tr>
+        <tr><td class="v">data_audit.json</td><td>Data checks the run passed</td></tr>
+      </tbody></table></div>
+    </div>
+    <div>
+      <h3>Metrics, in reporting order</h3>
+      <div class="tw"><table><tbody>
+        <tr><td>Deployment</td><td>Invested %, open positions, position size</td></tr>
+        <tr><td>Return</td><td>CAGR, total return, return vs NIFTY 500 TRI per year</td></tr>
+        <tr><td>Risk</td><td>Max drawdown, longest drawdown, in-year drawdown</td></tr>
+        <tr><td>Risk-adjusted</td><td>Sharpe, Sortino, MAR (CAGR ÷ max drawdown)</td></tr>
+        <tr><td>Trade quality</td><td>Profit factor, win %, payoff ratio</td></tr>
+        <tr><td>Overfitting checks</td><td>Deflated Sharpe, trial count</td></tr>
+        <tr><td>Costs</td><td>Total fees, fees as a share of gross profit</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Results</div>
+  <h2>c1 over 10 years: Jul 2012 to Dec 2021</h2>
+  <p>In-sample, with walk-forward selection (3 years to fit, 1 year to test). 2022 onwards is held back and has not been looked at yet.</p>
+  <div class="stats">
+    <div><strong>32.2%</strong><span>CAGR (TRI 15.7%)</span></div>
+    <div><strong>99.2%</strong><span>Average invested</span></div>
+    <div><strong>20</strong><span>Average positions</span></div>
+    <div><strong>35.0%</strong><span>Max drawdown (2020)</span></div>
+    <div><strong>1.59</strong><span>Sharpe</span></div>
+    <div><strong>0.92</strong><span>MAR</span></div>
+    <div><strong>3.96</strong><span>Profit factor</span></div>
+    <div><strong>522</strong><span>Closed trades</span></div>
+  </div>
+  <div class="chart">
+    <div class="legend"><span><i style="background:var(--accent)"></i>c1 return</span><span><i style="background:var(--tri)"></i>NIFTY 500 TRI</span></div>
+    <svg id="yr" viewBox="0 0 900 340" role="img" aria-label="Yearly return of c1 against NIFTY 500 TRI, 2012 to 2021"></svg>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Year</th><th class="num">c1</th><th class="num">TRI</th><th class="num">Difference</th><th class="num">Drawdown in year</th></tr></thead>
+    <tbody id="yrs"></tbody>
+  </table></div>
+  <p class="muted">2012 covers July to December only. Drawdown is the largest fall from a peak within that calendar year.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Research log</div>
+  <h2>What was tested and not adopted</h2>
+  <p>The open problem is ordinary down years (2016, 2018), when c1 falls 1.3 to 1.5 times as far as the index. These changes were tested against it and rejected.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Idea</th><th>Result</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Split the book into staggered tranches</td><td>Worse in 2018</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Skip the latest month in the momentum score</td><td>Worse in 2018</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Most-traded stocks universe</td><td>31.1% CAGR, deeper 2016 drawdown</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Momentum relative to the stock's industry</td><td>No improvement</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Wider book when market breadth is weak</td><td>No improvement</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Quality screen (ROCE, debt, cash flow), 2016–21</td><td>29.8% vs 32.7% CAGR; drawdowns unchanged</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Value screen (drop the dearest 20%), 2016–21</td><td>Removes momentum winners; no drawdown gain</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Breakout-setup sleeve beside c1, 2016–21</td><td>Lower drawdown only from idle cash; 2018 worse</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Breakout setups on their own</td><td>No edge once a volume look-ahead was removed</td><td><span class="status no">rejected</span></td></tr>
+      <tr><td>Inverse-beta weights (now part of c1)</td><td>Only change to pass walk-forward</td><td><span class="status">adopted</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div class="eyebrow">Ground rules</div>
+  <h2>Rules every test follows</h2>
+  <div class="cols">
+    <ul>
+      <li>Stocks only, NIFTY 500 only; no ETFs in any strategy.</li>
+      <li>Data from 2011 onwards, point in time, adjusted for dividends and corporate actions.</li>
+      <li>Demerged stocks are exited, with the gap handled explicitly.</li>
+      <li>No fills before 09:20; same-day exits finish before the 15:15 closing auction.</li>
+    </ul>
+    <ul>
+      <li>Every year is judged against the NIFTY 500 TRI; a large shortfall means something is wrong.</li>
+      <li>Idle cash counts as a failure; deployment is reported first.</li>
+      <li>The stored market database is read-only for backtests.</li>
+      <li>Live trading stays on paper until the owner approves a frozen version.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Next</div>
+  <h2>Open work</h2>
+  <ul>
+    <li>Cut the 2016 and 2018 drawdowns without holding cash: a market-regime gauge that shifts toward lower-beta names, or a cap per sector.</li>
+    <li>Final check on held-back data (2022 onwards) for one frozen version, then paper trading.</li>
+  </ul>
+</section>
+
+<footer>Backtest results are hypothetical, net of modelled costs, and do not guarantee future returns. Figures are from in-sample runs on NSE data, 2012–2021.</footer>
+</main>
+
+<script>
+(function(){
+  var Y=[["2012",14.2,14.1,3.6],["2013",3.6,4.8,20.0],["2014",81.9,39.3,8.9],["2015",21.3,0.2,14.5],["2016",-4.5,5.1,20.0],
+         ["2017",78.2,37.6,7.2],["2018",-4.6,-2.1,19.4],["2019",12.1,9.0,14.2],["2020",48.4,17.9,35.0],["2021",102.2,31.6,7.6]];
+  var tb=document.getElementById("yrs");
+  Y.forEach(function(r){
+    var d=r[1]-r[2], s=function(v){return (v>0?"+":"")+v.toFixed(1)};
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td>"+r[0]+"</td><td class='num "+(r[1]<0?"neg":"")+"'>"+s(r[1])+"%</td><td class='num'>"+s(r[2])+"%</td><td class='num "+(d<0?"neg":"pos")+"'>"+s(d)+" pts</td><td class='num'>"+r[3].toFixed(1)+"%</td>";
+    tb.appendChild(tr);
+  });
+  var svg=document.getElementById("yr"), NS="http://www.w3.org/2000/svg";
+  var W=900,H=340,L=48,R=12,T=14,B=34, lo=-20, hi=110;
+  var y=function(v){return T+(hi-v)/(hi-lo)*(H-T-B)};
+  var el=function(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;svg.appendChild(e);return e};
+  [-20,0,20,40,60,80,100].forEach(function(v){
+    el("line",{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:"var(--line)","stroke-width":v===0?1.5:1});
+    el("text",{x:L-8,y:y(v)+4,"text-anchor":"end","font-size":11,fill:"var(--muted)","font-family":"var(--mono)"},v+"%");
+  });
+  var band=(W-L-R)/Y.length, bw=band*0.32;
+  Y.forEach(function(r,i){
+    var cx=L+band*i+band/2;
+    [[r[1],"var(--accent)",-bw-1],[r[2],"var(--tri)",1]].forEach(function(b){
+      var top=Math.min(y(b[0]),y(0)), h=Math.abs(y(b[0])-y(0));
+      el("rect",{x:cx+b[2],y:top,width:bw,height:Math.max(h,1),fill:b[1],rx:1.5});
+    });
+    el("text",{x:cx,y:H-12,"text-anchor":"middle","font-size":12,fill:"var(--muted)","font-family":"var(--mono)"},r[0]);
+  });
+})();
+</script>
+</body>
+</html>

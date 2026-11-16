@@ -1,0 +1,7 @@
+# wf12 v3: VCP alone (reference) (owner go 2026-11-02). Old VCP B2 = aac4fda7, E1 stop_order entry, no volume rule.
+portfolio: wf12-v3
+universe: nifty500
+window: {from: 2016-01-01, to: 2021-12-31}
+conventions: {impact_bps: 100}
+strategies:
+  - {version: aac4fda7-86b2-421d-b7f8-1247edef7f1d, weight: 1, set: ["playbooks[default].trigger[price_breaks_level].params.entry_timing=stop_order"]}
